@@ -70,7 +70,18 @@
     <!-- beautify ignore:end -->
 
     @yield('extra-style')
+<livewire:styles />
 
+{{-- pusher js --}}
+  <script src="https://js.pusher.com/7.2/pusher.min.js"></script>
+<script>
+  // Enable pusher logging - don't include this in production
+    //Pusher.logToConsole = true;
+
+    var pusher = new Pusher('360e737254380879929e', {
+      cluster: 'mt1'
+    });
+</script>
 </head>
 
 <body>
@@ -585,6 +596,7 @@
 <!-- / Layout wrapper -->
 
 
+
 <!-- Core JS -->
 <!-- build:js assets/vendor/js/core.js -->
 <script src="assets/vendor/libs/jquery/jquery.js"></script>
@@ -609,6 +621,7 @@
 
 @yield('scripts')
 
+<livewire:scripts />
 
 </body>
 

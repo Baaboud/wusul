@@ -43,6 +43,30 @@ return [
             'visibility' => 'public',
             'throw' => false,
         ],
+        'services' => [
+            'driver' => 'local',
+            'root' => public_path('assets/images/serviceProvider/services'),
+            'url' => env('APP_URL') . '/services',
+            'visibility' => 'public',
+        ],
+        'services_cat' => [
+            'driver' => 'local',
+            'root' => public_path('assets/images/admin/services_cat'),
+            'url' => env('APP_URL') . '/services_cat',
+            'visibility' => 'public',
+        ],
+        'works' => [
+            'driver' => 'local',
+            'root' => public_path('assets/images/serviceProvider/works'),
+            'url' => env('APP_URL') . '/works',
+            'visibility' => 'public',
+        ],
+        'users' => [
+            'driver' => 'local',
+            'root' => public_path('assets/images/users'),
+            'url' => env('APP_URL') . '/users',
+            'visibility' => 'public',
+        ],
 
         's3' => [
             'driver' => 's3',

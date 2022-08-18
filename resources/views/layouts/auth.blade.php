@@ -64,7 +64,20 @@
     <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
     <script src="{{ asset('assets/js/config.js') }}"></script>
 
+
     @yield('extra-style')
+<livewire:styles />
+
+{{-- pusher js --}}
+  <script src="https://js.pusher.com/7.2/pusher.min.js"></script>
+<script>
+  // Enable pusher logging - don't include this in production
+    //Pusher.logToConsole = true;
+
+    var pusher = new Pusher('360e737254380879929e', {
+      cluster: 'mt1'
+    });
+</script>
 
 </head>
 
@@ -123,6 +136,7 @@
 <script src="{{asset('assets/js/form-validation.js')}}"></script>
 
 @yield('scripts')
+<livewire:scripts />
 
 </body>
 </html>
