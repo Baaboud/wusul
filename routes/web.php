@@ -1,6 +1,12 @@
 <?php
 
+use App\Models\User;
+use App\Models\Work;
+use App\Models\Service;
+use App\Models\ServiceCat;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\userServiceProvider\WorkController;
+use App\Http\Controllers\userServiceProvider\ServicesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,8 +19,33 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/test', function () {
+
+    return view('test',['id' => 3 ]);
+
+// );
+});
+Route::get('/test1', function () {
+    $services=Service::where('user_id',Auth::id())->get();
+            
+    $work = Work::CheckOwner()->findOrFail(2);    
+    return view('testu',[
+        'services'=>$services,
+        'work'=>$work
+    ]
+
+);});
+Route::get('/test2', function () {
+    $category=ServiceCat::find(3);
+    return view('tests',[
+        'category'=>$category
+    ]
+
+);
+
+});
 Route::get('/', function () {
-    return view('index');
+return view('index');
 })->name('index');
 
 Auth::routes();
@@ -45,4 +76,34 @@ Route::get('/service', function () {
 
 Route::get('/l', function () {
     return view('service.service_setting');
+});
+
+// start routes of user that provide service
+Route::group(['prefix' => 'serviceProvider', 
+'middleware' => 'checkType:serviceProvider'
+        ],
+        function () {
+
+    Route::get('/', [ServicesController::class, 'index'])->name('serviceProvider.home');
+
+                    //crud category of service
+                    Route::group(['prefix' => 'service'], function () {
+                        Route::get('/', [ServicesController::class, 'index'])->name('service');
+                        Route::get('/create', [ServicesController::class, 'create'])->name('service.create');
+                        Route::post('/store', [ServicesController::class, 'store'])->name('service.store');
+                        Route::get('/edit/{id}', [ServicesController::class, 'edit'])->name('service.edit');
+                        Route::post('/update/{id}', [ServicesController::class, 'update'])->name('service.update');
+            
+                    });
+
+                    // crud work
+                    Route::group(['prefix' => 'work'], function () {
+                        Route::get('/', [WorkController::class, 'index'])->name('work');
+                        Route::get('/create', [WorkController::class, 'create'])->name('work.create');
+                        Route::post('/store', [WorkController::class, 'store'])->name('work.store');
+                        Route::get('/edit/{id}', [WorkController::class, 'edit'])->name('work.edit');
+                        Route::post('/update/{id}', [WorkController::class, 'update'])->name('work.update');
+                    });
+
+
 });

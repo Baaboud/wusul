@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Providers\RouteServiceProvider;
+
 
 class HomeController extends Controller
 {
@@ -23,6 +26,23 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+                // this check if user is admin
+                if(Auth::user()->admin()){
+
+                    //  this rout for admin/
+                    return redirect(RouteServiceProvider::ADMIN);
+        
+                }else if(Auth::user()->userServiceProvider()){
+        
+                    //  this rout for pharmacy/
+                    return redirect(RouteServiceProvider::USER_SERVICE_PROVIDER);
+        
+                }else{
+                
+                    //  this rout for user
+                    return redirect()->route('index');
+
+                }
+                // php artisan make:controller userServiceProvider --resource
     }
 }
