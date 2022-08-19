@@ -36,13 +36,13 @@ Route::prefix('user')->group(function () {
 });
 
 Route::get('/service-provider', function () {
-    return view('service_provider');
+    return view('service.provider');
 });
 
 Route::get('/service', function () {
-    return view('service_page');
+    return view('service.details');
 })->name('service');
 
 Route::get('/l', function () {
-    return view('user.account');
+    return view('service.service_setting');
 });

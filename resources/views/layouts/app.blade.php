@@ -103,7 +103,7 @@
                     <ul class="navbar-nav d-sm-flex d-none flex-row align-items-center ms-5 fs-5 gap-3 fw-bold">
 
                         <li class="nav-item me-2 me-xl-0">
-                            <a href="{{ route('home') }}" class="nav-link primary">الخدمات</a>
+                            <a href="{{ route('service') }}" class="nav-link primary">الخدمات</a>
                         </li>
 
                         <li class="nav-item me-2 me-xl-0">
