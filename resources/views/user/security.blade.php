@@ -61,8 +61,8 @@
                                     </ul>
                                 </div>
                                 <div class="col-12 mt-1">
-                                    <button type="submit" class="btn btn-primary me-2">Save changes</button>
-                                    <button type="reset" class="btn btn-label-secondary">Cancel</button>
+                                    <button type="submit" class="btn btn-primary me-2">حفظ التغييرات</button>
+                                    <button type="reset" class="btn btn-label-secondary">الغاء</button>
                                 </div>
                             </div>
                             <div></div><input type="hidden"></form>

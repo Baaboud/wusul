@@ -1,7 +1,9 @@
-@extends('layouts.app')
+@extends('layouts.dashboard')
 
 @section('extra-style')
 
+
+    <script src="{{ asset('assets/vendor/js/helpers.js') }}"></script>
 @endsection
 
 @section('content')

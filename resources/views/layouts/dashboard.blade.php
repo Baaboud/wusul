@@ -46,11 +46,11 @@
     <!-- Page CSS -->
 
     <!-- Helpers -->
-    <script src="{{ asset('assets/vendor/js/helpers.js') }}"></script>
+{{--    <script src="{{ asset('assets/vendor/js/helpers.js') }}"></script>--}}
 
     <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
     <!--? Template customizer: To hide customizer set displayCustomizer value false in config.js.  -->
-    <script src="{{ asset('assets/vendor/js/template-customizer.js') }}"></script>
+{{--    <script src="{{ asset('assets/vendor/js/template-customizer.js') }}"></script>--}}
     <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
     <script src="{{ asset('assets/js/config.js') }}"></script>
 
@@ -82,15 +82,15 @@
 
         <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
 
-            <div class="app-brand demo ">
+            <div class="app-brand demo h-px-75">
                 <a href="index-2.html" class="app-brand-link w-100 d-flex justify-content-center flex-wrap">
                     <img src="http://127.0.0.1:8000/img/logo.png" class="w-px-40 h-auto p-1" alt="" srcset="">
                     <span class="ms-1 fs-4 fw-bold text-white">وصول</span>
                 </a>
 
-                <!-- <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto">
-                    <i class="bx bx-chevron-left bx-sm align-middle"></i>
-                </a> -->
+{{--                <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto">--}}
+{{--                    <i class="bx bx-chevron-left bx-sm align-middle"></i>--}}
+{{--                </a>--}}
             </div>
 
             <div class="menu-inner-shadow"></div>
@@ -605,23 +605,23 @@
 
 <!-- Core JS -->
 <!-- build:js assets/vendor/js/core.js -->
-<script src="assets/vendor/libs/jquery/jquery.js"></script>
-<script src="assets/vendor/libs/popper/popper.js"></script>
-<script src="assets/vendor/js/bootstrap.js"></script>
-<script src="assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+<script src="{{ asset('assets/vendor/libs/jquery/jquery.js') }}"></script>
+<script src="{{ asset('assets/vendor/libs/popper/popper.js') }}"></script>
+<script src="{{ asset('assets/vendor/js/bootstrap.js') }}"></script>
+<script src="{{ asset('assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js') }}"></script>
 
-<script src="assets/vendor/libs/hammer/hammer.js"></script>
-<script src="assets/vendor/libs/i18n/i18n.js"></script>
-<script src="assets/vendor/libs/typeahead-js/typeahead.js"></script>
+<script src="{{ asset('assets/vendor/libs/hammer/hammer.js') }}"></script>
+<script src="{{ asset('assets/vendor/libs/i18n/i18n.js') }}"></script>
+<script src="{{ asset('assets/vendor/libs/typeahead-js/typeahead.js') }}"></script>
 
-<script src="assets/vendor/js/menu.js"></script>
+<script src="{{ asset('assets/vendor/js/menu.js') }}"></script>
 <!-- endbuild -->
 
 <!-- Vendors JS -->
 
 
 <!-- Main JS -->
-<script src="assets/js/main.js"></script>
+<script src="{{ asset('assets/js/main.js') }}"></script>
 
 <!-- Page JS -->
 
