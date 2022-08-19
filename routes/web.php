@@ -56,8 +56,26 @@ Route::get('/profile', function () {
     return view('user.profile');
 })->name('profile')->middleware('auth');
 
-Route::get('/account', function () {
-    return view('account');
+Route::prefix('user')->group(function () {
+    Route::get('/account', function () {
+        return view('user.account');
+    })->name('account');
+
+    Route::get('/security', function () {
+        return view('user.security');
+    })->name('security');
+});
+
+Route::get('/service-provider', function () {
+    return view('service.provider');
+});
+
+Route::get('/service', function () {
+    return view('service.details');
+})->name('service');
+
+Route::get('/l', function () {
+    return view('service.service_setting');
 });
 
 // start routes of user that provide service
