@@ -46,13 +46,14 @@
     <!-- Page CSS -->
 
     <!-- Helpers -->
-    <script src="{{ asset('assets/vendor/js/helpers.js') }}"></script>
+{{--    <script src="{{ asset('assets/vendor/js/helpers.js') }}"></script>--}}
 
     <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
     <!--? Template customizer: To hide customizer set displayCustomizer value false in config.js.  -->
     <script src="{{ asset('assets/vendor/js/template-customizer.js') }}"></script>
     <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
     <script src="{{ asset('assets/js/config.js') }}"></script>
+
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async="async" src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
@@ -73,29 +74,24 @@
 
 </head>
 
-<body>
+<body style="font-family: 'Poppins', sans-serif;">
 
 <!-- Layout wrapper -->
 <div class="layout-wrapper layout-content-navbar  layout-without-menu">
     <div class="layout-container">
 
-
         <!-- Layout container -->
         <div class="layout-page">
 
-
             <!-- Navbar -->
-
-
             <nav
                 class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme"
                 id="layout-navbar">
 
-
                 <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
 
                     <!-- Logo -->
-                    <div class="navbar-nav align-items-center">
+                    <div class="navbar-nav align-items-center text-nowrap">
                         <a href="{{ route('index') }}">
                             <span class="ms-1 fs-4 fw-bold text-dark">وصول</span>
                             <img src="{{ asset('img/logo.png') }}" class="w-px-40 h-auto p-1" alt="" srcset="">
@@ -104,10 +100,10 @@
                     <!-- /Logo -->
 
 
-                    <ul class="navbar-nav d-sm-flex d-none flex-row align-items-center ms-2 fs-6 fw-bold">
+                    <ul class="navbar-nav d-sm-flex d-none flex-row align-items-center ms-5 fs-5 gap-3 fw-bold">
 
                         <li class="nav-item me-2 me-xl-0">
-                            <a href="#" class="nav-link primary">الخدمات</a>
+                            <a href="{{ route('service') }}" class="nav-link primary">الخدمات</a>
                         </li>
 
                         <li class="nav-item me-2 me-xl-0">
@@ -225,7 +221,7 @@
                                             <div class="d-flex">
                                                 <div class="flex-shrink-0 me-3">
                                                     <div class="avatar">
-                                                        <img src="assets/img/avatars/1.png" alt="" class="w-px-40 h-auto rounded-circle">
+                                                        <img src="{{ asset('assets/img/avatars/1.png') }}" alt="" class="w-px-40 h-auto rounded-circle">
                                                     </div>
                                                 </div>
                                                 <div class="flex-grow-1">
@@ -396,7 +392,7 @@
 
                         <!-- User -->
                         <li class="nav-item navbar-dropdown dropdown-user dropdown">
-                            <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
+                            <a class="nav-link dropdown-toggle hide-arrow" href="#" data-bs-toggle="dropdown">
                                 <div class="avatar avatar-online">
                                     <img src="{{ asset('img/user.png') }}" alt="" class="w-px-40 h-auto rounded-circle">
                                 </div>
@@ -407,7 +403,7 @@
                                         <div class="d-flex">
                                             <div class="flex-shrink-0 me-3">
                                                 <div class="avatar avatar-online">
-                                                    <img src="assets/img/avatars/1.png" alt="" class="w-px-40 h-auto rounded-circle">
+                                                    <img src="{{ asset('assets/img/avatars/1.png') }}" alt="" class="w-px-40 h-auto rounded-circle">
                                                 </div>
                                             </div>
                                             <div class="flex-grow-1">
@@ -427,7 +423,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a class="dropdown-item" href="pages-account-settings-account.html">
+                                    <a class="dropdown-item" href="{{ route('account') }}">
                                         <i class="bx bx-cog me-2"></i>
                                         <span class="align-middle">الاعدادت</span>
                                     </a>
@@ -501,7 +497,7 @@
 
 
             <!-- Content wrapper -->
-            <div class="content-wrapper">
+            <div class="content-wrapper mt-5">
 
                 <!-- Content -->
 
@@ -511,58 +507,54 @@
 
 
                 <!-- Footer -->
-                <footer class="footer bg-dark">
+                <footer class="footer bg-dark" style="background-color: #000 !important;">
                     <div class="container-fluid container-p-x pt-5 pb-4">
                         <div class="row">
                             <div class="col-12 col-sm-6 col-md-3 mb-4 mb-sm-0 text-center">
-                                <h4 class="fw-bolder mb-3"><a href="https://themeselection.com/demo/sneat-bootstrap-html-admin-template/landing/" target="_blank" class="footer-text">منصة وصول للخدمات</a></h4>
+                                <h4 class="fw-bolder mb-3"><a href="" target="_blank" class="footer-text">منصة وصول للخدمات</a></h4>
                                 <div>
                                     <img src="{{ asset('assets/img/logo.png') }}" class="mx-3" alt="">
                                 </div>
-                                <span>منصة كل مواطن وزائر</span>
-                                <div class="social-icon my-3">
-                                    <a href="javascript:void(0)" class="btn btn-icon btn-sm btn-facebook me-2"><i class="bx bxl-facebook"></i></a>
-                                    <a href="javascript:void(0)" class="btn btn-icon btn-sm btn-twitter me-2"><i class="bx bxl-twitter"></i></a>
-                                    <a href="javascript:void(0)" class="btn btn-icon btn-sm btn-linkedin me-2"><i class="bx bxl-linkedin"></i></a>
-                                    <a href="javascript:void(0)" class="btn btn-icon btn-sm btn-github"><i class="bx bxl-github"></i></a>
-                                </div>
-                                <p class="pt-4">
-                                    جميع الحقوق محفوظة <script>document.write(new Date().getFullYear())</script>
+
+                                <p class="text-light mt-4">
+                                    منصة وصول ... هي منصة وطنية توفر على المواطن الوصول للخدمة المطلوبة بأسهل الطرق ومعرفة كيفية التعامل مع الخدمة.
+                                </p>
+                                <p class="text-light">
+                                    جميع الحقوق محفوظة لدى
+                                    <i class="fa fa-heart-o" aria-hidden="true"></i>  <a href="https://Wusul.com" target="_blank">فريق وصول </a>
+                                    <script>document.write(new Date().getFullYear());</script> ©
                                 </p>
                             </div>
                             <div class="col-12 col-sm-6 col-md-3 mb-4 mb-md-0 text-center">
-                                <h5>الخدمات</h5>
+                                <h5 class="footer-text">روابط</h5>
                                 <ul class="list-unstyled">
-                                    <li><a href="#" class="footer-link d-block pb-2">كهرباء</a></li>
-                                    <li>
-                                        <a href="#" class="footer-link d-block pb-2">مياه </a>
-                                    </li>
-                                    <li><a href="#" class="footer-link d-block pb-2">صحة</a></li>
-                                    <li><a href="#" class="footer-link d-block pb-2">تعليم</a></li>
-                                    <li><a href="#" class="footer-link d-block pb-2">تقنية<span class="badge bg-label-primary mx-1">جديد</span></a></li>
-                                    <li><a href="#" class="footer-link d-block pb-2">هندسة</a></li>
-                                </ul>
-                            </div>
-                            <div class="col-12 col-sm-6 col-md-3 mb-4 mb-md-0 text-center">
-                                <h5>روابط</h5>
-                                <ul class="list-unstyled">
-                                    <li><a href="#" class="footer-link d-block pb-2">الرئيسية</a></li>
-                                    <li><a href="#" class="footer-link d-block pb-2">الخدمات</a></li>
-                                    <li><a href="#" class="footer-link d-block pb-2">من نحن</a></li>
-                                    <li><a href="#" class="footer-link d-block pb-2">التواصل</a></li>
-                                    <li><a href="#" class="footer-link d-block pb-2">الاسئلة الشائعة</a></li>
+                                    <li><a href="#" class="footer-link text-light d-block pb-2">الرئيسية</a></li>
+                                    <li><a href="#" class="footer-link text-light d-block pb-2">الخدمات</a></li>
+                                    <li><a href="#" class="footer-link text-light d-block pb-2">من نحن</a></li>
+                                    <li><a href="#" class="footer-link text-light d-block pb-2">التواصل</a></li>
+                                    <li><a href="#" class="footer-link text-light d-block pb-2">الاسئلة الشائعة</a></li>
                                 </ul>
                             </div>
                             <div class="col-12 col-sm-6 col-md-3 mb-4 mb-sm-0 text-center">
-                                <h5>تواصل</h5>
+                                <h5 class="footer-text">تواصل</h5>
                                 <ul class="list-unstyled">
-                                    <li><a href="#" class="footer-link d-block pb-2">wusul@gmail.com</a></li>
+                                    <li><a href="#" class="footer-link text-light d-block pb-2">wusul@gmail.com <i class="bx bx-mail-send"></i></a></li>
                                     <li>
-                                        <a href="#" class="footer-link d-block pb-2">770552517</a>
+                                        <a href="#" class="footer-link text-light d-block pb-2">770552517 <i class="bx bx-mobile"></i> </a>
                                     </li>
-                                    <li><a href="#" class="footer-link d-block pb-2">05000000</a></li>
-                                    <li><a href="#" class="footer-link d-block pb-2">www.wusul.com</a></li>
+                                    <li><a href="#" class="footer-link text-light d-block pb-2">05000000 <i class="bx bx-phone"></i></a></li>
+                                    <li><a href="#" class="footer-link text-light d-block pb-2">wusul.github.com <i class="bx bxl-github"></i></a></li>
                                 </ul>
+                            </div>
+                            <div class="col-12 col-sm-6 col-md-3 mb-4 mb-md-0 text-center">
+                                <h5 class="footer-text">متابعتنا</h5>
+                                <div class="social-icon my-3">
+                                    <a href="#"><i class="fa fa-facebook"></i></a>
+                                    <a href="javascript:void(0)" class="btn btn-icon btn-sm text-white me-2"><i class="bx bxl-facebook"></i></a>
+                                    <a href="javascript:void(0)" class="btn btn-icon btn-sm text-white me-2"><i class="bx bxl-twitter"></i></a>
+                                    <a href="javascript:void(0)" class="btn btn-icon btn-sm text-white me-2"><i class="bx bxl-linkedin"></i></a>
+                                    <a href="javascript:void(0)" class="btn btn-icon btn-sm text-white"><i class="bx bxl-github"></i></a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -587,23 +579,23 @@
 
 <!-- Core JS -->
 <!-- build:js assets/vendor/js/core.js -->
-<script src="assets/vendor/libs/jquery/jquery.js"></script>
-<script src="assets/vendor/libs/popper/popper.js"></script>
-<script src="assets/vendor/js/bootstrap.js"></script>
-<script src="assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+<script src="{{ asset('assets/vendor/libs/jquery/jquery.js') }}"></script>
+<script src="{{ asset('assets/vendor/libs/popper/popper.js') }}"></script>
+<script src="{{ asset('assets/vendor/js/bootstrap.js') }}"></script>
+<script src="{{ asset('assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js') }}"></script>
 
-<script src="assets/vendor/libs/hammer/hammer.js"></script>
-<script src="assets/vendor/libs/i18n/i18n.js"></script>
-<script src="assets/vendor/libs/typeahead-js/typeahead.js"></script>
+<script src="{{ asset('assets/vendor/libs/hammer/hammer.js') }}"></script>
+<script src="{{ asset('assets/vendor/libs/i18n/i18n.js') }}"></script>
+<script src="{{ asset('assets/vendor/libs/typeahead-js/typeahead.js') }}"></script>
 
-<script src="assets/vendor/js/menu.js"></script>
+<script src="{{ asset('assets/vendor/js/menu.js') }}"></script>
 <!-- endbuild -->
 
 <!-- Vendors JS -->
 
 
 <!-- Main JS -->
-<script src="assets/js/main.js"></script>
+<script src="{{ asset('assets/js/main.js') }}"></script>
 
 <!-- Page JS -->
 

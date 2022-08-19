@@ -137,7 +137,7 @@
                                 </div>
                             </div>
                             <div class="modal-footer justify-content-center">
-{{--                                <button type="button" class="btn btn-label-secondary" data-bs-dismiss="modal">الغاء</button>--}}
+                                {{--                                <button type="button" class="btn btn-label-secondary" data-bs-dismiss="modal">الغاء</button>--}}
                                 <button type="button" class="btn btn-primary w-100">
                                     <span class="tf-icons bx bx-search"></span>&nbsp; بحث
                                 </button>
