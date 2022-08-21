@@ -26,12 +26,12 @@
 
     <div class="container-xxl flex-grow-1 container-p-y">
         <div class="container-xxl flex-grow-1 container-p-y pt-0 px-sm-2 px-0">
-            <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">لوحة التحكم / </span>المجالات
+            <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">لوحة التحكم / </span>المحافظات
             </h4>
             <div class="card position-relative">
-                <h5 class="card-header fs-4 fw-bolder">المجالات</h5>
+                <h5 class="card-header fs-4 fw-bolder">المحافظات</h5>
                 <button type="button" class="btn btn-lg btn-primary position-absolute top-0 end-0 m-3" data-bs-toggle="modal" data-bs-target="#addCategory">
-                    أضافة مجال&nbsp;<span class="tf-icons bx bx-book-add"></span>
+                    أضافة محافظة&nbsp;<span class="tf-icons bx bx-book-add"></span>
                 </button>
                 <div class="modal fade" id="addCategory" tabindex="-1" aria-hidden="true" style="display: none;">
                     <div class="modal-dialog" role="document">
@@ -88,6 +88,7 @@
                 </div>
                 <div class="col-12">
                     <div class="nav-align-top">
+                        {{-- Tabs Buttons --}}
                         <ul class="nav nav-tabs border-bottom border-light mx-3 mb-3" role="tablist">
                             <li class="nav-item">
                                 <button type="button" class="nav-link active fas fa-th-list fs-4 bg-white" role="tab"
@@ -100,7 +101,7 @@
                                         aria-controls="navs-top-profile" aria-selected="false"></button>
                             </li>
                         </ul>
-                        {{-- Tabs --}}
+                        {{-- Tabs Content --}}
                         <div class="tab-content shadow-none pt-0">
                             {{-- List View --}}
                             <div class="tab-pane fade active show" id="navs-list" role="tabpanel">
@@ -119,14 +120,16 @@
                                             <td>1</td>
                                             <td> برمجة</td>
                                             <td>2022-05-12</td>
-                                            <td>
-                                                <button type="button" class="btn btn-label-primary" data-bs-toggle="modal" data-bs-target="#editeCategory1">
+                                            <td class="d-flex">
+                                                <button type="button" class="btn btn-label-primary mx-2" data-bs-toggle="modal" data-bs-target="#editeCategory1">
                                                     <span class="tf-icons bx bx-edit"></span>&nbsp; تعديل
                                                 </button>
 
-                                                <button type="button" class="btn btn-label-danger" id="confirm-color">
-                                                    <span class="tf-icons bx bx-trash"></span>&nbsp; خذف
-                                                </button>
+                                                <form method="get" action="{{ route('index') }}">
+                                                    <button type="submit" class="btn btn-label-danger confirm" id="confirm">
+                                                        <span class="tf-icons bx bx-trash"></span>&nbsp; خذف
+                                                    </button>
+                                                </form>
                                             </td>
                                         </tr>
                                         </tbody>
@@ -279,21 +282,34 @@
     <script src="../../assets/js/extended-ui-sweetalert2.js"></script>
     <script src="../../assets/vendor/libs/sweetalert2/sweetalert2.js"></script>
     <script>
-        imgInp = document.getElementById('upload');
-        imgView = document.getElementById('uploadedImg');
-        reset = document.getElementById('reset');
-        const r = imgView.src;
+        $('.confirm').on('click',function(e){
+            e.preventDefault();
+            var form = $(this).parents('form');
+            Swal.fire({
+                title: "هل انت متأكد من المتابعة",
+                text: "لن يمكنك التراجع عن هذا !",
+                icon: "warning",
+                showCancelButton: !0,
+                confirmButtonText: "نعم, قم بالحذف",
+                customClass: {confirmButton: "btn btn-primary me-3", cancelButton: "btn btn-label-secondary"},
+                buttonsStyling: !1
+            }).then(function (t) {
+                t.value ? Swal.fire({
+                    icon: "success",
+                    title: "محذوف!",
+                    text: "لقد تم الحذف بنجاخ.",
+                    customClass: {confirmButton: "btn btn-success"}
+                }, setTimeout(function(){
 
-        imgInp.onchange = evt => {
-            const [file] = imgInp.files
-            if (file) {
-                imgView.src = URL.createObjectURL(file)
-            }
-        }
-
-        reset.onclick = evt => {
-            imgInp.value = "",
-                imgView.src = r
-        }
+                    form.submit()
+                }, 1000)
+                ) : t.dismiss === Swal.DismissReason.cancel && Swal.fire({
+                    title: "تم الالغاء",
+                    text: "تم الغاء العملية :)",
+                    icon: "error",
+                    customClass: {confirmButton: "btn btn-success"}
+                })
+            })
+        });
     </script>
 @endsection

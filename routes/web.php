@@ -62,7 +62,7 @@ Route::get('/services', function () {
 })->name('services');
 
 Route::get('/l/l', function () {
-    return view('admin.categories');
+    return view('admin.states');
 });
 
 Route::group(['prefix' => 'user'], function () {
