@@ -103,7 +103,7 @@
                     <ul class="navbar-nav d-sm-flex d-none flex-row align-items-center ms-5 fs-5 gap-3 fw-bold">
 
                         <li class="nav-item me-2 me-xl-0">
-                            <a href="{{ route('service') }}" class="nav-link primary">الخدمات</a>
+                            <a href="{{ route('services') }}" class="nav-link primary">الخدمات</a>
                         </li>
 
                         <li class="nav-item me-2 me-xl-0">
@@ -177,7 +177,7 @@
                                       <span class="dropdown-shortcuts-icon bg-label-secondary rounded-circle mb-2">
                                         <i class="bx bx-cog fs-4"></i>
                                       </span>
-                                            <a href="pages-account-settings-account.html" class="stretched-link">الاعدادات</a>
+                                            <a href="#" class="stretched-link">الاعدادات</a>
                                             <small class="text-muted mb-0">اعدادات الحساب</small>
                                         </div>
                                     </div>
@@ -423,7 +423,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a class="dropdown-item" href="{{ route('account') }}">
+                                    <a class="dropdown-item" href="{{ route('account_personal') }}">
                                         <i class="bx bx-cog me-2"></i>
                                         <span class="align-middle">الاعدادت</span>
                                     </a>

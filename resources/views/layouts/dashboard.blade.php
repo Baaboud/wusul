@@ -46,7 +46,7 @@
     <!-- Page CSS -->
 
     <!-- Helpers -->
-{{--    <script src="{{ asset('assets/vendor/js/helpers.js') }}"></script>--}}
+    <script src="{{ asset('assets/vendor/js/helpers.js') }}"></script>
 
     <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
     <!--? Template customizer: To hide customizer set displayCustomizer value false in config.js.  -->
@@ -115,8 +115,8 @@
                 <li class="menu-item">
                     <a href="https://themeselection.com/demo/sneat-bootstrap-html-admin-template/documentation/"
                        target="_blank" class="menu-link">
-                        <i class="menu-icon tf-icons bx bx-cart"></i>
-                        <div>الطلبات</div>
+                        <i class="menu-icon tf-icons bx bx-grid-alt"></i>
+                        <div>الخدمات</div>
                     </a>
                 </li>
 
@@ -615,6 +615,7 @@
 <script src="{{ asset('assets/vendor/libs/typeahead-js/typeahead.js') }}"></script>
 
 <script src="{{ asset('assets/vendor/js/menu.js') }}"></script>
+
 <!-- endbuild -->
 
 <!-- Vendors JS -->

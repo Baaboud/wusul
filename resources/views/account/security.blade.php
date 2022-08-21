@@ -1,25 +1,23 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container-xxl flex-grow-1 container-p-y">
+    <div class="container-xxl flex-grow-1 container-p-y mt-3">
 
 
         <h4 class="fw-bold py-3 mb-4">
-            <span class="text-muted fw-light">Account Settings /</span> Security
+            <span class="text-muted fw-light">اعدادات الحساب /</span> الامان
         </h4>
 
         <div class="row">
             <div class="col-md-12">
                 <ul class="nav nav-pills flex-column flex-md-row mb-3">
-                    <li class="nav-item"><a class="nav-link" href="{{ route('account') }}"><i
+                    <li class="nav-item"><a class="nav-link" href="{{ route('account_personal') }}"><i
                                 class="bx bx-user me-1"></i> بيانات عامة</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="{{ route('security') }}"><i
+                    <li class="nav-item"><a class="nav-link active" href="{{ route('account_security') }}"><i
                                 class="bx bx-lock-alt me-1"></i> الأمن</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{ route('security') }}l"><i
+                    <li class="nav-item"><a class="nav-link" href="{{ route('account_services') }}"><i
                                 class="bx bx-detail me-1"></i> الخدمات</a></li>
-                    <li class="nav-item"><a class="nav-link" href="pages-account-settings-notifications.html"><i
-                                class="bx bx-bell me-1"></i> الأشعارات</a></li>
-                    <li class="nav-item"><a class="nav-link" href="pages-account-settings-connections.html"><i
+                    <li class="nav-item"><a class="nav-link" href="{{ route('account_social') }}"><i
                                 class="bx bx-link-alt me-1"></i> التواصل</a></li>
                 </ul>
                 <!-- Change Password -->
