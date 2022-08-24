@@ -32,7 +32,7 @@
                                 class="bx bx-user me-1"></i> بيانات عامة</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{ route('account_security') }}"><i
                                 class="bx bx-lock-alt me-1"></i> الأمن</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="{{ route('account_services') }}l"><i
+                    <li class="nav-item"><a class="nav-link active" href="{{ route('account_services') }}"><i
                                 class="bx bx-detail me-1"></i> الخدمات</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{ route('account_social') }}"><i
                                 class="bx bx-link-alt me-1"></i> التواصل</a></li>

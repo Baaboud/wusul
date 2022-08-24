@@ -54,6 +54,8 @@
     <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
     <script src="{{ asset('assets/js/config.js') }}"></script>
 
+    <script src="{{ asset('assets/vendor/js/helpers.js') }}"></script>
+
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async="async" src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
     <script>
@@ -117,6 +119,23 @@
                        target="_blank" class="menu-link">
                         <i class="menu-icon tf-icons bx bx-grid-alt"></i>
                         <div>الخدمات</div>
+                    </a>
+                </li>
+
+
+                <li class="menu-header text-uppercase text-white fs-6"><span class="menu-header-text">أدارة العمليات</span></li>
+                <li class="menu-item">
+                    <a href="https://themeselection.com/demo/sneat-bootstrap-html-admin-template/documentation/"
+                       target="_blank" class="menu-link">
+                        <i class="menu-icon tf-icons bx bx-money"></i>
+                        <div>أدارة الفواتير</div>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="https://themeselection.com/demo/sneat-bootstrap-html-admin-template/documentation/"
+                       target="_blank" class="menu-link">
+                        <i class="menu-icon tf-icons bx bxs-report"></i>
+                        <div>أدارة البلاغات</div>
                     </a>
                 </li>
 

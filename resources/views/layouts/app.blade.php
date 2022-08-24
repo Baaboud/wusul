@@ -54,6 +54,8 @@
     <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
     <script src="{{ asset('assets/js/config.js') }}"></script>
 
+    <script src="{{ asset('assets/vendor/js/helpers.js') }}"></script>
+
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async="async" src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
@@ -483,8 +485,8 @@
 
                     @guest()
                         <div class="d-flex flex-row align-items-center ms-auto">
-                            <a href="{{ route('login') }}" class="btn btn-label-primary mx-1">تسجيل الدخول</a>
-                            <a href="{{ route('register') }}" class="btn btn-dark mx-1">انشاء حساب</a>
+                            <a href="{{ route('login') }}" class="btn btn-label-primary mx-1 text-truncate">تسجيل الدخول</a>
+                            <a href="{{ route('register') }}" class="btn btn-dark mx-1 text-truncate">انشاء حساب</a>
                         </div>
                     @endguest
                 </div>
@@ -497,7 +499,7 @@
 
 
             <!-- Content wrapper -->
-            <div class="content-wrapper mt-5">
+            <div class="content-wrapper">
 
                 <!-- Content -->
 

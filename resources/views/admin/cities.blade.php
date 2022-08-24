@@ -26,10 +26,10 @@
 
     <div class="container-xxl flex-grow-1 container-p-y">
         <div class="container-xxl flex-grow-1 container-p-y pt-0 px-sm-2 px-0">
-            <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">لوحة التحكم / </span>المحافظات
+            <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">لوحة التحكم / </span>المدن
             </h4>
             <div class="card position-relative">
-                <h5 class="card-header fs-4 fw-bolder">المحافظات</h5>
+                <h5 class="card-header fs-4 fw-bolder">المدن</h5>
                 <button type="button" class="btn btn-lg btn-primary position-absolute top-0 end-0 m-3" data-bs-toggle="modal" data-bs-target="#addCategory">
                     أضافة محافظة&nbsp;<span class="tf-icons bx bx-book-add"></span>
                 </button>
@@ -41,15 +41,25 @@
                                   class="fv-plugins-bootstrap5 fv-plugins-framework" novalidate="novalidate">
                                 <hr class="my-0">
                                 <div class="modal-header">
-                                    <h5 class="modal-title fs-5 fw-bolder" id="modalToggleLabel">أضافة محافظة</h5>
+                                    <h5 class="modal-title fs-5 fw-bolder" id="modalToggleLabel">أضافة مدينة</h5>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="mb-3 col">
-                                            <label for="name" class="form-label">أسم المحافظة</label>
+                                            <label for="name" class="form-label fs-5 fw-bolder">أسم المدينة</label>
                                             <input type="text" class="form-control" id="name" name="name"
                                                    placeholder="أسم المحافظة">
+                                        </div>
+                                        <div class="mb-3 col">
+                                            <label for="selectpickerBasic" class="form-label fs-5 fw-bolder">المحافظة</label>
+                                            <select class="selectpicker w-100 show-tick" id="selectpickerBasic" data-icon-base="bx"
+                                                    data-tick-icon="bx-check" data-style="btn-default">
+                                                <option>الكل</option>
+                                                <option>حضرموت</option>
+                                                <option>المهرة</option>
+                                                <option>عدن</option>
+                                            </select>
                                         </div>
 
 
@@ -101,43 +111,43 @@
                         </tbody>
                     </table>
                 </div>
+            </div>
         </div>
-    </div>
-@endsection
+        @endsection
 
-@section('scripts')
-    <script src="{{ asset('assets/vendor/libs/bootstrap-select/bootstrap-select.js') }}"></script>
-    <script src="../../assets/js/extended-ui-sweetalert2.js"></script>
-    <script src="../../assets/vendor/libs/sweetalert2/sweetalert2.js"></script>
-    <script>
-        $('.confirm').on('click',function(e){
-            e.preventDefault();
-            var form = $(this).parents('form');
-            Swal.fire({
-                title: "هل انت متأكد من المتابعة",
-                text: "لن يمكنك التراجع عن هذا !",
-                icon: "warning",
-                showCancelButton: !0,
-                confirmButtonText: "نعم, قم بالحذف",
-                customClass: {confirmButton: "btn btn-primary me-3", cancelButton: "btn btn-label-secondary"},
-                buttonsStyling: !1
-            }).then(function (t) {
-                t.value ? Swal.fire({
-                    icon: "success",
-                    title: "محذوف!",
-                    text: "لقد تم الحذف بنجاخ.",
-                    customClass: {confirmButton: "btn btn-success"}
-                }, setTimeout(function(){
+        @section('scripts')
+            <script src="{{ asset('assets/vendor/libs/bootstrap-select/bootstrap-select.js') }}"></script>
+            <script src="../../assets/js/extended-ui-sweetalert2.js"></script>
+            <script src="../../assets/vendor/libs/sweetalert2/sweetalert2.js"></script>
+            <script>
+                $('.confirm').on('click',function(e){
+                    e.preventDefault();
+                    var form = $(this).parents('form');
+                    Swal.fire({
+                        title: "هل انت متأكد من المتابعة",
+                        text: "لن يمكنك التراجع عن هذا !",
+                        icon: "warning",
+                        showCancelButton: !0,
+                        confirmButtonText: "نعم, قم بالحذف",
+                        customClass: {confirmButton: "btn btn-primary me-3", cancelButton: "btn btn-label-secondary"},
+                        buttonsStyling: !1
+                    }).then(function (t) {
+                        t.value ? Swal.fire({
+                                icon: "success",
+                                title: "محذوف!",
+                                text: "لقد تم الحذف بنجاخ.",
+                                customClass: {confirmButton: "btn btn-success"}
+                            }, setTimeout(function(){
 
-                    form.submit()
-                }, 1000)
-                ) : t.dismiss === Swal.DismissReason.cancel && Swal.fire({
-                    title: "تم الالغاء",
-                    text: "تم الغاء العملية :)",
-                    icon: "error",
-                    customClass: {confirmButton: "btn btn-success"}
-                })
-            })
-        });
-    </script>
+                                form.submit()
+                            }, 1000)
+                        ) : t.dismiss === Swal.DismissReason.cancel && Swal.fire({
+                            title: "تم الالغاء",
+                            text: "تم الغاء العملية :)",
+                            icon: "error",
+                            customClass: {confirmButton: "btn btn-success"}
+                        })
+                    })
+                });
+            </script>
 @endsection

@@ -3,11 +3,27 @@
 @section('extra-style')
     <link rel="stylesheet" href="../../assets/vendor/css/pages/page-help-center.css">
     <link rel="stylesheet" href="../../assets/vendor/libs/bootstrap-select/bootstrap-select.css">
+    <style>
+        .active {
+            color: #696cff !important;
+        }
+        .nav-tabs .nav-item .nav-link {
+            border: #eee 1px solid !important;
+            background-color: #fff !important;
+            /*box-shadow: 1px 1px #dddd !important;*/
+        }
+
+        .nav-tabs .nav-item .active {
+            border: 0px !important;
+            background-color: #e9e9FF !important;
+            /*box-shadow: none !important;*/
+        }
+    </style>
 @endsection
 
 @section('content')
 
-    <div class="container-xxl flex-grow-1 container-p-y">
+    <div class="container-xxl flex-grow-1 mt-2">
         <div class="container-xxl flex-grow-1 container-p-y px-sm-2 px-0">
 
             <div class="card overflow-hidden">
@@ -148,341 +164,259 @@
                 <!-- /Help Center Header -->
 
                 <!-- Search services -->
-                <div class="help-center-popular-articles py-5">
-                    <div class="container-xl">
-                        <div class="row">
-                            <div class="col-md-6 col-lg-3 mb-4">
-                                <div class="card shadow h-100">
-                                    <div class="card-header flex-grow-0">
-                                        <div class="d-flex">
-                                            <div class="avatar flex-shrink-0 me-3">
-                                                <img src="../../assets/img/avatars/9.png" alt="User" class="rounded-circle">
+                <div class="help-center-popular-articles py-2">
+                    <div class="nav-align-top">
+                        <ul class="nav nav-tabs border-bottom border-light mx-3 mb-3" role="tablist">
+                            <li class="nav-item">
+                                <button type="button" class="nav-link fas fa-th-large fs-4 active" role="tab" data-bs-toggle="tab" data-bs-target="#navs-card" aria-controls="navs-top-profile" aria-selected="true"></button>
+                            </li>
+                            <li class="nav-item">
+                                <button type="button" class="nav-link fas fa-th-list fs-4" role="tab" data-bs-toggle="tab" data-bs-target="#navs-list" aria-controls="navs-top-home" aria-selected="false"></button>
+                            </li>
+                        </ul>
+                        <div class="tab-content shadow-none pt-0">
+
+                            <div class="tab-pane fade active show" id="navs-card" role="tabpanel">
+                                <div class="row">
+                                    <div class="col-md-6 col-lg-3 mb-4">
+                                        <div class="card shadow h-100">
+                                            <div class="card-header flex-grow-0">
+                                                <div class="d-flex">
+                                                    <div class="avatar flex-shrink-0 me-3">
+                                                        <img src="http://127.0.0.1:8000/assets/img/avatars/1.png" alt="User" class="rounded-circle">
+                                                    </div>
+                                                    <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-1">
+                                                        <div class="me-2">
+                                                            <h5 class="mb-0">عبدالهادي ديان</h5>
+                                                            <small class="text-muted">2019-08-02</small>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-1">
-                                                <div class="me-2">
-                                                    <h5 class="mb-0 fw-bolder">أسامة هادي</h5>
+                                            <img class="img-fluid" src="../../assets/img/backgrounds/event.jpg" alt="Card image cap">
+                                            <div class="featured-date mt-n4 ms-4 bg-white rounded w-px-50 shadow text-center">
+                                                <h5 class="mb-0 text-dark"><span class="badge bg-primary p-3 fw-bold border-light">برمجة</span></h5>
+                                            </div>
+                                            <div class="card-body">
+                                                <h5 class="text-truncate text-center fs-4 fw-bolder mb-4">تصميم مواقع ويب</h5>
+                                                <div class="d-flex align-items-center justify-content-center my-1 gap-2">
+                                                    {{--                                            <span class="badge bg-label-success fs-5 me-1">مفعل</span>--}}
+                                                </div>
+                                                <div class="d-flex align-items-center justify-content-center">
+                                                    {{--                                            <a href="javascript:;" class="btn btn-primary d-flex align-items-center me-3"><i class="bx bx-user-check me-1"></i>وصول</a>--}}
+                                                    <button type="button" class="btn btn-label-primary fs-5 px-3">
+                                                        <span class="tf-icons bx bx-user-check"></span>&nbsp; وصول
+                                                    </button>
+                                                </div>
+                                                <div class="mt-3 d-flex fs-5 align-items-center justify-content-around">
+                                                    <a href="#" class="text-muted me-3" data-bs-toggle="tooltip" data-bs-offset="0,4"
+                                                       data-bs-placement="bottom" data-bs-html="true" title=""
+                                                       data-bs-original-title="اجمالي الطلبات">
+                                                        <i class="bx bx-cart me-1 fs-4"></i> 236</a>
+                                                    <a href="#" class="text-muted" data-bs-toggle="tooltip" data-bs-offset="0,4"
+                                                       data-bs-placement="bottom" data-bs-html="true" title=""
+                                                       data-bs-original-title="اجمالي التقييمات"><i class="bx bx-star me-1 fs-4"></i> 12</a>
+                                                    <a href="#" class="text-muted" data-bs-toggle="tooltip" data-bs-offset="0,4"
+                                                       data-bs-placement="bottom" data-bs-html="true" title=""
+                                                       data-bs-original-title="وقت التسليم التقريبي"><i class="bx bx-time me-1 fs-4"></i> 12 يوم</a>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <img class="img-fluid" src="../../assets/img/backgrounds/event.jpg" alt="Card image cap">
-                                    <div class="featured-date mt-n4 ms-4 bg-white rounded w-px-50 shadow text-center p-1">
-                                        <h5 class="mb-0 fw-bold py-2">تقنية</h5>
-                                    </div>
-                                    <div class="card-body">
-                                        <h5 class="text-truncate text-center fs-3 fw-bolder">هندسة مكيفات</h5>
-                                        <div class="d-flex align-items-center justify-content-between mt-3">
-                                            <div class="card-actions d-flex justify-content-around w-100 fs-4">
-                                                <a href="javascript:;" class="text-muted me-3"><i class="bx bx-star me-1 fs-4"></i> 236</a>
-                                                <a href="javascript:;" class="text-muted"><i class="bx bx-cart me-1 fs-4"></i> 12</a>
+                                    <div class="col-md-6 col-lg-3 mb-4">
+                                        <div class="card shadow h-100">
+                                            <div class="card-header flex-grow-0">
+                                                <div class="d-flex">
+                                                    <div class="avatar flex-shrink-0 me-3">
+                                                        <img src="http://127.0.0.1:8000/assets/img/avatars/1.png" alt="User" class="rounded-circle">
+                                                    </div>
+                                                    <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-1">
+                                                        <div class="me-2">
+                                                            <h5 class="mb-0">عبدالهادي ديان</h5>
+                                                            <small class="text-muted">2019-08-02</small>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <img class="img-fluid" src="../../assets/img/backgrounds/event.jpg" alt="Card image cap">
+                                            <div class="featured-date mt-n4 ms-4 bg-white rounded w-px-50 shadow text-center">
+                                                <h5 class="mb-0 text-dark"><span class="badge bg-primary p-3 fw-bold border-light">برمجة</span></h5>
+                                            </div>
+                                            <div class="card-body">
+                                                <h5 class="text-truncate text-center fs-4 fw-bolder mb-4">تصميم مواقع ويب</h5>
+                                                <div class="d-flex align-items-center justify-content-center my-1 gap-2">
+                                                    {{--                                            <span class="badge bg-label-success fs-5 me-1">مفعل</span>--}}
+                                                </div>
+                                                <div class="d-flex align-items-center justify-content-center">
+                                                    {{--                                            <a href="javascript:;" class="btn btn-primary d-flex align-items-center me-3"><i class="bx bx-user-check me-1"></i>وصول</a>--}}
+                                                    <button type="button" class="btn btn-label-primary fs-5 px-3">
+                                                        <span class="tf-icons bx bx-user-check"></span>&nbsp; وصول
+                                                    </button>
+                                                </div>
+                                                <div class="mt-3 d-flex fs-5 align-items-center justify-content-around">
+                                                    <a href="#" class="text-muted me-3" data-bs-toggle="tooltip" data-bs-offset="0,4"
+                                                       data-bs-placement="bottom" data-bs-html="true" title=""
+                                                       data-bs-original-title="اجمالي الطلبات">
+                                                        <i class="bx bx-cart me-1 fs-4"></i> 236</a>
+                                                    <a href="#" class="text-muted" data-bs-toggle="tooltip" data-bs-offset="0,4"
+                                                       data-bs-placement="bottom" data-bs-html="true" title=""
+                                                       data-bs-original-title="اجمالي التقييمات"><i class="bx bx-star me-1 fs-4"></i> 12</a>
+                                                    <a href="#" class="text-muted" data-bs-toggle="tooltip" data-bs-offset="0,4"
+                                                       data-bs-placement="bottom" data-bs-html="true" title=""
+                                                       data-bs-original-title="وقت التسليم التقريبي"><i class="bx bx-time me-1 fs-4"></i> 12 يوم</a>
+                                                </div>
                                             </div>
                                         </div>
-
-                                        <div class="d-flex mt-5">
-                                            <a href="{{ route('service')}}" class="btn btn-primary mx-auto" role="button">وصول</a>
+                                    </div>
+                                    <div class="col-md-6 col-lg-3 mb-4">
+                                        <div class="card shadow h-100">
+                                            <div class="card-header flex-grow-0">
+                                                <div class="d-flex">
+                                                    <div class="avatar flex-shrink-0 me-3">
+                                                        <img src="http://127.0.0.1:8000/assets/img/avatars/1.png" alt="User" class="rounded-circle">
+                                                    </div>
+                                                    <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-1">
+                                                        <div class="me-2">
+                                                            <h5 class="mb-0">عبدالهادي ديان</h5>
+                                                            <small class="text-muted">2019-08-02</small>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <img class="img-fluid" src="../../assets/img/backgrounds/event.jpg" alt="Card image cap">
+                                            <div class="featured-date mt-n4 ms-4 bg-white rounded w-px-50 shadow text-center">
+                                                <h5 class="mb-0 text-dark"><span class="badge bg-primary p-3 fw-bold border-light">برمجة</span></h5>
+                                            </div>
+                                            <div class="card-body">
+                                                <h5 class="text-truncate text-center fs-4 fw-bolder mb-4">تصميم مواقع ويب</h5>
+                                                <div class="d-flex align-items-center justify-content-center my-1 gap-2">
+                                                    {{--                                            <span class="badge bg-label-success fs-5 me-1">مفعل</span>--}}
+                                                </div>
+                                                <div class="d-flex align-items-center justify-content-center">
+                                                    {{--                                            <a href="javascript:;" class="btn btn-primary d-flex align-items-center me-3"><i class="bx bx-user-check me-1"></i>وصول</a>--}}
+                                                    <button type="button" class="btn btn-label-primary fs-5 px-3">
+                                                        <span class="tf-icons bx bx-user-check"></span>&nbsp; وصول
+                                                    </button>
+                                                </div>
+                                                <div class="mt-3 d-flex fs-5 align-items-center justify-content-around">
+                                                    <a href="#" class="text-muted me-3" data-bs-toggle="tooltip" data-bs-offset="0,4"
+                                                       data-bs-placement="bottom" data-bs-html="true" title=""
+                                                       data-bs-original-title="اجمالي الطلبات">
+                                                        <i class="bx bx-cart me-1 fs-4"></i> 236</a>
+                                                    <a href="#" class="text-muted" data-bs-toggle="tooltip" data-bs-offset="0,4"
+                                                       data-bs-placement="bottom" data-bs-html="true" title=""
+                                                       data-bs-original-title="اجمالي التقييمات"><i class="bx bx-star me-1 fs-4"></i> 12</a>
+                                                    <a href="#" class="text-muted" data-bs-toggle="tooltip" data-bs-offset="0,4"
+                                                       data-bs-placement="bottom" data-bs-html="true" title=""
+                                                       data-bs-original-title="وقت التسليم التقريبي"><i class="bx bx-time me-1 fs-4"></i> 12 يوم</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-lg-3 mb-4">
+                                        <div class="card shadow h-100">
+                                            <div class="card-header flex-grow-0">
+                                                <div class="d-flex">
+                                                    <div class="avatar flex-shrink-0 me-3">
+                                                        <img src="http://127.0.0.1:8000/assets/img/avatars/1.png" alt="User" class="rounded-circle">
+                                                    </div>
+                                                    <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-1">
+                                                        <div class="me-2">
+                                                            <h5 class="mb-0">عبدالهادي ديان</h5>
+                                                            <small class="text-muted">2019-08-02</small>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <img class="img-fluid" src="../../assets/img/backgrounds/event.jpg" alt="Card image cap">
+                                            <div class="featured-date mt-n4 ms-4 bg-white rounded w-px-50 shadow text-center">
+                                                <h5 class="mb-0 text-dark"><span class="badge bg-primary p-3 fw-bold border-light">برمجة</span></h5>
+                                            </div>
+                                            <div class="card-body">
+                                                <h5 class="text-truncate text-center fs-4 fw-bolder mb-4">تصميم مواقع ويب</h5>
+                                                <div class="d-flex align-items-center justify-content-center my-1 gap-2">
+                                                    {{--                                            <span class="badge bg-label-success fs-5 me-1">مفعل</span>--}}
+                                                </div>
+                                                <div class="d-flex align-items-center justify-content-center">
+                                                    {{--                                            <a href="javascript:;" class="btn btn-primary d-flex align-items-center me-3"><i class="bx bx-user-check me-1"></i>وصول</a>--}}
+                                                    <button type="button" class="btn btn-label-primary fs-5 px-3">
+                                                        <span class="tf-icons bx bx-user-check"></span>&nbsp; وصول
+                                                    </button>
+                                                </div>
+                                                <div class="mt-3 d-flex fs-5 align-items-center justify-content-around">
+                                                    <a href="#" class="text-muted me-3" data-bs-toggle="tooltip" data-bs-offset="0,4"
+                                                       data-bs-placement="bottom" data-bs-html="true" title=""
+                                                       data-bs-original-title="اجمالي الطلبات">
+                                                        <i class="bx bx-cart me-1 fs-4"></i> 236</a>
+                                                    <a href="#" class="text-muted" data-bs-toggle="tooltip" data-bs-offset="0,4"
+                                                       data-bs-placement="bottom" data-bs-html="true" title=""
+                                                       data-bs-original-title="اجمالي التقييمات"><i class="bx bx-star me-1 fs-4"></i> 12</a>
+                                                    <a href="#" class="text-muted" data-bs-toggle="tooltip" data-bs-offset="0,4"
+                                                       data-bs-placement="bottom" data-bs-html="true" title=""
+                                                       data-bs-original-title="وقت التسليم التقريبي"><i class="bx bx-time me-1 fs-4"></i> 12 يوم</a>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-6 col-lg-3 mb-4">
-                                <div class="card shadow h-100">
-                                    <div class="card-header flex-grow-0">
-                                        <div class="d-flex">
-                                            <div class="avatar flex-shrink-0 me-3">
-                                                <img src="../../assets/img/avatars/1.png" alt="User" class="rounded-circle">
-                                            </div>
-                                            <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-1">
-                                                <div class="me-2">
-                                                    <h5 class="mb-0 fw-bolder">أسامة هادي</h5>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <img class="img-fluid" src="../../assets/img/backgrounds/7.jpg" alt="Card image cap">
-                                    <div class="featured-date mt-n4 ms-4 bg-white rounded w-px-50 shadow text-center p-1">
-                                        <h5 class="mb-0 fw-bold py-2">تقنية</h5>
-                                    </div>
-                                    <div class="card-body">
-                                        <h5 class="text-truncate text-center fs-3 fw-bolder">هندسة مكيفات</h5>
-                                        <div class="d-flex align-items-center justify-content-between mt-3">
-                                            <div class="card-actions d-flex justify-content-around w-100 fs-4">
-                                                <a href="javascript:;" class="text-muted me-3"><i class="bx bx-star me-1 fs-4"></i> 236</a>
-                                                <a href="javascript:;" class="text-muted"><i class="bx bx-cart me-1 fs-4"></i> 12</a>
-                                            </div>
-                                            {{--                                            <div class="dropup d-none d-sm-block">--}}
-                                            {{--                                                <button class="btn p-0" type="button" id="sharedList" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">--}}
-                                            {{--                                                    <i class="bx bx-dots-vertical"></i>--}}
-                                            {{--                                                </button>--}}
-                                            {{--                                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="sharedList">--}}
-                                            {{--                                                    <a class="dropdown-item" href="javascript:void(0);">Last 28 Days</a>--}}
-                                            {{--                                                    <a class="dropdown-item" href="javascript:void(0);">Last Month</a>--}}
-                                            {{--                                                    <a class="dropdown-item" href="javascript:void(0);">Last Year</a>--}}
-                                            {{--                                                </div>--}}
-                                            {{--                                            </div>--}}
-                                        </div>
 
-                                        <div class="d-flex mt-5">
-                                            <a href="javascript:;" class="btn btn-primary mx-auto" role="button">وصول</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-lg-3 mb-4">
-                                <div class="card shadow h-100">
-                                    <div class="card-header flex-grow-0">
-                                        <div class="d-flex">
-                                            <div class="avatar flex-shrink-0 me-3">
-                                                <img src="../../assets/img/avatars/9.png" alt="User" class="rounded-circle">
-                                            </div>
-                                            <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-1">
-                                                <div class="me-2">
-                                                    <h5 class="mb-0 fw-bolder">أسامة هادي</h5>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <img class="img-fluid" src="../../assets/img/backgrounds/3.jpg" alt="Card image cap">
-                                    <div class="featured-date mt-n4 ms-4 bg-white rounded w-px-50 shadow text-center p-1">
-                                        <h5 class="mb-0 fw-bold py-2">تقنية</h5>
-                                    </div>
-                                    <div class="card-body">
-                                        <h5 class="text-truncate text-center fs-3 fw-bolder">هندسة مكيفات</h5>
-                                        <div class="d-flex align-items-center justify-content-between mt-3">
-                                            <div class="card-actions d-flex justify-content-around w-100 fs-4">
-                                                <a href="javascript:;" class="text-muted me-3"><i class="bx bx-star me-1 fs-4"></i> 236</a>
-                                                <a href="javascript:;" class="text-muted"><i class="bx bx-cart me-1 fs-4"></i> 12</a>
-                                            </div>
-                                            {{--                                            <div class="dropup d-none d-sm-block">--}}
-                                            {{--                                                <button class="btn p-0" type="button" id="sharedList" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">--}}
-                                            {{--                                                    <i class="bx bx-dots-vertical"></i>--}}
-                                            {{--                                                </button>--}}
-                                            {{--                                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="sharedList">--}}
-                                            {{--                                                    <a class="dropdown-item" href="javascript:void(0);">Last 28 Days</a>--}}
-                                            {{--                                                    <a class="dropdown-item" href="javascript:void(0);">Last Month</a>--}}
-                                            {{--                                                    <a class="dropdown-item" href="javascript:void(0);">Last Year</a>--}}
-                                            {{--                                                </div>--}}
-                                            {{--                                            </div>--}}
-                                        </div>
-
-                                        <div class="d-flex mt-5">
-                                            <a href="javascript:;" class="btn btn-primary mx-auto" role="button">وصول</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-lg-3 mb-4">
-                                <div class="card shadow h-100">
-                                    <div class="card-header flex-grow-0">
-                                        <div class="d-flex">
-                                            <div class="avatar flex-shrink-0 me-3">
-                                                <img src="../../assets/img/avatars/9.png" alt="User" class="rounded-circle">
-                                            </div>
-                                            <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-1">
-                                                <div class="me-2">
-                                                    <h5 class="mb-0 fw-bolder">أسامة هادي</h5>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <img class="img-fluid" src="../../assets/img/backgrounds/5.jpg" alt="Card image cap">
-                                    <div class="featured-date mt-n4 ms-4 bg-white rounded w-px-50 shadow text-center p-1">
-                                        <h5 class="mb-0 fw-bold py-2">تقنية</h5>
-                                    </div>
-                                    <div class="card-body">
-                                        <h5 class="text-truncate text-center fs-3 fw-bolder">هندسة مكيفات</h5>
-                                        <div class="d-flex align-items-center justify-content-between mt-3">
-                                            <div class="card-actions d-flex justify-content-around w-100 fs-4">
-                                                <a href="javascript:;" class="text-muted me-3"><i class="bx bx-star me-1 fs-4"></i> 236</a>
-                                                <a href="javascript:;" class="text-muted"><i class="bx bx-cart me-1 fs-4"></i> 12</a>
-                                            </div>
-                                            {{--                                            <div class="dropup d-none d-sm-block">--}}
-                                            {{--                                                <button class="btn p-0" type="button" id="sharedList" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">--}}
-                                            {{--                                                    <i class="bx bx-dots-vertical"></i>--}}
-                                            {{--                                                </button>--}}
-                                            {{--                                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="sharedList">--}}
-                                            {{--                                                    <a class="dropdown-item" href="javascript:void(0);">Last 28 Days</a>--}}
-                                            {{--                                                    <a class="dropdown-item" href="javascript:void(0);">Last Month</a>--}}
-                                            {{--                                                    <a class="dropdown-item" href="javascript:void(0);">Last Year</a>--}}
-                                            {{--                                                </div>--}}
-                                            {{--                                            </div>--}}
-                                        </div>
-
-                                        <div class="d-flex mt-5">
-                                            <a href="javascript:;" class="btn btn-primary mx-auto" role="button">وصول</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-lg-3 mb-4">
-                                <div class="card shadow h-100">
-                                    <div class="card-header flex-grow-0">
-                                        <div class="d-flex">
-                                            <div class="avatar flex-shrink-0 me-3">
-                                                <img src="../../assets/img/avatars/9.png" alt="User" class="rounded-circle">
-                                            </div>
-                                            <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-1">
-                                                <div class="me-2">
-                                                    <h5 class="mb-0 fw-bolder">أسامة هادي</h5>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <img class="img-fluid" src="../../assets/img/backgrounds/8.jpg" alt="Card image cap">
-                                    <div class="featured-date mt-n4 ms-4 bg-white rounded w-px-50 shadow text-center p-1">
-                                        <h5 class="mb-0 fw-bold py-2">تقنية</h5>
-                                    </div>
-                                    <div class="card-body">
-                                        <h5 class="text-truncate text-center fs-3 fw-bolder">هندسة مكيفات</h5>
-                                        <div class="d-flex align-items-center justify-content-between mt-3">
-                                            <div class="card-actions d-flex justify-content-around w-100 fs-4">
-                                                <a href="javascript:;" class="text-muted me-3"><i class="bx bx-star me-1 fs-4"></i> 236</a>
-                                                <a href="javascript:;" class="text-muted"><i class="bx bx-cart me-1 fs-4"></i> 12</a>
-                                            </div>
-                                            {{--                                            <div class="dropup d-none d-sm-block">--}}
-                                            {{--                                                <button class="btn p-0" type="button" id="sharedList" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">--}}
-                                            {{--                                                    <i class="bx bx-dots-vertical"></i>--}}
-                                            {{--                                                </button>--}}
-                                            {{--                                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="sharedList">--}}
-                                            {{--                                                    <a class="dropdown-item" href="javascript:void(0);">Last 28 Days</a>--}}
-                                            {{--                                                    <a class="dropdown-item" href="javascript:void(0);">Last Month</a>--}}
-                                            {{--                                                    <a class="dropdown-item" href="javascript:void(0);">Last Year</a>--}}
-                                            {{--                                                </div>--}}
-                                            {{--                                            </div>--}}
-                                        </div>
-
-                                        <div class="d-flex mt-5">
-                                            <a href="javascript:;" class="btn btn-primary mx-auto" role="button">وصول</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-lg-3 mb-4">
-                                <div class="card shadow h-100">
-                                    <div class="card-header flex-grow-0">
-                                        <div class="d-flex">
-                                            <div class="avatar flex-shrink-0 me-3">
-                                                <img src="../../assets/img/avatars/9.png" alt="User" class="rounded-circle">
-                                            </div>
-                                            <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-1">
-                                                <div class="me-2">
-                                                    <h5 class="mb-0 fw-bolder">أسامة هادي</h5>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <img class="img-fluid" src="../../assets/img/backgrounds/10.jpg" alt="Card image cap">
-                                    <div class="featured-date mt-n4 ms-4 bg-white rounded w-px-50 shadow text-center p-1">
-                                        <h5 class="mb-0 fw-bold py-2">تقنية</h5>
-                                    </div>
-                                    <div class="card-body">
-                                        <h5 class="text-truncate text-center fs-3 fw-bolder">هندسة مكيفات</h5>
-                                        <div class="d-flex align-items-center justify-content-between mt-3">
-                                            <div class="card-actions d-flex justify-content-around w-100 fs-4">
-                                                <a href="javascript:;" class="text-muted me-3"><i class="bx bx-star me-1 fs-4"></i> 236</a>
-                                                <a href="javascript:;" class="text-muted"><i class="bx bx-cart me-1 fs-4"></i> 12</a>
-                                            </div>
-                                            {{--                                            <div class="dropup d-none d-sm-block">--}}
-                                            {{--                                                <button class="btn p-0" type="button" id="sharedList" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">--}}
-                                            {{--                                                    <i class="bx bx-dots-vertical"></i>--}}
-                                            {{--                                                </button>--}}
-                                            {{--                                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="sharedList">--}}
-                                            {{--                                                    <a class="dropdown-item" href="javascript:void(0);">Last 28 Days</a>--}}
-                                            {{--                                                    <a class="dropdown-item" href="javascript:void(0);">Last Month</a>--}}
-                                            {{--                                                    <a class="dropdown-item" href="javascript:void(0);">Last Year</a>--}}
-                                            {{--                                                </div>--}}
-                                            {{--                                            </div>--}}
-                                        </div>
-
-                                        <div class="d-flex mt-5">
-                                            <a href="javascript:;" class="btn btn-primary mx-auto" role="button">وصول</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-lg-3 mb-4">
-                                <div class="card shadow h-100">
-                                    <div class="card-header flex-grow-0">
-                                        <div class="d-flex">
-                                            <div class="avatar flex-shrink-0 me-3">
-                                                <img src="../../assets/img/avatars/9.png" alt="User" class="rounded-circle">
-                                            </div>
-                                            <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-1">
-                                                <div class="me-2">
-                                                    <h5 class="mb-0 fw-bolder">أسامة هادي</h5>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <img class="img-fluid" src="../../assets/img/backgrounds/16.jpg" alt="Card image cap">
-                                    <div class="featured-date mt-n4 ms-4 bg-white rounded w-px-50 shadow text-center p-1">
-                                        <h5 class="mb-0 fw-bold py-2">تقنية</h5>
-                                    </div>
-                                    <div class="card-body">
-                                        <h5 class="text-truncate text-center fs-3 fw-bolder">هندسة مكيفات</h5>
-                                        <div class="d-flex align-items-center justify-content-between mt-3">
-                                            <div class="card-actions d-flex justify-content-around w-100 fs-4">
-                                                <a href="javascript:;" class="text-muted me-3"><i class="bx bx-star me-1 fs-4"></i> 236</a>
-                                                <a href="javascript:;" class="text-muted"><i class="bx bx-cart me-1 fs-4"></i> 12</a>
-                                            </div>
-                                            {{--                                            <div class="dropup d-none d-sm-block">--}}
-                                            {{--                                                <button class="btn p-0" type="button" id="sharedList" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">--}}
-                                            {{--                                                    <i class="bx bx-dots-vertical"></i>--}}
-                                            {{--                                                </button>--}}
-                                            {{--                                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="sharedList">--}}
-                                            {{--                                                    <a class="dropdown-item" href="javascript:void(0);">Last 28 Days</a>--}}
-                                            {{--                                                    <a class="dropdown-item" href="javascript:void(0);">Last Month</a>--}}
-                                            {{--                                                    <a class="dropdown-item" href="javascript:void(0);">Last Year</a>--}}
-                                            {{--                                                </div>--}}
-                                            {{--                                            </div>--}}
-                                        </div>
-
-                                        <div class="d-flex mt-5">
-                                            <a href="javascript:;" class="btn btn-primary mx-auto" role="button">وصول</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-lg-3 mb-4">
-                                <div class="card shadow h-100">
-                                    <div class="card-header flex-grow-0">
-                                        <div class="d-flex">
-                                            <div class="avatar flex-shrink-0 me-3">
-                                                <img src="../../assets/img/avatars/9.png" alt="User" class="rounded-circle">
-                                            </div>
-                                            <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-1">
-                                                <div class="me-2">
-                                                    <h5 class="mb-0 fw-bolder">أسامة هادي</h5>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <img class="img-fluid" src="../../assets/img/backgrounds/18.jpg" alt="Card image cap">
-                                    <div class="featured-date mt-n4 ms-4 bg-white rounded w-px-50 shadow text-center p-1">
-                                        <h5 class="mb-0 fw-bold py-2">تقنية</h5>
-                                    </div>
-                                    <div class="card-body">
-                                        <h5 class="text-truncate text-center fs-3 fw-bolder">هندسة مكيفات</h5>
-                                        <div class="d-flex align-items-center justify-content-between mt-3">
-                                            <div class="card-actions d-flex justify-content-around w-100 fs-4">
-                                                <a href="javascript:;" class="text-muted me-3"><i class="bx bx-star me-1 fs-4"></i> 236</a>
-                                                <a href="javascript:;" class="text-muted"><i class="bx bx-cart me-1 fs-4"></i> 12</a>
-                                            </div>
-                                            {{--                                            <div class="dropup d-none d-sm-block">--}}
-                                            {{--                                                <button class="btn p-0" type="button" id="sharedList" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">--}}
-                                            {{--                                                    <i class="bx bx-dots-vertical"></i>--}}
-                                            {{--                                                </button>--}}
-                                            {{--                                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="sharedList">--}}
-                                            {{--                                                    <a class="dropdown-item" href="javascript:void(0);">Last 28 Days</a>--}}
-                                            {{--                                                    <a class="dropdown-item" href="javascript:void(0);">Last Month</a>--}}
-                                            {{--                                                    <a class="dropdown-item" href="javascript:void(0);">Last Year</a>--}}
-                                            {{--                                                </div>--}}
-                                            {{--                                            </div>--}}
-                                        </div>
-
-                                        <div class="d-flex mt-5">
-                                            <a href="javascript:;" class="btn btn-primary mx-auto" role="button">وصول</a>
-                                        </div>
-                                    </div>
+                            <div class="tab-pane fade" id="navs-list" role="tabpanel">
+                                <div class="table-responsive text-nowrap">
+                                    <table class="table table-hover mb-5">
+                                        <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>أسم الخدمة</th>
+                                            <th>نوع الخدمة</th>
+                                            <th>موفر الخدمة</th>
+                                            <th>تاريخ التسجيل</th>
+                                            <th>الحالة</th>
+                                            <th>عمليات</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody class="table-border-bottom-0">
+                                        <tr>
+                                            <td>1</td>
+                                            <td> تصميم مواقع ويب </td>
+                                            <td><span class="badge bg-label-primary fs-6 me-1">برمجة</span></td>
+                                            <td>عبدالهادي ديان</td>
+                                            <td>2022-05-12</td>
+                                            <td><span class="badge bg-success fs-6 me-1">مفعل</span></td>
+                                            <td>
+                                                <button type="button" class="btn btn-label-danger">
+                                                    <span class="tf-icons bx bx-block"></span>&nbsp; ايقاف الخدمة
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>2</td>
+                                            <td> تصميم مواقع ويب </td>
+                                            <td><span class="badge bg-label-primary fs-6 me-1">برمجة</span></td>
+                                            <td>عبدالهادي ديان</td>
+                                            <td>2022-05-12</td>
+                                            <td><span class="badge bg-success fs-6 me-1">مفعل</span></td>
+                                            <td>
+                                                <button type="button" class="btn btn-label-danger">
+                                                    <span class="tf-icons bx bx-block"></span>&nbsp; ايقاف الخدمة
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>3</td>
+                                            <td> تصميم مواقع ويب </td>
+                                            <td><span class="badge bg-label-primary fs-6 me-1">برمجة</span></td>
+                                            <td>عبدالهادي ديان</td>
+                                            <td>2022-05-12</td>
+                                            <td><span class="badge bg-danger fs-6 me-1">متوقف</span></td>
+                                            <td>
+                                                <button type="button" class="btn btn-label-primary">
+                                                    <span class="tf-icons bx bx-check"></span>&nbsp; تفعيل الخدمة
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
                         </div>
@@ -528,4 +462,6 @@
 
 @section('scripts')
     <script src="../../assets/vendor/libs/bootstrap-select/bootstrap-select.js"></script>
+    <script src="../../assets/js/ui-popover.js"></script>
+    <script src="../../assets/vendor/libs/popper/popper.js"></script>
 @endsection

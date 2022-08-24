@@ -8,8 +8,8 @@
 @endsection
 
 @section('content')
-    <div class="container-fluid flex-grow-1 container-p-y px-0">
-        <div class="container-fluid flex-grow-1 container-p-y px-0">
+    <div class="container-fluid flex-grow-1 container-p-y py-0 px-0">
+        <div class="container-fluid flex-grow-1 container-p-y py-0 px-0">
             <section class="banner-area"
                      style="background-image: url({{ asset('img/back.png') }}); background-color: #8490ff">
                 <div class="container">
