@@ -45,7 +45,6 @@
                         </a>
                     </div>
                     <div class="row">
-
                         <div class="col-md-6 col-lg-3 mb-4">
                             <div class="card shadow h-100">
                                 <div class="card-header flex-grow-0">
@@ -63,16 +62,14 @@
                                 </div>
                                 <img class="img-fluid" src="../../assets/img/backgrounds/event.jpg" alt="Card image cap">
                                 <div class="featured-date mt-n4 ms-4 bg-white rounded w-px-50 shadow text-center">
-                                    <h5 class="mb-0 text-dark"><span class="badge bg-primary p-3 fw-bold border-light">برمجة</span></h5>
+                                    <h5 class="mb-0 text-dark"><span class="badge bg-label-primary pb-3 px-3 fs-6">برمجة</span></h5>
                                 </div>
                                 <div class="card-body">
                                     <h5 class="text-center fs-5 fw-bold mb-4">تصميم مواقع ويب</h5>
                                     <div class="d-flex align-items-center justify-content-center my-1 gap-2">
-                                        {{--                                            <span class="badge bg-label-success fs-5 me-1">مفعل</span>--}}
                                     </div>
                                     <div class="d-flex align-items-center justify-content-center">
-                                        {{--                                            <a href="javascript:;" class="btn btn-primary d-flex align-items-center me-3"><i class="bx bx-user-check me-1"></i>وصول</a>--}}
-                                        <button type="button" class="btn btn-label-primary fs-5 fw-bold px-3">
+                                        <button type="button" class="btn btn-primary fs-5 px-3">
                                             <span class="tf-icons bx bx-user-check"></span>&nbsp; وصول
                                         </button>
                                     </div>
@@ -91,7 +88,6 @@
                                 </div>
                             </div>
                         </div>
-
                         <div class="col-md-6 col-lg-3 mb-4">
                             <div class="card shadow h-100">
                                 <div class="card-header flex-grow-0">
@@ -109,16 +105,14 @@
                                 </div>
                                 <img class="img-fluid" src="../../assets/img/backgrounds/event.jpg" alt="Card image cap">
                                 <div class="featured-date mt-n4 ms-4 bg-white rounded w-px-50 shadow text-center">
-                                    <h5 class="mb-0 text-dark"><span class="badge bg-primary p-3 fw-bold border-light">برمجة</span></h5>
+                                    <h5 class="mb-0 text-dark"><span class="badge bg-label-primary pb-3 px-3 fs-6">برمجة</span></h5>
                                 </div>
                                 <div class="card-body">
                                     <h5 class="text-center fs-5 fw-bold mb-4">تصميم مواقع ويب</h5>
                                     <div class="d-flex align-items-center justify-content-center my-1 gap-2">
-                                        {{--                                            <span class="badge bg-label-success fs-5 me-1">مفعل</span>--}}
                                     </div>
                                     <div class="d-flex align-items-center justify-content-center">
-                                        {{--                                            <a href="javascript:;" class="btn btn-primary d-flex align-items-center me-3"><i class="bx bx-user-check me-1"></i>وصول</a>--}}
-                                        <button type="button" class="btn btn-label-primary fs-5 fw-bold px-3">
+                                        <button type="button" class="btn btn-primary fs-5 px-3">
                                             <span class="tf-icons bx bx-user-check"></span>&nbsp; وصول
                                         </button>
                                     </div>
@@ -137,7 +131,6 @@
                                 </div>
                             </div>
                         </div>
-
                         <div class="col-md-6 col-lg-3 mb-4">
                             <div class="card shadow h-100">
                                 <div class="card-header flex-grow-0">
@@ -155,16 +148,14 @@
                                 </div>
                                 <img class="img-fluid" src="../../assets/img/backgrounds/event.jpg" alt="Card image cap">
                                 <div class="featured-date mt-n4 ms-4 bg-white rounded w-px-50 shadow text-center">
-                                    <h5 class="mb-0 text-dark"><span class="badge bg-primary p-3 fw-bold border-light">برمجة</span></h5>
+                                    <h5 class="mb-0 text-dark"><span class="badge bg-label-primary pb-3 px-3 fs-6">برمجة</span></h5>
                                 </div>
                                 <div class="card-body">
                                     <h5 class="text-center fs-5 fw-bold mb-4">تصميم مواقع ويب</h5>
                                     <div class="d-flex align-items-center justify-content-center my-1 gap-2">
-                                        {{--                                            <span class="badge bg-label-success fs-5 me-1">مفعل</span>--}}
                                     </div>
                                     <div class="d-flex align-items-center justify-content-center">
-                                        {{--                                            <a href="javascript:;" class="btn btn-primary d-flex align-items-center me-3"><i class="bx bx-user-check me-1"></i>وصول</a>--}}
-                                        <button type="button" class="btn btn-label-primary fs-5 fw-bold px-3">
+                                        <button type="button" class="btn btn-primary fs-5 px-3">
                                             <span class="tf-icons bx bx-user-check"></span>&nbsp; وصول
                                         </button>
                                     </div>
@@ -183,7 +174,6 @@
                                 </div>
                             </div>
                         </div>
-
                         <div class="col-md-6 col-lg-3 mb-4">
                             <div class="card shadow h-100">
                                 <div class="card-header flex-grow-0">
@@ -201,16 +191,14 @@
                                 </div>
                                 <img class="img-fluid" src="../../assets/img/backgrounds/event.jpg" alt="Card image cap">
                                 <div class="featured-date mt-n4 ms-4 bg-white rounded w-px-50 shadow text-center">
-                                    <h5 class="mb-0 text-dark"><span class="badge bg-primary p-3 fw-bold border-light">برمجة</span></h5>
+                                    <h5 class="mb-0 text-dark"><span class="badge bg-label-primary pb-3 px-3 fs-6">برمجة</span></h5>
                                 </div>
                                 <div class="card-body">
                                     <h5 class="text-center fs-5 fw-bold mb-4">تصميم مواقع ويب</h5>
                                     <div class="d-flex align-items-center justify-content-center my-1 gap-2">
-                                        {{--                                            <span class="badge bg-label-success fs-5 me-1">مفعل</span>--}}
                                     </div>
                                     <div class="d-flex align-items-center justify-content-center">
-                                        {{--                                            <a href="javascript:;" class="btn btn-primary d-flex align-items-center me-3"><i class="bx bx-user-check me-1"></i>وصول</a>--}}
-                                        <button type="button" class="btn btn-label-primary fs-5 fw-bold px-3">
+                                        <button type="button" class="btn btn-primary fs-5 px-3">
                                             <span class="tf-icons bx bx-user-check"></span>&nbsp; وصول
                                         </button>
                                     </div>
@@ -229,7 +217,6 @@
                                 </div>
                             </div>
                         </div>
-
                         <div class="col-md-6 col-lg-3 mb-4">
                             <div class="card shadow h-100">
                                 <div class="card-header flex-grow-0">
@@ -247,16 +234,14 @@
                                 </div>
                                 <img class="img-fluid" src="../../assets/img/backgrounds/event.jpg" alt="Card image cap">
                                 <div class="featured-date mt-n4 ms-4 bg-white rounded w-px-50 shadow text-center">
-                                    <h5 class="mb-0 text-dark"><span class="badge bg-primary p-3 fw-bold border-light">برمجة</span></h5>
+                                    <h5 class="mb-0 text-dark"><span class="badge bg-label-primary pb-3 px-3 fs-6">برمجة</span></h5>
                                 </div>
                                 <div class="card-body">
                                     <h5 class="text-center fs-5 fw-bold mb-4">تصميم مواقع ويب</h5>
                                     <div class="d-flex align-items-center justify-content-center my-1 gap-2">
-                                        {{--                                            <span class="badge bg-label-success fs-5 me-1">مفعل</span>--}}
                                     </div>
                                     <div class="d-flex align-items-center justify-content-center">
-                                        {{--                                            <a href="javascript:;" class="btn btn-primary d-flex align-items-center me-3"><i class="bx bx-user-check me-1"></i>وصول</a>--}}
-                                        <button type="button" class="btn btn-label-primary fs-5 fw-bold px-3">
+                                        <button type="button" class="btn btn-primary fs-5 px-3">
                                             <span class="tf-icons bx bx-user-check"></span>&nbsp; وصول
                                         </button>
                                     </div>
@@ -275,7 +260,6 @@
                                 </div>
                             </div>
                         </div>
-
                         <div class="col-md-6 col-lg-3 mb-4">
                             <div class="card shadow h-100">
                                 <div class="card-header flex-grow-0">
@@ -293,16 +277,14 @@
                                 </div>
                                 <img class="img-fluid" src="../../assets/img/backgrounds/event.jpg" alt="Card image cap">
                                 <div class="featured-date mt-n4 ms-4 bg-white rounded w-px-50 shadow text-center">
-                                    <h5 class="mb-0 text-dark"><span class="badge bg-primary p-3 fw-bold border-light">برمجة</span></h5>
+                                    <h5 class="mb-0 text-dark"><span class="badge bg-label-primary pb-3 px-3 fs-6">برمجة</span></h5>
                                 </div>
                                 <div class="card-body">
                                     <h5 class="text-center fs-5 fw-bold mb-4">تصميم مواقع ويب</h5>
                                     <div class="d-flex align-items-center justify-content-center my-1 gap-2">
-                                        {{--                                            <span class="badge bg-label-success fs-5 me-1">مفعل</span>--}}
                                     </div>
                                     <div class="d-flex align-items-center justify-content-center">
-                                        {{--                                            <a href="javascript:;" class="btn btn-primary d-flex align-items-center me-3"><i class="bx bx-user-check me-1"></i>وصول</a>--}}
-                                        <button type="button" class="btn btn-label-primary fs-5 fw-bold px-3">
+                                        <button type="button" class="btn btn-primary fs-5 px-3">
                                             <span class="tf-icons bx bx-user-check"></span>&nbsp; وصول
                                         </button>
                                     </div>
@@ -321,7 +303,6 @@
                                 </div>
                             </div>
                         </div>
-
                         <div class="col-md-6 col-lg-3 mb-4">
                             <div class="card shadow h-100">
                                 <div class="card-header flex-grow-0">
@@ -339,16 +320,14 @@
                                 </div>
                                 <img class="img-fluid" src="../../assets/img/backgrounds/event.jpg" alt="Card image cap">
                                 <div class="featured-date mt-n4 ms-4 bg-white rounded w-px-50 shadow text-center">
-                                    <h5 class="mb-0 text-dark"><span class="badge bg-primary p-3 fw-bold border-light">برمجة</span></h5>
+                                    <h5 class="mb-0 text-dark"><span class="badge bg-label-primary pb-3 px-3 fs-6">برمجة</span></h5>
                                 </div>
                                 <div class="card-body">
                                     <h5 class="text-center fs-5 fw-bold mb-4">تصميم مواقع ويب</h5>
                                     <div class="d-flex align-items-center justify-content-center my-1 gap-2">
-                                        {{--                                            <span class="badge bg-label-success fs-5 me-1">مفعل</span>--}}
                                     </div>
                                     <div class="d-flex align-items-center justify-content-center">
-                                        {{--                                            <a href="javascript:;" class="btn btn-primary d-flex align-items-center me-3"><i class="bx bx-user-check me-1"></i>وصول</a>--}}
-                                        <button type="button" class="btn btn-label-primary fs-5 fw-bold px-3">
+                                        <button type="button" class="btn btn-primary fs-5 px-3">
                                             <span class="tf-icons bx bx-user-check"></span>&nbsp; وصول
                                         </button>
                                     </div>
@@ -367,7 +346,6 @@
                                 </div>
                             </div>
                         </div>
-
                         <div class="col-md-6 col-lg-3 mb-4">
                             <div class="card shadow h-100">
                                 <div class="card-header flex-grow-0">
@@ -385,16 +363,14 @@
                                 </div>
                                 <img class="img-fluid" src="../../assets/img/backgrounds/event.jpg" alt="Card image cap">
                                 <div class="featured-date mt-n4 ms-4 bg-white rounded w-px-50 shadow text-center">
-                                    <h5 class="mb-0 text-dark"><span class="badge bg-primary p-3 fw-bold border-light">برمجة</span></h5>
+                                    <h5 class="mb-0 text-dark"><span class="badge bg-label-primary pb-3 px-3 fs-6">برمجة</span></h5>
                                 </div>
                                 <div class="card-body">
                                     <h5 class="text-center fs-5 fw-bold mb-4">تصميم مواقع ويب</h5>
                                     <div class="d-flex align-items-center justify-content-center my-1 gap-2">
-                                        {{--                                            <span class="badge bg-label-success fs-5 me-1">مفعل</span>--}}
                                     </div>
                                     <div class="d-flex align-items-center justify-content-center">
-                                        {{--                                            <a href="javascript:;" class="btn btn-primary d-flex align-items-center me-3"><i class="bx bx-user-check me-1"></i>وصول</a>--}}
-                                        <button type="button" class="btn btn-label-primary fs-5 fw-bold px-3">
+                                        <button type="button" class="btn btn-primary fs-5 px-3">
                                             <span class="tf-icons bx bx-user-check"></span>&nbsp; وصول
                                         </button>
                                     </div>

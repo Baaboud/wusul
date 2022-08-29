@@ -62,7 +62,7 @@ Route::get('/services', function () {
 })->name('services');
 
 Route::get('/l/l', function () {
-    return view('admin.users');
+    return view('service.service_page');
 })->name('test');
 
 Route::group(['prefix' => 'user'], function () {
@@ -76,7 +76,7 @@ Route::group(['prefix' => 'user'], function () {
 });
 
 // start routes of user that provide service
-Route::group(['prefix' => 'serviceProvider', 
+Route::group(['prefix' => 'serviceProvider',
 'middleware' => ['checkType:serviceProvider','auth']
         ],
         function () {
