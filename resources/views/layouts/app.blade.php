@@ -71,6 +71,8 @@
     <!-- beautify ignore:end -->
 
     @yield('extra-style')
+    
+    <livewire:styles />
 
 </head>
 
@@ -593,6 +595,7 @@
 
 <!-- Vendors JS -->
 
+<livewire:scripts />
 
 <!-- Main JS -->
 <script src="{{ asset('assets/js/main.js') }}"></script>

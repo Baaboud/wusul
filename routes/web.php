@@ -80,7 +80,7 @@ Route::get('/l', function () {
 
 // start routes of user that provide service
 Route::group(['prefix' => 'serviceProvider', 
-'middleware' => 'checkType:serviceProvider'
+'middleware' => ['checkType:serviceProvider','auth']
         ],
         function () {
 

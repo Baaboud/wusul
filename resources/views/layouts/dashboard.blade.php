@@ -107,7 +107,7 @@
                 <!-- Misc -->
                 <li class="menu-header text-uppercase text-white fs-6"><span class="menu-header-text">أدارة العمليات</span></li>
                 <li class="menu-item">
-                    <a href="https://themeselection.com/support/" target="_blank" class="menu-link">
+                    <a href="{{route('admin.users')}}" target="_blank" class="menu-link">
                         <i class="menu-icon tf-icons bx bx-user"></i>
                         <div>المستخدمين</div>
                     </a>
@@ -576,7 +576,7 @@
             <!-- / Navbar -->
 
             <!-- Content wrapper -->
-            <div class="content-wrapper">
+            <div class="container-xxl flex-grow-1 container-p-y">
 
                 <!-- Content -->
                     @yield('content')

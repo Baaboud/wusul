@@ -1,13 +1,22 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\dmin\AdminController;
+use App\Http\Controllers\admin\adminController;
 use App\Http\Controllers\admin\ServiceCategory;
+use App\Http\Controllers\admin\UsersController;
 
 // admin
-    Route::group(['middleware' => 'checkType:admin'], function () {
+    Route::group(['middleware' => ['auth','checkType:admin']], function () {
 
-        Route::get('/', [AdminController::class, 'index'])->name('admin.home');
+        Route::get('/', [adminController::class, 'index'])->name('admin.home');
+
+        // users
+
+        Route::group(['prefix' => 'users'], function () {
+            Route::get('/', [UsersController::class, 'users'])->name('admin.users');
+
+        
+        });
 
                 //crud category of service
                 Route::group(['prefix' => 'category'], function () {
