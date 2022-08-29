@@ -31,14 +31,14 @@ class HomeController extends Controller
 
                     //  this rout for admin/
                     return redirect(RouteServiceProvider::ADMIN);
-        
+
                 }else if(Auth::user()->userServiceProvider()){
-        
-                    //  this rout for pharmacy/
+
+                    //  this rout for serviceProvider/
                     return redirect(RouteServiceProvider::USER_SERVICE_PROVIDER);
-        
+
                 }else{
-                
+
                     //  this rout for user
                     return redirect()->route('index');
 

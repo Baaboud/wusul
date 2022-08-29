@@ -4,12 +4,12 @@
     <link rel="stylesheet" href="../../assets/vendor/css/pages/page-help-center.css">
     <link rel="stylesheet" href="../../assets/vendor/libs/swiper/swiper.css">
     <link rel="stylesheet" href="../../assets/vendor/css/pages/ui-carousel.css">
-    <link rel="stylesheet" href="{{ asset('assets/css/slider.css') }}"
+    <link rel="stylesheet" href="{{ asset('assets/css/slider.css') }}">
 @endsection
 
 @section('content')
-    <div class="container-fluid flex-grow-1 container-p-y px-0">
-        <div class="container-fluid flex-grow-1 container-p-y px-0">
+    <div class="container-fluid flex-grow-1 pt-2 py-0 px-0">
+        <div class="container-fluid flex-grow-1 container-p-y py-0 px-0">
             <section class="banner-area"
                      style="background-image: url({{ asset('img/back.png') }}); background-color: #8490ff">
                 <div class="container">
@@ -21,7 +21,7 @@
                             <h2 class="text-white fs-3">
                                 منصة كل مواطن وزائر
                             </h2>
-                            <button type="button" class="mt-3 btn rounded-pill btn-primary fs-5">أكتشف المزيد</button>
+                            <button type="button" class="mt-3 btn btn-primary fs-5">أكتشف المزيد</button>
 
                         </div>
                         <div class="col-lg-6 col-md-6 banner-right d-flex align-self-end">
@@ -37,154 +37,390 @@
         <div class="container-xxl flex-grow-1 container-p-y">
             <div class="help-center-popular-articles py-5">
                 <div class="container-xl center position-relative">
-                    <h4 class="text-center mb-5">تصفح الخدمات المتوفرة</h4>
-                    <div id="drager" class="categories row slider">
-                        <div class="book col-lg-3 col-md-4 col-sm-6 mb-md-0 mb-4">
-                            <div class="card border shadow-none">
-                                <div class="card-body text-center">
-                                    <img class="mb-3" src="../../assets/img/icons/unicons/rocket.png"
-                                         height="60" alt="Help center articles">
-                                    <h5>التصميم</h5>
-                                    <p> يمكنك الحصول على تصاميم عالية الجودة واختيار المصمم المناسب لطلب
-                                        تصميمك </p>
-                                    <a class="btn btn-label-primary" href="pages-help-center-article.html">عرض
-                                        الخدمات</a>
+                    <div class="d-flex justify-content-between">
+                        <h4 class="col mb-5 fs-3">تصفح الخدمات المتوفرة</h4>
+                        <a href="#" class="fs-4">
+                            <span class="btn px-0 text-primary align-middle me-1 fs-5">تصفح المزيد</span>
+                            <i class="bx bx-right-arrow-circle scaleX-n1-rtl fs-5"></i>
+                        </a>
+                    </div>
+                    <div class="row">
+
+                        <div class="col-md-6 col-lg-3 mb-4">
+                            <div class="card shadow h-100">
+                                <div class="card-header flex-grow-0">
+                                    <div class="d-flex">
+                                        <div class="avatar flex-shrink-0 me-3">
+                                            <img src="http://127.0.0.1:8000/assets/img/avatars/1.png" alt="User" class="rounded-circle">
+                                        </div>
+                                        <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-1">
+                                            <div class="me-2">
+                                                <h5 class="mb-0">عبدالهادي ديان</h5>
+                                                <small class="text-muted">2019-08-02</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <img class="img-fluid" src="../../assets/img/backgrounds/event.jpg" alt="Card image cap">
+                                <div class="featured-date mt-n4 ms-4 bg-white rounded w-px-50 shadow text-center">
+                                    <h5 class="mb-0 text-dark"><span class="badge bg-primary p-3 fw-bold border-light">برمجة</span></h5>
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="text-center fs-5 fw-bold mb-4">تصميم مواقع ويب</h5>
+                                    <div class="d-flex align-items-center justify-content-center my-1 gap-2">
+                                        {{--                                            <span class="badge bg-label-success fs-5 me-1">مفعل</span>--}}
+                                    </div>
+                                    <div class="d-flex align-items-center justify-content-center">
+                                        {{--                                            <a href="javascript:;" class="btn btn-primary d-flex align-items-center me-3"><i class="bx bx-user-check me-1"></i>وصول</a>--}}
+                                        <button type="button" class="btn btn-label-primary fs-5 fw-bold px-3">
+                                            <span class="tf-icons bx bx-user-check"></span>&nbsp; وصول
+                                        </button>
+                                    </div>
+                                    <div class="mt-3 d-flex fs-6 align-items-center justify-content-around">
+                                        <a href="#" class="text-muted me-3" data-bs-toggle="tooltip" data-bs-offset="0,4"
+                                           data-bs-placement="bottom" data-bs-html="true" title=""
+                                           data-bs-original-title="اجمالي الطلبات">
+                                            <i class="bx bx-cart me-1 fs-4"></i> 236</a>
+                                        <a href="#" class="text-muted" data-bs-toggle="tooltip" data-bs-offset="0,4"
+                                           data-bs-placement="bottom" data-bs-html="true" title=""
+                                           data-bs-original-title="اجمالي التقييمات"><i class="bx bx-star me-1 fs-4"></i> 12</a>
+                                        <a href="#" class="text-muted" data-bs-toggle="tooltip" data-bs-offset="0,4"
+                                           data-bs-placement="bottom" data-bs-html="true" title=""
+                                           data-bs-original-title="وقت التسليم التقريبي"><i class="bx bx-time me-1 fs-4"></i> 12 يوم</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-3 col-md-4 col-sm-6 mb-md-0 mb-4">
-                            <div class="card border shadow-none">
-                                <div class="card-body text-center">
-                                    <img class="mb-3" src="../../assets/img/icons/unicons/cube-secondary.png" height="60" alt="Help center articles">
-                                    <h5>خدمات كهربائية</h5>
-                                    <p> يمكنك الوصول الى ابرع المهندسين في الكهربائيات للحصول على خدمات
-                                        متخصصة وعالية الجودة
-                                    </p>
-                                    <a class="btn btn-label-primary" href="pages-help-center-article.html">عرض
-                                        الخدمات</a>
+
+                        <div class="col-md-6 col-lg-3 mb-4">
+                            <div class="card shadow h-100">
+                                <div class="card-header flex-grow-0">
+                                    <div class="d-flex">
+                                        <div class="avatar flex-shrink-0 me-3">
+                                            <img src="http://127.0.0.1:8000/assets/img/avatars/1.png" alt="User" class="rounded-circle">
+                                        </div>
+                                        <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-1">
+                                            <div class="me-2">
+                                                <h5 class="mb-0">عبدالهادي ديان</h5>
+                                                <small class="text-muted">2019-08-02</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <img class="img-fluid" src="../../assets/img/backgrounds/event.jpg" alt="Card image cap">
+                                <div class="featured-date mt-n4 ms-4 bg-white rounded w-px-50 shadow text-center">
+                                    <h5 class="mb-0 text-dark"><span class="badge bg-primary p-3 fw-bold border-light">برمجة</span></h5>
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="text-center fs-5 fw-bold mb-4">تصميم مواقع ويب</h5>
+                                    <div class="d-flex align-items-center justify-content-center my-1 gap-2">
+                                        {{--                                            <span class="badge bg-label-success fs-5 me-1">مفعل</span>--}}
+                                    </div>
+                                    <div class="d-flex align-items-center justify-content-center">
+                                        {{--                                            <a href="javascript:;" class="btn btn-primary d-flex align-items-center me-3"><i class="bx bx-user-check me-1"></i>وصول</a>--}}
+                                        <button type="button" class="btn btn-label-primary fs-5 fw-bold px-3">
+                                            <span class="tf-icons bx bx-user-check"></span>&nbsp; وصول
+                                        </button>
+                                    </div>
+                                    <div class="mt-3 d-flex fs-6 align-items-center justify-content-around">
+                                        <a href="#" class="text-muted me-3" data-bs-toggle="tooltip" data-bs-offset="0,4"
+                                           data-bs-placement="bottom" data-bs-html="true" title=""
+                                           data-bs-original-title="اجمالي الطلبات">
+                                            <i class="bx bx-cart me-1 fs-4"></i> 236</a>
+                                        <a href="#" class="text-muted" data-bs-toggle="tooltip" data-bs-offset="0,4"
+                                           data-bs-placement="bottom" data-bs-html="true" title=""
+                                           data-bs-original-title="اجمالي التقييمات"><i class="bx bx-star me-1 fs-4"></i> 12</a>
+                                        <a href="#" class="text-muted" data-bs-toggle="tooltip" data-bs-offset="0,4"
+                                           data-bs-placement="bottom" data-bs-html="true" title=""
+                                           data-bs-original-title="وقت التسليم التقريبي"><i class="bx bx-time me-1 fs-4"></i> 12 يوم</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-3 col-md-4 col-sm-6 mb-md-0 mb-4">
-                            <div class="card border shadow-none">
-                                <div class="card-body text-center">
-                                    <img class="mb-3" src="../../assets/img/icons/unicons/desktop.png" height="60" alt="Help center articles">
-                                    <h5>الخدمات البرمجية</h5>
-                                    <p> يمكنك الحصول على خدمات برمجية احترافية من ابرع المبرمجين وبأفضل
-                                        الاسعار </p>
-                                    <a class="btn btn-label-primary" href="pages-help-center-article.html">عرض
-                                        الخدمات</a>
+
+                        <div class="col-md-6 col-lg-3 mb-4">
+                            <div class="card shadow h-100">
+                                <div class="card-header flex-grow-0">
+                                    <div class="d-flex">
+                                        <div class="avatar flex-shrink-0 me-3">
+                                            <img src="http://127.0.0.1:8000/assets/img/avatars/1.png" alt="User" class="rounded-circle">
+                                        </div>
+                                        <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-1">
+                                            <div class="me-2">
+                                                <h5 class="mb-0">عبدالهادي ديان</h5>
+                                                <small class="text-muted">2019-08-02</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <img class="img-fluid" src="../../assets/img/backgrounds/event.jpg" alt="Card image cap">
+                                <div class="featured-date mt-n4 ms-4 bg-white rounded w-px-50 shadow text-center">
+                                    <h5 class="mb-0 text-dark"><span class="badge bg-primary p-3 fw-bold border-light">برمجة</span></h5>
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="text-center fs-5 fw-bold mb-4">تصميم مواقع ويب</h5>
+                                    <div class="d-flex align-items-center justify-content-center my-1 gap-2">
+                                        {{--                                            <span class="badge bg-label-success fs-5 me-1">مفعل</span>--}}
+                                    </div>
+                                    <div class="d-flex align-items-center justify-content-center">
+                                        {{--                                            <a href="javascript:;" class="btn btn-primary d-flex align-items-center me-3"><i class="bx bx-user-check me-1"></i>وصول</a>--}}
+                                        <button type="button" class="btn btn-label-primary fs-5 fw-bold px-3">
+                                            <span class="tf-icons bx bx-user-check"></span>&nbsp; وصول
+                                        </button>
+                                    </div>
+                                    <div class="mt-3 d-flex fs-6 align-items-center justify-content-around">
+                                        <a href="#" class="text-muted me-3" data-bs-toggle="tooltip" data-bs-offset="0,4"
+                                           data-bs-placement="bottom" data-bs-html="true" title=""
+                                           data-bs-original-title="اجمالي الطلبات">
+                                            <i class="bx bx-cart me-1 fs-4"></i> 236</a>
+                                        <a href="#" class="text-muted" data-bs-toggle="tooltip" data-bs-offset="0,4"
+                                           data-bs-placement="bottom" data-bs-html="true" title=""
+                                           data-bs-original-title="اجمالي التقييمات"><i class="bx bx-star me-1 fs-4"></i> 12</a>
+                                        <a href="#" class="text-muted" data-bs-toggle="tooltip" data-bs-offset="0,4"
+                                           data-bs-placement="bottom" data-bs-html="true" title=""
+                                           data-bs-original-title="وقت التسليم التقريبي"><i class="bx bx-time me-1 fs-4"></i> 12 يوم</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-3 col-md-4 col-sm-6 mb-md-0 mb-4">
-                            <div class="card border shadow-none">
-                                <div class="card-body text-center">
-                                    <img class="mb-3" src="../../assets/img/icons/unicons/rocket.png"
-                                         height="60" alt="Help center articles">
-                                    <h5>التصميم</h5>
-                                    <p> يمكنك الحصول على تصاميم عالية الجودة واختيار المصمم المناسب لطلب
-                                        تصميمك </p>
-                                    <a class="btn btn-label-primary" href="pages-help-center-article.html">عرض
-                                        الخدمات</a>
+
+                        <div class="col-md-6 col-lg-3 mb-4">
+                            <div class="card shadow h-100">
+                                <div class="card-header flex-grow-0">
+                                    <div class="d-flex">
+                                        <div class="avatar flex-shrink-0 me-3">
+                                            <img src="http://127.0.0.1:8000/assets/img/avatars/1.png" alt="User" class="rounded-circle">
+                                        </div>
+                                        <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-1">
+                                            <div class="me-2">
+                                                <h5 class="mb-0">عبدالهادي ديان</h5>
+                                                <small class="text-muted">2019-08-02</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <img class="img-fluid" src="../../assets/img/backgrounds/event.jpg" alt="Card image cap">
+                                <div class="featured-date mt-n4 ms-4 bg-white rounded w-px-50 shadow text-center">
+                                    <h5 class="mb-0 text-dark"><span class="badge bg-primary p-3 fw-bold border-light">برمجة</span></h5>
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="text-center fs-5 fw-bold mb-4">تصميم مواقع ويب</h5>
+                                    <div class="d-flex align-items-center justify-content-center my-1 gap-2">
+                                        {{--                                            <span class="badge bg-label-success fs-5 me-1">مفعل</span>--}}
+                                    </div>
+                                    <div class="d-flex align-items-center justify-content-center">
+                                        {{--                                            <a href="javascript:;" class="btn btn-primary d-flex align-items-center me-3"><i class="bx bx-user-check me-1"></i>وصول</a>--}}
+                                        <button type="button" class="btn btn-label-primary fs-5 fw-bold px-3">
+                                            <span class="tf-icons bx bx-user-check"></span>&nbsp; وصول
+                                        </button>
+                                    </div>
+                                    <div class="mt-3 d-flex fs-6 align-items-center justify-content-around">
+                                        <a href="#" class="text-muted me-3" data-bs-toggle="tooltip" data-bs-offset="0,4"
+                                           data-bs-placement="bottom" data-bs-html="true" title=""
+                                           data-bs-original-title="اجمالي الطلبات">
+                                            <i class="bx bx-cart me-1 fs-4"></i> 236</a>
+                                        <a href="#" class="text-muted" data-bs-toggle="tooltip" data-bs-offset="0,4"
+                                           data-bs-placement="bottom" data-bs-html="true" title=""
+                                           data-bs-original-title="اجمالي التقييمات"><i class="bx bx-star me-1 fs-4"></i> 12</a>
+                                        <a href="#" class="text-muted" data-bs-toggle="tooltip" data-bs-offset="0,4"
+                                           data-bs-placement="bottom" data-bs-html="true" title=""
+                                           data-bs-original-title="وقت التسليم التقريبي"><i class="bx bx-time me-1 fs-4"></i> 12 يوم</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-3 col-md-4 col-sm-6 mb-md-0 mb-4">
-                            <div class="card border shadow-none">
-                                <div class="card-body text-center">
-                                    <img class="mb-3" src="../../assets/img/icons/unicons/cube-secondary.png" height="60" alt="Help center articles">
-                                    <h5>خدمات كهربائية</h5>
-                                    <p> يمكنك الوصول الى ابرع المهندسين في الكهربائيات للحصول على خدمات
-                                        متخصصة وعالية الجودة
-                                    </p>
-                                    <a class="btn btn-label-primary" href="pages-help-center-article.html">عرض
-                                        الخدمات</a>
+
+                        <div class="col-md-6 col-lg-3 mb-4">
+                            <div class="card shadow h-100">
+                                <div class="card-header flex-grow-0">
+                                    <div class="d-flex">
+                                        <div class="avatar flex-shrink-0 me-3">
+                                            <img src="http://127.0.0.1:8000/assets/img/avatars/1.png" alt="User" class="rounded-circle">
+                                        </div>
+                                        <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-1">
+                                            <div class="me-2">
+                                                <h5 class="mb-0">عبدالهادي ديان</h5>
+                                                <small class="text-muted">2019-08-02</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <img class="img-fluid" src="../../assets/img/backgrounds/event.jpg" alt="Card image cap">
+                                <div class="featured-date mt-n4 ms-4 bg-white rounded w-px-50 shadow text-center">
+                                    <h5 class="mb-0 text-dark"><span class="badge bg-primary p-3 fw-bold border-light">برمجة</span></h5>
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="text-center fs-5 fw-bold mb-4">تصميم مواقع ويب</h5>
+                                    <div class="d-flex align-items-center justify-content-center my-1 gap-2">
+                                        {{--                                            <span class="badge bg-label-success fs-5 me-1">مفعل</span>--}}
+                                    </div>
+                                    <div class="d-flex align-items-center justify-content-center">
+                                        {{--                                            <a href="javascript:;" class="btn btn-primary d-flex align-items-center me-3"><i class="bx bx-user-check me-1"></i>وصول</a>--}}
+                                        <button type="button" class="btn btn-label-primary fs-5 fw-bold px-3">
+                                            <span class="tf-icons bx bx-user-check"></span>&nbsp; وصول
+                                        </button>
+                                    </div>
+                                    <div class="mt-3 d-flex fs-6 align-items-center justify-content-around">
+                                        <a href="#" class="text-muted me-3" data-bs-toggle="tooltip" data-bs-offset="0,4"
+                                           data-bs-placement="bottom" data-bs-html="true" title=""
+                                           data-bs-original-title="اجمالي الطلبات">
+                                            <i class="bx bx-cart me-1 fs-4"></i> 236</a>
+                                        <a href="#" class="text-muted" data-bs-toggle="tooltip" data-bs-offset="0,4"
+                                           data-bs-placement="bottom" data-bs-html="true" title=""
+                                           data-bs-original-title="اجمالي التقييمات"><i class="bx bx-star me-1 fs-4"></i> 12</a>
+                                        <a href="#" class="text-muted" data-bs-toggle="tooltip" data-bs-offset="0,4"
+                                           data-bs-placement="bottom" data-bs-html="true" title=""
+                                           data-bs-original-title="وقت التسليم التقريبي"><i class="bx bx-time me-1 fs-4"></i> 12 يوم</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-3 col-md-4 col-sm-6 mb-md-0 mb-4">
-                            <div class="card border shadow-none">
-                                <div class="card-body text-center">
-                                    <img class="mb-3" src="../../assets/img/icons/unicons/desktop.png" height="60" alt="Help center articles">
-                                    <h5>الخدمات البرمجية</h5>
-                                    <p> يمكنك الحصول على خدمات برمجية احترافية من ابرع المبرمجين وبأفضل
-                                        الاسعار </p>
-                                    <a class="btn btn-label-primary" href="pages-help-center-article.html">عرض
-                                        الخدمات</a>
+
+                        <div class="col-md-6 col-lg-3 mb-4">
+                            <div class="card shadow h-100">
+                                <div class="card-header flex-grow-0">
+                                    <div class="d-flex">
+                                        <div class="avatar flex-shrink-0 me-3">
+                                            <img src="http://127.0.0.1:8000/assets/img/avatars/1.png" alt="User" class="rounded-circle">
+                                        </div>
+                                        <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-1">
+                                            <div class="me-2">
+                                                <h5 class="mb-0">عبدالهادي ديان</h5>
+                                                <small class="text-muted">2019-08-02</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <img class="img-fluid" src="../../assets/img/backgrounds/event.jpg" alt="Card image cap">
+                                <div class="featured-date mt-n4 ms-4 bg-white rounded w-px-50 shadow text-center">
+                                    <h5 class="mb-0 text-dark"><span class="badge bg-primary p-3 fw-bold border-light">برمجة</span></h5>
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="text-center fs-5 fw-bold mb-4">تصميم مواقع ويب</h5>
+                                    <div class="d-flex align-items-center justify-content-center my-1 gap-2">
+                                        {{--                                            <span class="badge bg-label-success fs-5 me-1">مفعل</span>--}}
+                                    </div>
+                                    <div class="d-flex align-items-center justify-content-center">
+                                        {{--                                            <a href="javascript:;" class="btn btn-primary d-flex align-items-center me-3"><i class="bx bx-user-check me-1"></i>وصول</a>--}}
+                                        <button type="button" class="btn btn-label-primary fs-5 fw-bold px-3">
+                                            <span class="tf-icons bx bx-user-check"></span>&nbsp; وصول
+                                        </button>
+                                    </div>
+                                    <div class="mt-3 d-flex fs-6 align-items-center justify-content-around">
+                                        <a href="#" class="text-muted me-3" data-bs-toggle="tooltip" data-bs-offset="0,4"
+                                           data-bs-placement="bottom" data-bs-html="true" title=""
+                                           data-bs-original-title="اجمالي الطلبات">
+                                            <i class="bx bx-cart me-1 fs-4"></i> 236</a>
+                                        <a href="#" class="text-muted" data-bs-toggle="tooltip" data-bs-offset="0,4"
+                                           data-bs-placement="bottom" data-bs-html="true" title=""
+                                           data-bs-original-title="اجمالي التقييمات"><i class="bx bx-star me-1 fs-4"></i> 12</a>
+                                        <a href="#" class="text-muted" data-bs-toggle="tooltip" data-bs-offset="0,4"
+                                           data-bs-placement="bottom" data-bs-html="true" title=""
+                                           data-bs-original-title="وقت التسليم التقريبي"><i class="bx bx-time me-1 fs-4"></i> 12 يوم</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 col-lg-3 mb-4">
+                            <div class="card shadow h-100">
+                                <div class="card-header flex-grow-0">
+                                    <div class="d-flex">
+                                        <div class="avatar flex-shrink-0 me-3">
+                                            <img src="http://127.0.0.1:8000/assets/img/avatars/1.png" alt="User" class="rounded-circle">
+                                        </div>
+                                        <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-1">
+                                            <div class="me-2">
+                                                <h5 class="mb-0">عبدالهادي ديان</h5>
+                                                <small class="text-muted">2019-08-02</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <img class="img-fluid" src="../../assets/img/backgrounds/event.jpg" alt="Card image cap">
+                                <div class="featured-date mt-n4 ms-4 bg-white rounded w-px-50 shadow text-center">
+                                    <h5 class="mb-0 text-dark"><span class="badge bg-primary p-3 fw-bold border-light">برمجة</span></h5>
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="text-center fs-5 fw-bold mb-4">تصميم مواقع ويب</h5>
+                                    <div class="d-flex align-items-center justify-content-center my-1 gap-2">
+                                        {{--                                            <span class="badge bg-label-success fs-5 me-1">مفعل</span>--}}
+                                    </div>
+                                    <div class="d-flex align-items-center justify-content-center">
+                                        {{--                                            <a href="javascript:;" class="btn btn-primary d-flex align-items-center me-3"><i class="bx bx-user-check me-1"></i>وصول</a>--}}
+                                        <button type="button" class="btn btn-label-primary fs-5 fw-bold px-3">
+                                            <span class="tf-icons bx bx-user-check"></span>&nbsp; وصول
+                                        </button>
+                                    </div>
+                                    <div class="mt-3 d-flex fs-6 align-items-center justify-content-around">
+                                        <a href="#" class="text-muted me-3" data-bs-toggle="tooltip" data-bs-offset="0,4"
+                                           data-bs-placement="bottom" data-bs-html="true" title=""
+                                           data-bs-original-title="اجمالي الطلبات">
+                                            <i class="bx bx-cart me-1 fs-4"></i> 236</a>
+                                        <a href="#" class="text-muted" data-bs-toggle="tooltip" data-bs-offset="0,4"
+                                           data-bs-placement="bottom" data-bs-html="true" title=""
+                                           data-bs-original-title="اجمالي التقييمات"><i class="bx bx-star me-1 fs-4"></i> 12</a>
+                                        <a href="#" class="text-muted" data-bs-toggle="tooltip" data-bs-offset="0,4"
+                                           data-bs-placement="bottom" data-bs-html="true" title=""
+                                           data-bs-original-title="وقت التسليم التقريبي"><i class="bx bx-time me-1 fs-4"></i> 12 يوم</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 col-lg-3 mb-4">
+                            <div class="card shadow h-100">
+                                <div class="card-header flex-grow-0">
+                                    <div class="d-flex">
+                                        <div class="avatar flex-shrink-0 me-3">
+                                            <img src="http://127.0.0.1:8000/assets/img/avatars/1.png" alt="User" class="rounded-circle">
+                                        </div>
+                                        <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-1">
+                                            <div class="me-2">
+                                                <h5 class="mb-0">عبدالهادي ديان</h5>
+                                                <small class="text-muted">2019-08-02</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <img class="img-fluid" src="../../assets/img/backgrounds/event.jpg" alt="Card image cap">
+                                <div class="featured-date mt-n4 ms-4 bg-white rounded w-px-50 shadow text-center">
+                                    <h5 class="mb-0 text-dark"><span class="badge bg-primary p-3 fw-bold border-light">برمجة</span></h5>
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="text-center fs-5 fw-bold mb-4">تصميم مواقع ويب</h5>
+                                    <div class="d-flex align-items-center justify-content-center my-1 gap-2">
+                                        {{--                                            <span class="badge bg-label-success fs-5 me-1">مفعل</span>--}}
+                                    </div>
+                                    <div class="d-flex align-items-center justify-content-center">
+                                        {{--                                            <a href="javascript:;" class="btn btn-primary d-flex align-items-center me-3"><i class="bx bx-user-check me-1"></i>وصول</a>--}}
+                                        <button type="button" class="btn btn-label-primary fs-5 fw-bold px-3">
+                                            <span class="tf-icons bx bx-user-check"></span>&nbsp; وصول
+                                        </button>
+                                    </div>
+                                    <div class="mt-3 d-flex fs-6 align-items-center justify-content-around">
+                                        <a href="#" class="text-muted me-3" data-bs-toggle="tooltip" data-bs-offset="0,4"
+                                           data-bs-placement="bottom" data-bs-html="true" title=""
+                                           data-bs-original-title="اجمالي الطلبات">
+                                            <i class="bx bx-cart me-1 fs-4"></i> 236</a>
+                                        <a href="#" class="text-muted" data-bs-toggle="tooltip" data-bs-offset="0,4"
+                                           data-bs-placement="bottom" data-bs-html="true" title=""
+                                           data-bs-original-title="اجمالي التقييمات"><i class="bx bx-star me-1 fs-4"></i> 12</a>
+                                        <a href="#" class="text-muted" data-bs-toggle="tooltip" data-bs-offset="0,4"
+                                           data-bs-placement="bottom" data-bs-html="true" title=""
+                                           data-bs-original-title="وقت التسليم التقريبي"><i class="bx bx-time me-1 fs-4"></i> 12 يوم</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <i class="fa fa-arrow-right slideRight" id="right"></i>
-                    <i class="fa fa-arrow-left slideLeft" id="left"></i>
                 </div>
             </div>
-            <!-- general services -->
-{{--            <div class="help-center-popular-articles py-5">--}}
-{{--                <div class="container-xl">--}}
-{{--                    <h4 class="text-center mt-2 mb-4">الخدمات العامة</h4>--}}
-{{--                    <div class="row">--}}
-{{--                        <div class="col-lg-10 mx-auto">--}}
-{{--                            <div class="row mb-3">--}}
-{{--                                <div class="col-md-4 mb-md-0 mb-4">--}}
-{{--                                    <div class="card border shadow-none">--}}
-{{--                                        <div class="card-body text-center">--}}
-{{--                                            <img class="mb-3" src="../../assets/img/icons/unicons/rocket.png"--}}
-{{--                                                 height="60" alt="Help center articles">--}}
-{{--                                            <h5>التصميم</h5>--}}
-{{--                                            <p> يمكنك الحصول على تصاميم عالية الجودة واختيار المصمم المناسب لطلب--}}
-{{--                                                تصميمك </p>--}}
-{{--                                            <a class="btn btn-label-primary" href="pages-help-center-article.html">عرض--}}
-{{--                                                الخدمات</a>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-
-{{--                                <div class="col-md-4 mb-md-0 mb-4">--}}
-{{--                                    <div class="card border shadow-none">--}}
-{{--                                        <div class="card-body text-center">--}}
-{{--                                            <img class="mb-3"--}}
-{{--                                                 src="../../assets/img/icons/unicons/cube-secondary.png" height="60"--}}
-{{--                                                 alt="Help center articles">--}}
-{{--                                            <h5>خدمات كهربائية</h5>--}}
-{{--                                            <p> يمكنك الوصول الى ابرع المهندسين في الكهربائيات للحصول على خدمات--}}
-{{--                                                متخصصة وعالية الجودة--}}
-{{--                                            </p>--}}
-{{--                                            <a class="btn btn-label-primary" href="pages-help-center-article.html">عرض--}}
-{{--                                                الخدمات</a>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-
-{{--                                <div class="col-md-4">--}}
-{{--                                    <div class="card border shadow-none">--}}
-{{--                                        <div class="card-body text-center">--}}
-{{--                                            <img class="mb-3" src="../../assets/img/icons/unicons/desktop.png"--}}
-{{--                                                 height="60" alt="Help center articles">--}}
-{{--                                            <h5>الخدمات البرمجية</h5>--}}
-{{--                                            <p> يمكنك الحصول على خدمات برمجية احترافية من ابرع المبرمجين وبأفضل--}}
-{{--                                                الاسعار </p>--}}
-{{--                                            <a class="btn btn-label-primary" href="pages-help-center-article.html">عرض--}}
-{{--                                                الخدمات</a>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                        <div class="row d-flex justify-content-center align-items-center">--}}
-{{--                            <a href="#" class="btn btn-outline-primary py-2 w-auto px-5 rounded fs-5">الاطلاع--}}
-{{--                                اكثر <i class="fa fa-arrow-left" aria-hidden="true"></i></a>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-            <!-- /general services -->
 
             <!-- Keep Learning -->
             <div class="help-center-keep-learning py-5">
                 <div class="container-xl">
-                    <h4 class="text-center mb-5">كيفية استخدام المنصة</h4>
+                    <h4 class="text-center fs-3 mb-5">كيفية استخدام المنصة</h4>
                     <div class="row">
                         <div class="col-lg-10 mx-auto">
                             <div class="row">
@@ -232,7 +468,7 @@
                 <div class="container-xl">
                     <div class="row justify-content-center py-5 my-3">
                         <div class="col-md-8 col-lg-6 text-center">
-                            <h4>هل تحتاج المساعدة</h4>
+                            <h4 class="fs-3 mb-5">هل تحتاج المساعدة</h4>
                             <p class="mb-4"> يمكنك التواصل معنا للاستفسارات وحل الصعوبات التي تواجهكم في منصتنا
                                 <br> وسيتم الرد في اسرع وقت
                             </p>
