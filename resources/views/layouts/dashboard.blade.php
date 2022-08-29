@@ -20,6 +20,8 @@
     <!-- Favicon -->
     <link rel="shortcut icon" href="{{ asset('assets/img/logo.png') }}" type="image/x-icon">
 
+    <link rel="stylesheet" href="{{ asset('assets/css/font.css') }}">
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com/">
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
@@ -89,15 +91,11 @@
                     <img src="http://127.0.0.1:8000/img/logo.png" class="w-px-40 h-auto p-1" alt="" srcset="">
                     <span class="ms-1 fs-4 fw-bold text-white">وصول</span>
                 </a>
-
-{{--                <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto">--}}
-{{--                    <i class="bx bx-chevron-left bx-sm align-middle"></i>--}}
-{{--                </a>--}}
             </div>
 
             <div class="menu-inner-shadow"></div>
 
-            <ul class="menu-inner py-1 mt-4">
+            <ul class="menu-inner py-1 mt-4 mb-3">
                 <!-- Dashboards -->
                 <li class="menu-item active">
                     <a href="javascript:void(0);" class="menu-link">
@@ -121,7 +119,6 @@
                         <div>الخدمات</div>
                     </a>
                 </li>
-
 
                 <li class="menu-header text-uppercase text-white fs-6"><span class="menu-header-text">أدارة العمليات</span></li>
                 <li class="menu-item">
@@ -160,10 +157,41 @@
                         <div>أدارة المدن</div>
                     </a>
                 </li>
+
+                <!-- Service Provider -->
+                <li class="menu-header text-uppercase text-white fs-6"><span class="menu-header-text text-danger">مزود الخدمة</span></li>
+                <!-- Orders -->
+                <li class="menu-header text-uppercase text-white fs-6"><span class="menu-header-text">أدارة العمليات</span></li>
+                <li class="menu-item {{Request::url() === route('category.store') ? 'active' : ''}}">
+                    <a href="https://themeselection.com/demo/sneat-bootstrap-html-admin-template/documentation/"
+                       target="_blank" class="menu-link">
+                        <i class="menu-icon tf-icons bx bx-grid-alt"></i>
+                        <div>الطلبات</div>
+                    </a>
+                </li>
+                <li class="menu-item {{Request::url() === route('test') ? 'active' : ''}}">
+                    <a href="https://themeselection.com/support/" target="_blank" class="menu-link">
+                        <i class="menu-icon tf-icons bx bx-user"></i>
+                        <div>الخدمات</div>
+                    </a>
+                </li>
+                <!-- Money -->
+                <li class="menu-header text-uppercase text-white fs-6"><span class="menu-header-text">أدارة العمليات</span></li>
+                <li class="menu-item">
+                    <a href="https://themeselection.com/demo/sneat-bootstrap-html-admin-template/documentation/"
+                       target="_blank" class="menu-link">
+                        <i class="menu-icon tf-icons bx bx-money"></i>
+                        <div>المحفظة</div>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="https://themeselection.com/demo/sneat-bootstrap-html-admin-template/documentation/"
+                       target="_blank" class="menu-link">
+                        <i class="menu-icon tf-icons bx bxs-report"></i>
+                        <div>البلاغات</div>
+                    </a>
+                </li>
             </ul>
-
-
-
         </aside>
         <!-- / Aside -->
 
@@ -176,32 +204,6 @@
                         <i class="bx bx-menu bx-sm"></i>
                     </a>
                 </div>
-
-                <!-- Logo -->
-                <div class="navbar-nav align-items-center text-nowrap">
-                    <a href="{{ route('index') }}">
-{{--                        <span class="ms-1 fs-4 fw-bold text-dark">وصول</span>--}}
-                        <img src="{{ asset('img/logo.png') }}" class="w-px-40 h-auto p-1" alt="" srcset="">
-                    </a>
-                </div>
-                <!-- /Logo -->
-
-                <ul class="navbar-nav d-sm-flex d-none flex-row align-items-center ms-5 fs-5 gap-3 fw-bold">
-
-                    <li class="nav-item me-2 me-xl-0">
-                        <a href="{{ route('home') }}" class="nav-link primary">الخدمات</a>
-                    </li>
-
-                    <li class="nav-item me-2 me-xl-0">
-                        <a href="#" class="nav-link text-nowrap">من نحن</a>
-                    </li>
-
-                    <li class="nav-item me-2 me-xl-0">
-                        <a href="#" class="nav-link">التواصل</a>
-                    </li>
-
-
-                </ul>
 
                 <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
                     <ul class="navbar-nav flex-row align-items-center ms-auto">

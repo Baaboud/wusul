@@ -4,8 +4,14 @@
 
     <div class="card">
         <div class="card-body">
-            <h4 class="mb-5 text-center">انشاء حساب جديد</h4>
-            <p class="mb-4">قم بادخال بياناتك الشخصية لأنشاء حساب</p>
+
+            <div class="app-brand justify-content-center mb-5">
+                <a href="{{ route('index') }}" class="app-brand-link gap-2">
+                    <img src="{{ asset('img/logo.png') }}" class="w-px-30" alt="">
+                    <span class="app-brand-text demo text-body fw-bolder">منصة وصول</span>
+                </a>
+            </div>
+            <h4 class="mb-3 text-center">انشاء حساب جديد</h4>
 
             <form id="formAuthentication" class="mb-3 fv-plugins-bootstrap5 fv-plugins-framework" method="POST"
                   action="{{ route('register') }}" novalidate="novalidate">

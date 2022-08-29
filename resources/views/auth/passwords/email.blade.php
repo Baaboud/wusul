@@ -3,12 +3,18 @@
 @section('content')
 
     <div class="card">
-        @if (session('status'))
-            <div class="alert alert-success" role="alert">
-                {{ session('status') }}
-            </div>
-        @endif
         <div class="card-body">
+            <div class="app-brand justify-content-center mb-5">
+                <a href="{{ route('index') }}" class="app-brand-link gap-2">
+                    <img src="{{ asset('img/logo.png') }}" class="w-px-30" alt="">
+                    <span class="app-brand-text demo text-body fw-bolder">منصة وصول</span>
+                </a>
+            </div>
+            @if (session('status'))
+                <div class="alert alert-success" role="alert">
+                    {{ session('status') }}
+                </div>
+            @endif
             <h4 class="mb-5 text-center">هل نسيت كلمة المرور؟ 🔒</h4>
             <p class="mb-4">قم بادخال بريدك الالكتروني وسوف نقوم بأرسال التعليمات لأعادة ضبط كلمة المرور الخاصة بك</p>
             <form id="formAuthentication" class="mb-3 fv-plugins-bootstrap5 fv-plugins-framework"

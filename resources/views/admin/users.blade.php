@@ -10,6 +10,8 @@
             border: #eee 1px solid !important;
         }
     </style>
+    <link rel="stylesheet" href="../../assets/vendor/libs/animate-css/animate.css" />
+    <link rel="stylesheet" href="../../assets/vendor/libs/sweetalert2/sweetalert2.css" />
 @endsection
 
 @section('content')
@@ -95,9 +97,11 @@
                                             <td>2022-05-12</td>
                                             <td><span class="badge bg-success fs-6 me-1">مفعل</span></td>
                                             <td>
-                                                <button type="button" class="btn btn-label-danger">
-                                                    <span class="tf-icons bx bx-block"></span>&nbsp; ايقاف الحساب
-                                                </button>
+                                                <form method="get" action="{{ route('index') }}">
+                                                    <button type="button" class="btn btn-label-danger confirm">
+                                                        <span class="tf-icons bx bx-block"></span>&nbsp; ايقاف
+                                                    </button>
+                                                </form>
                                             </td>
                                         </tr>
                                         <tr>
@@ -108,9 +112,11 @@
                                             <td>2022-05-12</td>
                                             <td><span class="badge bg-warning fs-6 me-1">في انتظار تاكيد البريد</span></td>
                                             <td>
-                                                <button type="button" class="btn btn-label-danger">
-                                                    <span class="tf-icons bx bx-block"></span>&nbsp; ايقاف الحساب
-                                                </button>
+                                                <form method="get" action="{{ route('index') }}">
+                                                    <button type="button" class="btn btn-label-danger confirm">
+                                                        <span class="tf-icons bx bx-block"></span>&nbsp; ايقاف
+                                                    </button>
+                                                </form>
                                             </td>
                                         </tr>
                                         <tr>
@@ -121,9 +127,11 @@
                                             <td>2022-05-12</td>
                                             <td><span class="badge bg-danger fs-6 me-1">متوقف</span></td>
                                             <td>
-                                                <button type="button" class="btn btn-label-primary">
-                                                    <span class="tf-icons bx bx-check"></span>&nbsp; تفعيل الحساب
-                                                </button>
+                                                <form method="get" action="{{ route('index') }}">
+                                                    <button type="button" class="btn btn-label-primary confirm">
+                                                        <span class="tf-icons bx bx-check"></span>&nbsp; تفعيل
+                                                    </button>
+                                                </form>
                                             </td>
                                         </tr>
                                         </tbody>
@@ -146,117 +154,24 @@
                                                     <span class="badge bg-label-primary fs-6 me-1">مدير</span>
                                                     <span class="badge bg-success fs-6 me-1">مفعل</span>
                                                 </div>
-                                                <div class="d-flex align-items-center justify-content-center my-3 gap-2">
-                                                    <span class="badge bg-label-primary fs-6 me-1"><i class="bx bx-envelope"></i></span>
+                                                <div class="d-flex align-items-center m-3 gap-2">
+                                                    <span class="badge bg-label-secondary fs-6 me-1"><i class="bx bx-envelope"></i></span>
                                                     <span>Osama.dev@gmail.cm</span>
                                                 </div>
 
-                                                <div class="d-flex align-items-center justify-content-center my-3 gap-2">
+                                                <div class="d-flex align-items-center m-3 gap-2">
                                                     <span class="badge bg-label-secondary fs-6 me-1"><i class="bx bx-time"></i></span>
                                                     <span class="text-dark">2018-04-23</span>
                                                 </div>
 
                                                 <div class="d-flex align-items-center justify-content-center">
                                                     <a href="javascript:;" class="btn btn-primary d-flex align-items-center me-3"><i class="bx bx-user-check me-1"></i>وصول</a>
-                                                    <button type="button" class="btn btn-label-danger">
-                                                        <span class="tf-icons bx bx-block"></span>&nbsp; ايقاف الحساب
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-3 col-lg-4 col-md-6">
-                                        <div class="card">
-                                            <div class="card-body text-center shadow-sm">
-                                                <div class="mx-auto mb-3">
-                                                    <img src="../../assets/img/avatars/3.png" alt="Avatar Image" class="rounded-circle w-px-100">
-                                                </div>
 
-                                                <h5 class="mb-1 card-title">أسامة هادي</h5>
-
-                                                <div class="d-flex align-items-center justify-content-center my-3 gap-2">
-                                                    <span class="badge bg-label-primary fs-6 me-1">مدير</span>
-                                                    <span class="badge bg-success fs-6 me-1">مفعل</span>
-                                                </div>
-                                                <div class="d-flex align-items-center justify-content-center my-3 gap-2">
-                                                    <span class="badge bg-label-primary fs-6 me-1"><i class="bx bx-envelope"></i></span>
-                                                    <span>Osama.dev@gmail.cm</span>
-                                                </div>
-
-                                                <div class="d-flex align-items-center justify-content-center my-3 gap-2">
-                                                    <span class="badge bg-label-secondary fs-6 me-1"><i class="bx bx-time"></i></span>
-                                                    <span class="text-dark">2018-04-23</span>
-                                                </div>
-
-                                                <div class="d-flex align-items-center justify-content-center">
-                                                    <a href="javascript:;" class="btn btn-primary d-flex align-items-center me-3"><i class="bx bx-user-check me-1"></i>وصول</a>
-                                                    <button type="button" class="btn btn-label-danger">
-                                                        <span class="tf-icons bx bx-block"></span>&nbsp; ايقاف الحساب
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-3 col-lg-4 col-md-6">
-                                        <div class="card">
-                                            <div class="card-body text-center shadow-sm">
-                                                <div class="mx-auto mb-3">
-                                                    <img src="../../assets/img/avatars/3.png" alt="Avatar Image" class="rounded-circle w-px-100">
-                                                </div>
-
-                                                <h5 class="mb-1 card-title">أسامة هادي</h5>
-
-                                                <div class="d-flex align-items-center justify-content-center my-3 gap-2">
-                                                    <span class="badge bg-label-primary fs-6 me-1">مدير</span>
-                                                    <span class="badge bg-success fs-6 me-1">مفعل</span>
-                                                </div>
-                                                <div class="d-flex align-items-center justify-content-center my-3 gap-2">
-                                                    <span class="badge bg-label-primary fs-6 me-1"><i class="bx bx-envelope"></i></span>
-                                                    <span>Osama.dev@gmail.cm</span>
-                                                </div>
-
-                                                <div class="d-flex align-items-center justify-content-center my-3 gap-2">
-                                                    <span class="badge bg-label-secondary fs-6 me-1"><i class="bx bx-time"></i></span>
-                                                    <span class="text-dark">2018-04-23</span>
-                                                </div>
-
-                                                <div class="d-flex align-items-center justify-content-center">
-                                                    <a href="javascript:;" class="btn btn-primary d-flex align-items-center me-3"><i class="bx bx-user-check me-1"></i>وصول</a>
-                                                    <button type="button" class="btn btn-label-danger">
-                                                        <span class="tf-icons bx bx-block"></span>&nbsp; ايقاف الحساب
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-3 col-lg-4 col-md-6">
-                                        <div class="card">
-                                            <div class="card-body text-center shadow-sm">
-                                                <div class="mx-auto mb-3">
-                                                    <img src="../../assets/img/avatars/3.png" alt="Avatar Image" class="rounded-circle w-px-100">
-                                                </div>
-
-                                                <h5 class="mb-1 card-title">أسامة هادي</h5>
-
-                                                <div class="d-flex align-items-center justify-content-center my-3 gap-2">
-                                                    <span class="badge bg-label-primary fs-6 me-1">مدير</span>
-                                                    <span class="badge bg-success fs-6 me-1">مفعل</span>
-                                                </div>
-                                                <div class="d-flex align-items-center justify-content-center my-3 gap-2">
-                                                    <span class="badge bg-label-primary fs-6 me-1"><i class="bx bx-envelope"></i></span>
-                                                    <span>Osama.dev@gmail.cm</span>
-                                                </div>
-
-                                                <div class="d-flex align-items-center justify-content-center my-3 gap-2">
-                                                    <span class="badge bg-label-secondary fs-6 me-1"><i class="bx bx-time"></i></span>
-                                                    <span class="text-dark">2018-04-23</span>
-                                                </div>
-
-                                                <div class="d-flex align-items-center justify-content-center">
-                                                    <a href="javascript:;" class="btn btn-primary d-flex align-items-center me-3"><i class="bx bx-user-check me-1"></i>وصول</a>
-                                                    <button type="button" class="btn btn-label-danger">
-                                                        <span class="tf-icons bx bx-block"></span>&nbsp; ايقاف الحساب
-                                                    </button>
+                                                    <form method="get" action="{{ route('index') }}">
+                                                        <button type="button" class="btn btn-label-danger confirm">
+                                                            <span class="tf-icons bx bx-block"></span>&nbsp; ايقاف
+                                                        </button>
+                                                    </form>
                                                 </div>
                                             </div>
                                         </div>
@@ -304,4 +219,37 @@
 
 @section('scripts')
     <script src="../../assets/vendor/libs/bootstrap-select/bootstrap-select.js"></script>
+    <script src="../../assets/js/extended-ui-sweetalert2.js"></script>
+    <script src="../../assets/vendor/libs/sweetalert2/sweetalert2.js"></script>
+    <script>
+        $('.confirm').on('click',function(e){
+            e.preventDefault();
+            var form = $(this).parents('form');
+            Swal.fire({
+                title: "هل انت متأكد من المتابعة",
+                text: "لن يمكنك التراجع عن هذا !",
+                icon: "warning",
+                showCancelButton: !0,
+                confirmButtonText: "نعم, قم بالحذف",
+                customClass: {confirmButton: "btn btn-primary me-3", cancelButton: "btn btn-label-secondary"},
+                buttonsStyling: !1
+            }).then(function (t) {
+                t.value ? Swal.fire({
+                        icon: "success",
+                        title: "محذوف!",
+                        text: "لقد تم الحذف بنجاخ.",
+                        customClass: {confirmButton: "btn btn-success"}
+                    }, setTimeout(function(){
+
+                        form.submit()
+                    }, 1000)
+                ) : t.dismiss === Swal.DismissReason.cancel && Swal.fire({
+                    title: "تم الالغاء",
+                    text: "تم الغاء العملية :)",
+                    icon: "error",
+                    customClass: {confirmButton: "btn btn-success"}
+                })
+            })
+        });
+    </script>
 @endsection

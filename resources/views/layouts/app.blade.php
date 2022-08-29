@@ -17,6 +17,9 @@
     <!-- Canonical SEO -->
     <link rel="canonical" href="https://themeselection.com/products/sneat-bootstrap-html-admin-template/">
 
+
+    <link rel="stylesheet" href="{{ asset('assets/css/font.css') }}">
+
     <!-- Favicon -->
     <link rel="shortcut icon" href="{{ asset('assets/img/logo.png') }}" type="image/x-icon">
 
@@ -76,7 +79,7 @@
 
 </head>
 
-<body style="font-family: 'Poppins', sans-serif;">
+<body>
 
 <!-- Layout wrapper -->
 <div class="layout-wrapper layout-content-navbar  layout-without-menu">
@@ -102,7 +105,7 @@
                     <!-- /Logo -->
 
 
-                    <ul class="navbar-nav d-sm-flex d-none flex-row align-items-center ms-5 fs-5 gap-3 fw-bold">
+                    <ul class="navbar-nav d-sm-flex d-none flex-row align-items-center ms-5 fs-5 gap-3">
 
                         <li class="nav-item me-2 me-xl-0">
                             <a href="{{ route('services') }}" class="nav-link primary">الخدمات</a>
@@ -518,7 +521,7 @@
                                     <img src="{{ asset('assets/img/logo.png') }}" class="mx-3" alt="">
                                 </div>
 
-                                <p class="text-light mt-4">
+                                <p class="text-light mt-4 px-5">
                                     منصة وصول ... هي منصة وطنية توفر على المواطن الوصول للخدمة المطلوبة بأسهل الطرق ومعرفة كيفية التعامل مع الخدمة.
                                 </p>
                                 <p class="text-light">
@@ -527,7 +530,7 @@
                                     <script>document.write(new Date().getFullYear());</script> ©
                                 </p>
                             </div>
-                            <div class="col-12 col-sm-6 col-md-3 mb-4 mb-md-0 text-center">
+                            <div class="col-12 col-sm-6 col-md-3 mb-4 mb-md-0">
                                 <h5 class="footer-text">روابط</h5>
                                 <ul class="list-unstyled">
                                     <li><a href="#" class="footer-link text-light d-block pb-2">الرئيسية</a></li>
@@ -537,18 +540,18 @@
                                     <li><a href="#" class="footer-link text-light d-block pb-2">الاسئلة الشائعة</a></li>
                                 </ul>
                             </div>
-                            <div class="col-12 col-sm-6 col-md-3 mb-4 mb-sm-0 text-center">
+                            <div class="col-12 col-sm-6 col-md-3 mb-4 mb-sm-0">
                                 <h5 class="footer-text">تواصل</h5>
                                 <ul class="list-unstyled">
-                                    <li><a href="#" class="footer-link text-light d-block pb-2">wusul@gmail.com <i class="bx bx-mail-send"></i></a></li>
+                                    <li><a href="#" class="footer-link text-light d-block pb-2"><i class="bx bx-mail-send"></i> wusul@gmail.com </a></li>
                                     <li>
-                                        <a href="#" class="footer-link text-light d-block pb-2">770552517 <i class="bx bx-mobile"></i> </a>
+                                        <a href="#" class="footer-link text-light d-block pb-2"><i class="bx bx-mobile"></i> 770552517  </a>
                                     </li>
-                                    <li><a href="#" class="footer-link text-light d-block pb-2">05000000 <i class="bx bx-phone"></i></a></li>
-                                    <li><a href="#" class="footer-link text-light d-block pb-2">wusul.github.com <i class="bx bxl-github"></i></a></li>
+                                    <li><a href="#" class="footer-link text-light d-block pb-2"><i class="bx bx-phone"></i> 05000000 </a></li>
+                                    <li><a href="#" class="footer-link text-light d-block pb-2"><i class="bx bxl-github"></i> wusul.github.com </a></li>
                                 </ul>
                             </div>
-                            <div class="col-12 col-sm-6 col-md-3 mb-4 mb-md-0 text-center">
+                            <div class="col-12 col-sm-6 col-md-3 mb-4 mb-md-0">
                                 <h5 class="footer-text">متابعتنا</h5>
                                 <div class="social-icon my-3">
                                     <a href="#"><i class="fa fa-facebook"></i></a>

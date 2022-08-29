@@ -10,6 +10,7 @@
             border: #eee 1px solid !important;
         }
     </style>
+    <link rel="stylesheet" href="../../assets/vendor/libs/sweetalert2/sweetalert2.css" />
 @endsection
 
 @section('content')
@@ -94,9 +95,11 @@
                                             <td>2022-05-12</td>
                                             <td><span class="badge bg-success fs-6 me-1">مفعل</span></td>
                                             <td>
-                                                <button type="button" class="btn btn-label-danger">
-                                                    <span class="tf-icons bx bx-block"></span>&nbsp; ايقاف الخدمة
-                                                </button>
+                                                <form method="get" action="{{ route('index') }}">
+                                                    <button type="button" class="btn btn-label-danger confirm">
+                                                        <span class="tf-icons bx bx-block"></span>&nbsp; ايقاف
+                                                    </button>
+                                                </form>
                                             </td>
                                         </tr>
                                         <tr>
@@ -107,9 +110,11 @@
                                             <td>2022-05-12</td>
                                             <td><span class="badge bg-success fs-6 me-1">مفعل</span></td>
                                             <td>
-                                                <button type="button" class="btn btn-label-danger">
-                                                    <span class="tf-icons bx bx-block"></span>&nbsp; ايقاف الخدمة
-                                                </button>
+                                                <form method="get" action="{{ route('index') }}">
+                                                    <button type="button" class="btn btn-label-danger confirm">
+                                                        <span class="tf-icons bx bx-block"></span>&nbsp; ايقاف
+                                                    </button>
+                                                </form>
                                             </td>
                                         </tr>
                                         <tr>
@@ -120,9 +125,11 @@
                                             <td>2022-05-12</td>
                                             <td><span class="badge bg-danger fs-6 me-1">متوقف</span></td>
                                             <td>
-                                                <button type="button" class="btn btn-label-primary">
-                                                    <span class="tf-icons bx bx-check"></span>&nbsp; تفعيل الخدمة
-                                                </button>
+                                                <form method="get" action="{{ route('index') }}">
+                                                    <button type="button" class="btn btn-label-primary confirm">
+                                                        <span class="tf-icons bx bx-check"></span>&nbsp; تفعيل
+                                                    </button>
+                                                </form>
                                             </td>
                                         </tr>
                                         </tbody>
@@ -152,138 +159,23 @@
                                                 <h5 class="mb-0 text-dark"><span class="badge bg-label-primary p-3 border-light">برمجة</span></h5>
                                             </div>
                                             <div class="card-body">
-                                                <h5 class="text-truncate text-center fw-bolder mb-4">تصميم مواقع ويب</h5>
-                                                <div class="d-flex align-items-center justify-content-center my-3 gap-2">
-                                                    <span class="badge bg-label-success fs-5 me-1">مفعل</span>
+                                                <h5 class="text-center fw-bolder mb-4">تصميم مواقع ويب</h5>
+                                                <div class="d-flex align-items-center justify-content-center my-4 gap-2">
+                                                    <span class="badge bg-label-success fs-6 me-1">مفعل</span>
                                                 </div>
-                                                <div class="d-flex align-items-center justify-content-center">
+                                                <div class="d-flex align-items-center justify-content-center mt-4">
                                                     <a href="javascript:;" class="btn btn-primary d-flex align-items-center me-3"><i class="bx bx-user-check me-1"></i>وصول</a>
-                                                    <button type="button" class="btn btn-label-danger">
-                                                        <span class="tf-icons bx bx-block"></span>&nbsp; ايقاف الخدمة
-                                                    </button>
+                                                    <form method="get" action="{{ route('index') }}">
+                                                        <button type="button" class="btn btn-label-danger confirm">
+                                                            <span class="tf-icons bx bx-block"></span>&nbsp; ايقاف
+                                                        </button>
+                                                    </form>
                                                 </div>
-                                                <div class="mt-3 d-flex align-items-center justify-content-between">
-                                                    <div class="card-actions">
-                                                        <a href="javascript:;" class="text-muted me-3"><i class="bx bx-cart me-1"></i> 236</a>
-                                                        <a href="javascript:;" class="text-muted"><i class="bx bx-star me-1"></i> 12</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-3 col-lg-4 col-md-6">
-                                        <div class="card h-100">
-                                            <div class="card-header flex-grow-0">
-                                                <div class="d-flex">
-                                                    <div class="avatar flex-shrink-0 me-3">
-                                                        <img src="{{ asset('assets/img/avatars/1.png') }}" alt="User" class="rounded-circle">
-                                                    </div>
-                                                    <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-1">
-                                                        <div class="me-2">
-                                                            <h5 class="mb-0">عبدالهادي ديان</h5>
-                                                            <small class="text-muted">2019-08-02</small>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <img class="img-fluid" src="../../assets/img/backgrounds/event.jpg" alt="Card image cap">
-                                            <div class="featured-date mt-n4 ms-4 bg-white rounded w-px-50 shadow text-center">
-                                                <h5 class="mb-0 text-dark"><span class="badge bg-label-primary p-3 border-light">برمجة</span></h5>
-                                            </div>
-                                            <div class="card-body">
-                                                <h5 class="text-truncate text-center fw-bolder mb-4">تصميم مواقع ويب</h5>
-                                                <div class="d-flex align-items-center justify-content-center my-3 gap-2">
-                                                    <span class="badge bg-label-success fs-5 me-1">مفعل</span>
-                                                </div>
-                                                <div class="d-flex align-items-center justify-content-center">
-                                                    <a href="javascript:;" class="btn btn-primary d-flex align-items-center me-3"><i class="bx bx-user-check me-1"></i>وصول</a>
-                                                    <button type="button" class="btn btn-label-danger">
-                                                        <span class="tf-icons bx bx-block"></span>&nbsp; ايقاف الخدمة
-                                                    </button>
-                                                </div>
-                                                <div class="mt-3 d-flex align-items-center justify-content-between">
-                                                    <div class="card-actions">
-                                                        <a href="javascript:;" class="text-muted me-3"><i class="bx bx-cart me-1"></i> 236</a>
-                                                        <a href="javascript:;" class="text-muted"><i class="bx bx-star me-1"></i> 12</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-3 col-lg-4 col-md-6">
-                                        <div class="card h-100">
-                                            <div class="card-header flex-grow-0">
-                                                <div class="d-flex">
-                                                    <div class="avatar flex-shrink-0 me-3">
-                                                        <img src="{{ asset('assets/img/avatars/1.png') }}" alt="User" class="rounded-circle">
-                                                    </div>
-                                                    <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-1">
-                                                        <div class="me-2">
-                                                            <h5 class="mb-0">عبدالهادي ديان</h5>
-                                                            <small class="text-muted">2019-08-02</small>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <img class="img-fluid" src="../../assets/img/backgrounds/event.jpg" alt="Card image cap">
-                                            <div class="featured-date mt-n4 ms-4 bg-white rounded w-px-50 shadow text-center">
-                                                <h5 class="mb-0 text-dark"><span class="badge bg-label-primary p-3 border-light">برمجة</span></h5>
-                                            </div>
-                                            <div class="card-body">
-                                                <h5 class="text-truncate text-center fw-bolder mb-4">تصميم مواقع ويب</h5>
-                                                <div class="d-flex align-items-center justify-content-center my-3 gap-2">
-                                                    <span class="badge bg-label-success fs-5 me-1">مفعل</span>
-                                                </div>
-                                                <div class="d-flex align-items-center justify-content-center">
-                                                    <a href="javascript:;" class="btn btn-primary d-flex align-items-center me-3"><i class="bx bx-user-check me-1"></i>وصول</a>
-                                                    <button type="button" class="btn btn-label-danger">
-                                                        <span class="tf-icons bx bx-block"></span>&nbsp; ايقاف الخدمة
-                                                    </button>
-                                                </div>
-                                                <div class="mt-3 d-flex align-items-center justify-content-between">
-                                                    <div class="card-actions">
-                                                        <a href="javascript:;" class="text-muted me-3"><i class="bx bx-cart me-1"></i> 236</a>
-                                                        <a href="javascript:;" class="text-muted"><i class="bx bx-star me-1"></i> 12</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-3 col-lg-4 col-md-6">
-                                        <div class="card h-100">
-                                            <div class="card-header flex-grow-0">
-                                                <div class="d-flex">
-                                                    <div class="avatar flex-shrink-0 me-3">
-                                                        <img src="{{ asset('assets/img/avatars/1.png') }}" alt="User" class="rounded-circle">
-                                                    </div>
-                                                    <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-1">
-                                                        <div class="me-2">
-                                                            <h5 class="mb-0">عبدالهادي ديان</h5>
-                                                            <small class="text-muted">2019-08-02</small>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <img class="img-fluid" src="../../assets/img/backgrounds/event.jpg" alt="Card image cap">
-                                            <div class="featured-date mt-n4 ms-4 bg-white rounded w-px-50 shadow text-center">
-                                                <h5 class="mb-0 text-dark"><span class="badge bg-label-primary p-3 border-light">برمجة</span></h5>
-                                            </div>
-                                            <div class="card-body">
-                                                <h5 class="text-truncate text-center fw-bolder mb-4">تصميم مواقع ويب</h5>
-                                                <div class="d-flex align-items-center justify-content-center my-3 gap-2">
-                                                    <span class="badge bg-label-success fs-5 me-1">مفعل</span>
-                                                </div>
-                                                <div class="d-flex align-items-center justify-content-center">
-                                                    <a href="javascript:;" class="btn btn-primary d-flex align-items-center me-3"><i class="bx bx-user-check me-1"></i>وصول</a>
-                                                    <button type="button" class="btn btn-label-danger">
-                                                        <span class="tf-icons bx bx-block"></span>&nbsp; ايقاف الخدمة
-                                                    </button>
-                                                </div>
-                                                <div class="mt-3 d-flex align-items-center justify-content-between">
-                                                    <div class="card-actions">
-                                                        <a href="javascript:;" class="text-muted me-3"><i class="bx bx-cart me-1"></i> 236</a>
-                                                        <a href="javascript:;" class="text-muted"><i class="bx bx-star me-1"></i> 12</a>
-                                                    </div>
+                                                <div class="mt-5 d-flex fs-6 align-items-center justify-content-around">
+                                                    <a href="#" class="text-muted me-3" data-bs-toggle="tooltip" data-bs-offset="0,4" data-bs-placement="bottom" data-bs-html="true" title="" data-bs-original-title="اجمالي الطلبات">
+                                                        <i class="bx bx-cart me-1 fs-4"></i> 236</a>
+                                                    <a href="#" class="text-muted" data-bs-toggle="tooltip" data-bs-offset="0,4" data-bs-placement="bottom" data-bs-html="true" title="" data-bs-original-title="اجمالي التقييمات"><i class="bx bx-star me-1 fs-4"></i> 12</a>
+                                                    <a href="#" class="text-muted" data-bs-toggle="tooltip" data-bs-offset="0,4" data-bs-placement="bottom" data-bs-html="true" title="" data-bs-original-title="وقت التسليم التقريبي"><i class="bx bx-time me-1 fs-4"></i> 12 يوم</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -331,4 +223,36 @@
 
 @section('scripts')
     <script src="../../assets/vendor/libs/bootstrap-select/bootstrap-select.js"></script>
+    <script src="../../assets/vendor/libs/sweetalert2/sweetalert2.js"></script>
+    <script>
+        $('.confirm').on('click',function(e){
+            e.preventDefault();
+            var form = $(this).parents('form');
+            Swal.fire({
+                title: "هل انت متأكد من المتابعة",
+                text: "لن يمكنك التراجع عن هذا !",
+                icon: "warning",
+                showCancelButton: !0,
+                confirmButtonText: "نعم, قم بالحذف",
+                customClass: {confirmButton: "btn btn-primary me-3", cancelButton: "btn btn-label-secondary"},
+                buttonsStyling: !1
+            }).then(function (t) {
+                t.value ? Swal.fire({
+                        icon: "success",
+                        title: "محذوف!",
+                        text: "لقد تم الحذف بنجاخ.",
+                        customClass: {confirmButton: "btn btn-success"}
+                    }, setTimeout(function(){
+
+                        form.submit()
+                    }, 1000)
+                ) : t.dismiss === Swal.DismissReason.cancel && Swal.fire({
+                    title: "تم الالغاء",
+                    text: "تم الغاء العملية :)",
+                    icon: "error",
+                    customClass: {confirmButton: "btn btn-success"}
+                })
+            })
+        });
+    </script>
 @endsection

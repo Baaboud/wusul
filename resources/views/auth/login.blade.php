@@ -4,8 +4,14 @@
 
     <div class="card">
         <div class="card-body">
-            <h4 class="mb-5 text-center">تسجيل الدخول</h4>
-            <p class="mb-4">قم بتسجيل الدخول للوصول الى حسابك في منصة وصول</p>
+
+            <div class="app-brand justify-content-center mb-5">
+                <a href="{{ route('index') }}" class="app-brand-link gap-2">
+                    <img src="{{ asset('img/logo.png') }}" class="w-px-30" alt="">
+                    <span class="app-brand-text demo text-body fw-bolder">منصة وصول</span>
+                </a>
+            </div>
+            <h4 class="mb-4 text-center">تسجيل الدخول</h4>
 
             <form id="formAuthentication" class="mb-3" method="POST" action="{{ route('login') }}">
                 @csrf
@@ -22,9 +28,6 @@
                 <div class="mb-3 form-password-toggle">
                     <div class="d-flex justify-content-between">
                         <label class="form-label" for="password">كلمة المرور</label>
-                        <a href="{{ route('password.request') }}">
-                            <small>هل نسيت كلمة المرور؟</small>
-                        </a>
                     </div>
                     <div class="input-group input-group-merge">
                         <input type="password" id="password" class="form-control @error('password') is-invalid @enderror" name="password"
@@ -37,6 +40,10 @@
                         </span>
                         @enderror
                     </div>
+
+                    <a href="{{ route('password.request') }}">
+                        <small>هل نسيت كلمة المرور؟</small>
+                    </a>
                 </div>
                 <div class="mb-3">
                     <div class="form-check">

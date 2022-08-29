@@ -62,8 +62,8 @@ Route::get('/services', function () {
 })->name('services');
 
 Route::get('/l/l', function () {
-    return view('service.service_page');
-});
+    return view('admin.users');
+})->name('test');
 
 Route::group(['prefix' => 'user'], function () {
     Route::get('/account', function () {

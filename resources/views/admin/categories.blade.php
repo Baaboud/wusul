@@ -124,9 +124,11 @@
                                                     <span class="tf-icons bx bx-edit"></span>&nbsp; تعديل
                                                 </button>
 
-                                                <button type="button" class="btn btn-label-danger" id="confirm-color">
-                                                    <span class="tf-icons bx bx-trash"></span>&nbsp; خذف
-                                                </button>
+                                                <form class="d-inline-block" method="get" action="{{ route('index') }}">
+                                                    <button type="button" class="btn btn-label-danger confirm">
+                                                        <span class="tf-icons bx bx-trash"></span>&nbsp; خذف
+                                                    </button>
+                                                </form>
                                             </td>
                                         </tr>
                                         </tbody>
@@ -141,69 +143,18 @@
                                             <div class="card-body text-center">
                                                 <img class="mb-3" src="../../assets/img/icons/unicons/rocket.png" height="60" alt="Help center articles">
                                                 <h5>التصميم</h5>
-                                                <p class="text-dark text-truncate"> يمكنك الحصول على تصاميم عالية الجودة واختيار المصمم المناسب لطلب
+                                                <p class="text-dark"> يمكنك الحصول على تصاميم عالية الجودة واختيار المصمم المناسب لطلب
                                                     تصميمك </p>
                                                 <div class="d-flex align-items-center justify-content-around">
                                                     <button type="button" class="btn btn-label-primary">
                                                         <span class="tf-icons bx bx-edit"></span>&nbsp; تعديل
                                                     </button>
-                                                    <button type="button" class="btn btn-label-danger">
-                                                        <span class="tf-icons bx bx-trash"></span>&nbsp; خذف
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-3 col-lg-4 col-md-6">
-                                        <div class="card border shadow-none">
-                                            <div class="card-body text-center">
-                                                <img class="mb-3" src="../../assets/img/icons/unicons/rocket.png" height="60" alt="Help center articles">
-                                                <h5>التصميم</h5>
-                                                <p class="text-dark text-truncate"> يمكنك الحصول على تصاميم عالية الجودة واختيار المصمم المناسب لطلب
-                                                    تصميمك </p>
-                                                <div class="d-flex align-items-center justify-content-around">
-                                                    <button type="button" class="btn btn-label-primary">
-                                                        <span class="tf-icons bx bx-edit"></span>&nbsp; تعديل
-                                                    </button>
-                                                    <button type="button" class="btn btn-label-danger">
-                                                        <span class="tf-icons bx bx-trash"></span>&nbsp; خذف
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-3 col-lg-4 col-md-6">
-                                        <div class="card border shadow-none">
-                                            <div class="card-body text-center">
-                                                <img class="mb-3" src="../../assets/img/icons/unicons/rocket.png" height="60" alt="Help center articles">
-                                                <h5>التصميم</h5>
-                                                <p class="text-dark text-truncate"> يمكنك الحصول على تصاميم عالية الجودة واختيار المصمم المناسب لطلب
-                                                    تصميمك </p>
-                                                <div class="d-flex align-items-center justify-content-around">
-                                                    <button type="button" class="btn btn-label-primary">
-                                                        <span class="tf-icons bx bx-edit"></span>&nbsp; تعديل
-                                                    </button>
-                                                    <button type="button" class="btn btn-label-danger">
-                                                        <span class="tf-icons bx bx-trash"></span>&nbsp; خذف
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-3 col-lg-4 col-md-6">
-                                        <div class="card border shadow-none">
-                                            <div class="card-body text-center">
-                                                <img class="mb-3" src="../../assets/img/icons/unicons/rocket.png" height="60" alt="Help center articles">
-                                                <h5>التصميم</h5>
-                                                <p class="text-dark text-truncate"> يمكنك الحصول على تصاميم عالية الجودة واختيار المصمم المناسب لطلب
-                                                    تصميمك </p>
-                                                <div class="d-flex align-items-center justify-content-around">
-                                                    <button type="button" class="btn btn-label-primary">
-                                                        <span class="tf-icons bx bx-edit"></span>&nbsp; تعديل
-                                                    </button>
-                                                    <button type="button" class="btn btn-label-danger">
-                                                        <span class="tf-icons bx bx-trash"></span>&nbsp; خذف
-                                                    </button>
+
+                                                    <form class="d-inline-block" method="get" action="{{ route('index') }}">
+                                                        <button type="button" class="btn btn-label-danger confirm">
+                                                            <span class="tf-icons bx bx-trash"></span>&nbsp; خذف
+                                                        </button>
+                                                    </form>
                                                 </div>
                                             </div>
                                         </div>
@@ -295,5 +246,36 @@
             imgInp.value = "",
                 imgView.src = r
         }
+    </script>
+    <script>
+        $('.confirm').on('click',function(e){
+            e.preventDefault();
+            var form = $(this).parents('form');
+            Swal.fire({
+                title: "هل انت متأكد من المتابعة",
+                text: "لن يمكنك التراجع عن هذا !",
+                icon: "warning",
+                showCancelButton: !0,
+                confirmButtonText: "نعم, قم بالحذف",
+                customClass: {confirmButton: "btn btn-primary me-3", cancelButton: "btn btn-label-secondary"},
+                buttonsStyling: !1
+            }).then(function (t) {
+                t.value ? Swal.fire({
+                        icon: "success",
+                        title: "محذوف!",
+                        text: "لقد تم الحذف بنجاخ.",
+                        customClass: {confirmButton: "btn btn-success"}
+                    }, setTimeout(function(){
+
+                        form.submit()
+                    }, 1000)
+                ) : t.dismiss === Swal.DismissReason.cancel && Swal.fire({
+                    title: "تم الالغاء",
+                    text: "تم الغاء العملية :)",
+                    icon: "error",
+                    customClass: {confirmButton: "btn btn-success"}
+                })
+            })
+        });
     </script>
 @endsection

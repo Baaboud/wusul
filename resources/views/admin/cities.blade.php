@@ -84,6 +84,7 @@
                         <thead>
                         <tr>
                             <th>#</th>
+                            <th>أسم المدينة</th>
                             <th>أسم المحافظة</th>
                             <th>تاريخ التسجيل</th>
                             <th>الحالة</th>
@@ -93,7 +94,8 @@
                         <tbody class="table-border-bottom-0">
                         <tr>
                             <td>1</td>
-                            <td> حضرموت
+                            <td>المكلا</td>
+                            <td>حضرموت</td>
                             <td>2022-05-12</td>
                             <td><span class="badge bg-label-success fs-6">مفعل</span></td>
                             <td class="d-flex">
