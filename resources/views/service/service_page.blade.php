@@ -15,22 +15,18 @@
 @endsection
 @section('content')
     <div class="container-xxl flex-grow-1 container-p-y">
-
-        <h4 class="fw-bold py-2">
-            <span class="text-muted fw-light"></span> بيانات الخدمة
-        </h4>
         <div class="row">
             <!-- User Sidebar -->
             <div class="col-xl-4 col-lg-5 col-md-5">
                 <!-- User Card -->
-                <div class="card mb-4">
+                <div class="card mb-4 h-100">
                     <div class="card-body">
                         <div class="user-avatar-section">
                             <div class=" d-flex align-items-center flex-column">
-                                <img class="img-fluid rounded my-4 w-100" src="{{ asset('assets/img/backgrounds/3.jpg') }}" height="110" width="110" alt="User avatar">
-                                <div class="user-info text-center">
+                                <img class="img-fluid rounded mx-4 w-100" src="{{ asset('assets/img/backgrounds/3.jpg') }}" height="110" width="110" alt="User avatar">
+                                <div class="user-info text-center mt-3">
                                     <h4 class="mb-2">تصميم مواقع ويب</h4>
-                                    <span class="badge bg-label-primary mt-3 fs-6">برمجة</span>
+                                    <span class="badge bg-label-primary mt-3 pb-3 px-3 fs-6">برمجة</span>
                                 </div>
                             </div>
                         </div>
@@ -39,23 +35,30 @@
                         </div>
 
                         <div class="info-container">
-                            <div class="row d-flex justify-content-around flex-wrap">
-                                <div class="col-6 d-flex align-items-start mt-3 gap-3">
-                                    <span class="badge bg-label-primary p-2 rounded"><i class="bx bx-customize bx-sm"></i></span>
+                            <div class="row d-flex justify-content-around flex-wrap ms-lg-4 ms-md-0 ms-4">
+                                <div class="col-md-12 col-sm-6 col-12 d-flex align-items-start mt-3 px-4 gap-3">
+                                    <span class="badge bg-label-primary p-2 rounded"><i class="bx bx-current-location fs-2"></i></span>
                                     <div>
-                                        <span>أجمالي الطلبات المنجزة</span>
-                                        <h5 class="mb-0">25</h5>
+                                        <span>موقع الخدمة</span>
+                                        <h5 class="mb-0 text-primary">حضرموت - المكلا</h5>
                                     </div>
                                 </div>
-                                <div class="col-6 d-flex align-items-start mt-3 gap-3">
-                                    <span class="badge bg-label-primary p-2 rounded"><i class="bx bx-time bx-sm"></i></span>
+                                <div class="col-md-12 col-sm-6 col-12 d-flex align-items-start mt-4 px-4 gap-3">
+                                    <span class="badge bg-label-primary p-2 rounded"><i class="bx bx-customize fs-2"></i></span>
+                                    <div class="row">
+                                        <span>أجمالي الطلبات المنجزة</span>
+                                        <h5 class="mb-0 text-primary">25</h5>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 col-sm-6 col-12 d-flex align-items-start mt-4 px-4 gap-3">
+                                    <span class="badge bg-label-primary p-2 rounded"><i class="bx bx-time fs-2"></i></span>
                                     <div>
                                         <span>وقت التسليم التقريبي</span>
-                                        <h5 class="mb-0 text-center">5 أيام</h5>
+                                        <h5 class="mb-0 text-primary">5 أيام</h5>
                                     </div>
                                 </div>
-                                <div class="col-12 d-flex justify-content-center mt-3 gap-3">
-                                    <span class="badge bg-label-primary p-2 rounded"><i class="bx bx-star bx-sm"></i></span>
+                                <div class="col-md-12 col-sm-6 col-12 d-flex align-items-start mt-4 px-4 gap-3">
+                                    <span class="badge bg-label-primary p-2 rounded"><i class="bx bx-star fs-2"></i></span>
                                     <div>
                                         <span>متوسط التقييمات</span>
                                         <h5 class="mb-0 text-center text-warning">
@@ -73,20 +76,20 @@
                     </div>
                 </div>
 
-                <div class="card mb-3">
-                    <div class="card-header">
-                        <div class="d-flex align-items-start mt-3 gap-3">
-                            <span class="badge bg-label-primary p-2 rounded"><i class="bx bx-current-location bx-sm"></i></span>
-                            <div>
-                                <span>موقع الخدمة</span>
-                                <h5 class="mb-0">حضرموت - المكلا</h5>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <div class="leaflet-map" id="basicMap"></div>
-                    </div>
-                </div>
+{{--                <div class="card mb-3">--}}
+{{--                    <div class="card-header">--}}
+{{--                        <div class="d-flex align-items-start mt-3 gap-3">--}}
+{{--                            <span class="badge bg-label-primary p-2 rounded"><i class="bx bx-current-location bx-sm"></i></span>--}}
+{{--                            <div>--}}
+{{--                                <span>موقع الخدمة</span>--}}
+{{--                                <h5 class="mb-0">حضرموت - المكلا</h5>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                    <div class="card-body">--}}
+{{--                        <div class="leaflet-map" id="basicMap"></div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
                 <!-- /User Card -->
                 <!-- Plan Card -->
 
@@ -96,13 +99,13 @@
 
 
             <!-- User Content -->
-            <div class="col-xl-8 col-lg-7 col-md-7 order-0 order-md-1">
+            <div class="col-xl-8 col-lg-7 col-md-7 mt-lg-0 mt-3">
                 <div class="card mb-3">
                     <div class="card-body">
                         <div class="d-flex align-items-center mb-3">
                             <a href="#" class="d-flex align-items-center">
                                 <div class="avatar avatar-sm me-2">
-                                    <img src="../../assets/img/icons/brands/react-label.png" alt="Avatar" class="rounded-circle">
+                                    <img src="{{ asset('assets/img/icons/unicons/bulb.png') }}" alt="Avatar" class="rounded-circle">
                                 </div>
                                 <div class="me-2 text-body h5 mb-0">
                                     وصف الخدمة
@@ -113,28 +116,17 @@
                     </div>
                 </div>
 
-                <div class="card mb-3">
-                    <div class="card-body">
-                        <div class="d-flex align-items-center mb-3">
-                            <a href="#" class="d-flex align-items-center">
-                                <div class="avatar avatar-sm me-2">
-                                    <img src="../../assets/img/icons/brands/react-label.png" alt="Avatar" class="rounded-circle">
-                                </div>
-                                <div class="me-2 text-body h5 mb-0">مميزات الخدمة</div>
-                            </a>
-                        </div>
-                        <ol class="list-group list-group-numbered">
-                            <li class="list-group-item">تطوير موقع احترافي</li>
-                            <li class="list-group-item">ضمان جودة عالية</li>
-                            <li class="list-group-item">التسليم خلال قبل الوقت المحدد</li>
-                            <li class="list-group-item">صيانة مجانة لمدة ثلاثة اشهر</li>
-                            <li class="list-group-item">اضافة ميزات اضافية بعد التسليم</li>
-                        </ol>
-                    </div>
-                </div>
-
                 <div class="col-12 bg-white py-3">
-                    <h5 class="card-action-title p-3">نماذج اعمال</h5>
+                    <div class="d-flex align-items-center mx-4 mb-3">
+                        <a href="#" class="d-flex align-items-center">
+                            <div class="avatar avatar-sm me-2">
+                                <img src="{{ asset('assets/img/icons/unicons/laptop.png') }}" alt="Avatar" class="rounded-circle">
+                            </div>
+                            <div class="me-2 text-body h5 mb-0">
+                                نماذج اعمال
+                            </div>
+                        </a>
+                    </div>
                     <div id="swiper-gallery">
                         <div class="swiper-container gallery-top">
                             <div class="swiper-wrapper">
