@@ -20,8 +20,9 @@ use App\Http\Controllers\userServiceProvider\ServicesController;
 */
 
 Route::get('/test', function () {
+    $categories = ServiceCat::all();
 
-    return view('test', ['id' => 3]);
+    return view('test', compact('categories'));
 
 // );
 });
@@ -37,7 +38,7 @@ Route::get('/test1', function () {
     );
 });
 Route::get('/test2', function () {
-    $category = ServiceCat::find(3);
+    $category = ServiceCat::all();
     return view('tests', [
             'category' => $category
         ]

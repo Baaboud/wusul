@@ -73,7 +73,7 @@
                                   <span class="custom-option-title"> مستخدم </span>
 {{--                                  <small> انشاء حساب كمستخدم للبحث والحصول على الخدمات المناسبة </small>--}}
                                 </span>
-                                <input name="customRadioIcon" class="form-check-input" type="radio" value=""
+                                <input name="type" class="form-check-input" type="radio" value="0"
                                        id="customRadioIcon2" checked>
                             </label>
                         </div>
@@ -86,7 +86,7 @@
                                   <span class="custom-option-title">مقدم خدمة</span>
 {{--                                  <small> انشاء حساب كمقدم خدمة لتقديم خدمات والحصول على طلبات </small>--}}
                                 </span>
-                                <input name="customRadioIcon" class="form-check-input" type="radio" value=""
+                                <input name="type" class="form-check-input" type="radio" value="2"
                                        id="customRadioIcon1">
                             </label>
                         </div>
