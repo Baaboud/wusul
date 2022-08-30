@@ -17,10 +17,11 @@ class UsersController extends Controller
             // users type
             $types = ['مستخدم', 'مدير', 'صاحب خدمة'];
     
-            return view('admin.users', compact('users', 'types'));
+            return view('admin.users');
         }
 
         // active user
+        
         public function activation($id)
         {
             try {

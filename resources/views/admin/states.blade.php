@@ -37,9 +37,10 @@
                 <div class="modal fade" id="addCategory" tabindex="-1" aria-hidden="true" style="display: none;">
                     <div class="modal-dialog modal-dialog-centered" role="document">
                         <div class="modal-content">
-                            <form id="formAccountSettings" method="POST" onsubmit="return false"
+                            <form id="formAccountSettings" method="POST" action="{{route('states.add')}}"
                                   class="fv-plugins-bootstrap5 fv-plugins-framework" novalidate="novalidate">
                                 <hr class="my-0">
+                                @csrf
                                 <div class="modal-header">
                                     <h5 class="modal-title fs-5 fw-bolder" id="modalToggleLabel">أضافة محافظة</h5>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -51,8 +52,6 @@
                                             <input type="text" class="form-control" id="name" name="name"
                                                    placeholder="أسم المحافظة">
                                         </div>
-
-
                                     </div>
                                     <div class="mt-2 text-center">
                                         <button type="submit" class="btn btn-primary me-2"> حفظ التعديل</button>
@@ -81,25 +80,85 @@
                         </tr>
                         </thead>
                         <tbody class="table-border-bottom-0">
+                        @forelse($states as $state)
                         <tr>
-                            <td>1</td>
-                            <td> حضرموت
-                            <td>2022-05-12</td>
-                            <td><span class="badge bg-label-success fs-6">مفعل</span></td>
+                            <td>{{$loop->index+1 }}</td>
+                            <td> {{$state->name}}</td>
+                            <td>{{$state->created_at}}</td>
+                            <td><span class="badge bg-label-success fs-6">
+                                {{$state->is_active? 'مفعل' : 'غير مفعل'}}
+                            </span></td>
                             <td class="d-flex">
-                                <button type="button" class="btn btn-label-primary mx-2" data-bs-toggle="modal" data-bs-target="#editeCategory1">
+                                <button type="button" class="btn btn-label-primary mx-2"
+                                onclick="edit({{ $state }})"
+                                 data-bs-toggle="modal" data-bs-target="#editeCategory1">
                                     <span class="tf-icons bx bx-edit"></span>&nbsp; تعديل
                                 </button>
 
-                                <form method="get" action="{{ route('index') }}">
+                                <form method="get" action="{{ route('states.delete',$state->id) }}">
                                     <button type="submit" class="btn btn-label-danger confirm" id="confirm">
                                         <span class="tf-icons bx bx-trash"></span>&nbsp; خذف
                                     </button>
                                 </form>
+
+                                
+                                <form method="get" action="{{ route('admin.state.active',$state->id) }}">
+                                    <button type="submit" class="btn btn-label-danger mx-2">
+                                                @if($state->is_active)
+                                                        <span class="tf-icons bx bx-block">
+                                                        ايقاف
+                                                        </span>&nbsp;
+                                                        @else
+                                                        <span class="">
+                                                        تفعيل
+                                                        </span>
+                                                        @endif                                      
+                                                        </button>
+                                </form>
                             </td>
                         </tr>
+                        @empty
+                           
+                        @endforelse
+
                         </tbody>
                     </table>
+                    <div class="modal fade" id="editeCategory1" tabindex="-1" aria-hidden="true" style="display: none;">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <form id="formAccountSettings" method="POST"
+                            action="{{route('states.update')}}"
+                                  class="fv-plugins-bootstrap5 fv-plugins-framework" novalidate="novalidate">
+                                @csrf
+                                <input type="hidden"  name='id' value=''>
+
+                                <hr class="my-0">
+                                <div class="modal-header">
+                                    <h5 class="modal-title fs-5 fw-bolder" id="modalToggleLabel">أضافة محافظة</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="mb-3 col">
+                                            <label for="name" class="form-label">أسم المحافظة</label>
+                                            <input type="text" class="form-control" id="name" name="name" value=''
+                                                   placeholder="أسم المحافظة">
+                                        </div>
+                                    </div>
+                                    <div class="mt-2 text-center">
+                                        <button type="submit" class="btn btn-primary me-2"> حفظ التعديل</button>
+                                        <button type="button" class="btn btn-label-secondary"
+                                                data-bs-dismiss="modal">إلغاء
+                                        </button>
+                                    </div>
+                                    <div></div>
+                                    <input type="hidden">
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
                 </div>
         </div>
     </div>
@@ -139,5 +198,15 @@
                 })
             })
         });
+
+            function edit(state){
+            const id =  document.querySelector('input[name=id]');
+            const name =  document.querySelector('#editeCategory1 form input[name=name]');
+
+            id.value=state.id;
+            name.value=state.name;
+
+        }
+
     </script>
 @endsection

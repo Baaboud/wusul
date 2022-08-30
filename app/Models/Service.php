@@ -32,6 +32,7 @@ public function user()
     return $this->belongsTo(User::class, 'user_id') ;
 }
 
+
 // user services rating
 public function rating()
 {
