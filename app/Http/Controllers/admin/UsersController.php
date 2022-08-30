@@ -17,7 +17,7 @@ class UsersController extends Controller
             // users type
             $types = ['مستخدم', 'مدير', 'صاحب خدمة'];
     
-            return view('admin.users.users', compact('users', 'types'));
+            return view('admin.users', compact('users', 'types'));
         }
 
         // active user

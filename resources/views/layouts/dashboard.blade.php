@@ -47,6 +47,8 @@
 
     <!-- Page CSS -->
 
+        <livewire:styles />
+
     <!-- Helpers -->
     <script src="{{ asset('assets/vendor/js/helpers.js') }}"></script>
 
@@ -113,7 +115,7 @@
                     </a>
                 </li>
                 <li class="menu-item">
-                    <a href="https://themeselection.com/demo/sneat-bootstrap-html-admin-template/documentation/"
+                    <a href="{{route('admin.services')}}"
                        target="_blank" class="menu-link">
                         <i class="menu-icon tf-icons bx bx-grid-alt"></i>
                         <div>الخدمات</div>
@@ -138,7 +140,7 @@
 
                 <li class="menu-header text-uppercase text-white fs-6"><span class="menu-header-text">أعدادات المنصة</span></li>
                 <li class="menu-item">
-                    <a href="https://themeselection.com/demo/sneat-bootstrap-html-admin-template/documentation/"
+                    <a href="{{route('categories')}}"
                        target="_blank" class="menu-link">
                         <i class="menu-icon tf-icons bx bx-file"></i>
                         <div>أدارة المجالات</div>
@@ -646,6 +648,8 @@
 <script src="{{ asset('assets/js/main.js') }}"></script>
 
 <!-- Page JS -->
+
+<livewire:scripts />
 
 <!-- / Layout wrapper -->
 

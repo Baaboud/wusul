@@ -22,7 +22,8 @@ class Service extends Model
         'price',
         'stars',
         'service_cat_id',
-        'interval'
+        'interval',
+        'is_active'
     ];
 
 // // user services
@@ -53,21 +54,30 @@ public function rating()
         return $this->belongsTo(ServiceCat::class,'service_cat_id');
     }
 
-    public function scopeWithFilters($query, $search,$category,$stars)
+    public function scopeWithFilters($query, $search,$category,$active,$stars)
     {
         return $query->when($search, function ($query) use ($search) {
-            where(function ($query) use ($search) {
+           $query->where(function ($query) use ($search) {
                 $query->where('name', 'like', '%' .  $search . '%')
-                ->orWhere('description', 'like', '%' .  $search . '%');
+                ->orWhere('description', 'like', '%' .  $search . '%')
+                ->orWhere(function ($query) use ($search) {
+                    $query->whereHas('user', function ($query)  use ($search){
+                        return $query->where('name', 'like', '%' .  $search . '%');
+                    });
+                });
+
             });
-            })
-            ->when($category, function ($query) use ($category) {
+    })
+    ->when($active, function ($query) use ($active) {
+        $query->where('is_active', $active );
+})
+        ->when($category, function ($query) use ($category) {
                 $query->where('service_cat_id', $category);
         })
         ->when($stars, function ($query) use ($stars) {
             $query->where('stars', $stars);
         });
-    }
+}
 
 
     public function address(){

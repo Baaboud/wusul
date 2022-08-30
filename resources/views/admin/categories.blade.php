@@ -36,8 +36,10 @@
                 <div class="modal fade" id="addCategory" tabindex="-1" aria-hidden="true" style="display: none;">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
-                            <form id="formAccountSettings" method="POST" onsubmit="return false"
-                                  class="fv-plugins-bootstrap5 fv-plugins-framework" novalidate="novalidate">
+                            <form action="{{route('category.store')}}" id="formAccountSettings" method="POST" 
+                                class="fv-plugins-bootstrap5 fv-plugins-framework" novalidate="novalidate" 
+                                enctype="multipart/form-data">
+                                @csrf
                                 <div class="card-body">
                                     <div class="d-flex align-items-sm-center gap-4 flex-wrap">
                                         <img src="../../assets/img/backgrounds/event.jpg" alt="user-avatar"
@@ -47,7 +49,7 @@
                                             <label for="upload" class="btn btn-primary me-2" tabindex="0">
                                                 <span class="d-none d-sm-block">أضافة صورة</span>
                                                 <i class="bx bx-upload d-block d-sm-none"></i>
-                                                <input type="file" id="upload" class="account-file-input"
+                                                <input type="file" id="upload" class="account-file-input" name='image'
                                                        hidden="" accept="image/png, image/jpeg">
                                             </label>
                                         </div>
@@ -67,7 +69,7 @@
                                             <label for="exampleFormControlTextarea1" class="form-label">وصف
                                                 المجال</label>
                                             <textarea class="form-control" id="exampleFormControlTextarea1"
-                                                      rows="3" placeholder="الوصف"></textarea>
+                                                      rows="3" placeholder="الوصف" name='description'></textarea>
                                         </div>
 
 
@@ -115,22 +117,31 @@
                                         </tr>
                                         </thead>
                                         <tbody class="table-border-bottom-0">
+                                        @forelse($categories as $category)
                                         <tr>
-                                            <td>1</td>
-                                            <td> برمجة</td>
-                                            <td>2022-05-12</td>
+                                            <td>{{$loop->index+1 }}</td>
+                                            
+                                            <td>{{$category->name}}</td>
+                                            <td>{{$category->create_at}}</td>
                                             <td>
-                                                <button type="button" class="btn btn-label-primary" data-bs-toggle="modal" data-bs-target="#editeCategory1">
+                                                <button type="button" class="btn btn-label-primary"
+                                                 data-bs-toggle="modal" data-bs-target="#editeCategory1"
+                                                  onclick="edit({{ $category }} , '{{ asset( $category->path ) }}' )" >
                                                     <span class="tf-icons bx bx-edit"></span>&nbsp; تعديل
                                                 </button>
 
-                                                <form class="d-inline-block" method="get" action="{{ route('index') }}">
+                                                <form class="d-inline-block" method="get" action="{{ route('category.del',$category->id) }}">
                                                     <button type="button" class="btn btn-label-danger confirm">
                                                         <span class="tf-icons bx bx-trash"></span>&nbsp; خذف
                                                     </button>
                                                 </form>
                                             </td>
                                         </tr>
+                                        @empty
+                                            <tr style='text-align: center;'>
+                                            لا يوجد اصناف
+                                            </tr>
+                                        @endforelse
                                         </tbody>
                                     </table>
                                 </div>
@@ -138,15 +149,15 @@
                             {{-- Card View --}}
                             <div class="tab-pane fade" id="navs-card" role="tabpanel">
                                 <div class="row g-4">
+                                @forelse($categories as $category)
                                     <div class="col-xl-3 col-lg-4 col-md-6">
                                         <div class="card border shadow-none">
                                             <div class="card-body text-center">
-                                                <img class="mb-3" src="../../assets/img/icons/unicons/rocket.png" height="60" alt="Help center articles">
-                                                <h5>التصميم</h5>
-                                                <p class="text-dark"> يمكنك الحصول على تصاميم عالية الجودة واختيار المصمم المناسب لطلب
-                                                    تصميمك </p>
+                                                <img class="mb-3" src="{{ asset("{$category->path}$category->image ") }}" height="60" alt="Help center articles">
+                                                <h5>{{$category->name}}</h5>
+                                                <p class="text-dark"> {{$category->description}} </p>
                                                 <div class="d-flex align-items-center justify-content-around">
-                                                    <button type="button" class="btn btn-label-primary">
+                                                    <button type="button" class="btn btn-label-primary" onclick="edit({{$category}},'{{ $category->path }}')">
                                                         <span class="tf-icons bx bx-edit"></span>&nbsp; تعديل
                                                     </button>
 
@@ -159,6 +170,12 @@
                                             </div>
                                         </div>
                                     </div>
+                                @empty
+                                <div style='text-align: center;'>
+                                    لا يوجد اصنااف
+                                </div>
+                                @endforelse
+
                                 </div>
                             </div>
                         </div>
@@ -167,38 +184,44 @@
                             <div class="modal fade" id="editeCategory1" tabindex="-1" aria-hidden="true" style="display: none;">
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content">
-                                        <form id="formAccountSettings" method="POST" onsubmit="return false"
-                                              class="fv-plugins-bootstrap5 fv-plugins-framework" novalidate="novalidate">
+                                             <form action="{{route('category.update')}}" id="formAccountSettings" method="POST" 
+                                class="fv-plugins-bootstrap5 fv-plugins-framework" novalidate="novalidate" 
+                                enctype="multipart/form-data">
+                                            @csrf
                                             <div class="card-body">
                                                 <div class="d-flex align-items-sm-center gap-4 flex-wrap">
-                                                    <img src="../../assets/img/backgrounds/event.jpg" alt="user-avatar"
+                                                    <img src="" alt="user-avatar" 
                                                          class="d-block rounded img-fluid h-px-150 w-px-150"
                                                          style="object-fit: contain" id="uploadedImg">
                                                     <div class="button-wrapper my-auto">
                                                         <label for="upload" class="btn btn-primary me-2" tabindex="0">
-                                                            <span class="d-none d-sm-block">تعديل الصورة</span>
+                                                            <span class="d-none d-sm-block">أضافة صورة</span>
                                                             <i class="bx bx-upload d-block d-sm-none"></i>
-                                                            <input type="file" id="upload" class="account-file-input"
-                                                                   hidden="" accept="image/png, image/jpeg">
+                                                            <input type="file" id="upload" class="account-file-input" name='image'
+                                                                hidden="" accept="image/png, image/jpeg">
                                                         </label>
                                                     </div>
                                                     <p class="text-muted mb-0">الصيغ المتاحة JPG, GIF أو PNG. الحد الأقصى
                                                         800K</p>
                                                 </div>
                                             </div>
+                                            <input type="hidden"  name='id' value=''>
+
                                             <hr class="my-0">
                                             <div class="card-body">
                                                 <div class="row">
                                                     <div class="mb-3 col">
                                                         <label for="name" class="form-label">أسم المجال</label>
-                                                        <input type="text" class="form-control" id="name" name="name"
-                                                               placeholder="أسم المجال" value="برمجة">
+                                                        <input type="text" class="form-control" id="name" 
+                                                               placeholder="أسم المجال" value="" name='name'>
                                                     </div>
                                                     <div>
                                                         <label for="exampleFormControlTextarea1" class="form-label">وصف
                                                             المجال</label>
                                                         <textarea class="form-control" id="exampleFormControlTextarea1"
-                                                                  rows="3" placeholder="الوصف"> يمكنك الحصول على تصاميم عالية الجودة واختيار المصمم المناسب لطلب
+                                                                  rows="3" placeholder="الوصف"
+                                                                  name='description'
+                                                                  > يمكنك الحصول على تصاميم عالية الجودة واختيار المصمم المناسب لطلب
                                         تصميمك </textarea>
                                                     </div>
 
@@ -277,5 +300,20 @@
                 })
             })
         });
+
+    
+        function edit(category,path=''){
+            const img =  document.querySelector('#editeCategory1 .modal-dialog form img');
+            const id =  document.querySelector('input[name=id]');
+            const name =  document.querySelector('#editeCategory1 .modal-dialog form input#name[name=name]');
+            const description =  document.querySelector('#editeCategory1 .modal-dialog form textarea[name=description]');
+
+            console.log(id);
+            id.value=category.id;
+            name.value=category.name;
+            img.src=path+'/'+category.image;
+            description.innerText=category.description;
+
+        }
     </script>
 @endsection

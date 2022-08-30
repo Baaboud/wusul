@@ -20,7 +20,8 @@ class ServiceCategory extends Controller
      */
     public function index()
     {
-        //
+        $categories=ServiceCat::all();
+        return view('admin.categories',compact('categories'));
     }
 
     /**
@@ -65,8 +66,8 @@ class ServiceCategory extends Controller
 
             // event(new notfiy($));
 
-            // return redirect()->route('admin.home');
-            return $category;
+            return redirect()->back();
+            // return $category;
         } catch (\Exception $ex) {
             return $ex->getMessage();
             // return redirect()->back()->with(['error' => 'حدث خطا ما برجاء المحاوله لاحقا']);
@@ -108,10 +109,11 @@ class ServiceCategory extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
         try {
-            $category = ServiceCat::findOrFail($id);
+            // return $request;
+            $category = ServiceCat::findOrFail($request->id);
             
             $photo;
             if ($request->hasFile('image')) {
@@ -132,7 +134,7 @@ class ServiceCategory extends Controller
                 'description' => $request['description'],
                 'image' => $photo,
             ]);   
-
+            return redirect()->back();
         } catch (\Throwable $th) {
             return $th->getMessage();
         }
@@ -148,12 +150,15 @@ class ServiceCategory extends Controller
     {
         try {
             $category = ServiceCat::findOrFail($id);
+            // return $category;
             if($category->image  != ''){
                 Storage::disk('services_cat')->delete($category->image);
             }
             $category->delete();
+            return redirect()->route('categories');
 
         } catch (\Throwable $th) {
+            return $th->getMessage();
             //throw $th;
         }
     }
