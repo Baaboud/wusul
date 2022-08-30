@@ -7,23 +7,23 @@
   <title>Document</title>
 </head>
 <body>
-  <form action="http://127.0.0.1:8000/serviceProvider/work/store" method="post" enctype="multipart/form-data">
+  <form action="http://127.0.0.1:8000/serviceProvider/service/store" method="post" enctype="multipart/form-data">
   @csrf
-    <input type="text" name="url" id="">
-    <input type="hidden" name="service_id" value={{$id}} id="">
+    <input type="text" name="name" id="">
 
-    <input type="text" name="title" id="">
-              <!-- {{-- <select name="service_cat_id" id="select1"
+    <input type="text" name="description" id="">
+              <select name="service_cat_id" id="select1"
                                 class="form-select select1 form-control mx-2"
                                 aria-label=".form-select-lg example">
 
-                            {{-- @foreach ($categories as $category)
+                             @foreach ($categories as $category)
                                 <option value="{{ $category->id }}">
                                     {{ $category->name }}
                                 </option>
-                            @endforeach --}}
-                        </select> --}} -->
+                            @endforeach 
+                        </select> 
     <input type="file" name="image" id="">
+
     <input type="submit" value="OK">
   </form>
 </body>

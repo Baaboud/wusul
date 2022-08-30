@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\admin\adminController;
 use App\Http\Controllers\admin\ServiceCategory;
 use App\Http\Controllers\admin\UsersController;
+use App\Http\Controllers\userServiceProvider\ServicesController;
 
 // admin
     Route::group(['middleware' => ['auth','checkType:admin']], function () {
@@ -24,10 +25,15 @@ use App\Http\Controllers\admin\UsersController;
                     Route::get('/create', [ServiceCategory::class, 'create'])->name('category.create');
                     Route::post('/store', [ServiceCategory::class, 'store'])->name('category.store');
                     Route::get('/edit/{id}', [ServiceCategory::class, 'edit'])->name('category.edit');
-                    Route::post('/update/{id}', [ServiceCategory::class, 'update'])->name('category.update');
+                    Route::post('/update/{id?}', [ServiceCategory::class, 'update'])->name('category.update');
+                    Route::get('/delete/{id}', [ServiceCategory::class, 'destroy'])->name('category.del');
+
         
                 });
 
+                Route::group(['prefix' => 'services'], function () {
+                    Route::get('/', [ServicesController::class, 'services'])->name('admin.services');
+                });
 
         // Setting Routs
         Route::group(['prefix' => 'settings'], function () {

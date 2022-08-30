@@ -15,13 +15,14 @@ return new class extends Migration
     {
         Schema::create('services', function (Blueprint $table) {
             $table->id();
-            // $table->unsignedBigInteger('user_id');
-            // $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
             $table->string('name');
             $table->string('image')->nullable();
             $table->text('description')->nullable();
             $table->boolean('type')->default(0);// tye of pay in service
             // [0 or 1]
+            $table->boolean('is_active')->default(1);
             $table->integer('price')->nullable();
             $table->integer('stars')->default(0);
             $table->unsignedBigInteger('service_cat_id');
