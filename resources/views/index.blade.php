@@ -45,7 +45,7 @@
                         </a>
                     </div>
                     <div class="row">
-                        <div class="col-md-6 col-lg-3 mb-4">
+                        <div class="col-xl-3 col-lg-4 col-sm-6 col-12 mb-4">
                             <div class="card shadow h-100">
                                 <div class="card-header flex-grow-0">
                                     <div class="d-flex">
@@ -88,7 +88,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6 col-lg-3 mb-4">
+                        <div class="col-xl-3 col-lg-4 col-sm-6 col-12 mb-4">
                             <div class="card shadow h-100">
                                 <div class="card-header flex-grow-0">
                                     <div class="d-flex">
@@ -131,7 +131,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6 col-lg-3 mb-4">
+                        <div class="col-xl-3 col-lg-4 col-sm-6 col-12 mb-4">
                             <div class="card shadow h-100">
                                 <div class="card-header flex-grow-0">
                                     <div class="d-flex">
@@ -174,179 +174,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6 col-lg-3 mb-4">
-                            <div class="card shadow h-100">
-                                <div class="card-header flex-grow-0">
-                                    <div class="d-flex">
-                                        <div class="avatar flex-shrink-0 me-3">
-                                            <img src="http://127.0.0.1:8000/assets/img/avatars/1.png" alt="User" class="rounded-circle">
-                                        </div>
-                                        <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-1">
-                                            <div class="me-2">
-                                                <h5 class="mb-0">عبدالهادي ديان</h5>
-                                                <small class="text-muted">2019-08-02</small>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <img class="img-fluid" src="../../assets/img/backgrounds/event.jpg" alt="Card image cap">
-                                <div class="featured-date mt-n4 ms-4 bg-white rounded w-px-50 shadow text-center">
-                                    <h5 class="mb-0 text-dark"><span class="badge bg-label-primary pb-3 px-3 fs-6">برمجة</span></h5>
-                                </div>
-                                <div class="card-body">
-                                    <h5 class="text-center fs-5 fw-bold mb-4">تصميم مواقع ويب</h5>
-                                    <div class="d-flex align-items-center justify-content-center my-1 gap-2">
-                                    </div>
-                                    <div class="d-flex align-items-center justify-content-center">
-                                        <button type="button" class="btn btn-primary fs-5 px-3">
-                                            <span class="tf-icons bx bx-user-check"></span>&nbsp; وصول
-                                        </button>
-                                    </div>
-                                    <div class="mt-3 d-flex fs-6 align-items-center justify-content-around">
-                                        <a href="#" class="text-muted me-3" data-bs-toggle="tooltip" data-bs-offset="0,4"
-                                           data-bs-placement="bottom" data-bs-html="true" title=""
-                                           data-bs-original-title="اجمالي الطلبات">
-                                            <i class="bx bx-cart me-1 fs-4"></i> 236</a>
-                                        <a href="#" class="text-muted" data-bs-toggle="tooltip" data-bs-offset="0,4"
-                                           data-bs-placement="bottom" data-bs-html="true" title=""
-                                           data-bs-original-title="اجمالي التقييمات"><i class="bx bx-star me-1 fs-4"></i> 12</a>
-                                        <a href="#" class="text-muted" data-bs-toggle="tooltip" data-bs-offset="0,4"
-                                           data-bs-placement="bottom" data-bs-html="true" title=""
-                                           data-bs-original-title="وقت التسليم التقريبي"><i class="bx bx-time me-1 fs-4"></i> 12 يوم</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-lg-3 mb-4">
-                            <div class="card shadow h-100">
-                                <div class="card-header flex-grow-0">
-                                    <div class="d-flex">
-                                        <div class="avatar flex-shrink-0 me-3">
-                                            <img src="http://127.0.0.1:8000/assets/img/avatars/1.png" alt="User" class="rounded-circle">
-                                        </div>
-                                        <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-1">
-                                            <div class="me-2">
-                                                <h5 class="mb-0">عبدالهادي ديان</h5>
-                                                <small class="text-muted">2019-08-02</small>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <img class="img-fluid" src="../../assets/img/backgrounds/event.jpg" alt="Card image cap">
-                                <div class="featured-date mt-n4 ms-4 bg-white rounded w-px-50 shadow text-center">
-                                    <h5 class="mb-0 text-dark"><span class="badge bg-label-primary pb-3 px-3 fs-6">برمجة</span></h5>
-                                </div>
-                                <div class="card-body">
-                                    <h5 class="text-center fs-5 fw-bold mb-4">تصميم مواقع ويب</h5>
-                                    <div class="d-flex align-items-center justify-content-center my-1 gap-2">
-                                    </div>
-                                    <div class="d-flex align-items-center justify-content-center">
-                                        <button type="button" class="btn btn-primary fs-5 px-3">
-                                            <span class="tf-icons bx bx-user-check"></span>&nbsp; وصول
-                                        </button>
-                                    </div>
-                                    <div class="mt-3 d-flex fs-6 align-items-center justify-content-around">
-                                        <a href="#" class="text-muted me-3" data-bs-toggle="tooltip" data-bs-offset="0,4"
-                                           data-bs-placement="bottom" data-bs-html="true" title=""
-                                           data-bs-original-title="اجمالي الطلبات">
-                                            <i class="bx bx-cart me-1 fs-4"></i> 236</a>
-                                        <a href="#" class="text-muted" data-bs-toggle="tooltip" data-bs-offset="0,4"
-                                           data-bs-placement="bottom" data-bs-html="true" title=""
-                                           data-bs-original-title="اجمالي التقييمات"><i class="bx bx-star me-1 fs-4"></i> 12</a>
-                                        <a href="#" class="text-muted" data-bs-toggle="tooltip" data-bs-offset="0,4"
-                                           data-bs-placement="bottom" data-bs-html="true" title=""
-                                           data-bs-original-title="وقت التسليم التقريبي"><i class="bx bx-time me-1 fs-4"></i> 12 يوم</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-lg-3 mb-4">
-                            <div class="card shadow h-100">
-                                <div class="card-header flex-grow-0">
-                                    <div class="d-flex">
-                                        <div class="avatar flex-shrink-0 me-3">
-                                            <img src="http://127.0.0.1:8000/assets/img/avatars/1.png" alt="User" class="rounded-circle">
-                                        </div>
-                                        <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-1">
-                                            <div class="me-2">
-                                                <h5 class="mb-0">عبدالهادي ديان</h5>
-                                                <small class="text-muted">2019-08-02</small>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <img class="img-fluid" src="../../assets/img/backgrounds/event.jpg" alt="Card image cap">
-                                <div class="featured-date mt-n4 ms-4 bg-white rounded w-px-50 shadow text-center">
-                                    <h5 class="mb-0 text-dark"><span class="badge bg-label-primary pb-3 px-3 fs-6">برمجة</span></h5>
-                                </div>
-                                <div class="card-body">
-                                    <h5 class="text-center fs-5 fw-bold mb-4">تصميم مواقع ويب</h5>
-                                    <div class="d-flex align-items-center justify-content-center my-1 gap-2">
-                                    </div>
-                                    <div class="d-flex align-items-center justify-content-center">
-                                        <button type="button" class="btn btn-primary fs-5 px-3">
-                                            <span class="tf-icons bx bx-user-check"></span>&nbsp; وصول
-                                        </button>
-                                    </div>
-                                    <div class="mt-3 d-flex fs-6 align-items-center justify-content-around">
-                                        <a href="#" class="text-muted me-3" data-bs-toggle="tooltip" data-bs-offset="0,4"
-                                           data-bs-placement="bottom" data-bs-html="true" title=""
-                                           data-bs-original-title="اجمالي الطلبات">
-                                            <i class="bx bx-cart me-1 fs-4"></i> 236</a>
-                                        <a href="#" class="text-muted" data-bs-toggle="tooltip" data-bs-offset="0,4"
-                                           data-bs-placement="bottom" data-bs-html="true" title=""
-                                           data-bs-original-title="اجمالي التقييمات"><i class="bx bx-star me-1 fs-4"></i> 12</a>
-                                        <a href="#" class="text-muted" data-bs-toggle="tooltip" data-bs-offset="0,4"
-                                           data-bs-placement="bottom" data-bs-html="true" title=""
-                                           data-bs-original-title="وقت التسليم التقريبي"><i class="bx bx-time me-1 fs-4"></i> 12 يوم</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-lg-3 mb-4">
-                            <div class="card shadow h-100">
-                                <div class="card-header flex-grow-0">
-                                    <div class="d-flex">
-                                        <div class="avatar flex-shrink-0 me-3">
-                                            <img src="http://127.0.0.1:8000/assets/img/avatars/1.png" alt="User" class="rounded-circle">
-                                        </div>
-                                        <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-1">
-                                            <div class="me-2">
-                                                <h5 class="mb-0">عبدالهادي ديان</h5>
-                                                <small class="text-muted">2019-08-02</small>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <img class="img-fluid" src="../../assets/img/backgrounds/event.jpg" alt="Card image cap">
-                                <div class="featured-date mt-n4 ms-4 bg-white rounded w-px-50 shadow text-center">
-                                    <h5 class="mb-0 text-dark"><span class="badge bg-label-primary pb-3 px-3 fs-6">برمجة</span></h5>
-                                </div>
-                                <div class="card-body">
-                                    <h5 class="text-center fs-5 fw-bold mb-4">تصميم مواقع ويب</h5>
-                                    <div class="d-flex align-items-center justify-content-center my-1 gap-2">
-                                    </div>
-                                    <div class="d-flex align-items-center justify-content-center">
-                                        <button type="button" class="btn btn-primary fs-5 px-3">
-                                            <span class="tf-icons bx bx-user-check"></span>&nbsp; وصول
-                                        </button>
-                                    </div>
-                                    <div class="mt-3 d-flex fs-6 align-items-center justify-content-around">
-                                        <a href="#" class="text-muted me-3" data-bs-toggle="tooltip" data-bs-offset="0,4"
-                                           data-bs-placement="bottom" data-bs-html="true" title=""
-                                           data-bs-original-title="اجمالي الطلبات">
-                                            <i class="bx bx-cart me-1 fs-4"></i> 236</a>
-                                        <a href="#" class="text-muted" data-bs-toggle="tooltip" data-bs-offset="0,4"
-                                           data-bs-placement="bottom" data-bs-html="true" title=""
-                                           data-bs-original-title="اجمالي التقييمات"><i class="bx bx-star me-1 fs-4"></i> 12</a>
-                                        <a href="#" class="text-muted" data-bs-toggle="tooltip" data-bs-offset="0,4"
-                                           data-bs-placement="bottom" data-bs-html="true" title=""
-                                           data-bs-original-title="وقت التسليم التقريبي"><i class="bx bx-time me-1 fs-4"></i> 12 يوم</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-lg-3 mb-4">
+                        <div class="col-xl-3 col-lg-4 col-sm-6 col-12 mb-4">
                             <div class="card shadow h-100">
                                 <div class="card-header flex-grow-0">
                                     <div class="d-flex">
