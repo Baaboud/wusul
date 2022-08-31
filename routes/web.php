@@ -63,7 +63,7 @@ Route::get('/services', function () {
 })->name('services');
 
 Route::get('/l/l', function () {
-    return view('service_provider.wallet');
+    return view('service.service_page');
 })->name('test');
 
 Route::group(['prefix' => 'user'], function () {
