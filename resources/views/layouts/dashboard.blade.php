@@ -105,8 +105,8 @@
                         <div>لوحة التحكم</div>
                     </a>
                 </li>
-
-                <!-- Misc -->
+                @if(Auth::user()->admin())
+                 <!-- Misc -->
                 <li class="menu-header text-uppercase text-white fs-6"><span class="menu-header-text">أدارة العمليات</span></li>
                 <li class="menu-item">
                     <a href="{{route('admin.users')}}" target="_blank" class="menu-link">
@@ -159,6 +159,9 @@
                         <div>أدارة المدن</div>
                     </a>
                 </li>
+                @endif
+
+                @if(Auth::user()->userServiceProvider())
 
                 <!-- Service Provider -->
                 <li class="menu-header text-uppercase text-white fs-6"><span class="menu-header-text text-danger">مزود الخدمة</span></li>
@@ -172,7 +175,7 @@
                     </a>
                 </li>
                 <li class="menu-item {{Request::url() === route('test') ? 'active' : ''}}">
-                    <a href="https://themeselection.com/support/" target="_blank" class="menu-link">
+                    <a href="{{route('service.create')}}" target="_blank" class="menu-link">
                         <i class="menu-icon tf-icons bx bx-user"></i>
                         <div>الخدمات</div>
                     </a>
@@ -193,6 +196,7 @@
                         <div>البلاغات</div>
                     </a>
                 </li>
+                @endif
             </ul>
         </aside>
         <!-- / Aside -->

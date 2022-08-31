@@ -31,6 +31,8 @@ Route::middleware(['auth'])->group(function () {
 
     });
 
+
+
 });
 
 Route::get('/test', function () {
