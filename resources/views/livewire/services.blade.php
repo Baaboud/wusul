@@ -18,7 +18,7 @@
                         <label for="selectpickerIcons" class="form-label fs-6 fw-bolder">نوع الخدمة</label>
                         <select class=" w-100 "
                                  wire:model='category'>
-                            <option data-icon="bx bx-list-check" value=0>الكل</option>
+                            <option data-icon="bx bx-list-check" value='0' >الكل</option>
                             @forelse($categories as $category)   
                                 <option data-icon="bx bx-list-check" value="{{$category->id}}" > {{$category->name}}</option>
                             @empty
@@ -40,7 +40,7 @@
                     <div class="col-lg-3 col-sm-6 mb-3">
                         <label for="selectpickerIcons" class="form-label fs-6 fw-bolder">حالة الخدمة</label>
                         <select class=" w-100 " wire:model='active'>
-                            <option data-icon="bx bx-list-check">الكل</option>
+                            <option data-icon="bx bx-list-check" value=0>الكل</option>
                             <option data-icon="bx bx-list-check" value="1" >مفعلة</option>
                             <option data-icon="bx bx-list-check" value="2" >متوقفة</option>
                         </select>
@@ -101,6 +101,8 @@
                             {{-- Card View --}}
                             <div class="tab-pane fade" id="navs-card" role="tabpanel">
                                 <div class="row g-4">
+                                @forelse($services as $service)
+                                    
                                     <div class="col-xl-3 col-lg-4 col-md-6">
                                         <div class="card h-100">
                                             <div class="card-header flex-grow-0">
@@ -110,20 +112,28 @@
                                                     </div>
                                                     <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-1">
                                                         <div class="me-2">
-                                                            <h5 class="mb-0">عبدالهادي ديان</h5>
-                                                            <small class="text-muted">2019-08-02</small>
+                                                            <h5 class="mb-0">{{$service->name}}</h5>
+                                                            <small class="text-muted">{{$service->created_at}}</small>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
+                                            @if($service->image)
+                                                
+                                                <img class="img-fluid" src="{{ asset("{$service->path}$service->image ") }}" alt="Card image cap">
+                                            @else
+                                                
                                             <img class="img-fluid" src="../../assets/img/backgrounds/event.jpg" alt="Card image cap">
+                                            @endif
                                             <div class="featured-date mt-n4 ms-4 bg-white rounded w-px-50 shadow text-center">
-                                                <h5 class="mb-0 text-dark"><span class="badge bg-label-primary p-3 border-light">برمجة</span></h5>
+                                                <h5 class="mb-0 text-dark"><span class="badge bg-label-primary p-3 border-light">{{$service->category->name}}</span></h5>
                                             </div>
                                             <div class="card-body">
-                                                <h5 class="text-center fw-bolder mb-4">تصميم مواقع ويب</h5>
+                                                <h5 class="text-center fw-bolder mb-4">{{$service->description}}</h5>
                                                 <div class="d-flex align-items-center justify-content-center my-4 gap-2">
-                                                    <span class="badge bg-label-success fs-6 me-1">مفعل</span>
+                                                    <span class="badge bg-label-success fs-6 me-1">
+                                                    {{$service->is_active? 'مفعل' : 'غير مفعل'}}
+                                                    </span>
                                                 </div>
                                                 <div class="d-flex align-items-center justify-content-center mt-4">
                                                     <a href="javascript:;" class="btn btn-primary d-flex align-items-center me-3"><i class="bx bx-user-check me-1"></i>وصول</a>
@@ -136,12 +146,15 @@
                                                 <div class="mt-5 d-flex fs-6 align-items-center justify-content-around">
                                                     <a href="#" class="text-muted me-3" data-bs-toggle="tooltip" data-bs-offset="0,4" data-bs-placement="bottom" data-bs-html="true" title="" data-bs-original-title="اجمالي الطلبات">
                                                         <i class="bx bx-cart me-1 fs-4"></i> 236</a>
-                                                    <a href="#" class="text-muted" data-bs-toggle="tooltip" data-bs-offset="0,4" data-bs-placement="bottom" data-bs-html="true" title="" data-bs-original-title="اجمالي التقييمات"><i class="bx bx-star me-1 fs-4"></i> 12</a>
-                                                    <a href="#" class="text-muted" data-bs-toggle="tooltip" data-bs-offset="0,4" data-bs-placement="bottom" data-bs-html="true" title="" data-bs-original-title="وقت التسليم التقريبي"><i class="bx bx-time me-1 fs-4"></i> 12 يوم</a>
+                                                    <a href="#" class="text-muted" data-bs-toggle="tooltip" data-bs-offset="0,4" data-bs-placement="bottom" data-bs-html="true" title="" data-bs-original-title="اجمالي التقييمات"><i class="bx bx-star me-1 fs-4"></i> {{$service->stars}}</a>
+                                                    <a href="#" class="text-muted" data-bs-toggle="tooltip" data-bs-offset="0,4" data-bs-placement="bottom" data-bs-html="true" title="" data-bs-original-title="وقت التسليم التقريبي"><i class="bx bx-time me-1 fs-4"></i> {{$service->interval}} </a>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
+                                @empty
+                                    
+                                @endforelse
                                 </div>
                             </div>
                         </div>

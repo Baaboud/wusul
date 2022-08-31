@@ -1,8 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\admin\CityController;
 use App\Http\Controllers\admin\adminController;
 use App\Http\Controllers\admin\ServiceCategory;
+use App\Http\Controllers\admin\stateController;
 use App\Http\Controllers\admin\UsersController;
 use App\Http\Controllers\userServiceProvider\ServicesController;
 
@@ -15,7 +17,7 @@ use App\Http\Controllers\userServiceProvider\ServicesController;
 
         Route::group(['prefix' => 'users'], function () {
             Route::get('/', [UsersController::class, 'users'])->name('admin.users');
-
+            Route::get('/active/{id}', [UsersController::class, 'activation'])->name('admin.user.active');
         
         });
 
@@ -37,18 +39,26 @@ use App\Http\Controllers\userServiceProvider\ServicesController;
 
         // Setting Routs
         Route::group(['prefix' => 'settings'], function () {
+            
+            Route::prefix('cities')->group(function () {       
+                Route::get('/', [CityController::class, 'index'])->name('cities');
+                Route::post('/store', [CityController::class, 'store'])->name('cities.add');
+                Route::post('/update', [CityController::class, 'update'])->name('cities.update');
+                Route::get('/delete/{id}', [CityController::class, 'destroy'])->name('cities.delete');
+                Route::get('/active/{id}', [CityController::class, 'activation'])->name('admin.city.active');
+            });
 
-            Route::get('/city', [CityController::class, 'create'])->name('add-city');
-            Route::post('/city/store', [CityController::class, 'store'])->name('store-city');
-            Route::get('/city/edit/{id}', [CityController::class, 'edit'])->name('edit-city');
-            Route::post('/city/update/{id}', [CityController::class, 'update'])->name('update-city');
-            Route::get('/city/active/{id}', [CityController::class, 'active'])->name('active.city');
+            // Route::get('/city', [CityController::class, 'create'])->name('add-city');
+            // Route::post('/city/store', [CityController::class, 'store'])->name('store-city');
+            // Route::get('/city/edit/{id}', [CityController::class, 'edit'])->name('edit-city');
+            // Route::post('/city/update/{id}', [CityController::class, 'update'])->name('update-city');
+            // Route::get('/city/active/{id}', [CityController::class, 'active'])->name('active.city');
 
-            Route::get('/state', [GovernorateController::class, 'create'])->name('add-state');
-            Route::post('/state/store', [GovernorateController::class, 'store'])->name('store-state');
-            Route::get('/state/edit/{id}', [GovernorateController::class, 'edit'])->name('edit-state');
-            Route::post('/state/update/{id}', [GovernorateController::class, 'update'])->name('update-state');
-            Route::get('/state/active/{id}', [GovernorateController::class, 'active'])->name('active.state');
+            Route::get('/states', [stateController::class, 'index'])->name('states');
+            Route::post('/state/store', [stateController::class, 'store'])->name('states.add');
+            Route::post('/state/update', [stateController::class, 'update'])->name('states.update');
+            Route::get('/state/delete/{id}', [stateController::class, 'destroy'])->name('states.delete');
+            Route::get('/active/{id}', [stateController::class, 'activation'])->name('admin.state.active');
 
         });
 

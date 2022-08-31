@@ -31,14 +31,15 @@
             <div class="card position-relative">
                 <h5 class="card-header fs-4 fw-bolder">المدن</h5>
                 <button type="button" class="btn btn-lg btn-primary position-absolute top-0 end-0 m-3" data-bs-toggle="modal" data-bs-target="#addCategory">
-                    أضافة محافظة&nbsp;<span class="tf-icons bx bx-book-add"></span>
+                    أضافة مدينه&nbsp;<span class="tf-icons bx bx-book-add"></span>
                 </button>
 
                 <div class="modal fade" id="addCategory" tabindex="-1" aria-hidden="true" style="display: none;">
                     <div class="modal-dialog modal-dialog-centered" role="document">
                         <div class="modal-content">
-                            <form id="formAccountSettings" method="POST" onsubmit="return false"
+                            <form id="formAccountSettings" method="POST" action="{{route('cities.add')}}"
                                   class="fv-plugins-bootstrap5 fv-plugins-framework" novalidate="novalidate">
+                                  @csrf
                                 <hr class="my-0">
                                 <div class="modal-header">
                                     <h5 class="modal-title fs-5 fw-bolder" id="modalToggleLabel">أضافة مدينة</h5>
@@ -49,16 +50,19 @@
                                         <div class="mb-3 col">
                                             <label for="name" class="form-label fs-5 fw-bolder">أسم المدينة</label>
                                             <input type="text" class="form-control" id="name" name="name"
-                                                   placeholder="أسم المحافظة">
+                                                   placeholder="أسم المدينة">
                                         </div>
                                         <div class="mb-3 col">
                                             <label for="selectpickerBasic" class="form-label fs-5 fw-bolder">المحافظة</label>
                                             <select class="selectpicker w-100 show-tick" id="selectpickerBasic" data-icon-base="bx"
-                                                    data-tick-icon="bx-check" data-style="btn-default">
-                                                <option>الكل</option>
-                                                <option>حضرموت</option>
-                                                <option>المهرة</option>
-                                                <option>عدن</option>
+                                                    data-tick-icon="bx-check" name='state' data-style="btn-default">
+                                                <option value=0>الكل</option>
+                                                @forelse($states as $state )
+                                                <option value="{{$state->id}}">{{$state->name}}</option>
+                                                @empty
+                                                    
+                                                @endforelse
+
                                             </select>
                                         </div>
 
@@ -92,26 +96,98 @@
                         </tr>
                         </thead>
                         <tbody class="table-border-bottom-0">
-                        <tr>
-                            <td>1</td>
-                            <td>المكلا</td>
-                            <td>حضرموت</td>
-                            <td>2022-05-12</td>
-                            <td><span class="badge bg-label-success fs-6">مفعل</span></td>
+                        @forelse($cities as $city )
+                                  <tr>
+                            <td>{{$loop->index+1 }}</td>
+                            <td>{{$city->name}}</td>
+                            <td>{{$city->state->name}}</td>
+                            <td>{{$city->created_at}}</td>
+                            <td><span class="badge bg-label-success fs-6">
+                            {{$city->is_active? 'مفعل' : 'غير مفعل'}}
+                            </span>
+                            </td>
                             <td class="d-flex">
-                                <button type="button" class="btn btn-label-primary mx-2" data-bs-toggle="modal" data-bs-target="#editeCategory1">
+                                <button type="button" class="btn btn-label-primary mx-2" 
+                                        onclick="edit({{ $city }})"
+                                        data-bs-toggle="modal" data-bs-target="#editeCategory1">
                                     <span class="tf-icons bx bx-edit"></span>&nbsp; تعديل
                                 </button>
 
-                                <form method="get" action="{{ route('index') }}">
+                                <form method="get" action="{{ route('cities.delete',$city->id) }}">
                                     <button type="submit" class="btn btn-label-danger confirm" id="confirm">
                                         <span class="tf-icons bx bx-trash"></span>&nbsp; خذف
                                     </button>
                                 </form>
+
+                                      <form method="get" action="{{ route('admin.city.active',$city->id) }}">
+                                    <button type="submit" class="btn btn-label-danger mx-2">
+                                                @if($city->is_active)
+                                                        <span class="tf-icons bx bx-block">
+                                                        ايقاف
+                                                        </span>&nbsp;
+                                                        @else
+                                                        <span class="">
+                                                        تفعيل
+                                                        </span>
+                                                        @endif                                      
+                                                        </button>
+                                </form>
                             </td>
                         </tr>
+                        @empty
+                            
+                        @endforelse
                         </tbody>
                     </table>
+                    <div class="modal fade" id="editeCategory1" tabindex="-1" aria-hidden="true" style="display: none;">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <form id="formAccountSettings" method="POST" action="{{route('cities.update')}}"
+                                  class="fv-plugins-bootstrap5 fv-plugins-framework" novalidate="novalidate">
+                                  @csrf
+                                <input type="hidden"  name='id' value=''>
+                                <hr class="my-0">
+                                <div class="modal-header">
+                                    <h5 class="modal-title fs-5 fw-bolder" id="modalToggleLabel">تتعديل مدينة</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="mb-3 col">
+                                            <label for="name" class="form-label fs-5 fw-bolder">أسم المدينة</label>
+                                            <input type="text" class="form-control" id="name" name="name"
+                                                   placeholder="أسم المدينة">
+                                        </div>
+                                        <div class="mb-3 col">
+                                            <label for="selectpickerBasic" class="form-label fs-5 fw-bolder">المحافظة</label>
+                                            <select class=" w-100 show-tick" id="selectpickerBasic" data-icon-base="bx"
+                                                    data-tick-icon="bx-check" name='state' data-style="btn-default">
+                                                <option value=0>الكل</option>
+                                                @forelse($states as $state )
+                                                <option value="{{$state->id}}">{{$state->name}}</option>
+                                                @empty
+                                                    
+                                                @endforelse
+
+                                            </select>
+                                        </div>
+
+
+                                    </div>
+                                    <div class="mt-2 text-center">
+                                        <button type="submit" class="btn btn-primary me-2"> حفظ التعديل</button>
+                                        <button type="button" class="btn btn-label-secondary"
+                                                data-bs-dismiss="modal">إلغاء
+                                        </button>
+                                    </div>
+                                    <div></div>
+                                    <input type="hidden">
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
                 </div>
             </div>
         </div>
@@ -151,5 +227,22 @@
                         })
                     })
                 });
+
+        function edit(city){
+            const id =  document.querySelector('input[name=id]');
+            const name =  document.querySelector('#editeCategory1 form input[name=name]');
+            const states =  document.querySelectorAll('#editeCategory1 form select option');
+
+            console.log(city);
+            id.value=city.id;
+            states.forEach((state)=>{
+                if(state.value==city.state_id){
+                    state.setAttribute('selected');
+                    console.log(state);
+                }
+            });
+            states.foea=city.state_id;
+            name.value=city.name;
+        }
             </script>
 @endsection

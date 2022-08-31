@@ -105,6 +105,37 @@ public function userServiceProvider(){
     }else{
         return false;
     }
+
+    
+}
+public function scopeWithFilters($query, $search,$type,$active,$stars)
+{
+    return $query->when($search, function ($query) use ($search) {
+       $query->where(function ($query) use ($search) {
+            $query->where('name', 'like', '%' .  $search . '%')
+            ->orWhere('email', 'like', '%' .  $search . '%');
+        });
+})
+->when($active, function ($query) use ($active) {
+    $query->where(function ($query) use ($active) {
+        $e;
+       if($active == 3){
+            $query->where('email_verified_at', '!=', '');
+        }else{
+            $active==2?$active=0:$active=1;
+            $query->where('is_active', $active );
+            }
+        });
+})
+    ->when($type, function ($query) use ($type) {
+            if($type==3){
+                $type=0;
+            }
+            $query->where('type', $type);
+    })
+    ->when($stars, function ($query) use ($stars) {
+        $query->where('stars', $stars);
+    });
 }
 
 
