@@ -147,13 +147,13 @@
                     </a>
                 </li>
                 <li class="menu-item">
-                    <a href="https://themeselection.com/support/" target="_blank" class="menu-link">
+                    <a href="{{route('states')}}" target="_blank" class="menu-link">
                         <i class="menu-icon tf-icons bx bxs-city"></i>
                         <div>أدارة المحافظات</div>
                     </a>
                 </li>
                 <li class="menu-item">
-                    <a href="https://themeselection.com/demo/sneat-bootstrap-html-admin-template/documentation/"
+                    <a href="{{route('cities')}}"
                        target="_blank" class="menu-link">
                         <i class="menu-icon tf-icons bx bx-current-location"></i>
                         <div>أدارة المدن</div>
@@ -271,7 +271,7 @@
                                       <span class="dropdown-shortcuts-icon bg-label-secondary rounded-circle mb-2">
                                         <i class="bx bx-cog fs-4"></i>
                                       </span>
-                                                    <a href="pages-account-settings-account.html" class="stretched-link">الاعدادات</a>
+                                                    <a href="{{ route('account') }}" class="stretched-link">الاعدادات</a>
                                                     <small class="text-muted mb-0">اعدادات الحساب</small>
                                                 </div>
                                             </div>

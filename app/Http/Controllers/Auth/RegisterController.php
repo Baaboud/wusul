@@ -77,6 +77,7 @@ class RegisterController extends Controller
         }
         $user->save();
         $user->profile()->create([]);
+        $user->address()->create([]);
 
         return $user;
     }

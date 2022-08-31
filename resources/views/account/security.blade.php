@@ -24,12 +24,14 @@
                 <div class="card mb-4">
                     <h5 class="card-header">تغيير كلمة السر</h5>
                     <div class="card-body">
-                        <form id="formAccountSettings" method="POST" onsubmit="return false" class="fv-plugins-bootstrap5 fv-plugins-framework" novalidate="novalidate">
+                        <form id="formAccountSettings" method="POST" action="{{route('account.changePass')}}"
+                         class="fv-plugins-bootstrap5 fv-plugins-framework" novalidate="novalidate">
+                         @csrf
                             <div class="row">
                                 <div class="mb-3 col-md-6 form-password-toggle fv-plugins-icon-container">
                                     <label class="form-label" for="currentPassword">كلمة السر الحالية</label>
                                     <div class="input-group input-group-merge has-validation">
-                                        <input class="form-control" type="password" name="currentPassword" id="currentPassword" placeholder="············">
+                                        <input class="form-control" type="password" name="current_password" id="currentPassword" placeholder="············">
                                         <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
                                     </div><div class="fv-plugins-message-container invalid-feedback"></div>
                                 </div>
@@ -38,7 +40,7 @@
                                 <div class="mb-3 col-md-6 form-password-toggle fv-plugins-icon-container">
                                     <label class="form-label" for="newPassword">كلمة السر الجديدة</label>
                                     <div class="input-group input-group-merge has-validation">
-                                        <input class="form-control" type="password" id="newPassword" name="newPassword" placeholder="············">
+                                        <input class="form-control" type="password" id="newPassword" name="new_password" placeholder="············">
                                         <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
                                     </div><div class="fv-plugins-message-container invalid-feedback"></div>
                                 </div>

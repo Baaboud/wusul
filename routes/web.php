@@ -5,6 +5,7 @@ use App\Models\Work;
 use App\Models\Service;
 use App\Models\ServiceCat;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\admin\UsersController;
 use App\Http\Controllers\userServiceProvider\WorkController;
 use App\Http\Controllers\userServiceProvider\ServicesController;
 
@@ -18,6 +19,19 @@ use App\Http\Controllers\userServiceProvider\ServicesController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::middleware(['auth'])->group(function () {
+    Route::prefix('account')->group(function () {
+        
+        Route::get('/', [UsersController::class, 'account'])->name('account');
+        Route::post('/update', [UsersController::class, 'update'])->name('account.update');
+        Route::post('/image', [UsersController::class, 'saveImage'])->name('account.image');
+        Route::post('/changePass', [UsersController::class, 'changePassword'])->name('account.changePass');
+
+        // 
+
+    });
+
+});
 
 Route::get('/test', function () {
     $categories = ServiceCat::all();
@@ -66,15 +80,15 @@ Route::get('/l/l', function () {
     return view('service_provider.wallet');
 })->name('test');
 
-Route::group(['prefix' => 'user'], function () {
-    Route::get('/account', function () {
-        return view('user.account');
-    })->name('account');
+// Route::group(['prefix' => 'user'], function () {
+//     Route::get('/account', function () {
+//         return view('user.account');
+//     })->name('account');
 
     Route::get('/security', function () {
         return view('user.security');
     });
-});
+// });
 
 // start routes of user that provide service
 Route::group(['prefix' => 'serviceProvider',

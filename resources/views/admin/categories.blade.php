@@ -184,9 +184,11 @@
                             <div class="modal fade" id="editeCategory1" tabindex="-1" aria-hidden="true" style="display: none;">
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content">
-                                             <form action="{{route('category.update')}}" id="formAccountSettings" method="POST" 
+                                             <form action="{{route('category.update')}}" 
+                                enctype="multipart/form-data"
+                                    id="formAccountSettings" method="POST" 
                                 class="fv-plugins-bootstrap5 fv-plugins-framework" novalidate="novalidate" 
-                                enctype="multipart/form-data">
+                                >
                                             @csrf
                                             <div class="card-body">
                                                 <div class="d-flex align-items-sm-center gap-4 flex-wrap">
