@@ -401,7 +401,11 @@
                         <li class="nav-item navbar-dropdown dropdown-user dropdown">
                             <a class="nav-link dropdown-toggle hide-arrow" href="#" data-bs-toggle="dropdown">
                                 <div class="avatar avatar-online">
-                                    <img src="{{ asset('img/user.png') }}" alt="" class="w-px-40 h-auto rounded-circle">
+                                    @if(isset(Auth::user()->profile->image))
+                                        <img src="{{asset('assets/images/users/'.Auth::user()->profile->image)}}" alt="" class="w-px-40 h-100 rounded-circle">
+                                    @else
+                                        <img src="{{ asset('assets/img/avatars/1.png') }}" alt="" class="w-px-40 h-auto rounded-circle">
+                                    @endif
                                 </div>
                             </a>
                             <ul class="dropdown-menu dropdown-menu-end">
@@ -410,12 +414,16 @@
                                         <div class="d-flex">
                                             <div class="flex-shrink-0 me-3">
                                                 <div class="avatar avatar-online">
-                                                    <img src="{{ asset('assets/img/avatars/1.png') }}" alt="" class="w-px-40 h-auto rounded-circle">
+                                                    @if(isset(Auth::user()->profile->image))
+                                                        <img src="{{asset('assets/images/users/'.Auth::user()->profile->image)}}" alt="" class="w-px-40 h-100 rounded-circle">
+                                                    @else
+                                                        <img src="{{ asset('assets/img/avatars/1.png') }}" alt="" class="w-px-40 h-auto rounded-circle">
+                                                    @endif
                                                 </div>
                                             </div>
                                             <div class="flex-grow-1">
-                                                <span class="fw-semibold d-block">عبدالهادي ديان</span>
-                                                <small class="text-muted">مدير النظام</small>
+                                                <span class="fw-semibold d-block">{{ Auth::user()->name }}</span>
+                                                <small class="text-muted">مستخدم</small>
                                             </div>
                                         </div>
                                     </a>

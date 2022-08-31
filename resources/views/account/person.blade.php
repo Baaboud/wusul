@@ -35,8 +35,6 @@
                                 class="bx bx-user me-1"></i> بيانات عامة</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{ route('account_security') }}"><i
                                 class="bx bx-lock-alt me-1"></i> الأمن</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{ route('account_services') }}"><i
-                                class="bx bx-detail me-1"></i> الخدمات</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{ route('account_social') }}"><i
                                 class="bx bx-link-alt me-1"></i> التواصل</a></li>
                 </ul>
@@ -46,20 +44,20 @@
                     <div class="card-body">
                         <div class="d-flex align-items-start align-items-sm-center gap-4">
                         @if(isset(Auth::user()->profile->image))
-                            <img src="{{asset('assets/images/users/'.Auth::user()->profile->image)}}" 
-                            alt="Profile" class=" uploadedImg d-block rounded" id="">
+                            <img src="{{asset('assets/images/users/'.Auth::user()->profile->image)}}"
+                            alt="Profile" class=" uploadedImg d-block rounded h-px-150" id="">
                         @else
                              <img src="{{ asset('assets/img/avatars/1.png') }}" alt="user-avatar" class=" uploadedImg d-block rounded"
                                  height="100" width="100" id="uploadedImg"/>
                         @endif
 
                     <livewire:uploud-image>
-                       
+
                         </div>
                     </div>
                     <hr class="my-0">
                     <div class="card-body">
-                    <form id="formAccountSettings" method='POST' action="{{route('account.update')}}" 
+                    <form id="formAccountSettings" method='POST' action="{{route('account.update')}}"
                                 enctype="multipart/form-data" >
                                 @csrf
                             <div class="row">
@@ -87,7 +85,7 @@
                                     </div>
                                 </div>
                                     @livewire('address-relation',['state_id'=>Auth::user()->address->state_id??''  ])
-                                   
+
                                 <div class="mb-3 col-md-6">
                                     <label for="address" class="form-label">العنوان</label>
                                     <input type="text" class="form-control" value="{{Auth::user()->address->description??''}}" id="address" name="description"
