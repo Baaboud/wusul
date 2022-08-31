@@ -11,7 +11,7 @@ class Social extends Model
     protected $fillable = [
         'facebook',
         'twitter',
-        'instagram', 
+        'instagram',
         'linkedin',
         'user_id'
     ];
@@ -19,6 +19,6 @@ class Social extends Model
 
     public function user()
     {
-        return $this->belongsTo(User::class,'user_id');
+        return $this->belongsTo(User::class,'id');
    }
 }

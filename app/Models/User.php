@@ -80,7 +80,7 @@ public function rating()
 
 // user social
 public function social(){
-    return $this->hasOne(UserProfile::class,'user_id');
+    return $this->hasOne(Social::class);
 }
 
 // user Orders
@@ -106,7 +106,7 @@ public function userServiceProvider(){
         return false;
     }
 
-    
+
 }
 public function scopeWithFilters($query, $search,$type,$active,$stars)
 {
