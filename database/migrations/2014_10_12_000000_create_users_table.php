@@ -22,7 +22,6 @@ return new class extends Migration
             $table->boolean('is_active')->default(0);
             $table->string('password');
             $table->tinyInteger('stars')->default(0);
-            $table->string('image')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

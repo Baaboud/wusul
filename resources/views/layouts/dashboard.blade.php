@@ -271,7 +271,7 @@
                                       <span class="dropdown-shortcuts-icon bg-label-secondary rounded-circle mb-2">
                                         <i class="bx bx-cog fs-4"></i>
                                       </span>
-                                                    <a href="pages-account-settings-account.html" class="stretched-link">الاعدادات</a>
+                                                    <a href="{{ route('account') }}" class="stretched-link">الاعدادات</a>
                                                     <small class="text-muted mb-0">اعدادات الحساب</small>
                                                 </div>
                                             </div>

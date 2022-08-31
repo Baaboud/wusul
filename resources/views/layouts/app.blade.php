@@ -430,7 +430,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a class="dropdown-item" href="{{ route('account_personal') }}">
+                                    <a class="dropdown-item" href="{{ route('account') }}">
                                         <i class="bx bx-cog me-2"></i>
                                         <span class="align-middle">الاعدادت</span>
                                     </a>

@@ -39,6 +39,7 @@ use App\Http\Controllers\userServiceProvider\ServicesController;
 
         // Setting Routs
         Route::group(['prefix' => 'settings'], function () {
+            
             Route::prefix('cities')->group(function () {       
                 Route::get('/', [CityController::class, 'index'])->name('cities');
                 Route::post('/store', [CityController::class, 'store'])->name('cities.add');
