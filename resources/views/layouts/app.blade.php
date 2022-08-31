@@ -76,7 +76,7 @@
     <!-- beautify ignore:end -->
 
     @yield('extra-style')
-    
+
     <livewire:styles />
 
 </head>
@@ -107,7 +107,7 @@
                     <!-- /Logo -->
 
 
-                    <ul class="navbar-nav d-sm-flex d-none flex-row align-items-center ms-5 fs-5 gap-3">
+                    <ul class="navbar-nav d-md-flex d-none flex-row align-items-center ms-5 fs-5 gap-3">
 
                         <li class="nav-item me-2 me-xl-0">
                             <a href="{{ route('services') }}" class="nav-link primary">الخدمات</a>
@@ -489,17 +489,38 @@
                     @endauth
 
                     @guest()
-                        <div class="d-flex flex-row align-items-center ms-auto">
+                        <div class="d-md-flex d-none flex-row align-items-center ms-auto">
                             <a href="{{ route('login') }}" class="btn btn-label-primary mx-1 text-truncate">تسجيل الدخول</a>
                             <a href="{{ route('register') }}" class="btn btn-dark mx-1 text-truncate">انشاء حساب</a>
                         </div>
+                            <button class="navbar-toggler d-md-none d-inline-block ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
                     @endguest
+                </div>
+
+                <div class="collapse navbar-collapse position-absolute top-100 start-0 w-100 pt-2" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 bg-white d-md-none d-inline-block w-100 ps-3">
+                        <li class="nav-item me-2 me-xl-0">
+                            <a href="{{ route('services') }}" class="nav-link primary">الخدمات</a>
+                        </li>
+
+                        <li class="nav-item me-2 me-xl-0">
+                            <a href="#" class="nav-link">من نحن</a>
+                        </li>
+
+                        <li class="nav-item me-2 me-xl-0">
+                            <a href="#" class="nav-link">التواصل</a>
+                        </li>
+                        <li class="nav-item me-2 me-xl-0 mb-3">
+                                <a href="{{ route('login') }}" class="btn btn-label-primary text-truncate mt-3 me-3">تسجيل الدخول</a>
+                                <a href="{{ route('register') }}" class="btn btn-dark text-truncate mt-3">انشاء حساب</a>
+                        </li>
+                    </ul>
                 </div>
 
 
             </nav>
-
-
             <!-- / Navbar -->
 
 
