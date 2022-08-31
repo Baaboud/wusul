@@ -71,12 +71,13 @@ class RegisterController extends Controller
             'type'=>0
         ]);
         if(isset($data['type']) && $data['type'] == 2){
-            $user->type=2;
+            $user->type = 2;
         }else{
             $user->is_active=1;
         }
         $user->save();
         $user->profile()->create([]);
+        $user->address()->create([]);
 
         return $user;
     }

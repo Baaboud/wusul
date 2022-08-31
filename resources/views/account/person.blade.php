@@ -31,7 +31,7 @@
         <div class="row">
             <div class="col-md-12">
                 <ul class="nav nav-pills flex-column flex-md-row mb-3">
-                    <li class="nav-item"><a class="nav-link active" href="{{ route('account_personal') }}"><i
+                    <li class="nav-item"><a class="nav-link active" href="{{ route('account') }}"><i
                                 class="bx bx-user me-1"></i> بيانات عامة</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{ route('account_security') }}"><i
                                 class="bx bx-lock-alt me-1"></i> الأمن</a></li>
@@ -45,72 +45,52 @@
                     <!-- Account -->
                     <div class="card-body">
                         <div class="d-flex align-items-start align-items-sm-center gap-4">
-                            <img src="{{ asset('assets/img/avatars/1.png') }}" alt="user-avatar" class="d-block rounded"
+                        @if(isset(Auth::user()->profile->image))
+                            <img src="{{asset('assets/images/users/'.Auth::user()->profile->image)}}" 
+                            alt="Profile" class=" uploadedImg d-block rounded" id="">
+                        @else
+                             <img src="{{ asset('assets/img/avatars/1.png') }}" alt="user-avatar" class=" uploadedImg d-block rounded"
                                  height="100" width="100" id="uploadedImg"/>
-                            <div class="button-wrapper">
-                                <label for="upload" class="btn btn-primary me-2 mb-4" tabindex="0">
-                                    <span class="d-none d-sm-block">قم برفع صورة جديدة</span>
-                                    <i class="bx bx-upload d-block d-sm-none"></i>
-                                    <input type="file" id="upload" class="account-file-input" hidden
-                                           accept="image/png, image/jpeg"/>
-                                </label>
-                                <button type="button" class="btn btn-label-secondary account-image-reset mb-4" id="reset">
-                                    <i class="bx bx-reset d-block d-sm-none"></i>
-                                    <span class="d-none d-sm-block">أعادة تعيين</span>
-                                </button>
+                        @endif
 
-                                {{--                                <p class="text-muted mb-0">Allowed JPG, GIF or PNG. Max size of 800K</p>--}}
-                                <p class="text-muted mb-0">االصيغ المتاحة JPG, GIF أو PNG. الحد الأقصى 800K</p>
-                            </div>
+                    <livewire:uploud-image>
+                       
                         </div>
                     </div>
                     <hr class="my-0">
                     <div class="card-body">
-                        <form id="formAccountSettings" method="POST" onsubmit="return false">
+                    <form id="formAccountSettings" method='POST' action="{{route('account.update')}}" 
+                                enctype="multipart/form-data" >
+                                @csrf
                             <div class="row">
                                 <div class="mb-3 col-md-6">
                                     <label for="firstName" class="form-label">الأسم الاول</label>
-                                    <input class="form-control" type="text" id="firstName" name="firstName" value="John"
+                                    <input class="form-control" type="text" id="firstName" name="firstName" value="{{$name[0]??''}}"
                                            autofocus/>
                                 </div>
                                 <div class="mb-3 col-md-6">
                                     <label for="lastName" class="form-label">الأسم الأخير</label>
-                                    <input class="form-control" type="text" name="lastName" id="lastName" value="Doe"/>
+                                    <input class="form-control" type="text" name="lastName" id="lastName" value="{{$name[1]??''}}"/>
                                 </div>
                                 <!-- Date Picker-->
                                 <div class="col-md-6 col-12 mb-4">
                                     <label for="flatpickr-date" class="form-label">تاريخ الميلاد</label>
-                                    <input type="text" class="form-control" placeholder="YYYY-MM-DD" id="flatpickr-date" />
+                                    <input type="text" name='birth' class="form-control" placeholder="YYYY-MM-DD" id="flatpickr-date" value="{{$profile->birthday??''}}" />
                                 </div>
                                 <!-- /Date Picker -->
                                 <div class="mb-3 col-md-6">
                                     <label class="form-label" for="phoneNumber">رقم الهاتف</label>
                                     <div class="input-group input-group-merge">
                                         <span class="input-group-text">Ye (+967)</span>
-                                        <input type="text" id="phoneNumber" name="phoneNumber" class="form-control"
+                                        <input type="text" id="phoneNumber" value="{{$profile->phone??''}}" name="phone" class="form-control"
                                                placeholder="325 122 177"/>
                                     </div>
                                 </div>
-                                <div class="mb-3 col-md-6">
-                                    <label for="timeZones" class="form-label">المحافظة</label>
-                                    <select id="selectpickerBasic" class="selectpicker w-100" data-style="btn-default">
-                                        <option>حضرموت</option>
-                                        <option>المهرة</option>
-                                        <option>عدن</option>
-                                    </select>
-                                </div>
-
-                                <div class="mb-3 col-md-6">
-                                    <label for="timeZones" class="form-label">المدينة</label>
-                                    <select id="selectpickerBasic" class="selectpicker w-100" data-style="btn-default">
-                                        <option>المكلا</option>
-                                        <option>سيئون</option>
-                                        <option>الشحر</option>
-                                    </select>
-                                </div>
+                                    @livewire('address-relation',['state_id'=>Auth::user()->address->state_id??''  ])
+                                   
                                 <div class="mb-3 col-md-6">
                                     <label for="address" class="form-label">العنوان</label>
-                                    <input type="text" class="form-control" id="address" name="address"
+                                    <input type="text" class="form-control" value="{{Auth::user()->address->description??''}}" id="address" name="description"
                                            placeholder="العنوان..."/>
                                 </div>
                             </div>
@@ -120,6 +100,7 @@
                             </div>
                         </form>
                     </div>
+
                     <!-- /Account -->
                 </div>
             </div>
@@ -151,14 +132,16 @@
 
     <script>
         imgInp = document.getElementById('upload');
-        imgView = document.getElementById('uploadedImg');
+        imgView = document.querySelector('.uploadedImg');
         reset = document.getElementById('reset');
+
         const r = imgView.src;
 
         imgInp.onchange = evt => {
             const [file] = imgInp.files
             if (file) {
                 imgView.src = URL.createObjectURL(file)
+                console.log(imgInp);
             }
         }
 

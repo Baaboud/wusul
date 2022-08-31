@@ -47,6 +47,8 @@
 
     <!-- Page CSS -->
 
+        <livewire:styles />
+
     <!-- Helpers -->
     <script src="{{ asset('assets/vendor/js/helpers.js') }}"></script>
 
@@ -113,7 +115,7 @@
                     </a>
                 </li>
                 <li class="menu-item">
-                    <a href="https://themeselection.com/demo/sneat-bootstrap-html-admin-template/documentation/"
+                    <a href="{{route('admin.services')}}"
                        target="_blank" class="menu-link">
                         <i class="menu-icon tf-icons bx bx-grid-alt"></i>
                         <div>الخدمات</div>
@@ -138,20 +140,20 @@
 
                 <li class="menu-header text-uppercase text-white fs-6"><span class="menu-header-text">أعدادات المنصة</span></li>
                 <li class="menu-item">
-                    <a href="https://themeselection.com/demo/sneat-bootstrap-html-admin-template/documentation/"
+                    <a href="{{route('categories')}}"
                        target="_blank" class="menu-link">
                         <i class="menu-icon tf-icons bx bx-file"></i>
                         <div>أدارة المجالات</div>
                     </a>
                 </li>
                 <li class="menu-item">
-                    <a href="https://themeselection.com/support/" target="_blank" class="menu-link">
+                    <a href="{{route('states')}}" target="_blank" class="menu-link">
                         <i class="menu-icon tf-icons bx bxs-city"></i>
                         <div>أدارة المحافظات</div>
                     </a>
                 </li>
                 <li class="menu-item">
-                    <a href="https://themeselection.com/demo/sneat-bootstrap-html-admin-template/documentation/"
+                    <a href="{{route('cities')}}"
                        target="_blank" class="menu-link">
                         <i class="menu-icon tf-icons bx bx-current-location"></i>
                         <div>أدارة المدن</div>
@@ -269,7 +271,7 @@
                                       <span class="dropdown-shortcuts-icon bg-label-secondary rounded-circle mb-2">
                                         <i class="bx bx-cog fs-4"></i>
                                       </span>
-                                                    <a href="pages-account-settings-account.html" class="stretched-link">الاعدادات</a>
+                                                    <a href="{{ route('account') }}" class="stretched-link">الاعدادات</a>
                                                     <small class="text-muted mb-0">اعدادات الحساب</small>
                                                 </div>
                                             </div>
@@ -646,6 +648,8 @@
 <script src="{{ asset('assets/js/main.js') }}"></script>
 
 <!-- Page JS -->
+
+<livewire:scripts />
 
 <!-- / Layout wrapper -->
 

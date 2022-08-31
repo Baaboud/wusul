@@ -23,7 +23,7 @@ class ServicesController extends Controller
      */
     public function index()
     {
-
+        return view('admin.services');
     }
 
     /**
@@ -213,5 +213,17 @@ class ServicesController extends Controller
             return $th->getMessage();
             return redirect()->back()->with(['error' => 'حدث خطا ما برجاء المحاوله لاحقا']);
         }
+    }
+
+    public function services(Request $request){
+        $categories=ServiceCat::all();
+        $services =  Service::with(['address','category','user'])
+        ->withFilters(
+            request()->input('search',''),
+            request()->input('category',''),
+            request()->input('active',''),
+            request()->input('stars','')
+            )->get();
+        return view('admin.services',compact('services','categories'));
     }
 }
