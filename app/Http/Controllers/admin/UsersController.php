@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\admin;
 
+use App\Models\Social;
 use App\Models\User;
 use App\Helpers\Helper;
 use App\Models\UserProfile;
@@ -9,6 +10,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use function Symfony\Component\String\s;
 
 class UsersController extends Controller
 {
@@ -22,12 +24,12 @@ class UsersController extends Controller
         // show all users
         public function users()
         {
-            // all users 
+            // all users
             $users = User::latest()->where('id', '<>', auth()->id())->get();
-    
+
             // users type
             $types = ['مستخدم', 'مدير', 'صاحب خدمة'];
-    
+
             return view('admin.users');
         }
 
@@ -44,12 +46,11 @@ class UsersController extends Controller
             } catch (\Throwable $th) {
                 //throw $th;
             }
-            
+
         }
 
         public function update(Request $request){
             try {
-                return $request;
                 $user = User::with('profile','address')->findOrFail(Auth::id());
                 $user->update([
                     'name'=> $request->firstName.' '.$request->lastName,
@@ -68,30 +69,62 @@ class UsersController extends Controller
                 return $th->getMessage();
                 //throw $th;
             }
-
             return redirect()->back();
         }
-        
+
         public function changePassword(Request $request) {
             if (!(Hash::check($request->current_password, Auth::user()->password))) {
-    
+
                 // The passwords matches
                 return redirect()->back()->with(["error"=>" كلمة المرور لا تتطابق مع كلمة المروو الخاصه بك"]);
             }
-    
+
             // Current password and new password same
             if(strcmp($request->current_password , $request->new_password) == 0){
-    
                 return redirect()->back()->with(["error"=>" كلمة المرور الجديده لا يمكن تساوي   كلمة الحاليه"]);
             }
-    
+
+            // Current password and new password same
+            if(strcmp($request->new_password , $request->confirmPassword) !== 0){
+                return redirect()->back()->with(["error"=>" كلمة المرور غير متطابقة"]);
+            }
+
             //Change Password
             $user = Auth::user();
             $user->password = bcrypt($request->new_password);
             $user->save();
-    
-            return redirect()->back()->with(["sucess"=>" تم تغيير كلمة السر بنجاح"]);
+
+            return redirect()->back()->with(["success"=>" تم تغيير كلمة السر بنجاح"]);
         }
-    
+
+        public function social(){
+            $social=Auth::user()->social;
+            return view('account.social',compact('social'));
+        }
+
+        public function updateSocial(Request $request) {
+            //Change Password
+            $social = Social::find(Auth::id());
+            if ($social)
+            {
+                $social->facebook = $request->facebook;
+                $social->twitter = $request->twitter;
+                $social->instagram = $request->instagram;
+                $social->linkedin = $request->linkedin;
+                $social->save();
+            }
+            else
+            {
+                Social::create([
+                    'facebook' => $request->facebook,
+                    'twitter' => $request->twitter,
+                    'instagram' => $request->instagram,
+                    'linkedin' => $request->linkedin,
+                    'user_id' => Auth::id()
+                ]);
+            }
+            return redirect()->back()->with(["sucess"=>" تم تحديث التواصل"]);
+        }
+
 
 }

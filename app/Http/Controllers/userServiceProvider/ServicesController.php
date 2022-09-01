@@ -50,10 +50,8 @@ class ServicesController extends Controller
     {
   
         try {
-            // $contents = file_get_contents($request);
-            // return $request->hasFile('image')s ;
-            ;
-    
+
+
             // $request->validate([
             //     'name' => 'required|string',
             //     'description'=>'string|required',
@@ -74,12 +72,12 @@ class ServicesController extends Controller
             //     'name.string'=>'هذا الحقل يجب ان يكون نص',
             //     'description.string'=>'هذا الحقل يجب ان يكون نص'
             // ]);
-            
+
                 $photo = "";
 
 
             if ($request->hasFile('image')) {
-                
+
 
                 $photo = $this->uploadImage('services', $request->image);
 
@@ -168,17 +166,17 @@ class ServicesController extends Controller
             findOrFail($id);
             // $photo;
             if ($request->hasFile('image')) {
-    
-    
+
+
                 if($service->image){
                     Storage::disk('services')->delete($service->image);
                 }
                 $photo = $this->uploadImage('services',$request->file('image'));
-    
+
             }else{
                 $photo =$service->image;
             }
-    
+
             // create Service
             $service->update([
                 'name' => $request['name'],
@@ -187,11 +185,11 @@ class ServicesController extends Controller
                 'image' => $photo,
                 'price' => $request['price']??'1',
                 'service_cat_id' => $request['service_cat_id'],
-            ]);        
+            ]);
         } catch (\Throwable $th) {
             return $th->getMessage();
         }
-        
+
 
     }
 
@@ -207,7 +205,7 @@ class ServicesController extends Controller
             $service = Service::findOrFail($id);
 
             if ($service->image != '') { // check if pharmacy has image
-                
+
                 // remove image
                 Storage::disk('services')->delete($service->image);
             }

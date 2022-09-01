@@ -89,7 +89,7 @@
         <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
 
             <div class="app-brand demo h-px-75">
-                <a href="index-2.html" class="app-brand-link w-100 d-flex justify-content-center flex-wrap">
+                <a href="#" class="app-brand-link w-100 d-flex justify-content-center flex-wrap">
                     <img src="http://127.0.0.1:8000/img/logo.png" class="w-px-40 h-auto p-1" alt="" srcset="">
                     <span class="ms-1 fs-4 fw-bold text-white">وصول</span>
                 </a>
@@ -99,8 +99,8 @@
 
             <ul class="menu-inner py-1 mt-4 mb-3">
                 <!-- Dashboards -->
-                <li class="menu-item active">
-                    <a href="javascript:void(0);" class="menu-link">
+                <li class="menu-item">
+                    <a href="#" class="menu-link">
                         <i class="menu-icon tf-icons bx bx-home-circle"></i>
                         <div>لوحة التحكم</div>
                     </a>
@@ -108,15 +108,15 @@
                 @if(Auth::user()->admin())
                  <!-- Misc -->
                 <li class="menu-header text-uppercase text-white fs-6"><span class="menu-header-text">أدارة العمليات</span></li>
-                <li class="menu-item">
-                    <a href="{{route('admin.users')}}" target="_blank" class="menu-link">
+                <li class="menu-item {{Request::url() === route('admin.users') ? 'active' : ''}}">
+                    <a href="{{route('admin.users')}}" class="menu-link">
                         <i class="menu-icon tf-icons bx bx-user"></i>
                         <div>المستخدمين</div>
                     </a>
                 </li>
-                <li class="menu-item">
+                <li class="menu-item {{Request::url() === route('admin.services') ? 'active' : ''}}">
                     <a href="{{route('admin.services')}}"
-                       target="_blank" class="menu-link">
+                       class="menu-link">
                         <i class="menu-icon tf-icons bx bx-grid-alt"></i>
                         <div>الخدمات</div>
                     </a>
@@ -124,37 +124,37 @@
 
                 <li class="menu-header text-uppercase text-white fs-6"><span class="menu-header-text">أدارة العمليات</span></li>
                 <li class="menu-item">
-                    <a href="https://themeselection.com/demo/sneat-bootstrap-html-admin-template/documentation/"
-                       target="_blank" class="menu-link">
+                    <a href="#"
+                       class="menu-link">
                         <i class="menu-icon tf-icons bx bx-money"></i>
                         <div>أدارة الفواتير</div>
                     </a>
                 </li>
                 <li class="menu-item">
-                    <a href="https://themeselection.com/demo/sneat-bootstrap-html-admin-template/documentation/"
-                       target="_blank" class="menu-link">
+                    <a href="#"
+                       class="menu-link">
                         <i class="menu-icon tf-icons bx bxs-report"></i>
                         <div>أدارة البلاغات</div>
                     </a>
                 </li>
 
                 <li class="menu-header text-uppercase text-white fs-6"><span class="menu-header-text">أعدادات المنصة</span></li>
-                <li class="menu-item">
+                <li class="menu-item {{Request::url() === route('categories') ? 'active' : ''}}">
                     <a href="{{route('categories')}}"
-                       target="_blank" class="menu-link">
+                       class="menu-link">
                         <i class="menu-icon tf-icons bx bx-file"></i>
                         <div>أدارة المجالات</div>
                     </a>
                 </li>
-                <li class="menu-item">
-                    <a href="{{route('states')}}" target="_blank" class="menu-link">
+                <li class="menu-item {{Request::url() === route('states') ? 'active' : ''}}">
+                    <a href="{{route('states')}}" class="menu-link">
                         <i class="menu-icon tf-icons bx bxs-city"></i>
                         <div>أدارة المحافظات</div>
                     </a>
                 </li>
-                <li class="menu-item">
+                <li class="menu-item {{Request::url() === route('cities') ? 'active' : ''}}">
                     <a href="{{route('cities')}}"
-                       target="_blank" class="menu-link">
+                       class="menu-link">
                         <i class="menu-icon tf-icons bx bx-current-location"></i>
                         <div>أدارة المدن</div>
                     </a>
@@ -169,7 +169,7 @@
                 <li class="menu-header text-uppercase text-white fs-6"><span class="menu-header-text">أدارة العمليات</span></li>
                 <li class="menu-item {{Request::url() === route('category.store') ? 'active' : ''}}">
                     <a href="https://themeselection.com/demo/sneat-bootstrap-html-admin-template/documentation/"
-                       target="_blank" class="menu-link">
+                       class="menu-link">
                         <i class="menu-icon tf-icons bx bx-grid-alt"></i>
                         <div>الطلبات</div>
                     </a>
@@ -178,6 +178,7 @@
 
                 <li class="menu-item {{Request::url() === route('test') ? 'active' : ''}}">
                     <a href="{{route('service')}}" target="_blank" class="menu-link">
+
                         <i class="menu-icon tf-icons bx bx-user"></i>
                         <div>الخدمات</div>
                     </a>
@@ -192,14 +193,14 @@
                 <li class="menu-header text-uppercase text-white fs-6"><span class="menu-header-text">أدارة العمليات</span></li>
                 <li class="menu-item">
                     <a href="https://themeselection.com/demo/sneat-bootstrap-html-admin-template/documentation/"
-                       target="_blank" class="menu-link">
+                       class="menu-link">
                         <i class="menu-icon tf-icons bx bx-money"></i>
                         <div>المحفظة</div>
                     </a>
                 </li>
                 <li class="menu-item">
                     <a href="https://themeselection.com/demo/sneat-bootstrap-html-admin-template/documentation/"
-                       target="_blank" class="menu-link">
+                       class="menu-link">
                         <i class="menu-icon tf-icons bx bxs-report"></i>
                         <div>البلاغات</div>
                     </a>
@@ -500,14 +501,12 @@
                                 <li class="nav-item navbar-dropdown dropdown-user dropdown">
                                     <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
                                         <div class="avatar avatar-online">
-                            @if(isset(Auth::user()->profile->image))
-                                                <img src="{{asset('assets/images/users/'.Auth::user()->profile->image)}}" 
-                                                alt="Profile" class="w-px-40 h-auto rounded-circle" id="">
+
+                                            @if(isset(Auth::user()->profile->image))
+                                                <img src="{{asset('assets/images/users/'.Auth::user()->profile->image)}}" alt="" class="w-px-40 h-100 rounded-circle">
                                             @else
-                                        <img src="{{ asset('img/user.png') }}" alt="" class="w-px-40 h-auto rounded-circle">
-
+                                                <img src="{{ asset('img/user1.png') }}" alt="" class="w-px-40 h-auto rounded-circle">
                                             @endif
-
                                         </div>
                                     </a>
                                     <ul class="dropdown-menu dropdown-menu-end">
@@ -527,6 +526,7 @@
                                                     <div class="flex-grow-1">
                                                         <span class="fw-semibold d-block">{{Auth::user()->name}}</span>
                                                         <small class="text-muted"> {{Auth::user()->type==1?'مديرالنظام':'صاحب خدمه'}}</small>
+
                                                     </div>
                                                 </div>
                                             </a>
@@ -547,7 +547,7 @@
                                             </a>
                                         </li>
                                         <li>
-                                            <a class="dropdown-item" href="pages-account-settings-billing.html">
+                                            <a class="dropdown-item" href="#">
                                     <span class="d-flex align-items-center align-middle">
                                       <i class="flex-shrink-0 bx bx-credit-card me-2"></i>
                                       <span class="flex-grow-1 align-middle">الدفع</span>
@@ -559,19 +559,19 @@
                                             <div class="dropdown-divider"></div>
                                         </li>
                                         <li>
-                                            <a class="dropdown-item" href="pages-help-center-landing.html">
+                                            <a class="dropdown-item" href="#">
                                                 <i class="bx bx-support me-2"></i>
                                                 <span class="align-middle">المساعدة</span>
                                             </a>
                                         </li>
                                         <li>
-                                            <a class="dropdown-item" href="pages-faq.html">
+                                            <a class="dropdown-item" href="#">
                                                 <i class="bx bx-help-circle me-2"></i>
                                                 <span class="align-middle">الاسئلة الشائعة</span>
                                             </a>
                                         </li>
                                         <li>
-                                            <a class="dropdown-item" href="pages-pricing.html">
+                                            <a class="dropdown-item" href="#">
                                                 <i class="bx bx-dollar me-2"></i>
                                                 <span class="align-middle">الاسعار</span>
                                             </a>

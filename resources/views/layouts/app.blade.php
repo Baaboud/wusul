@@ -401,13 +401,12 @@
                         <li class="nav-item navbar-dropdown dropdown-user dropdown">
                             <a class="nav-link dropdown-toggle hide-arrow" href="#" data-bs-toggle="dropdown">
                                 <div class="avatar avatar-online">
-                                     @if(isset(Auth::user()->profile->image))
-                                        <img src="{{asset('assets/images/users/'.Auth::user()->profile->image)}}" 
-                                            alt="Profile" class="w-px-40 h-auto rounded-circle" id="">
-                                    @else
-                                        <img src="{{ asset('img/user.png') }}" alt="" class="w-px-40 h-auto rounded-circle">
 
-                                    @endif   
+                                    @if(isset(Auth::user()->profile->image))
+                                        <img src="{{asset('assets/images/users/'.Auth::user()->profile->image)}}" alt="" class="w-px-40 h-100 rounded-circle">
+                                    @else
+                                        <img src="{{ asset('assets/img/avatars/1.png') }}" alt="" class="w-px-40 h-auto rounded-circle">
+                                    @endif
                                 </div>
                             </a>
                             <ul class="dropdown-menu dropdown-menu-end">
@@ -437,6 +436,8 @@
 
                                                 @endif
                                                 </small>
+
+
                                             </div>
                                         </div>
                                     </a>

@@ -20,14 +20,18 @@ use App\Http\Controllers\userServiceProvider\ServicesController;
 |
 */
 Route::middleware(['auth'])->group(function () {
-    Route::prefix('account')->group(function () {
-        
+    Route::group(['prefix' => 'account'], function () {
+
         Route::get('/', [UsersController::class, 'account'])->name('account');
         Route::post('/update', [UsersController::class, 'update'])->name('account.update');
         Route::post('/image', [UsersController::class, 'saveImage'])->name('account.image');
+        Route::get('/security', function () {
+            return view('account.security');
+        })->name('account_security');
         Route::post('/changePass', [UsersController::class, 'changePassword'])->name('account.changePass');
-
-        // 
+        Route::get('/social', [UsersController::class, 'social'])->name('account_social');
+        Route::post('/social', [UsersController::class, 'updateSocial'])->name('account_updateSocial');
+        //
 
     });
 
@@ -79,18 +83,8 @@ Route::get('/services', function () {
 })->name('services');
 
 Route::get('/l/l', function () {
-    return view('user.service_order');
+    return view('service.service_create');
 })->name('test');
-
-// Route::group(['prefix' => 'user'], function () {
-//     Route::get('/account', function () {
-//         return view('user.account');
-//     })->name('account');
-
-    Route::get('/security', function () {
-        return view('user.security');
-    });
-// });
 
 // start routes of user that provide service
 Route::group(['prefix' => 'serviceProvider',
@@ -125,23 +119,4 @@ Route::group(['prefix' => 'serviceProvider',
 // start routes of user that provide service
 Route::group(['prefix' => 'admin', 'middleware' => 'checkType:admin'], function () {
 
-});
-
-// start routes of account settings
-Route::group(['prefix' => 'account'], function () {
-    Route::get('/personal', function () {
-        return view('account.person');
-    })->name('account_personal');
-
-    Route::get('/security', function () {
-        return view('account.security');
-    })->name('account_security');
-
-    Route::get('/services', function () {
-        return view('account.services');
-    })->name('account_services');
-
-    Route::get('/social', function () {
-        return view('account.social');
-    })->name('account_social');
 });

@@ -9,24 +9,22 @@
 
 @section('content')
     <div class="container-fluid flex-grow-1 pt-2 py-0 px-0">
-        <div class="container-fluid flex-grow-1 container-p-y py-0 px-0">
-            <section class="banner-area"
-                     style="background-image: url({{ asset('img/back.png') }}); background-color: #8490ff">
-                <div class="container">
-                    <div class="row fullscreen align-items-center justify-content-between">
+        <div class="container-fluid flex-grow-1 container-p-y py-0 px-0 overflow-hidden">
+            <section class="banner-area align-middle"
+                     style="background-image: url({{ asset('img/back.png') }}); background-color: #8490ff; min-height: 80vh !important;">
 
-                        <div class="col-lg-6 col-md-6 banner-left text-center">
+                <div class="row fullscreen align-items-center justify-content-center">
+                    <div class="col-lg-6 col-md-6 banner-left text-center">
 
-                            <h1 style="color: #fed01b; font-size: 60px" class="fw-bolder">منصة وصول للخدمات </h1>
-                            <h2 class="text-white fs-3">
-                                منصة كل مواطن وزائر
-                            </h2>
-                            <button type="button" class="mt-3 btn btn-primary fs-5">أكتشف المزيد</button>
+                        <h1 style="color: #fed01b; font-size: 60px" class="fw-bolder">منصة وصول للخدمات </h1>
+                        <h2 class="text-white fs-3">
+                            منصة كل مواطن وزائر
+                        </h2>
+                        <button type="button" class="mt-3 btn btn-primary fs-5">أكتشف المزيد</button>
 
-                        </div>
-                        <div class="col-lg-6 col-md-6 banner-right d-flex align-self-end">
-                            <img class="img-fluid" src="img/herooo-img.png" alt="">
-                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 banner-right text-center">
+                        <img class="img-fluid" src="img/herooo-img.png" alt="">
                     </div>
                 </div>
             </section>
