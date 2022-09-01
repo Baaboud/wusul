@@ -83,7 +83,7 @@ Route::get('/services', function () {
 })->name('services');
 
 Route::get('/l/l', function () {
-    return view('service.service_create');
+    return view('profile');
 })->name('test');
 
 // start routes of user that provide service
