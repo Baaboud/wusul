@@ -7,6 +7,7 @@ use App\Models\Service;
 use App\Models\ServersCat;
 use App\Models\ServiceCat;
 use Illuminate\Http\Request;
+use Livewire\WithFileUploads;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -14,7 +15,7 @@ use App\Http\Requests\ServerProviderRequest;
 
 class ServicesController extends Controller
 {
-    use Helper;
+    use Helper, WithFileUploads;
 
     /**
      * Display a listing of the resource.
@@ -23,7 +24,7 @@ class ServicesController extends Controller
      */
     public function index()
     {
-        return view('admin.services');
+        return view('service_provider.services');
     }
 
     /**
@@ -34,6 +35,7 @@ class ServicesController extends Controller
     public function create()
     {
         $categories = ServiceCat::all();
+        return view('service.service_create',compact('categories'));
         return $categories;
     }
 
@@ -43,9 +45,14 @@ class ServicesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ServerProviderRequest $request)
+    // ServerProviderRequest $request
+    public function store(Request $request)
     {
+  
         try {
+            // $contents = file_get_contents($request);
+            // return $request->hasFile('image')s ;
+            ;
     
             // $request->validate([
             //     'name' => 'required|string',
@@ -86,14 +93,14 @@ class ServicesController extends Controller
                 'type' => $request['type']?? 0,
                 'image' => $photo,
                 'price' => $request['price']??'1',
-                'service_cat_id' => $request['service_cat_id'],
+                'service_cat_id' => $request['category'],
                 'stars' => 0,
             ]);
 
 
 
             // event(new notfiy($));
-                return $service;
+                // return $service;
             return redirect()->route('serviceProvider.home');
         } catch (\Exception $ex) {
             return $ex->getMessage();

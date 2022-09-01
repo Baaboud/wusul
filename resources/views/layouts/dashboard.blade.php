@@ -174,10 +174,18 @@
                         <div>الطلبات</div>
                     </a>
                 </li>
+                <li class="menu-header text-uppercase text-white fs-6"><span class="menu-header-text">أدارة الخدمات</span></li>
+
+                <li class="menu-item {{Request::url() === route('test') ? 'active' : ''}}">
+                    <a href="{{route('service')}}" target="_blank" class="menu-link">
+                        <i class="menu-icon tf-icons bx bx-user"></i>
+                        <div>الخدمات</div>
+                    </a>
+                </li>
                 <li class="menu-item {{Request::url() === route('test') ? 'active' : ''}}">
                     <a href="{{route('service.create')}}" target="_blank" class="menu-link">
                         <i class="menu-icon tf-icons bx bx-user"></i>
-                        <div>الخدمات</div>
+                        <div>اضافة خدمة</div>
                     </a>
                 </li>
                 <!-- Money -->
@@ -492,7 +500,14 @@
                                 <li class="nav-item navbar-dropdown dropdown-user dropdown">
                                     <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
                                         <div class="avatar avatar-online">
-                                            <img src="{{ asset('img/user.png') }}" alt="" class="w-px-40 h-auto rounded-circle">
+                            @if(isset(Auth::user()->profile->image))
+                                                <img src="{{asset('assets/images/users/'.Auth::user()->profile->image)}}" 
+                                                alt="Profile" class="w-px-40 h-auto rounded-circle" id="">
+                                            @else
+                                        <img src="{{ asset('img/user.png') }}" alt="" class="w-px-40 h-auto rounded-circle">
+
+                                            @endif
+
                                         </div>
                                     </a>
                                     <ul class="dropdown-menu dropdown-menu-end">
@@ -501,12 +516,17 @@
                                                 <div class="d-flex">
                                                     <div class="flex-shrink-0 me-3">
                                                         <div class="avatar avatar-online">
-                                                            <img src="assets/img/avatars/1.png" alt="" class="w-px-40 h-auto rounded-circle">
-                                                        </div>
+                                                    @if(isset(Auth::user()->profile->image))
+                                                            <img src="{{asset('assets/images/users/'.Auth::user()->profile->image)}}" 
+                                                            alt="Profile" class="w-px-40 h-auto rounded-circle" id="">
+                                                        @else
+                                                    <img src="{{ asset('img/user.png') }}" alt="" class="w-px-40 h-auto rounded-circle">
+
+                                                    @endif                                                        </div>
                                                     </div>
                                                     <div class="flex-grow-1">
-                                                        <span class="fw-semibold d-block">عبدالهادي ديان</span>
-                                                        <small class="text-muted">مدير النظام</small>
+                                                        <span class="fw-semibold d-block">{{Auth::user()->name}}</span>
+                                                        <small class="text-muted"> {{Auth::user()->type==1?'مديرالنظام':'صاحب خدمه'}}</small>
                                                     </div>
                                                 </div>
                                             </a>
@@ -521,7 +541,7 @@
                                             </a>
                                         </li>
                                         <li>
-                                            <a class="dropdown-item" href="pages-account-settings-account.html">
+                                            <a class="dropdown-item" href="{{ route('account') }}">
                                                 <i class="bx bx-cog me-2"></i>
                                                 <span class="align-middle">الاعدادت</span>
                                             </a>
