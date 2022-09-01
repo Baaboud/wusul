@@ -11,7 +11,9 @@
             <!-- User Sidebar -->
             <div class="col-md-8">
                 <!-- User Card -->
-                <form>
+                <form   novalidate="novalidate" action="{{route('service.store')}}" 
+                enctype="multipart/form-data" method='post'>
+                @csrf
                     <div class="card mb-4">
                         <div class="card-body p-0 mt-3">
                             <div class="user-avatar-section">
@@ -25,7 +27,7 @@
                                         <span class="d-none d-sm-block bx bx-upload"> أضافة صورة</span>
                                         <i class="bx bx-upload d-block d-sm-none"></i>
                                         <input type="file" id="upload" class="account-file-input" hidden
-                                               accept="image/png, image/jpeg"/>
+                                               accept="image/png, image/jpeg" name='image'/>
                                     </label>
                                 </div>
                             </div>
@@ -39,65 +41,50 @@
                                     </div>
                                     <div class="mb-3 col-sm-6">
                                         <label for="timeZones" class="form-label">المجال</label>
-                                        <select id="selectpickerBasic" class="form-select selectpicker w-100" data-style="btn-default">
+                                        <select id="selectpickerBasic" class=" category form-select selectpicker w-100" data-style="btn-default" name='category'>
                                             <option value="" data-select2-id="2">أختر</option>
-                                            <option value="Turkey">الكهرباء</option>
-                                            <option value="Ukraine">التصميم</option>
-                                            <option value="United Arab Emirates">البرمجة</option>
-                                            <option value="United Kingdom">النجارة</option>
-                                            <option value="United States">الرياضة</option>
+                                            @forelse($categories as $category)   
+                                                <option data-icon="bx bx-list-check" value="{{$category->id}}" > {{$category->name}}</option>
+                                            @empty
+                                
+                                            @endforelse
                                         </select>
                                     </div>
                                     <div class="mb-3 col-sm-6">
                                         <label for="timeZones" class="form-label">نوع الدفع</label>
-                                        <select id="selectpickerBasic" class="form-select selectpicker w-100" data-style="btn-default">
+                                        <select id="selectpickerBasic" class="form-select selectpicker w-100" data-style="btn-default" name='type'>
                                             <option value="" data-select2-id="2">أختر</option>
-                                            <option value="Turkey">رقمي</option>
-                                            <option value="Ukraine">دفع عند الاستلام</option>
+                                            <option value="0">دفع عند الاستلام</option>
+                                            <option value="1">رقمي</option>
                                         </select>
                                     </div>
                                     <div class="mb-3 col-sm-12">
                                         <label for="timeZones" class="form-label">مدة التسليم</label>
-                                        <select id="selectpickerBasic" class="form-select selectpicker w-100" data-style="btn-default">
+                                        <select id="selectpickerBasic" class="form-select selectpicker w-100" data-style="btn-default" name='interval'>
                                             <option value="" data-select2-id="2">أختر</option>
-                                            <option value="Turkey">يوم</option>
-                                            <option value="Ukraine">يومين</option>
-                                            <option value="United Arab Emirates">3 أيام</option>
-                                            <option value="United Kingdom">4 أيام</option>
-                                            <option value="United States">5 أيام</option>
-                                            <option value="United States">6 أيام</option>
-                                            <option value="United States"> أسبوع</option>
-                                            <option value="United States">أسبوعين</option>
-                                            <option value="United States">3 أسابيع</option>
-                                            <option value="United States">شهر</option>
+                                            <option value="يوم">يوم</option>
+                                            <option value="يومين">يومين</option>
+                                            <option value=" 3 ايام">3 أيام</option>
+                                            <option value="4 أيام">4 أيام</option>
+                                            <option value="5 ايام">5 أيام</option>
+                                            <option value="6 ايام">6 أيام</option>
+                                            <option value=" أسبوع"> أسبوع</option>
+                                            <option value=" أسبوعين">أسبوعين</option>
+                                            <option value="3 أسابيع">3 أسابيع</option>
+                                            <option value="شهر">شهر</option>
                                         </select>
                                     </div>
-                                    <div class="mb-3 col-sm-6">
-                                        <label for="timeZones" class="form-label">المحافظة</label>
-                                        <select id="selectpickerBasic" class="form-select selectpicker w-100" data-style="btn-default">
-                                            <option value="" data-select2-id="2">أختر</option>
-                                            <option value="">حضرموت</option>
-                                            <option value="">عدن</option>
-                                        </select>
-                                    </div>
-                                    <div class="mb-3 col-sm-6">
-                                        <label for="timeZones" class="form-label">المدينة</label>
-                                        <select id="selectpickerBasic" class="form-select selectpicker w-100" data-style="btn-default">
-                                            <option value="" data-select2-id="2">أختر</option>
-                                            <option value="Turkey">المكلا</option>
-                                            <option value="Ukraine">الشحر</option>
-                                        </select>
-                                    </div>
+                                    @livewire('address-relation',['state_id'=>Auth::user()->address->state_id??''  ])
                                     <div class="mb-3 col-sm-12">
                                         <label for="name" class="form-label">العنوان</label>
-                                        <input type="text" class="form-control" id="name" name="name"
-                                               placeholder="أسم الخدمة">
+                                        <input type="text" class="form-control" id="name" name="address"
+                                               placeholder=" العنوان">
                                     </div>
                                     <div>
                                         <label for="exampleFormControlTextarea1" class="form-label">وصف
                                             الخدمة</label>
                                         <textarea class="form-control" id="exampleFormControlTextarea1"
-                                                  rows="3" placeholder="الوصف"></textarea>
+                                                  rows="3" placeholder="الوصف" name='description'></textarea>
                                     </div>
                                 </div>
                                 <div class="mt-2">
@@ -152,7 +139,8 @@
         imgView = document.getElementById('uploadedImg');
         imgInp2 = document.getElementById('cardUpload');
         imgView2 = document.getElementById('cardUploadImg');
-        reset = document.getElementById('reset');
+        let c=document.querySelector('.category');
+
         const r = imgView.src;
 
         imgInp.onchange = evt => {
@@ -161,17 +149,17 @@
                 imgView.src = URL.createObjectURL(file)
             }
         }
-
-        imgInp2.onchange = evt => {
-            const [file] = imgInp2.files
-            if (file) {
-                imgView2.src = URL.createObjectURL(file)
-            }
+        c.onchange = ()=>{
+            console.log(imgInp.value);
         }
 
-        reset.onclick = evt => {
-            imgInp.value = "",
-                imgView.src = r
-        }
+        // imgInp2.onchange = evt => {
+        //    const [file] = imgInp2.files
+          //  if (file) {
+            //    imgView2.src = URL.createObjectURL(file)
+            //}
+        //} 
+
+   
     </script>
 @endsection

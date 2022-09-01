@@ -26,6 +26,10 @@ class HomeController extends Controller
      */
     public function index()
     {
+        if(Auth::user()->is_active==0){
+
+            return redirect('login')->with(Auth::logout());
+        }
                 // this check if user is admin
                 if(Auth::user()->admin()){
 

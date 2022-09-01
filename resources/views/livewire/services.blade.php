@@ -16,7 +16,7 @@
                     </div>
                     <div class="col-lg-3 col-sm-6 mb-3">
                         <label for="selectpickerIcons" class="form-label fs-6 fw-bolder">نوع الخدمة</label>
-                        <select class=" w-100 "
+                        <select class="form-select w-100 "
                                  wire:model='category'>
                             <option data-icon="bx bx-list-check" value='0' >الكل</option>
                             @forelse($categories as $category)   
@@ -29,7 +29,7 @@
                     </div>
                     <div class="col-lg-3 col-sm-6 mb-3">
                         <label for="selectpickerIcons" class="form-label fs-6 fw-bolder" >ترتيب حسب</label>
-                        <select class=" w-100 show-tick" id="selectpickerIcons" data-icon-base="bx"
+                        <select class="form-select w-100 show-tick" id="selectpickerIcons" data-icon-base="bx"
                                 data-tick-icon="bx-check" data-style="btn-default" wire:model='sortFile'>
                             <option data-icon="bx bx-rename" value='name'>الاسم</option>
                             <option data-icon="bx bxs-watch" value ='created_at'>تاريخ التسجيل</option>
@@ -39,7 +39,7 @@
                     </div>
                     <div class="col-lg-3 col-sm-6 mb-3">
                         <label for="selectpickerIcons" class="form-label fs-6 fw-bolder">حالة الخدمة</label>
-                        <select class=" w-100 " wire:model='active'>
+                        <select class="form-select w-100 " wire:model='active'>
                             <option data-icon="bx bx-list-check" value=0>الكل</option>
                             <option data-icon="bx bx-list-check" value="1" >مفعلة</option>
                             <option data-icon="bx bx-list-check" value="2" >متوقفة</option>
@@ -68,7 +68,11 @@
                                             <th>#</th>
                                             <th>أسم الخدمة</th>
                                             <th>نوع الخدمة</th>
+                                            @if(Auth::user()->userServiceProvider())
+                                            <th>نوع الدفع</th>
+                                            @else
                                             <th>موفر الخدمة</th>
+                                            @endif
                                             <th>تاريخ التسجيل</th>
                                             <th>الحالة</th>
                                             <th>عمليات</th>
@@ -80,15 +84,32 @@
                                             <td>{{$loop->index+1 }}</td>
                                             <td>{{$service->name}}</td>
                                             <td><span class="badge bg-label-primary fs-6 me-1">{{$service->category->name}}</span></td>
-                                            <td>{{$service->user->name}}</td>
-                                            <td>{{$service->create_at}}</td>
-                                            <td><span class="badge bg-success fs-6 me-1">{{$service->is_active? 'مفعل' : 'غير مفعل'}}</span></td>
+                                            @if(Auth::user()->userServiceProvider())
                                             <td>
+                                            {{$service->type?'رقمي':'عند التسليم'}}
+                                            </td>                                                
+                                            @else    
+                                            <td>{{$service->user->name}}</td>
+                                            @endif
+                                            <td>{{$service->created_at}}</td>
+                                            <td><span class="badge bg-success fs-6 me-1">{{$service->is_active? 'مفعل' : 'غير مفعل'}}</span></td>
+                                            <td class='d-flex'>
+                                        @if(Auth::user()->userServiceProvider())
+                                            <form method="get" action="{{ route('service.edit',$service->id) }}">
+                                                <button type="button" class="btn btn-label-primary confirm">
+                                                    <span class="tf-icons bx bxs-eyedropper"></span>&nbsp; تعديل
+                                                </button>
+                                            </form>
+                                                <button type="button" class="btn btn-label-danger confirm mx-2">
+                                                    <span class="tf-icons bx bx-block"></span>&nbsp; حذف
+                                                </button>
+                                            @else
                                                 <form method="get" action="{{ route('index') }}">
                                                     <button type="button" class="btn btn-label-danger confirm">
                                                         <span class="tf-icons bx bx-block"></span>&nbsp; ايقاف
                                                     </button>
                                                 </form>
+                                            @endif
                                             </td>
                                         </tr>
                                         @empty

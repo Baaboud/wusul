@@ -6,12 +6,17 @@ use App\Models\Service;
 use Livewire\Component;
 use App\Models\ServiceCat;
 use Livewire\WithPagination;
+use Illuminate\Support\Facades\Auth;
 
 class Services extends Component
 {
     use WithPagination;
 
     public function updatingSearch()
+    {
+        $this->resetPage();
+    }
+    public function updatingCategory()
     {
         $this->resetPage();
     }
@@ -31,6 +36,7 @@ class Services extends Component
         //     );
         // })
         $categories=ServiceCat::all();
+      
         $services =  Service::with(['address','category','user'])
         ->withFilters(
             $this->search,
@@ -39,7 +45,9 @@ class Services extends Component
             $this->stars
             )->when($this->sortFile,function($query){
                 $query->orderBy("$this->sortFile");
-            })
+            })->when(Auth::user()->userServiceProvider(),function($q){
+                $q->where('user_id',Auth::id());
+            }) 
             ->paginate(1);
             // dd($services);
         return view('livewire.services',compact('services','categories'));

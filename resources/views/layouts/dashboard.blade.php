@@ -105,8 +105,8 @@
                         <div>لوحة التحكم</div>
                     </a>
                 </li>
-
-                <!-- Misc -->
+                @if(Auth::user()->admin())
+                 <!-- Misc -->
                 <li class="menu-header text-uppercase text-white fs-6"><span class="menu-header-text">أدارة العمليات</span></li>
                 <li class="menu-item {{Request::url() === route('admin.users') ? 'active' : ''}}">
                     <a href="{{route('admin.users')}}" class="menu-link">
@@ -159,6 +159,9 @@
                         <div>أدارة المدن</div>
                     </a>
                 </li>
+                @endif
+
+                @if(Auth::user()->userServiceProvider())
 
                 <!-- Service Provider -->
                 <li class="menu-header text-uppercase text-white fs-6"><span class="menu-header-text text-danger">مزود الخدمة</span></li>
@@ -171,10 +174,19 @@
                         <div>الطلبات</div>
                     </a>
                 </li>
+                <li class="menu-header text-uppercase text-white fs-6"><span class="menu-header-text">أدارة الخدمات</span></li>
+
                 <li class="menu-item {{Request::url() === route('test') ? 'active' : ''}}">
-                    <a href="https://themeselection.com/support/" class="menu-link">
+                    <a href="{{route('service')}}" target="_blank" class="menu-link">
+
                         <i class="menu-icon tf-icons bx bx-user"></i>
                         <div>الخدمات</div>
+                    </a>
+                </li>
+                <li class="menu-item {{Request::url() === route('test') ? 'active' : ''}}">
+                    <a href="{{route('service.create')}}" target="_blank" class="menu-link">
+                        <i class="menu-icon tf-icons bx bx-user"></i>
+                        <div>اضافة خدمة</div>
                     </a>
                 </li>
                 <!-- Money -->
@@ -193,6 +205,7 @@
                         <div>البلاغات</div>
                     </a>
                 </li>
+                @endif
             </ul>
         </aside>
         <!-- / Aside -->
@@ -488,6 +501,7 @@
                                 <li class="nav-item navbar-dropdown dropdown-user dropdown">
                                     <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
                                         <div class="avatar avatar-online">
+
                                             @if(isset(Auth::user()->profile->image))
                                                 <img src="{{asset('assets/images/users/'.Auth::user()->profile->image)}}" alt="" class="w-px-40 h-100 rounded-circle">
                                             @else
@@ -501,16 +515,18 @@
                                                 <div class="d-flex">
                                                     <div class="flex-shrink-0 me-3">
                                                         <div class="avatar avatar-online">
-                                                            @if(isset(Auth::user()->profile->image))
-                                                                <img src="{{asset('assets/images/users/'.Auth::user()->profile->image)}}" alt="" class="w-px-40 h-100 rounded-circle">
-                                                            @else
-                                                                <img src="{{ asset('img/user1.png') }}" alt="" class="w-px-40 h-auto rounded-circle">
-                                                            @endif
-                                                        </div>
+                                                    @if(isset(Auth::user()->profile->image))
+                                                            <img src="{{asset('assets/images/users/'.Auth::user()->profile->image)}}" 
+                                                            alt="Profile" class="w-px-40 h-auto rounded-circle" id="">
+                                                        @else
+                                                    <img src="{{ asset('img/user.png') }}" alt="" class="w-px-40 h-auto rounded-circle">
+
+                                                    @endif                                                        </div>
                                                     </div>
                                                     <div class="flex-grow-1">
-                                                        <span class="fw-semibold d-block">{{ Auth::user()->name }}</span>
-                                                        <small class="text-muted">مدير النظام</small>
+                                                        <span class="fw-semibold d-block">{{Auth::user()->name}}</span>
+                                                        <small class="text-muted"> {{Auth::user()->type==1?'مديرالنظام':'صاحب خدمه'}}</small>
+
                                                     </div>
                                                 </div>
                                             </a>
