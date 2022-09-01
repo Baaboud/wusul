@@ -1,4 +1,4 @@
-@extends('layouts.dashboard')
+@extends('layouts.app')
 
 @section('extra-style')
     <link rel="stylesheet" href="{{ asset('assets/vendor/libs/bootstrap-select/bootstrap-select.css') }}">
@@ -7,10 +7,11 @@
 
 @section('content')
 
-    <div class="container-xxl flex-grow-1">
-        <div class="container-xxl flex-grow-1 pt-0 px-sm px-0">
+    <div class="container-xxl flex-grow-1 mt-5">
+        <div class="container-xxl flex-grow-1 pt-0 px-sm-2 px-0">
             <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">لوحة التحكم / </span>المحفظة
             </h4>
+
 
             <div class="row">
                 <div class="col-xxl-12 col-md-6 my-3">
@@ -122,48 +123,48 @@
                         <div class="table-responsive text-nowrap">
                             <table class="table table-hover mb-5">
                                 <thead>
-                                    <tr>
-                                        <th>#</th>
-                                        <th>رقم الفاتورة</th>
-                                        <th>العملية</th>
-                                        <th>الوصف</th>
-                                        <th>التاريخ</th>
-                                        <th>المبلغ</th>
-                                    </tr>
+                                <tr>
+                                    <th>#</th>
+                                    <th>رقم الفاتورة</th>
+                                    <th>العملية</th>
+                                    <th>الوصف</th>
+                                    <th>التاريخ</th>
+                                    <th>المبلغ</th>
+                                </tr>
                                 </thead>
                                 <tbody class="table-border-bottom-0">
-                                    <tr>
-                                        <td>1</td>
-                                        <td>23</td>
-                                        <td><span class="badge bg-label-success pb-3 fs-6">ايداع</span></td>
-                                        <td class="text-success">تم ايداع مبلغ نظرا لألغاء الخدمة</td>
-                                        <td>2022-05-12</td>
-                                        <td>3000</td>
-                                    </tr>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>61</td>
-                                        <td><span class="badge bg-label-danger pb-3 fs-6">سحب</span></td>
-                                        <td class="text-danger">تم سحب مبلغ من حسابك لدفع مبلغ الخدمة</td>
-                                        <td>2022-05-12</td>
-                                        <td>3000</td>
-                                    </tr>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>93</td>
-                                        <td><span class="badge bg-label-success pb-3 fs-6">ايداع</span></td>
-                                        <td class="text-success">تم ايداع مبلغ نظرا لألغاء الخدمة</td>
-                                        <td>2022-05-12</td>
-                                        <td>3000</td>
-                                    </tr>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>114</td>
-                                        <td><span class="badge bg-label-danger pb-3 fs-6">سحب</span></td>
-                                        <td class="text-danger">تم سحب مبلغ من حسابك لدفع مبلغ الخدمة</td>
-                                        <td>2022-05-12</td>
-                                        <td>3000</td>
-                                    </tr>
+                                <tr>
+                                    <td>1</td>
+                                    <td>23</td>
+                                    <td><span class="badge bg-label-success pb-3 fs-6">ايداع</span></td>
+                                    <td class="text-success">تم ايداع مبلغ نظرا لألغاء الخدمة</td>
+                                    <td>2022-05-12</td>
+                                    <td>3000</td>
+                                </tr>
+                                <tr>
+                                    <td>1</td>
+                                    <td>61</td>
+                                    <td><span class="badge bg-label-danger pb-3 fs-6">سحب</span></td>
+                                    <td class="text-danger">تم سحب مبلغ من حسابك لدفع مبلغ الخدمة</td>
+                                    <td>2022-05-12</td>
+                                    <td>3000</td>
+                                </tr>
+                                <tr>
+                                    <td>1</td>
+                                    <td>93</td>
+                                    <td><span class="badge bg-label-success pb-3 fs-6">ايداع</span></td>
+                                    <td class="text-success">تم ايداع مبلغ نظرا لألغاء الخدمة</td>
+                                    <td>2022-05-12</td>
+                                    <td>3000</td>
+                                </tr>
+                                <tr>
+                                    <td>1</td>
+                                    <td>114</td>
+                                    <td><span class="badge bg-label-danger pb-3 fs-6">سحب</span></td>
+                                    <td class="text-danger">تم سحب مبلغ من حسابك لدفع مبلغ الخدمة</td>
+                                    <td>2022-05-12</td>
+                                    <td>3000</td>
+                                </tr>
                                 </tbody>
                             </table>
                         </div>
