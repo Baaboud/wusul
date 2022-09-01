@@ -25,13 +25,13 @@ class Address extends Model
         return $this->belongsTo(State::class,'state_id');
     }
 
-    public function scopeWithFilters($query, $city, $state)
+    public function scopeWithFilters($query, $state, $city)
     {
         return $query->when($state, function ($query) use ($state) {
-                $query->where('state_id', $state);
+                $query->where('state_id','=' ,intval($state));
             })
             ->when($city, function ($query) use ($city) {
-                $query->where('city_id', $city);
+                $query->where('city_id','=',intval($city));
             });
     }
     

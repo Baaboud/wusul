@@ -42,7 +42,7 @@ public function rating()
 
 // orders on service
     public function orders(){
-        return $this->hasMany(Order::class,'service_id')->withPivot('stars');
+        return $this->hasMany(Order::class,'service_id');
     }
 
     // service `s works
