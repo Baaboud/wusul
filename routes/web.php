@@ -83,7 +83,7 @@ Route::get('/services', function () {
 })->name('services');
 
 Route::get('/l/l', function () {
-    return view('user.services');
+    return view('service_provider.wallet');
 })->name('test');
 
 // start routes of user that provide service

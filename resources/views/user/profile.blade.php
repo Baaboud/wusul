@@ -65,7 +65,7 @@
                         <li class="nav-item"><a class="nav-link active" href="#"><i class='bx bx-user'></i> البيانات الشخصية</a></li>
                         <li class="nav-item"><a class="nav-link" href="#"><i class='bx bx-group'></i> الخدمات</a></li>
                         <li class="nav-item"><a class="nav-link" href="#"><i class='bx bx-grid-alt'></i> الطلبات</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#"><i class='bx bx-link-alt'></i> الدفع</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#"><i class='bx bx-wallet'></i> المحفظة</a></li>
                     </ul>
                 </div>
             </div>
