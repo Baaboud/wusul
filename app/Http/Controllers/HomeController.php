@@ -41,12 +41,14 @@ class HomeController extends Controller
                     //  this rout for serviceProvider/
                     return redirect(RouteServiceProvider::USER_SERVICE_PROVIDER);
 
-                }else{
+                }else{  
 
+         
                     //  this rout for user
                     return redirect()->route('index');
 
                 }
                 // php artisan make:controller userServiceProvider --resource
     }
+    
 }

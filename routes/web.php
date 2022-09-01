@@ -5,6 +5,7 @@ use App\Models\Work;
 use App\Models\Service;
 use App\Models\ServiceCat;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\site\SiteController;
 use App\Http\Controllers\admin\UsersController;
 use App\Http\Controllers\userServiceProvider\WorkController;
 use App\Http\Controllers\userServiceProvider\ServicesController;
@@ -19,6 +20,14 @@ use App\Http\Controllers\userServiceProvider\ServicesController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+/**
+ * website for user
+ */
+
+
+//  end sit
+
 Route::middleware(['auth'])->group(function () {
     Route::group(['prefix' => 'account'], function () {
 
@@ -38,6 +47,7 @@ Route::middleware(['auth'])->group(function () {
 
 
 });
+Route::get('/services', [SiteController::class, 'services'])->name('home.services');
 
 Route::get('/test', function () {
     $categories = ServiceCat::all();
@@ -66,9 +76,8 @@ Route::get('/test2', function () {
     );
 
 });
-Route::get('/', function () {
-    return view('index');
-})->name('index');
+Route::get('/', [SiteController::class, 'index'])->name('index');
+
 
 Auth::routes();
 
@@ -78,9 +87,7 @@ Route::get('/profile', function () {
     return view('user.profile');
 })->name('profile')->middleware('auth');
 
-Route::get('/services', function () {
-    return view('services');
-})->name('services');
+Route::get('/services', [SiteController::class, 'services'])->name('services');
 
 Route::get('/l/l', function () {
     return view('service_provider.wallet');

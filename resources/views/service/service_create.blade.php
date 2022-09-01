@@ -74,12 +74,6 @@
                                             <option value="شهر">شهر</option>
                                         </select>
                                     </div>
-                                    @livewire('address-relation',['state_id'=>Auth::user()->address->state_id??''  ])
-                                    <div class="mb-3 col-sm-12">
-                                        <label for="name" class="form-label">العنوان</label>
-                                        <input type="text" class="form-control" id="name" name="address"
-                                               placeholder=" العنوان">
-                                    </div>
                                     <div>
                                         <label for="exampleFormControlTextarea1" class="form-label">وصف
                                             الخدمة</label>

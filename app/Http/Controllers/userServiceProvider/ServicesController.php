@@ -86,16 +86,17 @@ class ServicesController extends Controller
             // create Service
             $service = Service::create([
                 'name' => $request['name'],
-                'user_id' => Auth::id()??3,
+                'user_id' => Auth::id(),
                 'description' => $request['description'],
                 'type' => $request['type']?? 0,
                 'image' => $photo,
-                'price' => $request['price']??'1',
+                'price' => $request['price']??'0',
                 'service_cat_id' => $request['category'],
                 'stars' => 0,
+                'interval'=>$request->interval
             ]);
 
-
+            
 
             // event(new notfiy($));
                 // return $service;
@@ -220,15 +221,8 @@ class ServicesController extends Controller
         }
     }
 
-    public function services(Request $request){
-        $categories=ServiceCat::all();
-        $services =  Service::with(['address','category','user'])
-        ->withFilters(
-            request()->input('search',''),
-            request()->input('category',''),
-            request()->input('active',''),
-            request()->input('stars','')
-            )->get();
-        return view('admin.services',compact('services','categories'));
+    public function services(){
+
+        return view('admin.services');
     }
 }

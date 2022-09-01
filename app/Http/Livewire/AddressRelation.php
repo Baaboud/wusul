@@ -12,12 +12,19 @@ class AddressRelation extends Component
     public function mount($state_id){
         $this->state=$state_id;
     }
+    public function updatingState(){
+        
+    }
+
     public function render()
     {
         $states=State::with(['cities'=>function($q){
             if($this->state !=''){
                 $q->where('state_id',$this->state);
             }
+            $this->emit('changeState',$this->state);
+            $this->emit('changeCity',$this->city);
+
         }])->get();
         // dd($states);
         return view('livewire.address-relation',compact('states'));
