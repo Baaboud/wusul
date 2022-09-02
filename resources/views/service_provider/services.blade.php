@@ -2,14 +2,7 @@
 
 @section('extra-style')
     <link rel="stylesheet" href="{{ asset('assets/vendor/libs/bootstrap-select/bootstrap-select.css') }}">
-    <style>
-        .active {
-            color: #696cff !important;
-        }
-        .nav-tabs .active {
-            border: #eee 1px solid !important;
-        }
-    </style>
+    <link rel="stylesheet" href="{{ asset('assets/css/tabs.css') }}">
     <link rel="stylesheet" href="../../assets/vendor/libs/animate-css/animate.css" />
     <link rel="stylesheet" href="../../assets/vendor/libs/sweetalert2/sweetalert2.css" />
 @endsection

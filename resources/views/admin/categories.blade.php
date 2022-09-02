@@ -2,22 +2,7 @@
 
 @section('extra-style')
     <link rel="stylesheet" href="{{ asset('assets/vendor/libs/bootstrap-select/bootstrap-select.css') }}">
-    <style>
-        .active {
-            color: #696cff !important;
-        }
-        .nav-tabs .nav-item .nav-link {
-            border: #ddd 1px solid !important;
-            background-color: #eee !important;
-            box-shadow: 1px 1px #ccc !important;
-        }
-
-        .nav-tabs .nav-item .active {
-            border: 0px !important;
-            background-color: #fff !important;
-            box-shadow: none !important;
-        }
-    </style>
+    <link rel="stylesheet" href="{{ asset('assets/css/tabs.css') }}">
     <link rel="stylesheet" href="../../assets/vendor/libs/animate-css/animate.css" />
     <link rel="stylesheet" href="../../assets/vendor/libs/sweetalert2/sweetalert2.css" />
 @endsection
@@ -36,13 +21,13 @@
                 <div class="modal fade" id="addCategory" tabindex="-1" aria-hidden="true" style="display: none;">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
-                            <form action="{{route('category.store')}}" id="formAccountSettings" method="POST" 
-                                class="fv-plugins-bootstrap5 fv-plugins-framework" novalidate="novalidate" 
+                            <form action="{{route('category.store')}}" id="formAccountSettings" method="POST"
+                                class="fv-plugins-bootstrap5 fv-plugins-framework" novalidate="novalidate"
                                 enctype="multipart/form-data">
                                 @csrf
                                 <div class="card-body">
                                     <div class="d-flex align-items-sm-center gap-4 flex-wrap">
-                                        <img src="../../assets/img/backgrounds/event.jpg" alt="user-avatar"
+                                        <img src="{{ asset('img/upload.png') }}" alt="user-avatar"
                                              class="d-block rounded img-fluid h-px-150 w-px-150"
                                              style="object-fit: contain" id="uploadedImg">
                                         <div class="button-wrapper my-auto">
@@ -120,11 +105,11 @@
                                         @forelse($categories as $category)
                                         <tr>
                                             <td>{{$loop->index+1 }}</td>
-                                            
+
                                             <td>{{$category->name}}</td>
-                                            <td>{{$category->create_at}}</td>
+                                            <td>{{\Carbon\Carbon::parse($category->created_at)->diffForHumans()}}</td>
                                             <td>
-                                                <button type="button" class="btn btn-label-primary"
+                                                <button type="button" class="btn btn-label-primary me-3"
                                                  data-bs-toggle="modal" data-bs-target="#editeCategory1"
                                                   onclick="edit({{ $category }} , '{{ asset( $category->path ) }}' )" >
                                                     <span class="tf-icons bx bx-edit"></span>&nbsp; تعديل
@@ -153,7 +138,11 @@
                                     <div class="col-xl-3 col-lg-4 col-md-6">
                                         <div class="card border shadow-none">
                                             <div class="card-body text-center">
-                                                <img class="mb-3" src="{{ asset("{$category->path}$category->image ") }}" height="60" alt="Help center articles">
+                                                @if($category->image)
+                                                    <img class="mb-3" src="{{ asset("{$category->path}$category->image ") }}" height="60" alt="Help center articles">
+                                                @else
+                                                    <img class="mb-3" src="{{ asset("img/img.png") }}" height="60" alt="Help center articles">
+                                                @endif
                                                 <h5>{{$category->name}}</h5>
                                                 <p class="text-dark"> {{$category->description}} </p>
                                                 <div class="d-flex align-items-center justify-content-around">
@@ -184,15 +173,15 @@
                             <div class="modal fade" id="editeCategory1" tabindex="-1" aria-hidden="true" style="display: none;">
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content">
-                                             <form action="{{route('category.update')}}" 
+                                             <form action="{{route('category.update')}}"
                                 enctype="multipart/form-data"
-                                    id="formAccountSettings" method="POST" 
-                                class="fv-plugins-bootstrap5 fv-plugins-framework" novalidate="novalidate" 
+                                    id="formAccountSettings" method="POST"
+                                class="fv-plugins-bootstrap5 fv-plugins-framework" novalidate="novalidate"
                                 >
                                             @csrf
                                             <div class="card-body">
                                                 <div class="d-flex align-items-sm-center gap-4 flex-wrap">
-                                                    <img src="" alt="user-avatar" 
+                                                    <img src="" alt="user-avatar"
                                                          class="d-block rounded img-fluid h-px-150 w-px-150"
                                                          style="object-fit: contain" id="uploadedImg">
                                                     <div class="button-wrapper my-auto">
@@ -214,7 +203,7 @@
                                                 <div class="row">
                                                     <div class="mb-3 col">
                                                         <label for="name" class="form-label">أسم المجال</label>
-                                                        <input type="text" class="form-control" id="name" 
+                                                        <input type="text" class="form-control" id="name"
                                                                placeholder="أسم المجال" value="" name='name'>
                                                     </div>
                                                     <div>
@@ -254,6 +243,7 @@
     <script src="{{ asset('assets/vendor/libs/bootstrap-select/bootstrap-select.js') }}"></script>
     <script src="../../assets/js/extended-ui-sweetalert2.js"></script>
     <script src="../../assets/vendor/libs/sweetalert2/sweetalert2.js"></script>
+    <script src="{{ asset('js/confirm.js') }}"></script>
     <script>
         imgInp = document.getElementById('upload');
         imgView = document.getElementById('uploadedImg');
@@ -273,37 +263,6 @@
         }
     </script>
     <script>
-        $('.confirm').on('click',function(e){
-            e.preventDefault();
-            var form = $(this).parents('form');
-            Swal.fire({
-                title: "هل انت متأكد من المتابعة",
-                text: "لن يمكنك التراجع عن هذا !",
-                icon: "warning",
-                showCancelButton: !0,
-                confirmButtonText: "نعم, قم بالحذف",
-                customClass: {confirmButton: "btn btn-primary me-3", cancelButton: "btn btn-label-secondary"},
-                buttonsStyling: !1
-            }).then(function (t) {
-                t.value ? Swal.fire({
-                        icon: "success",
-                        title: "محذوف!",
-                        text: "لقد تم الحذف بنجاخ.",
-                        customClass: {confirmButton: "btn btn-success"}
-                    }, setTimeout(function(){
-
-                        form.submit()
-                    }, 1000)
-                ) : t.dismiss === Swal.DismissReason.cancel && Swal.fire({
-                    title: "تم الالغاء",
-                    text: "تم الغاء العملية :)",
-                    icon: "error",
-                    customClass: {confirmButton: "btn btn-success"}
-                })
-            })
-        });
-
-    
         function edit(category,path=''){
             const img =  document.querySelector('#editeCategory1 .modal-dialog form img');
             const id =  document.querySelector('input[name=id]');

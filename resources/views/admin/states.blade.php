@@ -2,30 +2,14 @@
 
 @section('extra-style')
     <link rel="stylesheet" href="{{ asset('assets/vendor/libs/bootstrap-select/bootstrap-select.css') }}">
-    <style>
-        .active {
-            color: #696cff !important;
-        }
-        .nav-tabs .nav-item .nav-link {
-            border: #ddd 1px solid !important;
-            background-color: #eee !important;
-            box-shadow: 1px 1px #ccc !important;
-        }
-
-        .nav-tabs .nav-item .active {
-            border: 0px !important;
-            background-color: #fff !important;
-            box-shadow: none !important;
-        }
-    </style>
     <link rel="stylesheet" href="../../assets/vendor/libs/animate-css/animate.css" />
     <link rel="stylesheet" href="../../assets/vendor/libs/sweetalert2/sweetalert2.css" />
 @endsection
 
 @section('content')
 
-    <div class="container-xxl flex-grow-1 container-p-y">
-        <div class="container-xxl flex-grow-1 container-p-y pt-0 px-sm-2 px-0">
+    <div class="container-xxl flex-grow-1">
+        <div class="container-xxl flex-grow-1">
             <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">لوحة التحكم / </span>المحافظات
             </h4>
             <div class="card position-relative">
@@ -76,6 +60,7 @@
                             <th>أسم المحافظة</th>
                             <th>تاريخ التسجيل</th>
                             <th>الحالة</th>
+                            <th>تنشيط</th>
                             <th>عمليات</th>
                         </tr>
                         </thead>
@@ -84,10 +69,27 @@
                         <tr>
                             <td>{{$loop->index+1 }}</td>
                             <td> {{$state->name}}</td>
-                            <td>{{$state->created_at}}</td>
-                            <td><span class="badge bg-label-success fs-6">
-                                {{$state->is_active? 'مفعل' : 'غير مفعل'}}
-                            </span></td>
+                            <td>{{\Carbon\Carbon::parse($state->created_at)->diffForHumans()}}</td>
+                            <td>
+                                @if($state->is_active)
+                                    <span class="badge bg-success pb-3 fs-6">مفعل</span>
+                                @else
+                                    <span class="badge bg-danger pb-3 fs-6">غير مفعل</span>
+                                @endif
+                            </td>
+                            <td>
+                                <form method="get" action="{{ route('admin.state.active',$state->id) }}">
+                                        @if($state->is_active)
+                                            <button type="submit" class="btn btn-label-danger mx-2">
+                                                <span class="tf-icons bx bx-block me-2"></span>ايقاف
+                                            </button>
+                                        @else
+                                            <button type="submit" class="btn btn-label-primary mx-2">
+                                                <span class="tf-icons bx bx-check me-2"></span>تفعيل
+                                            </button>
+                                        @endif
+                                </form>
+                            </td>
                             <td class="d-flex">
                                 <button type="button" class="btn btn-label-primary mx-2"
                                 onclick="edit({{ $state }})"
@@ -100,25 +102,14 @@
                                         <span class="tf-icons bx bx-trash"></span>&nbsp; خذف
                                     </button>
                                 </form>
-
-                                
-                                <form method="get" action="{{ route('admin.state.active',$state->id) }}">
-                                    <button type="submit" class="btn btn-label-danger mx-2">
-                                                @if($state->is_active)
-                                                        <span class="tf-icons bx bx-block">
-                                                        ايقاف
-                                                        </span>&nbsp;
-                                                        @else
-                                                        <span class="">
-                                                        تفعيل
-                                                        </span>
-                                                        @endif                                      
-                                                        </button>
-                                </form>
                             </td>
                         </tr>
                         @empty
-                           
+                            <tr>
+                                <td colspan="6" class="text-center py-5 fs-5 text-danger">
+                                    لا يوجد نتائج
+                                </td>
+                            </tr>
                         @endforelse
 
                         </tbody>

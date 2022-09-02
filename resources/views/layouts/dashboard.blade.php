@@ -79,7 +79,7 @@
 
 </head>
 
-<body style="font-family: 'Poppins', sans-serif;">
+<body>
 
 <!-- Layout wrapper -->
 <div class="layout-wrapper layout-content-navbar  ">
@@ -88,9 +88,9 @@
 
         <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
 
-            <div class="app-brand demo h-px-75">
+            <div class="app-brand demo h-px-100">
                 <a href="#" class="app-brand-link w-100 d-flex justify-content-center flex-wrap">
-                    <img src="http://127.0.0.1:8000/img/logo.png" class="w-px-40 h-auto p-1" alt="" srcset="">
+                    <img src="{{ asset('img/logo.png') }}" class="w-px-40 h-auto p-1" alt="" srcset="">
                     <span class="ms-1 fs-4 fw-bold text-white">وصول</span>
                 </a>
             </div>
@@ -98,14 +98,14 @@
             <div class="menu-inner-shadow"></div>
 
             <ul class="menu-inner py-1 mt-4 mb-3">
+                @if(Auth::user()->admin())
                 <!-- Dashboards -->
-                <li class="menu-item">
-                    <a href="#" class="menu-link">
+                <li class="menu-item {{Request::url() === route('admin.home') ? 'active' : ''}}">
+                    <a href="{{ route('admin.home') }}" class="menu-link">
                         <i class="menu-icon tf-icons bx bx-home-circle"></i>
                         <div>لوحة التحكم</div>
                     </a>
                 </li>
-                @if(Auth::user()->admin())
                  <!-- Misc -->
                 <li class="menu-header text-uppercase text-white fs-6"><span class="menu-header-text">أدارة العمليات</span></li>
                 <li class="menu-item {{Request::url() === route('admin.users') ? 'active' : ''}}">
@@ -162,44 +162,48 @@
                 @endif
 
                 @if(Auth::user()->userServiceProvider())
-
                 <!-- Service Provider -->
-                <li class="menu-header text-uppercase text-white fs-6"><span class="menu-header-text text-danger">مزود الخدمة</span></li>
+                <li class="menu-item {{Request::url() === route('serviceProvider.home') ? 'active' : ''}}">
+                    <a href="{{ route('serviceProvider.home') }}" class="menu-link">
+                        <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                        <div>لوحة التحكم</div>
+                    </a>
+                </li>
                 <!-- Orders -->
-                <li class="menu-header text-uppercase text-white fs-6"><span class="menu-header-text">أدارة العمليات</span></li>
+                <li class="menu-header text-uppercase text-white fs-6"><span class="menu-header-text">أدارة الطلبات</span></li>
                 <li class="menu-item {{Request::url() === route('category.store') ? 'active' : ''}}">
-                    <a href="https://themeselection.com/demo/sneat-bootstrap-html-admin-template/documentation/"
+                    <a href="#"
                        class="menu-link">
-                        <i class="menu-icon tf-icons bx bx-grid-alt"></i>
+                        <i class="menu-icon tf-icons bx bxs-archive-out"></i>
                         <div>الطلبات</div>
                     </a>
                 </li>
                 <li class="menu-header text-uppercase text-white fs-6"><span class="menu-header-text">أدارة الخدمات</span></li>
 
-                <li class="menu-item {{Request::url() === route('test') ? 'active' : ''}}">
-                    <a href="{{route('service')}}" target="_blank" class="menu-link">
+                <li class="menu-item {{Request::url() === route('service') ? 'active' : ''}}">
+                    <a href="{{route('service')}}" class="menu-link">
 
-                        <i class="menu-icon tf-icons bx bx-user"></i>
+                        <i class="menu-icon tf-icons bx bx-grid-alt"></i>
                         <div>الخدمات</div>
                     </a>
                 </li>
-                <li class="menu-item {{Request::url() === route('test') ? 'active' : ''}}">
-                    <a href="{{route('service.create')}}" target="_blank" class="menu-link">
-                        <i class="menu-icon tf-icons bx bx-user"></i>
+                <li class="menu-item {{Request::url() === route('service.create') ? 'active' : ''}}">
+                    <a href="{{route('service.create')}}" class="menu-link">
+                        <i class="menu-icon tf-icons bx bx-add-to-queue"></i>
                         <div>اضافة خدمة</div>
                     </a>
                 </li>
                 <!-- Money -->
                 <li class="menu-header text-uppercase text-white fs-6"><span class="menu-header-text">أدارة العمليات</span></li>
                 <li class="menu-item">
-                    <a href="https://themeselection.com/demo/sneat-bootstrap-html-admin-template/documentation/"
+                    <a href="#"
                        class="menu-link">
                         <i class="menu-icon tf-icons bx bx-money"></i>
                         <div>المحفظة</div>
                     </a>
                 </li>
                 <li class="menu-item">
-                    <a href="https://themeselection.com/demo/sneat-bootstrap-html-admin-template/documentation/"
+                    <a href="#"
                        class="menu-link">
                         <i class="menu-icon tf-icons bx bxs-report"></i>
                         <div>البلاغات</div>
@@ -516,7 +520,7 @@
                                                     <div class="flex-shrink-0 me-3">
                                                         <div class="avatar avatar-online">
                                                     @if(isset(Auth::user()->profile->image))
-                                                            <img src="{{asset('assets/images/users/'.Auth::user()->profile->image)}}" 
+                                                            <img src="{{asset('assets/images/users/'.Auth::user()->profile->image)}}"
                                                             alt="Profile" class="w-px-40 h-auto rounded-circle" id="">
                                                         @else
                                                     <img src="{{ asset('img/user.png') }}" alt="" class="w-px-40 h-auto rounded-circle">

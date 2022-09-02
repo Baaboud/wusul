@@ -405,7 +405,7 @@
                                     @if(isset(Auth::user()->profile->image))
                                         <img src="{{asset('assets/images/users/'.Auth::user()->profile->image)}}" alt="" class="w-px-40 h-100 rounded-circle">
                                     @else
-                                        <img src="{{ asset('assets/img/avatars/1.png') }}" alt="" class="w-px-40 h-auto rounded-circle">
+                                        <img src="{{ asset('img/user.png') }}" alt="" class="w-px-40 h-auto rounded-circle">
                                     @endif
                                 </div>
                             </a>
@@ -416,17 +416,16 @@
                                             <div class="flex-shrink-0 me-3">
                                                 <div class="avatar avatar-online">
                                                   @if(isset(Auth::user()->profile->image))
-                                                    <img src="{{asset('assets/images/users/'.Auth::user()->profile->image)}}" 
+                                                    <img src="{{asset('assets/images/users/'.Auth::user()->profile->image)}}"
                                                         alt="Profile" class="w-px-40 h-auto rounded-circle" id="">
                                                 @else
                                                     <img src="{{ asset('img/user.png') }}" alt="" class="w-px-40 h-auto rounded-circle">
-
-                                                @endif 
+                                                @endif
                                                 </div>
                                             </div>
                                             <div class="flex-grow-1">
                                                 <span class="fw-semibold d-block"> {{Auth::user()->name}}</span>
-                                                <small class="text-muted"> 
+                                                <small class="text-muted">
                                                 @if(Auth::user()->type==1)
                                                 مدير النظام
                                                 @elseif(Auth::user()->type==2)

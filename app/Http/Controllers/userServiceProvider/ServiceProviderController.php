@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 
 class ServiceProviderController extends Controller
 {
+    public function home()
+    {
+        return view('service_provider.home');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +18,7 @@ class ServiceProviderController extends Controller
      */
     public function index()
     {
-        return 'you are service provider'; 
+        return 'you are service provider';
     }
 
     /**

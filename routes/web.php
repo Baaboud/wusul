@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\userServiceProvider\ServiceProviderController;
 use App\Models\User;
 use App\Models\Work;
 use App\Models\Service;
@@ -43,9 +44,6 @@ Route::middleware(['auth'])->group(function () {
         //
 
     });
-
-
-
 });
 Route::get('/services', [SiteController::class, 'services'])->name('home.services');
 
@@ -99,7 +97,7 @@ Route::group(['prefix' => 'serviceProvider',
         ],
         function () {
 
-    Route::get('/', [ServicesController::class, 'index'])->name('serviceProvider.home');
+    Route::get('/', [ServiceProviderController::class, 'home'])->name('serviceProvider.home');
 
     //crud category of service
     Route::group(['prefix' => 'service'], function () {
