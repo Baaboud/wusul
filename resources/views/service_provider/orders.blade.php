@@ -51,12 +51,15 @@
                         </select>
                     </div>
                     <div class="col-lg-3 col-sm-6 mb-3">
-                        <label for="selectpickerIcons" class="form-label fs-6 fw-bolder">حالة الخدمة</label>
+                        <label for="selectpickerIcons" class="form-label fs-6 fw-bolder">حالة الطلب</label>
                         <select class="selectpicker w-100 show-tick" id="selectpickerIcons" data-icon-base="bx"
                                 data-tick-icon="bx-check" data-style="btn-default">
                             <option data-icon="bx bx-list-check">الكل</option>
-                            <option data-icon="bx bx-check">مفعلة</option>
-                            <option data-icon="bx bx-block">متوقفة</option>
+                            <option data-icon="bx bx-news">جديد</option>
+                            <option data-icon="bx bx-check">مكتمل</option>
+                            <option data-icon="bx bx-block">مرفوض</option>
+                            <option data-icon="bx bx-stop">قيد الانتظار</option>
+                            <option data-icon="bx bx-wallet">انتظار الدفع</option>
                         </select>
                     </div>
                 </div>
@@ -71,7 +74,8 @@
                                     <th>اسم العميل</th>
                                     <th>أسم الخدمة</th>
                                     <th>نوع الخدمة</th>
-                                    <th>تاريخ التسجيل</th>
+                                    <th>تاريخ الطلب</th>
+                                    <th>تاريخ التسليم المتوقع</th>
                                     <th>الحالة</th>
                                 </tr>
                                 </thead>
@@ -82,6 +86,7 @@
                                     <td> تصميم مواقع ويب </td>
                                     <td><span class="badge bg-label-primary fs-6 me-1">برمجة</span></td>
                                     <td>2022-05-12</td>
+                                    <td>2022-05-12</td>
                                     <td><span class="badge bg-success fs-6 me-1">مفعل</span></td>
                                 </tr>
                                 <tr>
@@ -90,6 +95,7 @@
                                     <td> تصميم مواقع ويب </td>
                                     <td><span class="badge bg-label-primary fs-6 me-1">برمجة</span></td>
                                     <td>2022-05-12</td>
+                                    <td>2022-05-12</td>
                                     <td><span class="badge bg-success fs-6 me-1">مفعل</span></td>
                                 </tr>
                                 <tr>
@@ -97,6 +103,7 @@
                                     <td>عبدالهادي ديان</td>
                                     <td> تصميم مواقع ويب </td>
                                     <td><span class="badge bg-label-primary fs-6 me-1">برمجة</span></td>
+                                    <td>2022-05-12</td>
                                     <td>2022-05-12</td>
                                     <td><span class="badge bg-danger fs-6 me-1">متوقف</span></td>
                                 </tr>
