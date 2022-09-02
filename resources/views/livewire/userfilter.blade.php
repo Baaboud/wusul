@@ -1,6 +1,6 @@
 <div>
-        <div class="container-xxl flex-grow-1 container-p-y">
-        <div class="container-xxl flex-grow-1 container-p-y pt-0 px-sm-2 px-0">
+        <div class="container-xxl flex-grow-1">
+        <div class="container-xxl flex-grow-1 pt-0 px-sm-2 px-0">
             <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">لوحة التحكم /</span>المستخدمين
             </h4>
             <div class="card">
@@ -10,13 +10,13 @@
                         <label for="selectpickerIcons" class="form-label fs-6 fw-bolder">بحث</label>
                         <div class="input-group input-group-merge">
                             <span class="input-group-text" id="basic-addon-search31"><i class="bx bx-search"></i></span>
-                            <input wire:model='search' type="text" class="form-control" placeholder="Search..." aria-label="Search..." aria-describedby="basic-addon-search31">
+                            <input wire:model='search' type="text" class="form-control" placeholder="بحث ..." aria-label="Search..." aria-describedby="basic-addon-search31">
                             <span class="input-group-text btn btn-primary" id="basic-addon-search31"><i class="bx bx-search"></i></span>
                         </div>
                     </div>
                     <div class="col-lg-3 col-sm-6 mb-3">
                         <label for="selectpickerIcons" class="form-label fs-6 fw-bolder">نوع الحساب</label>
-                        <select class= w-100 show-tick" id="selectpickerIcons" data-icon-base="bx"
+                        <select class= "form-select w-100 show-tick" id="selectpickerIcons" data-icon-base="bx"
                                 data-tick-icon="bx-check" data-style="btn-default"  wire:model='type'>
                             <option data-icon="bx bx-list-check" value='0'>الكل</option>
                             <option data-icon="bx bx-user" value='3'>مستخدم</option>
@@ -26,7 +26,7 @@
                     </div>
                     <div class="col-lg-3 col-sm-6 mb-3">
                         <label for="selectpickerIcons" class="form-label fs-6 fw-bolder">ترتيب حسب</label>
-                        <select class= w-100 show-tick" id="selectpickerIcons" data-icon-base="bx"
+                        <select class= "form-select w-100 show-tick" id="selectpickerIcons" data-icon-base="bx"
                                 data-tick-icon="bx-check" data-style="btn-default"  wire:model='sortFile'>
                             <option data-icon="bx bx-rename" value='name'>الاسم</option>
                             <option data-icon="bx bxs-watch" value ='created_at'>تاريخ التسجيل</option>
@@ -36,7 +36,7 @@
                     </div>
                     <div class="col-lg-3 col-sm-6 mb-3">
                         <label for="selectpickerIcons" class="form-label fs-6 fw-bolder">حالة الحساب</label>
-                        <select class= w-100 show-tick" id="selectpickerIcons" data-icon-base="bx"
+                        <select class= "form-select w-100 show-tick" id="selectpickerIcons" data-icon-base="bx"
                                 data-tick-icon="bx-check" data-style="btn-default" wire:model='active'>
                             <option data-icon="bx bx-list-check" value=0>الكل</option>
                             <option data-icon="bx bx-check" value='1'>مفعل</option>
@@ -68,7 +68,7 @@
                                             <th>نوع الحساب</th>
                                             <th>تاريخ التسجيل</th>
                                             <th>الحالة</th>
-                                            <th>عمليات</th>
+                                            <th>التنشيط</th>
                                         </tr>
                                         </thead>
                                         <tbody class="table-border-bottom-0">
@@ -81,27 +81,29 @@
                                             {{$types[$user->type]}}
                                             </span></td>
                                             <td>2022-05-12</td>
-                                            <td><span class="badge bg-success fs-6 me-1">
-                                            {{ $user->is_active?'مفعل':'غير مفعل'}}                                            
-                                            </span></td>
+                                            <td>
+                                                @if($user->is_active)
+                                                    <span class="badge bg-success pb-3 fs-6">مفعل</span>
+                                                @else
+                                                    <span class="badge bg-danger pb-3 fs-6">غير مفعل</span>
+                                                @endif
+                                            </td>
                                             <td>
                                                 <form method="get" action="{{ route('admin.user.active',  $user->id ) }}">
-                                                    <button type="button" class="btn btn-label-danger confirm">
-                                                        @if($user->is_active)
-                                                        <span class="tf-icons bx bx-block">
-                                                        ايقاف
-                                                        </span>&nbsp;
-                                                        @else
-                                                        <span class="">
-                                                        تفعيل
-                                                        </span>
-                                                        @endif                                                        
-                                                    </button>
+                                                    @if($user->is_active)
+                                                        <button type="submit" class="btn btn-label-danger mx-2 confirm">
+                                                            <span class="tf-icons bx bx-block me-2"></span>ايقاف
+                                                        </button>
+                                                    @else
+                                                        <button type="submit" class="btn btn-label-primary mx-2 confirm">
+                                                            <span class="tf-icons bx bx-check me-2"></span>تفعيل
+                                                        </button>
+                                                    @endif
                                                 </form>
                                             </td>
                                         </tr>
                                         @empty
-                                            
+
                                         @endforelse
 
                                         </tbody>
@@ -126,11 +128,11 @@
                                                 <h5 class="mb-1 card-title"> {{$user->name}}</h5>
 
                                                 <div class="d-flex align-items-center justify-content-center my-3 gap-2">
-                                                    <span class="badge bg-label-primary fs-6 me-1">      
+                                                    <span class="badge bg-label-primary fs-6 me-1">
                                                         {{$types[$user->type]}}
                                                     </span>
                                                     <span class="badge bg-success fs-6 me-1">
-                                                        {{ $user->is_active?'مفعل':'غير مفعل'}}                                            
+                                                        {{ $user->is_active?'مفعل':'غير مفعل'}}
                                                     </span>
                                                 </div>
                                                 <div class="d-flex align-items-center m-3 gap-2">
@@ -147,24 +149,22 @@
                                                     <a href="javascript:;" class="btn btn-primary d-flex align-items-center me-3"><i class="bx bx-user-check me-1"></i>وصول</a>
 
                                                     <form method="get" action="{{ route('admin.user.active',  $user->id ) }}">
-                                                        <button type="button" class="btn btn-label-danger confirm">
                                                         @if($user->is_active)
-                                                        <span class="tf-icons bx bx-block">
-                                                        ايقاف
-                                                        </span>&nbsp;
-                                                        @else
-                                                        <span class="">
-                                                        تفعيل
-                                                        </span>
-                                                        @endif 
+                                                        <button type="button" class="btn btn-label-danger confirm">
+                                                            <span class="tf-icons bx bx-block">ايقاف</span>&nbsp;
                                                         </button>
+                                                        @else
+                                                        <button type="button" class="btn btn-label-primary confirm">
+                                                            <span class="">تفعيل</span>
+                                                        </button>
+                                                        @endif
                                                     </form>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     @empty
-                                        
+
                                     @endforelse
 
                                 </div>

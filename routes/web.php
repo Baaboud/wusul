@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\userServiceProvider\ServiceProviderController;
 use App\Models\User;
 use App\Models\Work;
 use App\Models\Service;
@@ -43,9 +44,6 @@ Route::middleware(['auth'])->group(function () {
         //
 
     });
-
-
-
 });
 Route::get('/services', [SiteController::class, 'services'])->name('home.services');
 
@@ -77,6 +75,9 @@ Route::get('/test2', function () {
 
 });
 Route::get('/', [SiteController::class, 'index'])->name('index');
+Route::get('/contact', function () {
+    return view('contact_us');
+})->name('contact');
 
 
 Auth::routes();
@@ -90,7 +91,7 @@ Route::get('/profile', function () {
 Route::get('/services', [SiteController::class, 'services'])->name('services');
 
 Route::get('/l/l', function () {
-    return view('service_provider.wallet');
+    return view('order.provider_request');
 })->name('test');
 
 // start routes of user that provide service
@@ -99,7 +100,7 @@ Route::group(['prefix' => 'serviceProvider',
         ],
         function () {
 
-    Route::get('/', [ServicesController::class, 'index'])->name('serviceProvider.home');
+    Route::get('/', [ServiceProviderController::class, 'home'])->name('serviceProvider.home');
 
     //crud category of service
     Route::group(['prefix' => 'service'], function () {

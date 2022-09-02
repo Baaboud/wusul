@@ -48,7 +48,7 @@ class ServicesController extends Controller
     // ServerProviderRequest $request
     public function store(Request $request)
     {
-  
+
         try {
 
 
@@ -96,7 +96,7 @@ class ServicesController extends Controller
                 'interval'=>$request->interval
             ]);
 
-            
+
 
             // event(new notfiy($));
                 // return $service;

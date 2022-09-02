@@ -32,22 +32,22 @@
     <div class="row">
     <div class="col-sm-12 col-md-6">
     <div class="dataTables_length" id="DataTables_Table_3_length">
-    <label>عرض 
+    <label>عرض
     <select name="DataTables_Table_3_length" aria-controls="DataTables_Table_3" class="form-select">
     <option value="7">7</option><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="75">75</option><option value="100">100</option></select> entries</label></div></div><div class="col-sm-12 col-md-6 d-flex justify-content-center justify-content-md-end"><div id="DataTables_Table_3_filter" class="dataTables_filter"><label>Search:<input type="search" class="form-control" placeholder="" aria-controls="DataTables_Table_3"></label></div></div></div><table class="dt-multilingual table border-top dataTable no-footer dtr-column" id="DataTables_Table_3" role="grid" aria-describedby="DataTables_Table_3_info">
       <thead>
         <tr role="row">
-        <th class="control sorting_disabled sorting_asc" 
-        rowspan="1" colspan="1" style="width: 22.0312px; display: none;" aria-label=""></th><th class="sorting" 
-        tabindex="0" aria-controls="DataTables_Table_3" rowspan="1" colspan="1" style="width: 79.2344px;" 
+        <th class="control sorting_disabled sorting_asc"
+        rowspan="1" colspan="1" style="width: 22.0312px; display: none;" aria-label=""></th><th class="sorting"
+        tabindex="0" aria-controls="DataTables_Table_3" rowspan="1" colspan="1" style="width: 79.2344px;"
         aria-label="Name: activate to sort column ascending">الاسم</th>
-        <th class="sorting" tabindex="0" aria-controls="DataTables_Table_3" rowspan="1" 
-        colspan="1" style="width: 80.9219px;" 
+        <th class="sorting" tabindex="0" aria-controls="DataTables_Table_3" rowspan="1"
+        colspan="1" style="width: 80.9219px;"
         aria-label="Email: activate to sort column ascending">الاميل</th>
-        <th class="sorting" tabindex="0" aria-controls="DataTables_Table_3" 
-        rowspan="1" colspan="1" style="width: 91.6562px;" 
+        <th class="sorting" tabindex="0" aria-controls="DataTables_Table_3"
+        rowspan="1" colspan="1" style="width: 91.6562px;"
         aria-label="Status: activate to sort column ascending">الحاله</th>
-        <th class="sorting_disabled" rowspan="1" colspan="1" style="width: 100.156px;" 
+        <th class="sorting_disabled" rowspan="1" colspan="1" style="width: 100.156px;"
         aria-label="Actions">الاجراءت</th></tr>
       </thead>
       <tbody>

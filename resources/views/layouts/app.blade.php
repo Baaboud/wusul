@@ -114,11 +114,11 @@
                         </li>
 
                         <li class="nav-item me-2 me-xl-0">
-                            <a href="#" class="nav-link">من نحن</a>
+                            <a href="{{ route('contact') }}" class="nav-link">التواصل</a>
                         </li>
 
                         <li class="nav-item me-2 me-xl-0">
-                            <a href="#" class="nav-link">التواصل</a>
+                            <a href="#" class="nav-link">من نحن</a>
                         </li>
 
 
@@ -405,7 +405,7 @@
                                     @if(isset(Auth::user()->profile->image))
                                         <img src="{{asset('assets/images/users/'.Auth::user()->profile->image)}}" alt="" class="w-px-40 h-100 rounded-circle">
                                     @else
-                                        <img src="{{ asset('assets/img/avatars/1.png') }}" alt="" class="w-px-40 h-auto rounded-circle">
+                                        <img src="{{ asset('img/user.png') }}" alt="" class="w-px-40 h-auto rounded-circle">
                                     @endif
                                 </div>
                             </a>
@@ -416,17 +416,16 @@
                                             <div class="flex-shrink-0 me-3">
                                                 <div class="avatar avatar-online">
                                                   @if(isset(Auth::user()->profile->image))
-                                                    <img src="{{asset('assets/images/users/'.Auth::user()->profile->image)}}" 
+                                                    <img src="{{asset('assets/images/users/'.Auth::user()->profile->image)}}"
                                                         alt="Profile" class="w-px-40 h-auto rounded-circle" id="">
                                                 @else
                                                     <img src="{{ asset('img/user.png') }}" alt="" class="w-px-40 h-auto rounded-circle">
-
-                                                @endif 
+                                                @endif
                                                 </div>
                                             </div>
                                             <div class="flex-grow-1">
                                                 <span class="fw-semibold d-block"> {{Auth::user()->name}}</span>
-                                                <small class="text-muted"> 
+                                                <small class="text-muted">
                                                 @if(Auth::user()->type==1)
                                                 مدير النظام
                                                 @elseif(Auth::user()->type==2)
@@ -560,24 +559,24 @@
                 <footer class="footer bg-dark" style="background-color: #000 !important;">
                     <div class="container-fluid container-p-x pt-5 pb-4">
                         <div class="row">
-                            <div class="col-12 col-sm-6 col-md-3 mb-4 mb-sm-0 text-center">
-                                <h4 class="fw-bolder mb-3"><a href="" target="_blank" class="footer-text">منصة وصول للخدمات</a></h4>
-                                <div>
+                            <div class="col-12 col-sm-12 col-md-6 mb-4 mb-sm-5">
+                                <h4 class="fw-bolder mb-3 ps-5 ms-5"><a href="" target="_blank" class="footer-text">منصة وصول للخدمات</a></h4>
+                                <div class=" px-5 mx-5">
                                     <img src="{{ asset('assets/img/logo.png') }}" class="mx-3" alt="">
                                 </div>
 
-                                <p class="text-light mt-4 px-5">
+                                <p class="text-light mt-4 px-5 mx-5">
                                     منصة وصول ... هي منصة وطنية توفر على المواطن الوصول للخدمة المطلوبة بأسهل الطرق ومعرفة كيفية التعامل مع الخدمة.
                                 </p>
-                                <p class="text-light">
+                                <p class="text-light px-5 mx-5">
                                     جميع الحقوق محفوظة لدى
                                     <i class="fa fa-heart-o" aria-hidden="true"></i>  <a href="https://Wusul.com" target="_blank">فريق وصول </a>
                                     <script>document.write(new Date().getFullYear());</script> ©
                                 </p>
                             </div>
                             <div class="col-12 col-sm-6 col-md-3 mb-4 mb-md-0">
-                                <h5 class="footer-text">روابط</h5>
-                                <ul class="list-unstyled">
+                                <h5 class="footer-text ps-md-0 ms-md-0 ps-5 ms-5">روابط</h5>
+                                <ul class="list-unstyled ps-md-0 ms-md-0 ps-5 ms-5">
                                     <li><a href="#" class="footer-link text-light d-block pb-2">الرئيسية</a></li>
                                     <li><a href="#" class="footer-link text-light d-block pb-2">الخدمات</a></li>
                                     <li><a href="#" class="footer-link text-light d-block pb-2">من نحن</a></li>
@@ -586,8 +585,8 @@
                                 </ul>
                             </div>
                             <div class="col-12 col-sm-6 col-md-3 mb-4 mb-sm-0">
-                                <h5 class="footer-text">تواصل</h5>
-                                <ul class="list-unstyled">
+                                <h5 class="footer-text ps-md-0 ms-md-0 ps-5 ms-5">تواصل</h5>
+                                <ul class="list-unstyled ps-md-0 ms-md-0 ps-5 ms-5">
                                     <li><a href="#" class="footer-link text-light d-block pb-2"><i class="bx bx-mail-send"></i> wusul@gmail.com </a></li>
                                     <li>
                                         <a href="#" class="footer-link text-light d-block pb-2"><i class="bx bx-mobile"></i> 770552517  </a>
@@ -595,10 +594,8 @@
                                     <li><a href="#" class="footer-link text-light d-block pb-2"><i class="bx bx-phone"></i> 05000000 </a></li>
                                     <li><a href="#" class="footer-link text-light d-block pb-2"><i class="bx bxl-github"></i> wusul.github.com </a></li>
                                 </ul>
-                            </div>
-                            <div class="col-12 col-sm-6 col-md-3 mb-4 mb-md-0">
-                                <h5 class="footer-text">متابعتنا</h5>
-                                <div class="social-icon my-3">
+                                <h5 class="footer-text px-sm-0 ps-md-0 ms-md-0 ps-5 ms-5">متابعتنا</h5>
+                                <div class="social-icon my-3 ps-md-0 ms-md-0 ps-5 ms-5">
                                     <a href="#"><i class="fa fa-facebook"></i></a>
                                     <a href="javascript:void(0)" class="btn btn-icon btn-sm text-white me-2"><i class="bx bxl-facebook"></i></a>
                                     <a href="javascript:void(0)" class="btn btn-icon btn-sm text-white me-2"><i class="bx bxl-twitter"></i></a>
@@ -606,6 +603,16 @@
                                     <a href="javascript:void(0)" class="btn btn-icon btn-sm text-white"><i class="bx bxl-github"></i></a>
                                 </div>
                             </div>
+{{--                            <div class="col-12 col-sm-6 col-md-3 mb-4 mb-md-0">--}}
+{{--                                <h5 class="footer-text">متابعتنا</h5>--}}
+{{--                                <div class="social-icon my-3">--}}
+{{--                                    <a href="#"><i class="fa fa-facebook"></i></a>--}}
+{{--                                    <a href="javascript:void(0)" class="btn btn-icon btn-sm text-white me-2"><i class="bx bxl-facebook"></i></a>--}}
+{{--                                    <a href="javascript:void(0)" class="btn btn-icon btn-sm text-white me-2"><i class="bx bxl-twitter"></i></a>--}}
+{{--                                    <a href="javascript:void(0)" class="btn btn-icon btn-sm text-white me-2"><i class="bx bxl-linkedin"></i></a>--}}
+{{--                                    <a href="javascript:void(0)" class="btn btn-icon btn-sm text-white"><i class="bx bxl-github"></i></a>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
                         </div>
                     </div>
                 </footer>

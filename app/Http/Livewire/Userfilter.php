@@ -23,7 +23,7 @@ class Userfilter extends Component
     public function render()
     {
 
-              // all users 
+              // all users
             $users = User::latest()->where('id', '<>', auth()->id()) ->withFilters(
                 $this->search,
                 $this->type,
@@ -32,11 +32,11 @@ class Userfilter extends Component
                 )->when($this->sortFile,function($query){
                     $query->orderBy("$this->sortFile");
                 })
-                ->paginate(1);
-    
+                ->paginate(10);
+
               // users type
               $types = ['مستخدم', 'مدير', 'صاحب خدمة'];
-      
+
         return view('livewire.userfilter',compact('users', 'types'));
     }
 }

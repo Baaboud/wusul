@@ -26,10 +26,10 @@
                         <select class="form-select w-100 "
                                  wire:model='category'>
                             <option data-icon="bx bx-list-check" value='0' >الكل</option>
-                            @forelse($categories as $category)   
+                            @forelse($categories as $category)
                                 <option data-icon="bx bx-list-check" value="{{$category->id}}" > {{$category->name}}</option>
                             @empty
-                                
+
                             @endforelse
 
                         </select>
@@ -44,7 +44,7 @@
                                 <option data-icon="bx bx-star" value='stars'>اجمالي التقييمات</option>
                             </select>
                         </div>
-                        
+
                         <div class="col-lg-6 col-sm-12 mb-4">
                             @livewire('address-relation',['state_id'=>'0' ])
                         </div>
@@ -91,7 +91,7 @@
                                         </thead>
                                         <tbody class="table-border-bottom-1">
                                         @forelse($services as $service)
-                                            
+
                                         <tr>
                                             <td>{{$loop->index+1 }}</td>
 
@@ -107,7 +107,14 @@
                                             <td>{{$service->interval}} </td>
                                         </tr>
                                         @empty
-                                            
+                                            <tr>
+                                                <td colspan="10" class="text-center py-3 text-danger fs-4 position-relative">
+                                                    <p class="text-center py-3 text-danger fs-4">
+                                                        لا يوجد نتائج
+                                                    </p>
+                                                    <img src="{{ asset('img/noResultFound.png') }}" class="h-px-200 w-auto mx-auto">
+                                                </td>
+                                            </tr>
                                         @endforelse
                                         </tbody>
                                     </table>
@@ -118,7 +125,7 @@
 
                                 <div class="row">
                         @forelse($services as $service)
-                                    
+
                             <div class="col-xl-3 col-lg-4 col-sm-6 col-12 mb-4">
                             <div class="card shadow h-100">
                                 <div class="card-header flex-grow-0">
@@ -128,7 +135,7 @@
                                                         <img src="{{asset('assets/images/users/'.$service->user->profile->image)}}" alt="" class="w-px-40 h-100 rounded-circle">
 
                                                     @else
-                                                        
+
                                                         <img src="{{ asset('assets/img/avatars/1.png') }}" alt="User" class="rounded-circle">
                                                     @endif
                                         </div>
@@ -141,10 +148,10 @@
                                     </div>
                                 </div>
                                             @if($service->image)
-                                                
+
                                                 <img class="img-fluid" src="{{ asset("{$service->path}$service->image ") }}" alt="Card image cap">
                                             @else
-                                                
+
                                             <img class="img-fluid" src="../../assets/img/backgrounds/event.jpg" alt="Card image cap">
                                             @endif
                                 <div class="featured-date mt-n4 ms-4 bg-white rounded w-px-50 shadow text-center">
@@ -175,6 +182,10 @@
                             </div>
                             </div>
                         @empty
+                            <p class="text-center py-3 text-danger fs-4">
+                                لا يوجد نتائج
+                            </p>
+                            <img src="{{ asset('img/noResultFound.png') }}" class="h-px-200 w-auto mx-auto">
                         @endforelse
                                 </div>
                             </div>
