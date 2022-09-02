@@ -46,7 +46,7 @@
                         </div>
 
                         <div class="col-lg-6 col-sm-12 mb-4">
-                            @livewire('address-relation',['state_id'=>'0' ])
+                            @livewire('address-relation',['state_id'=>'0', 'city_id'=>'0'])
                         </div>
                     </div>
                     <div>

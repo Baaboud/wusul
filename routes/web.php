@@ -1,15 +1,16 @@
 <?php
 
-use App\Http\Controllers\userServiceProvider\ServiceProviderController;
 use App\Models\User;
 use App\Models\Work;
 use App\Models\Service;
 use App\Models\ServiceCat;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\site\SiteController;
+use App\Http\Controllers\site\OrderController;
 use App\Http\Controllers\admin\UsersController;
 use App\Http\Controllers\userServiceProvider\WorkController;
 use App\Http\Controllers\userServiceProvider\ServicesController;
+use App\Http\Controllers\userServiceProvider\ServiceProviderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,9 +42,16 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/changePass', [UsersController::class, 'changePassword'])->name('account.changePass');
         Route::get('/social', [UsersController::class, 'social'])->name('account_social');
         Route::post('/social', [UsersController::class, 'updateSocial'])->name('account_updateSocial');
-        //
-
     });
+
+        //crud order
+        Route::group(['prefix' => 'order'], function () {
+            Route::get('/create', [OrderController::class, 'create'])->name('order.create');
+            Route::post('/send', [OrderController::class, 'send'])->name('order.send');
+            Route::get('/show/{id?}', [OrderController::class, 'show'])->name('order.show');
+            Route::post('/response/{id}', [OrderController::class, 'update'])->name('order.response');
+        });
+        
 });
 Route::get('/services', [SiteController::class, 'services'])->name('home.services');
 

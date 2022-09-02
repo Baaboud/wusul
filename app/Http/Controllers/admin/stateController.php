@@ -24,7 +24,7 @@ class stateController extends Controller
             ]);
             return redirect()->back()->with(['success' => 'تم  الاضافه بنجاح']);
         } catch (\Throwable $ex) {
-            return $ex->getMessage();
+            return redirect()->back()->with(['error' => 'حدث خطا ما برجاء المحاوله لاحقا']);
         }
     }
 
@@ -38,7 +38,9 @@ class stateController extends Controller
             ]);
             return redirect()->back()->with(['success' => 'تم  التعديل بنجاح']);
         } catch (\Throwable $ex) {
-            return $ex->getMessage();
+            return redirect()->back()->with(['error' => 'حدث خطا ما برجاء المحاوله لاحقا']);
+
+            // return $ex->getMessage();
         }
     }
 
@@ -51,9 +53,11 @@ class stateController extends Controller
             }
 
             $state->delete();
-            return redirect()->back();
+            return redirect()->back()->with(['success' => 'تم  الحذف بنجاح']);
         } catch (\Throwable $th) {
-            return $th->getMessage();
+            return redirect()->back()->with(['error' => 'حدث خطا ما برجاء المحاوله لاحقا']);
+
+            // return $th->getMessage();
             //throw $th;
         }
     }
@@ -61,13 +65,15 @@ class stateController extends Controller
     public function activation($id)
     {
         try {
+
             $state = State::with('cities')->findOrFail($id);
+            // check if active
             if($state->is_active != 1){
                 $state->is_active=1;
             }else{
                 if($state->cities)
                 foreach ( $state->cities as $city) {
-                    $city->is_active=0;
+                    $city->is_active=0; // dis active all city of this state
                     $city->save();
                 }
 
@@ -76,10 +82,10 @@ class stateController extends Controller
             
             $state->save();
 
-            return redirect()->back();
+            return redirect()->back()->with(['success' => 'تمت العمليه   بنجاح']);
 
         } catch (\Throwable $th) {
-            //throw $th;
+            return redirect()->back()->with(['error' => 'حدث خطا ما برجاء المحاوله لاحقا']);
         }
         
     }

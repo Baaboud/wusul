@@ -25,17 +25,7 @@ class WorkController extends Controller
         //
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        $services=Service::where('user_id', Auth::id())->get();
-        return $service;
 
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -79,11 +69,12 @@ class WorkController extends Controller
 
             // event(new notfiy($pharmacy));
 
-            return redirect()->back();
+            return redirect()->back()->with(['success' => 'تمت الاضافة   بنجاح']);
 
         } catch (\Throwable $th) {
+            return redirect()->back()->with(['error' => 'حدث خطا ما برجاء المحاوله لاحقا']);
 
-            return $th->getMessage();
+            // return $th->getMessage();
 
         }
     }
@@ -115,6 +106,7 @@ class WorkController extends Controller
 
         } catch (\Throwable $th) {
             //throw $th;
+            return redirect()->back()->with(['error' => 'حدث خطا ما برجاء المحاوله لاحقا']);
         }
     }
 
@@ -156,9 +148,12 @@ class WorkController extends Controller
                 'url' => $request['url']??'',
                 'image' => $photo,
             ]);
-            return $work;
+
+            return redirect()->back()->with(['success' => 'تم التعديل   بنجاح']);
+
         } catch (\Throwable $th) {
-            return $th->getMessage();
+            // return $th->getMessage();
+            return redirect()->back()->with(['error' => 'حدث خطا ما برجاء المحاوله لاحقا']);
         }
 
     }
@@ -171,14 +166,19 @@ class WorkController extends Controller
      */
     public function destroy($id)
     {
-        $work= Work::with('service')->CheckOwner()->findOrFail($id);
-
-            if($work->image){
-                Storage::disk('works')->delete($work->image);
-            }
-
-        $work->delete();
-        return redirect()->back();
+        try {
+            //code...
+            $work= Work::with('service')->CheckOwner()->findOrFail($id);
+    
+                if($work->image){
+                    Storage::disk('works')->delete($work->image);
+                }
+    
+            $work->delete();
+            return redirect()->back()->with(['success' => 'تم الحذف   بنجاح']);
+        } catch (\Throwable $th) {
+            return redirect()->back()->with(['error' => 'حدث خطا ما برجاء المحاوله لاحقا']);
+        }
         
     }
 }

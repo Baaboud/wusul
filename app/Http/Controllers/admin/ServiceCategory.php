@@ -43,64 +43,43 @@ class ServiceCategory extends Controller
     public function store(Request $request)
     {
         try {
-    
 
-            $photo = "";
-
-
-            if ($request->image) {
-                
-
-                $photo = $this->uploadImage('services_cat', $request->image);
-
-            }
 
             // create Service category
             $category = ServiceCat::create([
                 'name' => $request['name'],
                 'description' => $request['description'],
-                'image' => $photo,
             ]);
 
 
 
-            // event(new notfiy($));
 
-            return redirect()->back();
+            return redirect()->back()->with(['error' => 'تمت الاضافة بنجاح']);
             // return $category;
         } catch (\Exception $ex) {
-            return $ex->getMessage();
-            // return redirect()->back()->with(['error' => 'حدث خطا ما برجاء المحاوله لاحقا']);
+            // return $ex->getMessage();
+            return redirect()->back()->with(['error' => 'حدث خطا ما برجاء المحاوله لاحقا']);
         }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        try {
-            $category = ServiceCat::findOrFail($id);
-            return $category;
-        } catch (\Throwable $th) {
-            return $ex->getMessage();
-        }
+    // /**
+    //  * Show the form for editing the specified resource.
+    //  *
+    //  * @param  int  $id
+    //  * @return \Illuminate\Http\Response
+    //  */
+    // public function edit($id)
+    // {
+    //     try {
+    //         $category = ServiceCat::findOrFail($id);
+    //         return $category;
+    //     } catch (\Throwable $th) {
+    //         return redirect()->back()->with(['error' => 'حدث خطا ما برجاء المحاوله لاحقا']);
 
-    }
+    //     }
+
+    // }
 
     /**
      * Update the specified resource in storage.
@@ -112,31 +91,16 @@ class ServiceCategory extends Controller
     public function update(Request $request)
     {
         try {
-            // return $request;
             $category = ServiceCat::findOrFail($request->id);
-            
-            $photo;
-            if ($request->hasFile('image')) {
-    
-    
-                if($category->image){
-                    Storage::disk('services_cat')->delete($category->image);
-                }
-                $photo = $this->uploadImage('services_cat',$request->file('image'));
-    
-            }else{
-                $photo =$category->image;
-            }
-    
-            // create Service category
+            // update Service category
             $category->update([
                 'name' => $request['name'],
                 'description' => $request['description'],
-                'image' => $photo,
             ]);   
-            return redirect()->back();
+            return redirect()->back()->with(['error' => 'تمت التعديل بنجاح']);
         } catch (\Throwable $th) {
-            return $th->getMessage();
+            // return $th->getMessage();
+            return redirect()->back()->with(['error' => 'حدث خطا ما برجاء المحاوله لاحقا']);
         }
     }
 
@@ -149,16 +113,25 @@ class ServiceCategory extends Controller
     public function destroy($id)
     {
         try {
-            $category = ServiceCat::findOrFail($id);
-            // return $category;
-            if($category->image  != ''){
-                Storage::disk('services_cat')->delete($category->image);
+            $category = ServiceCat::with('services')->findOrFail($id);
+
+            // check if this category has service
+            if($category->services)
+            foreach ($category->services as $service) {
+                if ($service->image != '') { // check if  has image
+
+                    // remove image
+                    Storage::disk('services')->delete($service->image);
+                }
+                $service->delete();
             }
+
             $category->delete();
-            return redirect()->route('categories');
+
+            return redirect()->back()->with(['error' => 'تمت الحذف بنجاح']);
 
         } catch (\Throwable $th) {
-            return $th->getMessage();
+            return redirect()->back()->with(['error' => 'حدث خطا ما برجاء المحاوله لاحقا']);
             //throw $th;
         }
     }

@@ -26,24 +26,6 @@
                                 enctype="multipart/form-data">
                                 @csrf
                                 <div class="card-body">
-                                    <div class="d-flex align-items-sm-center gap-4 flex-wrap">
-                                        <img src="{{ asset('img/upload.png') }}" alt="user-avatar"
-                                             class="d-block rounded img-fluid h-px-150 w-px-150"
-                                             style="object-fit: contain" id="uploadedImg">
-                                        <div class="button-wrapper my-auto">
-                                            <label for="upload" class="btn btn-primary me-2" tabindex="0">
-                                                <span class="d-none d-sm-block">أضافة صورة</span>
-                                                <i class="bx bx-upload d-block d-sm-none"></i>
-                                                <input type="file" id="upload" class="account-file-input" name='image'
-                                                       hidden="" accept="image/png, image/jpeg">
-                                            </label>
-                                        </div>
-                                        <p class="text-muted mb-0">الصيغ المتاحة JPG, GIF أو PNG. الحد الأقصى
-                                            800K</p>
-                                    </div>
-                                </div>
-                                <hr class="my-0">
-                                <div class="card-body">
                                     <div class="row">
                                         <div class="mb-3 col">
                                             <label for="name" class="form-label">أسم المجال</label>
@@ -111,7 +93,7 @@
                                             <td>
                                                 <button type="button" class="btn btn-label-primary me-3"
                                                  data-bs-toggle="modal" data-bs-target="#editeCategory1"
-                                                  onclick="edit({{ $category }} , '{{ asset( $category->path ) }}' )" >
+                                                  onclick="edit({{ $category }})" >
                                                     <span class="tf-icons bx bx-edit"></span>&nbsp; تعديل
                                                 </button>
 
@@ -146,7 +128,7 @@
                                                 <h5>{{$category->name}}</h5>
                                                 <p class="text-dark"> {{$category->description}} </p>
                                                 <div class="d-flex align-items-center justify-content-around">
-                                                    <button type="button" class="btn btn-label-primary" onclick="edit({{$category}},'{{ $category->path }}')">
+                                                    <button type="button" class="btn btn-label-primary" onclick="edit({{$category}})">
                                                         <span class="tf-icons bx bx-edit"></span>&nbsp; تعديل
                                                     </button>
 
@@ -179,26 +161,8 @@
                                 class="fv-plugins-bootstrap5 fv-plugins-framework" novalidate="novalidate"
                                 >
                                             @csrf
-                                            <div class="card-body">
-                                                <div class="d-flex align-items-sm-center gap-4 flex-wrap">
-                                                    <img src="" alt="user-avatar"
-                                                         class="d-block rounded img-fluid h-px-150 w-px-150"
-                                                         style="object-fit: contain" id="uploadedImg">
-                                                    <div class="button-wrapper my-auto">
-                                                        <label for="upload" class="btn btn-primary me-2" tabindex="0">
-                                                            <span class="d-none d-sm-block">أضافة صورة</span>
-                                                            <i class="bx bx-upload d-block d-sm-none"></i>
-                                                            <input type="file" id="upload" class="account-file-input" name='image'
-                                                                hidden="" accept="image/png, image/jpeg">
-                                                        </label>
-                                                    </div>
-                                                    <p class="text-muted mb-0">الصيغ المتاحة JPG, GIF أو PNG. الحد الأقصى
-                                                        800K</p>
-                                                </div>
-                                            </div>
                                             <input type="hidden"  name='id' value=''>
 
-                                            <hr class="my-0">
                                             <div class="card-body">
                                                 <div class="row">
                                                     <div class="mb-3 col">
@@ -210,10 +174,8 @@
                                                         <label for="exampleFormControlTextarea1" class="form-label">وصف
                                                             المجال</label>
                                                         <textarea class="form-control" id="exampleFormControlTextarea1"
-                                                                  rows="3" placeholder="الوصف"
-                                                                  name='description'
-                                                                  > يمكنك الحصول على تصاميم عالية الجودة واختيار المصمم المناسب لطلب
-                                        تصميمك </textarea>
+                                                                  rows="3" placeholder="الوصف" name='description'>
+                                                        </textarea>
                                                     </div>
 
 
@@ -263,8 +225,7 @@
         }
     </script>
     <script>
-        function edit(category,path=''){
-            const img =  document.querySelector('#editeCategory1 .modal-dialog form img');
+        function edit(category){
             const id =  document.querySelector('input[name=id]');
             const name =  document.querySelector('#editeCategory1 .modal-dialog form input#name[name=name]');
             const description =  document.querySelector('#editeCategory1 .modal-dialog form textarea[name=description]');
@@ -272,7 +233,6 @@
             console.log(id);
             id.value=category.id;
             name.value=category.name;
-            img.src=path+'/'+category.image;
             description.innerText=category.description;
 
         }
