@@ -155,9 +155,12 @@
                                     <div class="d-flex align-items-center justify-content-center my-1 gap-2">
                                     </div>
                                     <div class="d-flex align-items-center justify-content-center">
+                                    <a href="{{route('service.details',$service->id)}}">
+
                                         <button type="button" class="btn btn-primary fs-5 px-3">
                                             <span class="tf-icons bx bx-user-check"></span>&nbsp; وصول
                                         </button>
+                                    </a>
                                     </div>
                                     <div class="mt-3 d-flex fs-6 align-items-center justify-content-around">
                                         <a href="#" class="text-muted me-3" data-bs-toggle="tooltip" data-bs-offset="0,4"
@@ -248,36 +251,9 @@
                 </div>
                 <!-- /Search services -->
 
-                <nav aria-label="Page navigation">
-                    <ul class="pagination justify-content-center mb-5">
-                        <li class="page-item first">
-                            <a class="page-link" href="javascript:void(0);"><i class="tf-icon bx bx-chevrons-left"></i></a>
-                        </li>
-                        <li class="page-item prev">
-                            <a class="page-link" href="javascript:void(0);"><i class="tf-icon bx bx-chevron-left"></i></a>
-                        </li>
-                        <li class="page-item">
-                            <a class="page-link" href="javascript:void(0);">1</a>
-                        </li>
-                        <li class="page-item">
-                            <a class="page-link" href="javascript:void(0);">2</a>
-                        </li>
-                        <li class="page-item active">
-                            <a class="page-link" href="javascript:void(0);">3</a>
-                        </li>
-                        <li class="page-item">
-                            <a class="page-link" href="javascript:void(0);">4</a>
-                        </li>
-                        <li class="page-item">
-                            <a class="page-link" href="javascript:void(0);">5</a>
-                        </li>
-                        <li class="page-item next">
-                            <a class="page-link" href="javascript:void(0);"><i class="tf-icon bx bx-chevron-right"></i></a>
-                        </li>
-                        <li class="page-item last">
-                            <a class="page-link" href="javascript:void(0);"><i class="tf-icon bx bx-chevrons-right"></i></a>
-                        </li>
-                    </ul>
+                <nav aria-label="Page navigation text-center">
+                    {{ $services->links('pagination::bootstrap-5')   }}
+
                 </nav>
             </div>
         </div>

@@ -19,4 +19,16 @@ class SiteController extends Controller
     public function services(){
         return view('services');
     }
+
+       // service
+       public function service($id){
+        try {
+            $service = Service::with('works')->findOrFail($id);
+
+            return view('service.service_page',compact('service'));
+
+        } catch (\Throwable $th) {
+            return $ex->getMessage();
+        }
+    }
 }

@@ -139,12 +139,12 @@ class ServicesController extends Controller
     {
         try {
             $service = Service::where('user_id', Auth::id())->findOrFail($id);
-            $categories = ServersCat::all();
-
-            if(!$service){
+            $categories = ServiceCat::all();
+            
+                if(!$service){
                 return redirect()->back();
             }
-            return $service;
+            return view('service.service_edit',compact('service','categories'));
         } catch (\Throwable $th) {
             return $th->getMessage();
 
@@ -159,13 +159,13 @@ class ServicesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(ServerProviderRequest $request, $id)
+    // ServerProviderRequest
+    public function update(Request $request, $id)
     {
+        // return $request;
         try {
-            $service = Service::
-            // where('user_id', Auth::id())->
-            findOrFail($id);
-            // $photo;
+            $service = Service::where('user_id', Auth::id())->findOrFail($id);
+            $photo;
             if ($request->hasFile('image')) {
 
 
@@ -185,8 +185,11 @@ class ServicesController extends Controller
                 'type' => $request['type']?? 0,
                 'image' => $photo,
                 'price' => $request['price']??'1',
-                'service_cat_id' => $request['service_cat_id'],
+                'service_cat_id' => $request['category'],
+
             ]);
+                return redirect()->back();
+
         } catch (\Throwable $th) {
             return $th->getMessage();
         }
@@ -204,13 +207,22 @@ class ServicesController extends Controller
     {
         try {
             $service = Service::findOrFail($id);
-
-            if ($service->image != '') { // check if pharmacy has image
+            // dd($service);
+            if ($service->image != '') { // check if  has image
 
                 // remove image
                 Storage::disk('services')->delete($service->image);
             }
 
+            if($service->works)
+            foreach ($service->works as $work) {
+                if ($work->image != '') { // check if  has image
+
+                    // remove image
+                    Storage::disk('works')->delete($work->image);
+                }
+                $work->delete();
+            }
             $service->delete();
 
             return redirect()->back();

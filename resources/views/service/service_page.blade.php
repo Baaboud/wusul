@@ -23,10 +23,16 @@
                     <div class="card-body">
                         <div class="user-avatar-section">
                             <div class=" d-flex align-items-center flex-column">
-                                <img class="img-fluid rounded mx-4 w-100" src="{{ asset('assets/img/backgrounds/3.jpg') }}" height="110" width="110" alt="User avatar">
+                                  @if($service->image)
+                                                
+                                                <img class="img-fluid" src="{{ asset("{$service->path}$service->image ") }}" alt="Card image cap">
+                                            @else
+                                                
+                                            <img class="img-fluid" src="../../assets/img/backgrounds/event.jpg" alt="Card image cap">
+                                            @endif
                                 <div class="user-info text-center mt-3">
-                                    <h4 class="mb-2">تصميم مواقع ويب</h4>
-                                    <span class="badge bg-label-primary mt-3 pb-3 px-3 fs-6">برمجة</span>
+                                    <h4 class="mb-2">{{$service->name}}</h4>
+                                    <span class="badge bg-label-primary mt-3 pb-3 px-3 fs-6">{{$service->category->name}}</span>
                                 </div>
                             </div>
                         </div>
@@ -39,22 +45,22 @@
                                 <div class="col-md-12 col-sm-6 col-12 d-flex align-items-start mt-3 px-4 gap-3">
                                     <span class="badge bg-label-primary p-2 rounded"><i class="bx bx-current-location fs-2"></i></span>
                                     <div>
-                                        <span>موقع الخدمة</span>
-                                        <h5 class="mb-0 text-primary">حضرموت - المكلا</h5>
+                                        <span>الموقع </span>
+                                        <h5 class="mb-0 text-primary">{{$service->address->state->name}} - {{$service->address->city->name}}-{{$service->address->description}}</h5>
                                     </div>
                                 </div>
                                 <div class="col-md-12 col-sm-6 col-12 d-flex align-items-start mt-4 px-4 gap-3">
                                     <span class="badge bg-label-primary p-2 rounded"><i class="bx bx-customize fs-2"></i></span>
                                     <div class="row">
                                         <span>أجمالي الطلبات المنجزة</span>
-                                        <h5 class="mb-0 text-primary">25</h5>
+                                        <h5 class="mb-0 text-primary">{{count($service->rating)}}</h5>
                                     </div>
                                 </div>
                                 <div class="col-md-12 col-sm-6 col-12 d-flex align-items-start mt-4 px-4 gap-3">
                                     <span class="badge bg-label-primary p-2 rounded"><i class="bx bx-time fs-2"></i></span>
                                     <div>
                                         <span>وقت التسليم التقريبي</span>
-                                        <h5 class="mb-0 text-primary">5 أيام</h5>
+                                        <h5 class="mb-0 text-primary">{{$service->interval}} </h5>
                                     </div>
                                 </div>
                                 <div class="col-md-12 col-sm-6 col-12 d-flex align-items-start mt-4 px-4 gap-3">
@@ -62,11 +68,14 @@
                                     <div>
                                         <span>متوسط التقييمات</span>
                                         <h5 class="mb-0 text-center text-warning">
+                                        @for($i = 0; $i < 4; $i++)
+                                            @if($i<$service->stars)    
                                             <i class="bx bxs-star bx-sm"></i>
-                                            <i class="bx bxs-star bx-sm"></i>
-                                            <i class="bx bxs-star bx-sm"></i>
+                                            @else
                                             <i class="bx bx-star bx-sm"></i>
-                                            <i class="bx bx-star bx-sm"></i>
+                                                
+                                            @endif
+                                        @endfor
                                         </h5>
                                     </div>
                                 </div>
@@ -75,25 +84,7 @@
                         </div>
                     </div>
                 </div>
-
-{{--                <div class="card mb-3">--}}
-{{--                    <div class="card-header">--}}
-{{--                        <div class="d-flex align-items-start mt-3 gap-3">--}}
-{{--                            <span class="badge bg-label-primary p-2 rounded"><i class="bx bx-current-location bx-sm"></i></span>--}}
-{{--                            <div>--}}
-{{--                                <span>موقع الخدمة</span>--}}
-{{--                                <h5 class="mb-0">حضرموت - المكلا</h5>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                    <div class="card-body">--}}
-{{--                        <div class="leaflet-map" id="basicMap"></div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-                <!-- /User Card -->
-                <!-- Plan Card -->
-
-                <!-- /Plan Card -->
+    
             </div>
             <!--/ User Sidebar -->
 
@@ -112,15 +103,18 @@
                                 </div>
                             </a>
                         </div>
-                        <p>سوف اقوم بتنفيذ تصميم احترافى وجذاب لموقعك على منصه سله, تصميم وبرمجة موقع ووردبريس احترافي, تمصميم واجهات وتجربة المستخدم لموقعك الالكتروني بإحترافية.</p>
+                        <p>
+                        {{$service->description}}
+                        </p>
                     </div>
                 </div>
-
+                    
                 <div class="col-12 bg-white py-3">
+                @if(count($service->works))
                     <div class="d-flex align-items-center mx-4 mb-3">
                         <a href="#" class="d-flex align-items-center">
                             <div class="avatar avatar-sm me-2">
-                                <img src="{{ asset('assets/img/icons/unicons/laptop.png') }}" alt="Avatar" class="rounded-circle">
+                                <img src='{{ asset("{$service->works[0]->path}{$service->works[0]->image} ") }}' alt="Avatar" class="rounded-circle">
                             </div>
                             <div class="me-2 text-body h5 mb-0">
                                 نماذج اعمال
@@ -130,11 +124,9 @@
                     <div id="swiper-gallery">
                         <div class="swiper-container gallery-top">
                             <div class="swiper-wrapper">
-                                <div class="swiper-slide" style="background-image:url({{ asset('assets/img/backgrounds/6.jpg') }});"></div>
-                                <div class="swiper-slide" style="background-image:url({{ asset('assets/img/backgrounds/5.jpg') }});"></div>
-                                <div class="swiper-slide" style="background-image:url({{ asset('assets/img/backgrounds/7.jpg') }});"></div>
-                                <div class="swiper-slide" style="background-image:url({{ asset('assets/img/backgrounds/10.jpg') }});"></div>
-                                <div class="swiper-slide" style="background-image:url({{ asset('assets/img/backgrounds/16.jpg') }});"></div>
+                            @foreach ($service->works as $work )
+                                <div class="swiper-slide" style='background-image:url({{ asset("{$work->path}$work->image ") }});'></div>
+                            @endforeach
                             </div>
                             <!-- Add Arrows -->
                             <div class="swiper-button-next swiper-button-white bg-primary"></div>
@@ -142,14 +134,17 @@
                         </div>
                         <div class="swiper-container gallery-thumbs">
                             <div class="swiper-wrapper">
-                                <div class="swiper-slide" style="background-image:url({{ asset('assets/img/backgrounds/6.jpg') }});background-size: cover !important;"></div>
-                                <div class="swiper-slide" style="background-image:url({{ asset('assets/img/backgrounds/5.jpg') }});background-size: cover !important;"></div>
-                                <div class="swiper-slide" style="background-image:url({{ asset('assets/img/backgrounds/7.jpg') }});background-size: cover !important;"></div>
-                                <div class="swiper-slide" style="background-image:url({{ asset('assets/img/backgrounds/10.jpg') }});background-size: cover !important;"></div>
-                                <div class="swiper-slide" style="background-image:url({{ asset('assets/img/backgrounds/16.jpg') }});background-size: cover !important;"></div>
+                               @foreach ($service->works as $work )
+                                <div class="swiper-slide" style='background-image:url({{ asset("{$service->works[0]->path}$service->image") }});background-size: cover !important;'></div>
+                            @endforeach
                             </div>
                         </div>
                     </div>
+                @else
+                <div class='text-center'>
+                                لم يتم رفع اعمال 
+                </div>
+                @endif
                 </div>
 
             </div>

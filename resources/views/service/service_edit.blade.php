@@ -11,21 +11,29 @@
             <!-- User Sidebar -->
             <div class="col-md-6">
                 <!-- User Card -->
-                <form>
+            <form   novalidate="novalidate" action="{{route('service.update',$service->id)}}" 
+                    enctype="multipart/form-data" method='post'>
+                    @csrf
                     <div class="card mb-4">
                         <div class="card-body">
                             <div class="user-avatar-section">
                                 <div class=" d-flex align-items-center flex-column">
                                     <div class="user-avatar-section">
                                         <div class=" d-flex align-items-center flex-column">
-                                            <img id="uploadedImg" class="img-fluid rounded mx-4 w-75" src="{{ asset('assets/img/backgrounds/3.jpg') }}" height="100" width="100" alt="User avatar">
+                                          @if($service->image)
+                                                
+                                                <img class="img-fluid" src="{{ asset("{$service->path}$service->image ") }}" id='uploadedImg' alt="Card image cap">
+                                            @else
+                                                
+                                                <img class="img-fluid" src="../../assets/img/backgrounds/event.jpg" id='uploadedImg' alt="Card image cap">
+                                            @endif
                                         </div>
                                     </div>
                                     <label for="upload" class="btn btn-primary my-4" tabindex="0">
                                         <span class="d-none d-sm-block">تعديل الصورة</span>
                                         <i class="bx bx-upload d-block d-sm-none"></i>
                                         <input type="file" id="upload" class="account-file-input" hidden
-                                               accept="image/png, image/jpeg"/>
+                                               accept="image/png, image/jpeg" name='image'/>
                                     </label>
                                 </div>
                             </div>
@@ -35,69 +43,50 @@
                                     <div class="mb-3 col-md-12">
                                         <label for="name" class="form-label">أسم الخدمة</label>
                                         <input type="text" class="form-control" id="name" name="name"
-                                               placeholder="أسم الخدمة" value="تصميم مواقع">
+                                               placeholder="أسم الخدمة" value="{{$service->name}}">
                                     </div>
                                     <div class="mb-3 col-sm-6">
                                         <label for="timeZones" class="form-label">المجال</label>
-                                        <select id="selectpickerBasic" class="form-select selectpicker w-100" data-style="btn-default">
+                                        <select id="selectpickerBasic" class=" category form-select  w-100" data-style="btn-default" name='category'>
                                             <option value="" data-select2-id="2">أختر</option>
-                                            <option value="Turkey">الكهرباء</option>
-                                            <option value="Ukraine">التصميم</option>
-                                            <option value="United Arab Emirates" selected>البرمجة</option>
-                                            <option value="United Kingdom">النجارة</option>
-                                            <option value="United States">الرياضة</option>
+                                            @forelse($categories as $category)   
+                                                <option data-icon="bx bx-list-check" value="{{$category->id}}" {{$category->id==$service->service_cat_id?'selected':''}}> 
+                                                {{$category->name}}</option>
+                                            @empty
+                                
+                                            @endforelse
                                         </select>
                                     </div>
                                     <div class="mb-3 col-sm-6">
                                         <label for="timeZones" class="form-label">نوع الدفع</label>
-                                        <select id="selectpickerBasic" class="form-select selectpicker w-100" data-style="btn-default">
+                                        <select id="selectpickerBasic" class="form-select  w-100" data-style="btn-default" name='type'>
                                             <option value="" data-select2-id="2">أختر</option>
-                                            <option value="Turkey">رقمي</option>
-                                            <option value="Ukraine" selected>دفع عند الاستلام</option>
+                                            <option {{$service->type==0?'selected':''}} value="0">دفع عند الاستلام</option>
+                                            <option {{$service->type?'selected':''}} value="1">رقمي</option>
                                         </select>
                                     </div>
                                     <div class="mb-3 col-sm-12">
                                         <label for="timeZones" class="form-label">مدة التسليم</label>
-                                        <select id="selectpickerBasic" class="form-select selectpicker w-100" data-style="btn-default">
-                                            <option value="" data-select2-id="2">أختر</option>
-                                            <option value="Turkey">يوم</option>
-                                            <option value="Ukraine">يومين</option>
-                                            <option value="United Arab Emirates">3 أيام</option>
-                                            <option value="United Kingdom">4 أيام</option>
-                                            <option value="United States">5 أيام</option>
-                                            <option value="United States">6 أيام</option>
-                                            <option value="United States"> أسبوع</option>
-                                            <option value="United States" selected>أسبوعين</option>
-                                            <option value="United States">3 أسابيع</option>
-                                            <option value="United States">شهر</option>
+                                        <select id="selectpickerBasic" class="form-select  w-100" data-style="btn-default" name='interval' 
+                                       >
+                                            <option  {{$service->interval==''?'selected':''}} value="" data-select2-id="2">أختر</option>
+                                            <option {{$service->interval==''?'selected':''}} value="يوم">يوم</option>
+                                            <option {{$service->interval==''?'selected':''}} value="يومين">يومين</option>
+                                            <option {{$service->interval==''?'selected':''}} value=" 3 ايام">3 أيام</option>
+                                            <option {{$service->interval==''?'selected':''}} value="4 أيام">4 أيام</option>
+                                            <option {{$service->interval==''?'selected':''}} value="5 ايام">5 أيام</option>
+                                            <option {{$service->interval==''?'selected':''}} value="6 ايام">6 أيام</option>
+                                            <option {{$service->interval==''?'selected':''}} value=" أسبوع"> أسبوع</option>
+                                            <option {{$service->interval==''?'selected':''}} value=" أسبوعين">أسبوعين</option>
+                                            <option {{$service->interval==''?'selected':''}} value="3 أسابيع">3 أسابيع</option>
+                                            <option {{$service->interval==''?'selected':''}} value="شهر">شهر</option>
                                         </select>
-                                    </div>
-                                    <div class="mb-3 col-sm-6">
-                                        <label for="timeZones" class="form-label">المحافظة</label>
-                                        <select id="selectpickerBasic" class="form-select selectpicker w-100" data-style="btn-default">
-                                            <option value="" data-select2-id="2">أختر</option>
-                                            <option value="" selected>حضرموت</option>
-                                            <option value="">عدن</option>
-                                        </select>
-                                    </div>
-                                    <div class="mb-3 col-sm-6">
-                                        <label for="timeZones" class="form-label">المدينة</label>
-                                        <select id="selectpickerBasic" class="form-select selectpicker w-100" data-style="btn-default">
-                                            <option value="" data-select2-id="2">أختر</option>
-                                            <option value="Turkey" selected>المكلا</option>
-                                            <option value="Ukraine">الشحر</option>
-                                        </select>
-                                    </div>
-                                    <div class="mb-3 col-sm-12">
-                                        <label for="name" class="form-label">العنوان</label>
-                                        <input type="text" class="form-control" id="name" name="name"
-                                               placeholder="أسم الخدمة" value="فوه القديمة - بجانب ملعب النادي">
                                     </div>
                                     <div>
                                         <label for="exampleFormControlTextarea1" class="form-label">وصف
                                             الخدمة</label>
                                         <textarea class="form-control" id="exampleFormControlTextarea1"
-                                                  rows="3" placeholder="الوصف">سوف اقوم بتنفيذ تصميم احترافى وجذاب لموقعك على منصه سله, تصميم وبرمجة موقع ووردبريس احترافي, تمصميم واجهات وتجربة المستخدم لموقعك الالكتروني بإحترافية.</textarea>
+                                                  rows="3" placeholder="الوصف" name='description'>{{$service->description}}</textarea>
                                     </div>
                                 </div>
                                 <div class="mt-2">
@@ -131,7 +120,9 @@
                         <div class="modal-dialog modal-lg modal-dialog-centered">
 
                             <div class="modal-content">
-                                <form>
+                                 <form   novalidate="novalidate" action="{{route('work.store')}}" 
+                                        enctype="multipart/form-data" method='post'>
+                                    @csrf                                    
                                     <div class="user-avatar-section mt-5">
                                         <div class=" d-flex align-items-center flex-column">
                                             <div class="user-avatar-section">
@@ -142,11 +133,12 @@
                                             <label for="cardUpload" class="btn btn-primary mt-3" tabindex="0">
                                                 <span class="d-none d-sm-block bx bx-upload"> أضافة صورة</span>
                                                 <i class="bx bx-upload d-block d-sm-none"></i>
-                                                <input type="file" id="cardUpload" class="account-file-input" hidden="" accept="image/png, image/jpeg">
+                                                <input type="file" id="cardUpload" name='image' class="account-file-input" hidden="" accept="image/png, image/jpeg">
                                             </label>
                                             <div class="mb-4 col-md-10 px-5">
                                                 <label for="name" class="form-label">أسم النموذج</label>
-                                                <input type="text" class="form-control" id="name" name="name" placeholder="أسم الخدمة">
+                                                <input type="text" class="form-control" id="name" name="title" placeholder="أسم النموذج">
+                                                <input type="hidden" class="form-control" value="{{$service->id}}" name="service_id" >
                                                 <button type="submit" class="btn btn-primary mt-3 w-100"> حفظ</button>
                                             </div>
                                         </div>
@@ -158,58 +150,31 @@
                 </div>
 
                 <div class="row mb-5">
+                @if(count($service->works))
+                @foreach ($service->works as $work )
                     <div class="col-lg-6 col-md-12 col-sm-6 col-12">
                         <div class="card mb-3 shadow">
-                            <img class="card-img-top" src="../../assets/img/elements/18.jpg" alt="Card image cap">
+                        
+                            <img class="card-img-top" src='{{ asset("{$work->path}$work->image ") }}' alt="Card image cap">
                             <div class="card-body d-flex justify-content-between">
-                                <h5 class="card-title">تصميم موقع طبخ</h5>
+                                <h5 class="card-title">{{$work->title}}</h5>
                             </div>
-                            <form class="mb-3 mx-auto" method="get" action="#">
-                                <button type="button" class="btn btn-label-danger confirm">
-                                    <span class="tf-icons bx bx-trash"></span>&nbsp; حذف
+                            <form action="{{ route('work.delete',$work->id) }}" method='get'>
+                                <button type="submit" class="btn btn-label-danger  mx-2">
+                                    <span class="tf-icons bx bx-block"></span>&nbsp; حذف
                                 </button>
                             </form>
                         </div>
                     </div>
-                    <div class="col-lg-6 col-md-12 col-sm-6 col-12">
-                        <div class="card mb-3 shadow">
-                            <img class="card-img-top" src="../../assets/img/elements/18.jpg" alt="Card image cap">
-                            <div class="card-body d-flex justify-content-between">
-                                <h5 class="card-title">تصميم موقع طبخ</h5>
-                            </div>
-                            <form class="mb-3 mx-auto" method="get" action="#">
-                                <button type="button" class="btn btn-label-danger confirm">
-                                    <span class="tf-icons bx bx-trash"></span>&nbsp; حذف
-                                </button>
-                            </form>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-12 col-sm-6 col-12">
-                        <div class="card mb-3 shadow">
-                            <img class="card-img-top" src="../../assets/img/elements/18.jpg" alt="Card image cap">
-                            <div class="card-body d-flex justify-content-between">
-                                <h5 class="card-title">تصميم موقع طبخ</h5>
-                            </div>
-                            <form class="mb-3 mx-auto" method="get" action="#">
-                                <button type="button" class="btn btn-label-danger confirm">
-                                    <span class="tf-icons bx bx-trash"></span>&nbsp; حذف
-                                </button>
-                            </form>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-12 col-sm-6 col-12">
-                        <div class="card mb-3 shadow">
-                            <img class="card-img-top" src="../../assets/img/elements/18.jpg" alt="Card image cap">
-                            <div class="card-body d-flex justify-content-between">
-                                <h5 class="card-title">تصميم موقع طبخ</h5>
-                            </div>
-                            <form class="mb-3 mx-auto" method="get" action="#">
-                                <button type="button" class="btn btn-label-danger confirm">
-                                    <span class="tf-icons bx bx-trash"></span>&nbsp; حذف
-                                </button>
-                            </form>
-                        </div>
-                    </div>
+                @endforeach
+                    
+                @else
+                        <div class='text-center'>
+                                لم يتم رفع اعمال 
+                </div>
+                @endif
+
+
 
                 </div>
                 <!-- Invoice table -->
@@ -223,39 +188,8 @@
 @endsection
 
 @section('scripts')
+    <script src="../../assets/vendor/libs/bootstrap-select/bootstrap-select.js"></script>
 
-    <script src="../../assets/vendor/libs/sweetalert2/sweetalert2.js"></script>
-    <script>
-        $('.confirm').on('click',function(e){
-            e.preventDefault();
-            var form = $(this).parents('form');
-            Swal.fire({
-                title: "هل انت متأكد من المتابعة",
-                text: "لن يمكنك التراجع عن هذا !",
-                icon: "warning",
-                showCancelButton: !0,
-                confirmButtonText: "نعم, قم بالحذف",
-                customClass: {confirmButton: "btn btn-primary me-3", cancelButton: "btn btn-label-secondary"},
-                buttonsStyling: !1
-            }).then(function (t) {
-                t.value ? Swal.fire({
-                        icon: "success",
-                        title: "محذوف!",
-                        text: "لقد تم الحذف بنجاخ.",
-                        customClass: {confirmButton: "btn btn-success"}
-                    }, setTimeout(function(){
-
-                        form.submit()
-                    }, 1000)
-                ) : t.dismiss === Swal.DismissReason.cancel && Swal.fire({
-                    title: "تم الالغاء",
-                    text: "تم الغاء العملية :)",
-                    icon: "error",
-                    customClass: {confirmButton: "btn btn-success"}
-                })
-            })
-        });
-    </script>
     <script>
         imgInp = document.getElementById('upload');
         imgView = document.getElementById('uploadedImg');
@@ -282,5 +216,7 @@
             imgInp.value = "",
                 imgView.src = r
         }
+
+
     </script>
 @endsection

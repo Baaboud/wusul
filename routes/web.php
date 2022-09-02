@@ -88,10 +88,14 @@ Route::get('/profile', function () {
 })->name('profile')->middleware('auth');
 
 Route::get('/services', [SiteController::class, 'services'])->name('services');
+Route::get('/service/{id}', [SiteController::class, 'service'])->name('service.details');
 
 Route::get('/l/l', function () {
     return view('service_provider.wallet');
 })->name('test');
+// Route::get('/l/l', function () {
+ 
+// }) ->name('test');
 
 // start routes of user that provide service
 Route::group(['prefix' => 'serviceProvider',
@@ -108,6 +112,7 @@ Route::group(['prefix' => 'serviceProvider',
         Route::post('/store', [ServicesController::class, 'store'])->name('service.store');
         Route::get('/edit/{id}', [ServicesController::class, 'edit'])->name('service.edit');
         Route::post('/update/{id}', [ServicesController::class, 'update'])->name('service.update');
+        Route::get('/delete/{id}', [ServicesController::class, 'destroy'])->name('service.delete');
 
     });
 
@@ -118,6 +123,7 @@ Route::group(['prefix' => 'serviceProvider',
         Route::post('/store', [WorkController::class, 'store'])->name('work.store');
         Route::get('/edit/{id}', [WorkController::class, 'edit'])->name('work.edit');
         Route::post('/update/{id}', [WorkController::class, 'update'])->name('work.update');
+        Route::get('/delete/{id}', [WorkController::class, 'destroy'])->name('work.delete');
     });
 
 
