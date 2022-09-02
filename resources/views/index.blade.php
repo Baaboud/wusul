@@ -82,9 +82,11 @@
                                     <div class="d-flex align-items-center justify-content-center my-1 gap-2">
                                     </div>
                                     <div class="d-flex align-items-center justify-content-center">
+                                        <a href="{{route('service.details',$service->id)}}">
                                         <button type="button" class="btn btn-primary fs-5 px-3">
                                             <span class="tf-icons bx bx-user-check"></span>&nbsp; وصول
                                         </button>
+                                        </a>
                                     </div>
                                     <div class="mt-3 d-flex fs-6 align-items-center justify-content-around">
                                         <a href="#" class="text-muted me-3" data-bs-toggle="tooltip" data-bs-offset="0,4"

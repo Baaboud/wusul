@@ -101,20 +101,22 @@
                                             </td>
                                             <td class='d-flex'>
                                         @if(Auth::user()->userServiceProvider())
-                                            <form method="get" action="{{ route('service.edit',$service->id) }}">
-                                                <button type="button" class="btn btn-label-primary confirm">
+                                            <a href="{{ route('service.edit',$service->id) }}">
+                                                <button type="button" class="btn btn-label-primary ">
                                                     <span class="tf-icons bx bxs-eyedropper"></span>&nbsp; تعديل
                                                 </button>
-                                            </form>
+                                            </a>
+                                            <form action="{{ route('service.delete',$service->id) }}" method='get'>
                                                 <button type="button" class="btn btn-label-danger confirm mx-2">
                                                     <span class="tf-icons bx bx-block"></span>&nbsp; حذف
                                                 </button>
+                                            </form>
                                             @else
-                                                <form method="get" action="{{ route('index') }}">
+                                                <a href="{{ route('index') }}">
                                                     <button type="button" class="btn btn-label-danger confirm">
                                                         <span class="tf-icons bx bx-block"></span>&nbsp; ايقاف
                                                     </button>
-                                                </form>
+                                                </a>
                                             @endif
                                             </td>
                                         </tr>
@@ -165,12 +167,24 @@
                                                     @endif
                                                 </div>
                                                 <div class="d-flex align-items-center justify-content-center mt-4">
-                                                    <a href="javascript:;" class="btn btn-primary d-flex align-items-center me-3"><i class="bx bx-user-check me-1"></i>وصول</a>
-                                                    <form method="get" action="{{ route('index') }}">
-                                                        <button type="button" class="btn btn-label-danger confirm">
-                                                            <span class="tf-icons bx bx-block"></span>&nbsp; ايقاف
-                                                        </button>
-                                                    </form>
+                                            @if(Auth::user()->userServiceProvider())
+                                            <a href="{{ route('service.edit',$service->id) }}">
+                                                <button type="button" class="btn btn-label-primary ">
+                                                    <span class="tf-icons bx bxs-eyedropper"></span>&nbsp; تعديل
+                                                </button>
+                                            </a>
+                                            <form action="{{ route('service.delete',$service->id) }}" method='get'>
+                                                <button type="button" class="btn btn-label-danger confirm mx-2">
+                                                    <span class="tf-icons bx bx-block"></span>&nbsp; حذف
+                                                </button>
+                                            </form>
+                                            @else
+                                                <a href="{{ route('index') }}">
+                                                    <button type="button" class="btn btn-label-danger confirm">
+                                                        <span class="tf-icons bx bx-block"></span>&nbsp; ايقاف
+                                                    </button>
+                                                </a>
+                                            @endif
                                                 </div>
                                                 <div class="mt-5 d-flex fs-6 align-items-center justify-content-around">
                                                     <a href="#" class="text-muted me-3" data-bs-toggle="tooltip" data-bs-offset="0,4" data-bs-placement="bottom" data-bs-html="true" title="" data-bs-original-title="اجمالي الطلبات">

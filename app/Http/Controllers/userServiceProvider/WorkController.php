@@ -45,16 +45,16 @@ class WorkController extends Controller
      */
     public function store(Request $request)
     {
+        // return $request;
         try {
              $request->validate([
                 'title' => 'required|string',
-                'description'=>'string|required',
                 'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
                 'service_id'=>'required|numeric',
                 'url'=>'url',
             ]);
             
-            $service=Service::where('user_id', 3)->findOrFail($request->service_id);
+            $service=Service::where('user_id', Auth::id())->findOrFail($request->service_id);
             
             if(!$service) return throw new Exception("ليس لديك صلاحيه", 1);
             
@@ -79,7 +79,8 @@ class WorkController extends Controller
 
             // event(new notfiy($pharmacy));
 
-            return $work;
+            return redirect()->back();
+
         } catch (\Throwable $th) {
 
             return $th->getMessage();
@@ -170,13 +171,14 @@ class WorkController extends Controller
      */
     public function destroy($id)
     {
-        $work= Work::CheckOwner()->findOrFail($id);
+        $work= Work::with('service')->CheckOwner()->findOrFail($id);
 
             if($work->image){
                 Storage::disk('works')->delete($work->image);
             }
 
         $work->delete();
+        return redirect()->back();
         
     }
 }

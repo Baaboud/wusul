@@ -64,6 +64,11 @@ public function rating()
                 ->orWhere(function ($query) use ($search) {
                     $query->whereHas('user', function ($query)  use ($search){
                         return $query->where('name', 'like', '%' .  $search . '%');
+                    })
+                    ->orWhere(function ($query) use ($search) {
+                        $query->whereHas('address', function ($query)  use ($search){
+                            return $query->where('description', 'like', '%' .  $search . '%');
+                        });
                     });
                 });
 
