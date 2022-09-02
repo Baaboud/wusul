@@ -51,21 +51,12 @@
                             <input type="text" class="form-control" id="address" name="address" placeholder="عنوان الخدمة">
                         </div>
                         <div class="mb-3 col-md-6" data-select2-id="5">
-                            <label for="apiAccess" class="form-label">مدة التسليم</label>
-                            <div class="position-relative" data-select2-id="4"><select id="apiAccess" class="select2 form-select select2-hidden-accessible" data-select2-id="apiAccess" tabindex="-1" aria-hidden="true">
-                                    <option value="" data-select2-id="2">أختر</option>
-                                    <option value="Turkey">يوم</option>
-                                    <option value="Ukraine">يومين</option>
-                                    <option value="United Arab Emirates">3 أيام</option>
-                                    <option value="United Kingdom">4 أيام</option>
-                                    <option value="United States">5 أيام</option>
-                                    <option value="United States">6 أيام</option>
-                                    <option value="United States"> أسبوع</option>
-                                    <option value="United States">أسبوعين</option>
-                                    <option value="United States">3 أسابيع</option>
-                                    <option value="United States">شهر</option>
-                                </select><span class="select2 select2-container select2-container--default select2-container--above select2-container--focus" dir="rtl" data-select2-id="1" style="width: 442.25px;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-disabled="false" aria-labelledby="select2-apiAccess-container"><span class="select2-selection__rendered" id="select2-apiAccess-container" role="textbox" aria-readonly="true" title="Choose Key Type">Choose Key Type</span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span></div>
-                        </div>
+                                     <div class="mb-3 col-sm-12">
+                                        <label for="interval" class="form-label">مدة التسليم</label>
+                                        <input type="text" class="form-control" id="interval" name="interval"
+                                               placeholder="مدة التسليم">
+                                    </div>           
+                         </div>
                         <div>
                             <label for="exampleFormControlTextarea1" class="form-label">وصف الخدمة</label>
                             <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="الوصف"></textarea>

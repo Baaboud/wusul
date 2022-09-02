@@ -20,14 +20,13 @@ return new class extends Migration
             $table->string('name');
             $table->string('image')->nullable();
             $table->text('description')->nullable();
-            $table->boolean('type')->default(0);// tye of pay in service
-            // [0 or 1]
+            $table->bool('type')->default(0);
             $table->boolean('is_active')->default(1);
             $table->integer('price')->nullable();
             $table->integer('stars')->default(0);
             $table->unsignedBigInteger('service_cat_id');
             $table->foreign('service_cat_id')->references('id')->on('service_cats')->onUpdate('cascade')->onDelete('cascade');
-            $table->integer('interval')->nullable();
+            $table->string('interval')->nullable();
             $table->timestamps();
         });
     }

@@ -102,20 +102,9 @@
                                                     </select>
                                                 </div>
                                                 <div class="mb-3 col-md-6">
-                                                    <label for="timeZones" class="form-label">مدة التسليم</label>
-                                                    <select id="selectpickerBasic" class="selectpicker w-100" data-style="btn-default">
-                                                        <option value="" data-select2-id="2">أختر</option>
-                                                        <option value="Turkey">يوم</option>
-                                                        <option value="Ukraine">يومين</option>
-                                                        <option value="United Arab Emirates">3 أيام</option>
-                                                        <option value="United Kingdom">4 أيام</option>
-                                                        <option value="United States">5 أيام</option>
-                                                        <option value="United States">6 أيام</option>
-                                                        <option value="United States"> أسبوع</option>
-                                                        <option value="United States">أسبوعين</option>
-                                                        <option value="United States">3 أسابيع</option>
-                                                        <option value="United States">شهر</option>
-                                                    </select>
+                                                <label for="interval" class="form-label">مدة التسليم</label>
+                                                <input type="text" class="form-control" id="interval" name="interval"
+                                                    placeholder="مدة التسليم">
                                                 </div>
                                                 <div>
                                                     <label for="exampleFormControlTextarea1" class="form-label">وصف
