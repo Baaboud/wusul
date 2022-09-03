@@ -102,9 +102,6 @@ Route::get('/service/{id}', [SiteController::class, 'service'])->name('service.d
 Route::get('/l/l', function () {
     return view('order.provider_request');
 })->name('test');
-// Route::get('/l/l', function () {
- 
-// }) ->name('test');
 
 // start routes of user that provide service
 Route::group(['prefix' => 'serviceProvider',
