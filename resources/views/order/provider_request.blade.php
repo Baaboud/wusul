@@ -11,7 +11,7 @@
     <div class="container-xxl flex-grow-1 container-p-y">
 
         <h4 class="fw-bold py-3 mb-4">
-            <span class="text-muted fw-light">User / View /</span> Create Service
+            <span class="text-muted fw-light">الطلب /</span> فاتورة
         </h4>
         <div class="row invoice-preview">
             <!-- Invoice -->
@@ -22,9 +22,9 @@
                             class="d-flex justify-content-between flex-xl-row flex-md-column flex-sm-row flex-column p-sm-3 p-0">
                             <div class="mb-xl-0 mb-4">
                                 <div class="d-flex svg-illustration mb-3 gap-2">
-              <span class="app-brand-logo demo">
-                  <img src="http://127.0.0.1:8000/img/logo.png" class="w-px-40 h-auto p-1" alt="" srcset="">
-              </span>
+                                  <span class="app-brand-logo demo">
+                                      <img src="{{ asset('img/logo.png') }}" class="w-px-40 h-auto p-1" alt="" srcset="">
+                                  </span>
                                     <span class="app-brand-text demo text-body fw-bolder">منصة وصول للخدمات</span>
                                 </div>
                                 <p class="mb-1">www.wusul.com</p>
@@ -44,65 +44,48 @@
                             </div>
                         </div>
                     </div>
-                    <hr class="my-0">
-                    <div class="card-body">
-                        <div class="row p-sm-3 p-0">
-                            <div class="col-md-6 col-sm-7">
-                                <span class="app-brand-text demo text-body fw-bolder">بيانات العميل</span>
-
-                                <h6 class="pb-2"></h6>
-                                <table>
-                                    <tbody>
-                                    <tr>
-                                        <td class="pe-3">الأسم:</td>
-                                        <td>عبدالله محمد الجوهي</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="pe-3">المحافظة:</td>
-                                        <td>ذمار</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="pe-3">المدينة:</td>
-                                        <td>المنصورة</td>
-                                    </tr>
-
-                                    </tbody>
-                                </table>
+                    <hr class="my-0"><div class="card-body my-0 py-0">
+                        <div
+                            class="d-flex justify-content-between flex-xl-row flex-md-column flex-sm-row flex-column p-sm-3 p-0 my-0 py-0">
+                            <div>
+                                <h4>بيانات العميل</h4>
+                                <div class="mb-2">
+                                    <span class="me-1">الأسم:</span>
+                                    <span class="fw-semibold">عبدالله الجوهي</span>
+                                </div>
+                                <div>
+                                    <span class="me-1">المحافظة:</span>
+                                    <span class="fw-semibold">حضرموت</span>
+                                </div>
+                                <div>
+                                    <span class="me-1">المدينة:</span>
+                                    <span class="fw-semibold">المكلا</span>
+                                </div>
                             </div>
-                            <div class="col-md-6 col-sm-7">
-                                <span class="app-brand-text demo text-body fw-bolder">بيانات الخدمة</span>
-
-                                <h6 class="pb-2"></h6>
-                                <table>
-                                    <tbody>
-                                    <tr>
-                                        <td class="pe-3">أسم مالك الخدمة:</td>
-                                        <td>أسامة هادي</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="pe-3">أسم الخدمة:</td>
-                                        <td>تصميم مواقع</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="pe-3">عنوان طلب:</td>
-                                        <td>المكلا المساكن</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="pe-3">الوصف:</td>
-                                        <td>رؤبيقيبغااتهتتنةىىلاءيسصثس افبغفغى تىلغع</td>
-                                    </tr>
-
-                                    </tbody>
-                                </table>
+                            <div>
+                                <h4>بيانات الخدمة</h4>
+                                <div class="mb-2">
+                                    <span class="me-1">أسم مالك الخدمة:</span>
+                                    <span class="fw-semibold">أسامة هادي</span>
+                                </div>
+                                <div>
+                                    <span class="me-1">أسم الخدمة:</span>
+                                    <span class="fw-semibold">تصميم مواقع</span>
+                                </div>
+                                <div>
+                                    <span class="me-1">المجال:</span>
+                                    <span class="fw-semibold">برمجة</span>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="table-responsive border-top">
-                        <table class="table m-0 pt-3">
-                            <span class="app-brand-text demo text-body fw-bolder px-5">بيانات الطلب</span>
+                    <hr class="my-0">
+                    <div class="">
+                        <div class="m-0 pt-3">
+                            <span class="fs-4 pt-3 fw-bolder px-5">بيانات الطلب</span>
 
                             <div class="card-body">
-                                <div class="row">
+                                <div class="row mx-2">
                                     <div class="col-12 bg-label-primary text-white p-3 fs-6">
                                         <span class="fw-semibold">الوصف:</span>
                                         <span>هل تحتاج شركتك إلى طريقة أسهل لتلقي الطلبات وتوزيعها وإدارتها؟ بفضل طلب النماذج من Jotform، ستتمكن من إدارة الطلبات بسهولة لا تصدق. لذلك سواء كنت تقوم بإنشاء نموذج طلب للموظفين أو طلب منتجات، فإن Jotform ستساعدك في ذلك.
@@ -111,18 +94,20 @@
                                     </div>
                                 </div>
                             </div>
-                            </tbody>
-                        </table>
+                        </div>
                         <div class="text-center px-4 py-5 d-flex justify-content-center border-top border-bottom">
                             <p class="mb-0 fs-4 me-3">اجمالي المبلغ:</p>
                             <p class="fw-semibold mb-0 fs-4 text-danger">$204.25</p>
                         </div>
                         <div class="container mb-3">
-                            <div class="col-6 mb-3 mt-5">
-                                <input type="text" class="form-control col-6" id="salesperson" placeholder="أدخل السعر">
+                            <div class="col-6 mx-auto text-center">
+                                <div class="mb-3 mt-5">
+                                    <input type="text" class="form-control col-6" id="salesperson"
+                                           placeholder="أدخل السعر">
+                                </div>
+                                <button type="button" class="btn btn-label-primary">قبول</button>
+                                <button type="button" class="btn btn-label-danger">رفض</button>
                             </div>
-                            <button type="button" class="btn btn-label-primary">قبول</button>
-                            <button type="button" class="btn btn-label-danger">رفض</button>
                         </div>
                     </div>
                 </div>

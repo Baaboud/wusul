@@ -20,14 +20,28 @@
             <div class="col-xl-4 col-lg-5 col-md-5">
                 <!-- User Card -->
                 <div class="card mb-4 h-100">
+                    <div class="card-header flex-grow-0">
+                        <div class="d-flex">
+                            <div class="avatar flex-shrink-0 me-3">
+
+                                <img src="http://127.0.0.1:8000/assets/img/avatars/1.png" alt="User" class="rounded-circle">
+                            </div>
+                            <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-1">
+                                <div class="me-2">
+                                    <h5 class="mb-0">أسامة هادي</h5>
+                                    <small class="text-muted">2022-09-02 17:40:39</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <div class="card-body">
                         <div class="user-avatar-section">
                             <div class=" d-flex align-items-center flex-column">
                                   @if($service->image)
-                                                
+
                                                 <img class="img-fluid" src="{{ asset("{$service->path}$service->image ") }}" alt="Card image cap">
                                             @else
-                                                
+
                                             <img class="img-fluid" src="../../assets/img/backgrounds/event.jpg" alt="Card image cap">
                                             @endif
                                 <div class="user-info text-center mt-3">
@@ -46,7 +60,7 @@
                                     <span class="badge bg-label-primary p-2 rounded"><i class="bx bx-current-location fs-2"></i></span>
                                     <div>
                                         <span>الموقع </span>
-                                        <h5 class="mb-0 text-primary">{{$service->address->state->name}} - {{$service->address->city->name}}-{{$service->address->description}}</h5>
+                                        <h5 class="mb-0 text-primary">{{$service->address->state->name??''}} - {{$service->address->city->name??''}}-{{$service->address->description}}</h5>
                                     </div>
                                 </div>
                                 <div class="col-md-12 col-sm-6 col-12 d-flex align-items-start mt-4 px-4 gap-3">
@@ -69,11 +83,11 @@
                                         <span>متوسط التقييمات</span>
                                         <h5 class="mb-0 text-center text-warning">
                                         @for($i = 0; $i < 4; $i++)
-                                            @if($i<$service->stars)    
+                                            @if($i<$service->stars)
                                             <i class="bx bxs-star bx-sm"></i>
                                             @else
                                             <i class="bx bx-star bx-sm"></i>
-                                                
+
                                             @endif
                                         @endfor
                                         </h5>
@@ -84,7 +98,7 @@
                         </div>
                     </div>
                 </div>
-    
+
             </div>
             <!--/ User Sidebar -->
 
@@ -108,7 +122,7 @@
                         </p>
                     </div>
                 </div>
-                    
+
                 <div class="col-12 bg-white py-3">
                 @if(count($service->works))
                     <div class="d-flex align-items-center mx-4 mb-3">
@@ -142,7 +156,7 @@
                     </div>
                 @else
                 <div class='text-center'>
-                                لم يتم رفع اعمال 
+                                لم يتم رفع اعمال
                 </div>
                 @endif
                 </div>

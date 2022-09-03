@@ -28,7 +28,7 @@ class SiteController extends Controller
             return view('service.service_page',compact('service'));
 
         } catch (\Throwable $th) {
-            return $ex->getMessage();
+            return $th->getMessage();
         }
     }
 }
