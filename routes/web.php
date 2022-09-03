@@ -46,7 +46,7 @@ Route::middleware(['auth'])->group(function () {
 
         //crud order
         Route::group(['prefix' => 'order'], function () {
-            Route::get('/create', [OrderController::class, 'create'])->name('order.create');
+            Route::get('/create/{id}', [OrderController::class, 'create'])->name('order.create');
             Route::post('/send', [OrderController::class, 'send'])->name('order.send');
             Route::get('/show/{id?}', [OrderController::class, 'show'])->name('order.show');
             Route::post('/response/{id}', [OrderController::class, 'update'])->name('order.response');

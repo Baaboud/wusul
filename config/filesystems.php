@@ -67,6 +67,12 @@ return [
             'url' => env('APP_URL') . '/users',
             'visibility' => 'public',
         ],
+        'orders' => [
+            'driver' => 'local',
+            'root' => public_path('assets/images/orders'),
+            'url' => env('APP_URL') . '/services',
+            'visibility' => 'public',
+        ],
 
         's3' => [
             'driver' => 's3',

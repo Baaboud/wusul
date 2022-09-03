@@ -11,7 +11,7 @@
             <!-- User Sidebar -->
             <div class="col-xl-4 col-lg-5 col-md-5">
                 <!-- User Card -->
-                <div class="card mb-4 h-100">
+          <div class="card mb-4 h-100">
                     <div class="card-header flex-grow-0">
                         <div class="d-flex">
                             <div class="avatar flex-shrink-0 me-3">
@@ -20,8 +20,8 @@
                             </div>
                             <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-1">
                                 <div class="me-2">
-                                    <h5 class="mb-0">أسامة هادي</h5>
-                                    <small class="text-muted">2022-09-02 17:40:39</small>
+                                    <h5 class="mb-0"> {{$service->user->name}} </h5>
+                                    <small class="text-muted"> {{\Carbon\Carbon::parse($service->created_at)->diffForHumans()}} </small>
                                 </div>
                             </div>
                         </div>
@@ -29,35 +29,40 @@
                     <div class="card-body">
                         <div class="user-avatar-section">
                             <div class=" d-flex align-items-center flex-column">
-                                    <img class="img-fluid" src="../../assets/img/backgrounds/event.jpg" alt="Card image cap">
+                                  @if($service->image)
+
+                                                <img class="img-fluid" src="{{ asset("{$service->path}$service->image ") }}" alt="Card image cap">
+                                            @else
+
+                                            <img class="img-fluid" src="../../assets/img/backgrounds/event.jpg" alt="Card image cap">
+                                            @endif
                                 <div class="user-info text-center mt-3">
-                                    <h4 class="mb-2">تصميم مواقع</h4>
-                                    <span class="badge bg-label-primary mt-3 pb-3 px-3 fs-6">برمجة</span>
+                                    <h4 class="mb-2">{{$service->name}}</h4>
+                                    <span class="badge bg-label-primary mt-3 pb-3 px-3 fs-6">{{$service->category->name}}</span>
                                 </div>
                             </div>
                         </div>
-
                         <div class="info-container">
                             <div class="row d-flex justify-content-around flex-wrap ms-lg-4 ms-md-0 ms-4">
                                 <div class="col-md-12 col-sm-6 col-12 d-flex align-items-start mt-3 px-4 gap-3">
                                     <span class="badge bg-label-primary p-2 rounded"><i class="bx bx-current-location fs-2"></i></span>
                                     <div>
                                         <span>الموقع </span>
-                                        <h5 class="mb-0 text-primary">{{$service->address->state->name??''}} - {{$service->address->city->name??''}}-{{$service->address->description??''}}</h5>
+                                        <h5 class="mb-0 text-primary">{{$service->address->state->name??''}} - {{$service->address->city->name??''}}-{{$service->address->description}}</h5>
                                     </div>
                                 </div>
                                 <div class="col-md-12 col-sm-6 col-12 d-flex align-items-start mt-4 px-4 gap-3">
                                     <span class="badge bg-label-primary p-2 rounded"><i class="bx bx-customize fs-2"></i></span>
                                     <div class="row">
                                         <span>أجمالي الطلبات المنجزة</span>
-                                        <h5 class="mb-0 text-primary">10</h5>
+                                        <h5 class="mb-0 text-primary">{{count($service->rating)}}</h5>
                                     </div>
                                 </div>
                                 <div class="col-md-12 col-sm-6 col-12 d-flex align-items-start mt-4 px-4 gap-3">
                                     <span class="badge bg-label-primary p-2 rounded"><i class="bx bx-time fs-2"></i></span>
                                     <div>
                                         <span>وقت التسليم التقريبي</span>
-                                        <h5 class="mb-0 text-primary">17d</h5>
+                                        <h5 class="mb-0 text-primary">{{$service->interval}} </h5>
                                     </div>
                                 </div>
                                 <div class="col-md-12 col-sm-6 col-12 d-flex align-items-start mt-4 px-4 gap-3">
@@ -65,11 +70,14 @@
                                     <div>
                                         <span>متوسط التقييمات</span>
                                         <h5 class="mb-0 text-center text-warning">
+                                        @for($i = 0; $i < 4; $i++)
+                                            @if($i<$service->stars)
                                             <i class="bx bxs-star bx-sm"></i>
+                                            @else
                                             <i class="bx bx-star bx-sm"></i>
-                                            <i class="bx bx-star bx-sm"></i>
-                                            <i class="bx bx-star bx-sm"></i>
-                                            <i class="bx bx-star bx-sm"></i>
+
+                                            @endif
+                                        @endfor
                                         </h5>
                                     </div>
                                 </div>
@@ -78,14 +86,13 @@
                         </div>
                     </div>
                 </div>
-
             </div>
             <!--/ User Sidebar -->
 
             <!-- User Content -->
             <div class="col-xl-8 col-lg-7 col-md-7 mt-lg-0 mt-3">
 
-                <form method="post" action="#" enctype="multipart/form-data">
+                <form method="post" action="{{route('order.send')}}" enctype="multipart/form-data">
                     @csrf
                     <div class="row fv-plugins-icon-container">
                         <div class="col-md-12">
@@ -100,20 +107,26 @@
                                         <div class="col-lg-6 mt-4">
                                             <label for="formFile" class="form-label fs-6">أرفاق ملفات</label>
                                             <div class="col-12">
-                                                <input class="form-control" name="fileUpload" type="file" id="formFile" multiple>
+                                                <input class="form-control" name='images[]' type="file" id="formFile" multiple>
                                             </div>
                                         </div>
-                                        <div class="col-lg-6 mt-4">
-                                            <label for="work" class="form-label fs-6">أضف العنوان المراد وصول الخدمة إليه </label>
-                                            <input type="text" class="form-control mb-3" id="work" name="work" placeholder="العنوان">
+                                        <div class="mt-4"  >
+                                        <label for="work" class="form-label fs-6">أضف العنوان المراد وصول الخدمة إليه </label>
+                                        @livewire('address-relation',['state_id'=>'0', 'city_id'=>'0'])
+
+                                        <div class="col-lg-6">
+                                            <label for="work" class="form-label fs-6"> العنوان </label>
+                                            <input type="text" class="form-control mb-3" id="work" name="address_description" placeholder="العنوان">
+                                        </div>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div>
                                             <label for="exampleFormControlTextarea1" class="form-label fs-6">وصف توضيحي للطلب</label>
-                                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="10"
+                                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="10"  name="description"
                                                       placeholder="وصف الطلب"></textarea>
                                         </div>
+                                    <input type="hidden" class="form-control mb-3" value="{{$service->id}}" name='service' placeholder="العنوان">
                                     </div>
 
                                     <div class="mt-3">

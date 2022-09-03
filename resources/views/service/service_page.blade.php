@@ -28,8 +28,8 @@
                             </div>
                             <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-1">
                                 <div class="me-2">
-                                    <h5 class="mb-0">أسامة هادي</h5>
-                                    <small class="text-muted">2022-09-02 17:40:39</small>
+                                    <h5 class="mb-0">{{$service->user->name}}/h5>
+                                    <small class="text-muted"> {{\Carbon\Carbon::parse($service->created_at)->diffForHumans()}} </small>
                                 </div>
                             </div>
                         </div>
@@ -51,7 +51,7 @@
                             </div>
                         </div>
                         <div class="row justify-content-around flex-wrap my-4 mx-5">
-                            <a href="javascript:;" class="btn btn-primary suspend-user">طلب الخدمة</a>
+                            <a href="{{route('order.create',$service->id)}}" class="btn btn-primary suspend-user">طلب الخدمة</a>
                         </div>
 
                         <div class="info-container">
