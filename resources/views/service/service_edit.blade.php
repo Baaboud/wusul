@@ -66,21 +66,9 @@
                                         </select>
                                     </div>
                                     <div class="mb-3 col-sm-12">
-                                        <label for="timeZones" class="form-label">مدة التسليم</label>
-                                        <select id="selectpickerBasic" class="form-select  w-100" data-style="btn-default" name='interval' 
-                                       >
-                                            <option  {{$service->interval==''?'selected':''}} value="" data-select2-id="2">أختر</option>
-                                            <option {{$service->interval==''?'selected':''}} value="يوم">يوم</option>
-                                            <option {{$service->interval==''?'selected':''}} value="يومين">يومين</option>
-                                            <option {{$service->interval==''?'selected':''}} value=" 3 ايام">3 أيام</option>
-                                            <option {{$service->interval==''?'selected':''}} value="4 أيام">4 أيام</option>
-                                            <option {{$service->interval==''?'selected':''}} value="5 ايام">5 أيام</option>
-                                            <option {{$service->interval==''?'selected':''}} value="6 ايام">6 أيام</option>
-                                            <option {{$service->interval==''?'selected':''}} value=" أسبوع"> أسبوع</option>
-                                            <option {{$service->interval==''?'selected':''}} value=" أسبوعين">أسبوعين</option>
-                                            <option {{$service->interval==''?'selected':''}} value="3 أسابيع">3 أسابيع</option>
-                                            <option {{$service->interval==''?'selected':''}} value="شهر">شهر</option>
-                                        </select>
+                                        <label for="interval" class="form-label">مدة التسليم</label>
+                                        <input type="text" class="form-control" id="interval" name="interval"
+                                               placeholder="مدة التسليم" value="{{$service->interval}}">
                                     </div>
                                     <div>
                                         <label for="exampleFormControlTextarea1" class="form-label">وصف

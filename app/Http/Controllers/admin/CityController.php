@@ -27,7 +27,9 @@ class CityController extends Controller
             ]);
             return redirect()->back()->with(['success' => 'تم  الاضافه بنجاح']);
         } catch (\Throwable $ex) {
-            return $ex->getMessage();
+            return redirect()->back()->with(['error' => 'حدث خطا ما برجاء المحاوله لاحقا']);
+
+            // return $ex->getMessage();
         }
     }
 
@@ -42,7 +44,9 @@ class CityController extends Controller
             ]);
             return redirect()->back()->with(['success' => 'تم  التعديل بنجاح']);
         } catch (\Throwable $ex) {
-            return $ex->getMessage();
+            return redirect()->back()->with(['error' => 'حدث خطا ما برجاء المحاوله لاحقا']);
+
+            // return $ex->getMessage();
         }
     }
     
@@ -50,9 +54,14 @@ class CityController extends Controller
         try {
             $city = City::findOrFail($id);
             $city->delete();
+
+            return redirect()->back()->with(['error' => '  تم الحذف بنجاح']);
+
             return redirect()->back();
         } catch (\Throwable $th) {
-            return $th->getMessage();
+            return redirect()->back()->with(['error' => 'حدث خطا ما برجاء المحاوله لاحقا']);
+
+            // return $th->getMessage();
             //throw $th;
         }
     }
@@ -64,10 +73,10 @@ class CityController extends Controller
             $city->is_active? $city->is_active=0 :($city->state->is_active? $city->is_active= 1:$city->is_active=0);
             $city->save();
 
-            return redirect()->back();
+            return redirect()->back()->with(['error' => 'تمت العملية بنجاح']);
 
         } catch (\Throwable $th) {
-            //throw $th;
+            return redirect()->back()->with(['error' => 'حدث خطا ما برجاء المحاوله لاحقا']);
         }
         
     }

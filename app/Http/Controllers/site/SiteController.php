@@ -10,7 +10,7 @@ class SiteController extends Controller
 {
     // main page
     public function index(){
-        $services=Service::with('user','orders','rating','category')->limit(8)->get();
+        $services=Service::with('user','orders','rating','category','address')->limit(8)->get();
 
         return view('index',compact('services'));
     }
@@ -23,12 +23,13 @@ class SiteController extends Controller
        // service
        public function service($id){
         try {
-            $service = Service::with('works')->findOrFail($id);
+            $service = Service::with('works','rating','category','address')->findOrFail($id);
 
             return view('service.service_page',compact('service'));
 
         } catch (\Throwable $th) {
-            return $th->getMessage();
+            // return $th->getMessage();
+            return redirect()->back()->with(['error' => 'حدث خطا ما برجاء المحاوله لاحقا']);
         }
     }
 }

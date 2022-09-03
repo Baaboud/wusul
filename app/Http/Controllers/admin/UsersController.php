@@ -41,10 +41,10 @@ class UsersController extends Controller
                 $user->is_active? $user->is_active=0 : $user->is_active= 1;
                 $user->save();
 
-                return redirect()->back();
+                return redirect()->back()->with(['success' => 'تمت العمليه   بنجاح']);
 
             } catch (\Throwable $th) {
-                //throw $th;
+                return redirect()->back()->with(['error' => 'حدث خطا ما برجاء المحاوله لاحقا']);
             }
 
         }
