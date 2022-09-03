@@ -13,6 +13,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Order extends Model
 {
     use HasFactory;
+    public $path="assets/images/orders/";
+
     protected $fillable = [
         'description',
         'price',
@@ -22,6 +24,7 @@ class Order extends Model
         'payment_id',
         'service_id',
         'user_id',
+        'images',
         'date'
     ];
 

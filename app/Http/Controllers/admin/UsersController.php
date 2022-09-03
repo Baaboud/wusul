@@ -64,12 +64,12 @@ class UsersController extends Controller
                     'city_id'=>$request->city,
                     'description'=>$request->description
                 ]);
-                return redirect()->back();
+                return redirect()->back()->with(['success' => 'تمت  العملية بنجاح']);
             } catch (\Throwable $th) {
-                return $th->getMessage();
+                return redirect()->back()->with(['error' => 'حدث خطا ما برجاء المحاوله لاحقا']);
+                // return $th->getMessage();
                 //throw $th;
             }
-            return redirect()->back();
         }
 
         public function changePassword(Request $request) {
