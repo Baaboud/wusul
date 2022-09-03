@@ -36,7 +36,7 @@ class ServicesController extends Controller
     {
         $categories = ServiceCat::all();
         return view('service.service_create',compact('categories'));
-        return $categories;
+        // return $categories;
     }
 
     /**
@@ -98,36 +98,15 @@ class ServicesController extends Controller
 
 
 
-            // event(new notfiy($));
-                // return $service;
-            return redirect()->route('serviceProvider.home');
+
+            return redirect()->back()->with(['success' => 'تمت الاضافة   بنجاح']);
         } catch (\Exception $ex) {
-            return $ex->getMessage();
+            // return $ex->getMessage();
 
             return redirect()->back()->with(['error' => 'حدث خطا ما برجاء المحاوله لاحقا']);
         }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        try {
-            $service = Service::findOrFail($id);
-
-            if(!$service){
-                return redirect()->back();
-            }
-            return $service;
-        } catch (\Throwable $th) {
-            // throw $th;
-        }
-
-    }
 
     /**
      * Show the form for editing the specified resource.
@@ -142,11 +121,12 @@ class ServicesController extends Controller
             $categories = ServiceCat::all();
             
                 if(!$service){
-                return redirect()->back();
-            }
+                    return redirect()->back()->with(['error' => 'حدث خطا ما برجاء المحاوله لاحقا']);
+                }
             return view('service.service_edit',compact('service','categories'));
         } catch (\Throwable $th) {
-            return $th->getMessage();
+            // return $th->getMessage();
+            return redirect()->back()->with(['error' => 'حدث خطا ما برجاء المحاوله لاحقا']);
 
             // throw $th;
         }
@@ -188,10 +168,11 @@ class ServicesController extends Controller
                 'service_cat_id' => $request['category'],
 
             ]);
-                return redirect()->back();
+            return redirect()->back()->with(['success' => 'تم التعديل   بنجاح']);
 
         } catch (\Throwable $th) {
-            return $th->getMessage();
+            // return $th->getMessage();
+            return redirect()->back()->with(['error' => 'حدث خطا ما برجاء المحاوله لاحقا']);
         }
 
 
@@ -206,26 +187,27 @@ class ServicesController extends Controller
     public function destroy($id)
     {
         try {
-            $service = Service::findOrFail($id);
-            // dd($service);
-            if ($service->image != '') { // check if  has image
-
-                // remove image
-                Storage::disk('services')->delete($service->image);
-            }
-
-            if($service->works)
-            foreach ($service->works as $work) {
+            $service = Service::with('works')->findOrFail($id);
+            
+            //check if has works 
+            if(count($service->works))
+            foreach ($service->works as $work) { 
                 if ($work->image != '') { // check if  has image
 
                     // remove image
                     Storage::disk('works')->delete($work->image);
                 }
-                $work->delete();
+                $work->delete(); // delete all works od this service
+            }
+
+            if ($service->image != '') { // check if  has image
+
+                // remove image
+                Storage::disk('services')->delete($service->image);
             }
             $service->delete();
 
-            return redirect()->back();
+            return redirect()->back()->with(['success' => 'تم الحذف   بنجاح']);
 
         } catch (Throwable $e) {
             return $th->getMessage();

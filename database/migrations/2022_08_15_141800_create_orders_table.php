@@ -20,8 +20,7 @@ return new class extends Migration
             $table->integer('code')->nullable();
             $table->string('hash_code')->nullable();
             $table->integer('status')->default(0);
-            $table->unsignedBigInteger('payment_id');
-            $table->foreign('payment_id')->references('id')->on('payments')->onUpdate('cascade')->onDelete('cascade');
+            $table->string('images')->nullable();
             $table->unsignedBigInteger('service_id');
             $table->foreign('service_id')->references('id')->on('services')->onUpdate('cascade')->onDelete('cascade');
             $table->unsignedBigInteger('user_id');

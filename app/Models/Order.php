@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Models\User;
 use App\Models\Address;
+use App\Models\Payment;
 use App\Models\Service;
 use App\Models\Location;
 use Illuminate\Database\Eloquent\Model;
@@ -39,5 +40,9 @@ public function Address(){
     // order  location
     public function location(){
         return $this->morphOne(Location::class,'location');
+    }
+
+    public function payment(){
+        return $this->hasOne(Payment::class,'order_id');
     }
 }

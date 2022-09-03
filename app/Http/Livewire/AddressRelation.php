@@ -9,8 +9,9 @@ class AddressRelation extends Component
 {
     public $state;
     public $city;
-    public function mount($state_id){
+    public function mount($state_id,$city_id){
         $this->state=$state_id;
+        $this->city=$city_id;
     }
     public function updatingState(){
         

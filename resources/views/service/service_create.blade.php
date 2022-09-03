@@ -59,20 +59,9 @@
                                         </select>
                                     </div>
                                     <div class="mb-3 col-sm-12">
-                                        <label for="timeZones" class="form-label">مدة التسليم</label>
-                                        <select id="selectpickerBasic" class="form-select selectpicker w-100" data-style="btn-default" name='interval'>
-                                            <option value="" data-select2-id="2">أختر</option>
-                                            <option value="يوم">يوم</option>
-                                            <option value="يومين">يومين</option>
-                                            <option value=" 3 ايام">3 أيام</option>
-                                            <option value="4 أيام">4 أيام</option>
-                                            <option value="5 ايام">5 أيام</option>
-                                            <option value="6 ايام">6 أيام</option>
-                                            <option value=" أسبوع"> أسبوع</option>
-                                            <option value=" أسبوعين">أسبوعين</option>
-                                            <option value="3 أسابيع">3 أسابيع</option>
-                                            <option value="شهر">شهر</option>
-                                        </select>
+                                        <label for="interval" class="form-label">مدة التسليم</label>
+                                        <input type="text" class="form-control" id="interval" name="interval"
+                                               placeholder="مدة التسليم">
                                     </div>
                                     <div>
                                         <label for="exampleFormControlTextarea1" class="form-label">وصف

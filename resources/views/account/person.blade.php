@@ -84,7 +84,7 @@
                                                placeholder="325 122 177"/>
                                     </div>
                                 </div>
-                                    @livewire('address-relation',['state_id'=>Auth::user()->address->state_id??''  ])
+                                    @livewire('address-relation',['state_id'=>Auth::user()->address->state_id??'0' ,'city_id'=>Auth::user()->address->city_id??'0' ])
 
                                 <div class="mb-3 col-md-6">
                                     <label for="address" class="form-label">العنوان</label>
