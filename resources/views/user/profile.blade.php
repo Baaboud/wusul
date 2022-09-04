@@ -40,7 +40,7 @@
                                                 <i class='bx bx-pen'></i> مستخدم
                                             </li>
                                             <li class="list-inline-item fw-semibold">
-                                                <i class='bx bx-map'></i>{{ $user->address->state->name . ' - ' . $user->address->city->name }}
+                                                <i class='bx bx-map'></i>{{ ($user->address->state->name ?? '') . ' - ' . ($user->address->city->name ?? '') }}
                                             </li>
                                             <li class="list-inline-item fw-semibold">
                                                 <i class='bx bx-calendar-alt'></i> أنظم {{ \Carbon\Carbon::parse($user->created_at)->diffForHumans() }}
@@ -64,13 +64,27 @@
             <div class="row">
                 <div class="col-md-12">
                     <ul class="nav nav-pills flex-column flex-sm-row mb-4">
-                        <li class="nav-item"><a class="nav-link active" href="#"><i class='bx bx-user'></i> البيانات الشخصية</a></li>
+                        <li class="nav-item"><a class="nav-link active"
+                            @if(Auth::id() == $user->id)
+                                href="{{ route('profile') }}"
+                            @else
+                                href="{{ route('profile.show',$user->id) }}"
+                            @endif
+                            ><i class='bx bx-user'></i> البيانات الشخصية</a>
+                        </li>
+
                         @if($user->type == 2)
-                        <li class="nav-item"><a class="nav-link" href="#"><i class='bx bx-group'></i> الخدمات</a></li>
+                        <li class="nav-item"><a class="nav-link"
+                                @if(Auth::id() == $user->id)
+                                    href="{{ route('profile.service') }}"
+                                @else
+                                    href="{{ route('profile.service.show', $user->id) }}"
+                                @endif
+                            ><i class='bx bx-group'></i> الخدمات</a></li>
                         @endif
                         @if($user->type == 0 && Auth::id() == $user->id)
-                        <li class="nav-item"><a class="nav-link" href="#"><i class='bx bx-grid-alt'></i> الطلبات</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#"><i class='bx bx-wallet'></i> المحفظة</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('profile.orders') }}"><i class='bx bx-grid-alt'></i> الطلبات</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('profile.wallet') }}"><i class='bx bx-wallet'></i> المحفظة</a></li>
                         @endif
                     </ul>
                 </div>

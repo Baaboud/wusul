@@ -9,9 +9,39 @@
 
     <div class="container-xxl flex-grow-1 mt-5">
         <div class="container-xxl flex-grow-1 pt-0 px-sm-2 px-0">
-            <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">لوحة التحكم / </span>المحفظة
+            <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">الملف الشخصي / </span>المحفظة
             </h4>
 
+            <!-- Navbar pills -->
+            <div class="row">
+                <div class="col-md-12">
+                    <ul class="nav nav-pills flex-column flex-sm-row mb-4">
+                        <li class="nav-item"><a class="nav-link"
+                                @if(Auth::id() == $user->id)
+                                    href="{{ route('profile') }}"
+                                @else
+                                    href="{{ route('profile.show',$user->id) }}"
+                                @endif
+                            ><i class='bx bx-user'></i> البيانات الشخصية</a>
+                        </li>
+
+                        @if($user->type == 2)
+                            <li class="nav-item"><a class="nav-link"
+                                                    @if(Auth::id() == $user->id)
+                                                    href="{{ route('profile.service') }}"
+                                                    @else
+                                                    href="{{ route('profile.service.show', $user->id) }}"
+                                    @endif
+                                ><i class='bx bx-group'></i> الخدمات</a></li>
+                        @endif
+                        @if($user->type == 0 && Auth::id() == $user->id)
+                            <li class="nav-item"><a class="nav-link" href="{{ route('profile.orders') }}"><i class='bx bx-grid-alt'></i> الطلبات</a></li>
+                            <li class="nav-item"><a class="nav-link active" href="{{ route('profile.wallet') }}"><i class='bx bx-wallet'></i> المحفظة</a></li>
+                        @endif
+                    </ul>
+                </div>
+            </div>
+            <!--/ Navbar pills -->
 
             <div class="row">
                 <div class="col-xxl-12 col-md-6 my-3">

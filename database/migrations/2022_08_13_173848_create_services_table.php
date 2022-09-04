@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('image')->nullable();
             $table->text('description')->nullable();
-            $table->bool('type')->default(0);
+            $table->boolean('type')->default(0);
             $table->boolean('is_active')->default(1);
             $table->integer('price')->nullable();
             $table->integer('stars')->default(0);

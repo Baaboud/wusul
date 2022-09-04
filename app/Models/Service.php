@@ -99,4 +99,4 @@ public function rating()
 //         ->where('subscribale_type', static::class);
 // }
 
-}  
+}
