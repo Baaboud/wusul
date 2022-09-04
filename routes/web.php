@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\admin\ProfileController;
 use App\Models\User;
 use App\Models\Work;
 use App\Models\Service;
@@ -31,8 +32,12 @@ use App\Http\Controllers\userServiceProvider\ServiceProviderController;
 //  end sit
 
 Route::middleware(['auth'])->group(function () {
-    Route::group(['prefix' => 'account'], function () {
 
+    Route::group(['prefix' => 'profile'], function () {
+        Route::get('/', [ProfileController::class, 'index'])->name('profile');
+    });
+    // Account Settings
+    Route::group(['prefix' => 'account'], function () {
         Route::get('/', [UsersController::class, 'account'])->name('account');
         Route::post('/update', [UsersController::class, 'update'])->name('account.update');
         Route::post('/image', [UsersController::class, 'saveImage'])->name('account.image');
@@ -51,7 +56,7 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/show/{id?}', [OrderController::class, 'show'])->name('order.show');
             Route::post('/response/{id}', [OrderController::class, 'update'])->name('order.response');
         });
-        
+
 });
 Route::get('/services', [SiteController::class, 'services'])->name('home.services');
 
@@ -86,21 +91,24 @@ Route::get('/', [SiteController::class, 'index'])->name('index');
 Route::get('/contact', function () {
     return view('contact_us');
 })->name('contact');
+Route::get('/about', function () {
+    return view('about');
+})->name('about');
 
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/profile', function () {
-    return view('user.profile');
-})->name('profile')->middleware('auth');
+//Route::get('/profile', function () {
+//    return view('user.profile');
+//})->name('profile')->middleware('auth');
 
 Route::get('/services', [SiteController::class, 'services'])->name('services');
 Route::get('/service/{id}', [SiteController::class, 'service'])->name('service.details');
 
 Route::get('/l/l', function () {
-    return view('order.request');
+    return view('user.orders');
 })->name('test');
 
 // start routes of user that provide service
