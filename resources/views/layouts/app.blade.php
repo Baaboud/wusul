@@ -118,7 +118,7 @@
                         </li>
 
                         <li class="nav-item me-2 me-xl-0">
-                            <a href="#" class="nav-link">من نحن</a>
+                            <a href="{{ route('about') }}" class="nav-link">من نحن</a>
                         </li>
 
 
@@ -411,7 +411,7 @@
                             </a>
                             <ul class="dropdown-menu dropdown-menu-end">
                                 <li>
-                                    <a class="dropdown-item" href="pages-account-settings-account.html">
+                                    <a class="dropdown-item" href="{{ route('profile') }}">
                                         <div class="d-flex">
                                             <div class="flex-shrink-0 me-3">
                                                 <div class="avatar avatar-online">
@@ -457,10 +457,10 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a class="dropdown-item" href="pages-account-settings-billing.html">
+                                    <a class="dropdown-item" href="#">
                                     <span class="d-flex align-items-center align-middle">
                                       <i class="flex-shrink-0 bx bx-credit-card me-2"></i>
-                                      <span class="flex-grow-1 align-middle">الدفع</span>
+                                      <span class="flex-grow-1 align-middle">المحفظة</span>
                                       <span class="flex-shrink-0 badge badge-center rounded-pill bg-danger w-px-20 h-px-20">4</span>
                                     </span>
                                     </a>
@@ -469,21 +469,15 @@
                                     <div class="dropdown-divider"></div>
                                 </li>
                                 <li>
-                                    <a class="dropdown-item" href="pages-help-center-landing.html">
+                                    <a class="dropdown-item" href="{{ route('contact') }}">
                                         <i class="bx bx-support me-2"></i>
                                         <span class="align-middle">المساعدة</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a class="dropdown-item" href="pages-faq.html">
+                                    <a class="dropdown-item" href="{{ route('about') }}">
                                         <i class="bx bx-help-circle me-2"></i>
                                         <span class="align-middle">الاسئلة الشائعة</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" href="pages-pricing.html">
-                                        <i class="bx bx-dollar me-2"></i>
-                                        <span class="align-middle">الاسعار</span>
                                     </a>
                                 </li>
                                 <li>
@@ -527,11 +521,11 @@
                         </li>
 
                         <li class="nav-item me-2 me-xl-0">
-                            <a href="#" class="nav-link">من نحن</a>
+                            <a href="{{ route('contact') }}" class="nav-link">التواصل</a>
                         </li>
 
                         <li class="nav-item me-2 me-xl-0">
-                            <a href="#" class="nav-link">التواصل</a>
+                            <a href="{{ route('about') }}" class="nav-link">من نحن</a>
                         </li>
                         <li class="nav-item me-2 me-xl-0 mb-3">
                                 <a href="{{ route('login') }}" class="btn btn-label-primary text-truncate mt-3 me-3">تسجيل الدخول</a>
@@ -577,10 +571,10 @@
                             <div class="col-12 col-sm-6 col-md-3 mb-4 mb-md-0">
                                 <h5 class="footer-text ps-md-0 ms-md-0 ps-5 ms-5">روابط</h5>
                                 <ul class="list-unstyled ps-md-0 ms-md-0 ps-5 ms-5">
-                                    <li><a href="#" class="footer-link text-light d-block pb-2">الرئيسية</a></li>
-                                    <li><a href="#" class="footer-link text-light d-block pb-2">الخدمات</a></li>
-                                    <li><a href="#" class="footer-link text-light d-block pb-2">من نحن</a></li>
-                                    <li><a href="#" class="footer-link text-light d-block pb-2">التواصل</a></li>
+                                    <li><a href="{{ route('index') }}" class="footer-link text-light d-block pb-2">الرئيسية</a></li>
+                                    <li><a href="{{ route('services') }}" class="footer-link text-light d-block pb-2">الخدمات</a></li>
+                                    <li><a href="{{ route('contact') }}" class="footer-link text-light d-block pb-2">التواصل</a></li>
+                                    <li><a href="{{ route('about') }}" class="footer-link text-light d-block pb-2">من نحن</a></li>
                                     <li><a href="#" class="footer-link text-light d-block pb-2">الاسئلة الشائعة</a></li>
                                 </ul>
                             </div>
@@ -603,16 +597,6 @@
                                     <a href="javascript:void(0)" class="btn btn-icon btn-sm text-white"><i class="bx bxl-github"></i></a>
                                 </div>
                             </div>
-{{--                            <div class="col-12 col-sm-6 col-md-3 mb-4 mb-md-0">--}}
-{{--                                <h5 class="footer-text">متابعتنا</h5>--}}
-{{--                                <div class="social-icon my-3">--}}
-{{--                                    <a href="#"><i class="fa fa-facebook"></i></a>--}}
-{{--                                    <a href="javascript:void(0)" class="btn btn-icon btn-sm text-white me-2"><i class="bx bxl-facebook"></i></a>--}}
-{{--                                    <a href="javascript:void(0)" class="btn btn-icon btn-sm text-white me-2"><i class="bx bxl-twitter"></i></a>--}}
-{{--                                    <a href="javascript:void(0)" class="btn btn-icon btn-sm text-white me-2"><i class="bx bxl-linkedin"></i></a>--}}
-{{--                                    <a href="javascript:void(0)" class="btn btn-icon btn-sm text-white"><i class="bx bxl-github"></i></a>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
                         </div>
                     </div>
                 </footer>
