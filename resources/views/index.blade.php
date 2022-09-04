@@ -14,16 +14,16 @@
                      style="background-image: url({{ asset('img/back.png') }}); background-color: #8490ff; min-height: 80vh !important;">
 
                 <div class="row fullscreen align-items-center justify-content-center">
-                    <div class="col-lg-6 col-md-6 banner-left text-center">
+                    <div class="col-lg-6 col-md-6 mt-5 pt-5 banner-left text-center">
 
                         <h1 style="color: #fed01b; font-size: 60px" class="fw-bolder">منصة وصول للخدمات </h1>
                         <h2 class="text-white fs-3">
                             منصة كل مواطن وزائر
                         </h2>
-                        <button type="button" class="mt-3 btn btn-primary fs-5">أكتشف المزيد</button>
+                        <button onclick="window.location='{{ route('services') }}';" type="button" class="mt-3 btn btn-primary fs-5">أكتشف المزيد</button>
 
                     </div>
-                    <div class="col-lg-6 col-md-6 banner-right text-center">
+                    <div class="col-lg-6 col-md-6 my-lg-5 py-lg-5 my-5 banner-right text-center">
                         <img class="img-fluid" src="img/herooo-img.png" alt="">
                     </div>
                 </div>
@@ -45,7 +45,7 @@
                     <div class="row">
 
                         @forelse($services as $service)
-                                    
+
                             <div class="col-xl-3 col-lg-4 col-sm-6 col-12 mb-4">
                             <div class="card shadow h-100">
                                 <div class="card-header flex-grow-0">
@@ -55,7 +55,7 @@
                                                         <img src="{{asset('assets/images/users/'.$service->user->profile->image)}}" alt="" class="w-px-40 h-100 rounded-circle">
 
                                                     @else
-                                                        
+
                                                         <img src="{{ asset('assets/img/avatars/1.png') }}" alt="User" class="rounded-circle">
                                                     @endif
                                         </div>
@@ -68,10 +68,10 @@
                                     </div>
                                 </div>
                                                                             @if($service->image)
-                                                
+
                                                 <img class="img-fluid" src="{{ asset("{$service->path}$service->image ") }}" alt="Card image cap">
                                             @else
-                                                
+
                                             <img class="img-fluid" src="../../assets/img/backgrounds/event.jpg" alt="Card image cap">
                                             @endif
                                 <div class="featured-date mt-n4 ms-4 bg-white rounded w-px-50 shadow text-center">
@@ -104,7 +104,7 @@
                             </div>
                             </div>
                         @empty
-                                    
+
                         @endforelse
                     </div>
                 </div>

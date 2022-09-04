@@ -12,7 +12,7 @@
     <div class="container-xxl flex-grow-1">
         <div class="container-xxl flex-grow-1 container-p-y px-sm-2 px-0">
             <h4 class="fw-bold py-3 mb-4">
-                <span class="text-muted fw-light">الملف الشخصي /</span> البيانات الشخصية
+                <span class="text-muted fw-light">الملف الشخصي /</span> الطلبات
             </h4>
 
 
@@ -61,11 +61,30 @@
             <!-- Navbar pills -->
             <div class="row">
                 <div class="col-md-12">
+
                     <ul class="nav nav-pills flex-column flex-sm-row mb-4">
-                        <li class="nav-item"><a class="nav-link" href="#"><i class='bx bx-user'></i> البيانات الشخصية</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#"><i class='bx bx-group'></i> الخدمات</a></li>
-                        <li class="nav-item"><a class="nav-link active" href="#"><i class='bx bx-grid-alt'></i> الطلبات</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#"><i class='bx bx-wallet'></i> المحفظة</a></li>
+                        <li class="nav-item"><a class="nav-link"
+                                                @if(Auth::id() == $user->id)
+                                                href="{{ route('profile') }}"
+                                                @else
+                                                href="{{ route('profile.show',$user->id) }}"
+                                @endif
+                            ><i class='bx bx-user'></i> البيانات الشخصية</a>
+                        </li>
+
+                        @if($user->type == 2)
+                            <li class="nav-item"><a class="nav-link"
+                                                    @if(Auth::id() == $user->id)
+                                                    href="{{ route('profile.service') }}"
+                                                    @else
+                                                    href="{{ route('profile.service.show', $user->id) }}"
+                                    @endif
+                                ><i class='bx bx-group'></i> الخدمات</a></li>
+                        @endif
+                        @if($user->type == 0 && Auth::id() == $user->id)
+                            <li class="nav-item"><a class="nav-link active" href="{{ route('profile.orders') }}"><i class='bx bx-grid-alt'></i> الطلبات</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{{ route('profile.wallet') }}"><i class='bx bx-wallet'></i> المحفظة</a></li>
+                        @endif
                     </ul>
                 </div>
             </div>
