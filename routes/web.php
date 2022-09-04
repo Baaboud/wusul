@@ -31,10 +31,17 @@ use App\Http\Controllers\userServiceProvider\ServiceProviderController;
 
 //  end sit
 
-Route::middleware(['auth'])->group(function () {
+Auth::routes(['verify' => true]);
+
+Route::middleware(['auth','verified'])->group(function () {
 
     Route::group(['prefix' => 'profile'], function () {
         Route::get('/', [ProfileController::class, 'index'])->name('profile');
+        Route::get('/services', [ProfileController::class, 'services'])->name('profile.service');
+        Route::get('/orders', [ProfileController::class, 'orders'])->name('profile.orders');
+        Route::get('/wallet', [ProfileController::class, 'wallet'])->name('profile.wallet');
+        Route::get('/{id}', [ProfileController::class, 'show'])->name('profile.show');
+        Route::get('/{id}/services', [ProfileController::class, 'showService'])->name('profile.service.show');
     });
     // Account Settings
     Route::group(['prefix' => 'account'], function () {
@@ -108,7 +115,7 @@ Route::get('/services', [SiteController::class, 'services'])->name('services');
 Route::get('/service/{id}', [SiteController::class, 'service'])->name('service.details');
 
 Route::get('/l/l', function () {
-    return view('user.orders');
+    return view('service_provider.orders');
 })->name('test');
 
 // start routes of user that provide service
