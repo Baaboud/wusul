@@ -101,7 +101,7 @@
                                             {{$service->type?'رقمي':'عند التسليم'}}
                                             </span>
                                             </td>
-                                            <td>{{$service->created_at}}</td>
+                                            <td>{{\Carbon\Carbon::parse($service->created_at)->diffForHumans()}}</td>
                                             <td>{{count($service->orders)}}</td>
                                             <td>{{$service->stars}}</td>
                                             <td>{{$service->interval}} </td>

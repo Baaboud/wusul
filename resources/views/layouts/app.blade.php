@@ -62,6 +62,8 @@
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async="async" src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+    {{-- pusher --}}
+    {{-- <script src="https://js.pusher.com/7.0/pusher.min.js"></script> --}}
     <script>
         window.dataLayer = window.dataLayer || [];
 
@@ -71,7 +73,16 @@
 
         gtag('js', new Date());
         gtag('config', 'GA_MEASUREMENT_ID');
+
     </script>
+{{-- 
+             Pusher.logToConsole = true;
+
+        var pusher = new Pusher('e4b4e21e1f468b8bddf2', {
+            cluster: 'mt1'
+        }); --}}
+   
+
     <!-- Custom notification for demo -->
     <!-- beautify ignore:end -->
 
@@ -646,6 +657,7 @@
 <script src="{{ asset('assets/vendor/libs/typeahead-js/typeahead.js') }}"></script>
 
 <script src="{{ asset('assets/vendor/js/menu.js') }}"></script>
+{{-- <script src='/js/app.js'></script> --}}
 <!-- endbuild -->
 
 <!-- Vendors JS -->
@@ -656,6 +668,10 @@
 <script src="{{ asset('assets/js/main.js') }}"></script>
 
 <!-- Page JS -->
+
+
+
+
 
 @yield('scripts')
 

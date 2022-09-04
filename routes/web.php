@@ -2,6 +2,7 @@
 
 use App\Models\User;
 use App\Models\Work;
+use App\Models\Order;
 use App\Models\Service;
 use App\Models\ServiceCat;
 use Illuminate\Support\Facades\Route;
@@ -49,7 +50,7 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/create/{id}', [OrderController::class, 'create'])->name('order.create');
             Route::post('/send', [OrderController::class, 'send'])->name('order.send');
             Route::get('/show/{id?}', [OrderController::class, 'show'])->name('order.show');
-            Route::post('/response/{id}', [OrderController::class, 'update'])->name('order.response');
+            Route::post('/response', [OrderController::class, 'orderResponse'])->name('order.response');
         });
         
 });
@@ -100,7 +101,10 @@ Route::get('/services', [SiteController::class, 'services'])->name('services');
 Route::get('/service/{id}', [SiteController::class, 'service'])->name('service.details');
 
 Route::get('/l/l', function () {
-    return view('order.request');
+    $order=Order::find(10);
+    $images = json_decode($order->images, true);
+
+    return view('order.bill',compact('order','images'));
 })->name('test');
 
 // start routes of user that provide service
@@ -132,6 +136,11 @@ Route::group(['prefix' => 'serviceProvider',
         Route::get('/delete/{id}', [WorkController::class, 'destroy'])->name('work.delete');
     });
 
+
+    Route::group(['prefix' => 'orders'], function () {
+        Route::get('/', [ServiceProviderController::class, 'orders'])->name('serviceProvider.orders');
+    });
+    // orders
 
 });
 

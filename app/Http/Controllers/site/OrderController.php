@@ -5,6 +5,7 @@ namespace App\Http\Controllers\site;
 use App\Models\Order;
 use App\Helpers\Helper;
 use App\Models\Service;
+use App\Events\Messages;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -33,7 +34,7 @@ class OrderController extends Controller
         try {
             $service=Service::findOrFail($id);
 
-            return view('order.service_order',compact('service'));
+            return view('order.request',compact('service'));
             
         } catch (\Throwable $th) {
             //throw $th;
@@ -78,13 +79,17 @@ class OrderController extends Controller
                 'state_id'=>$request->state,
                 'city_id'=>$request->city,
                 'description'=>$request->address_description
-            ]);
+            ]); 
+            
+            $user=$order->service->user;
+
+            event(new Messages($order, $user->id,'  طلب جديد من'));
 
             return redirect()->back()->with(['success' => 'تمت  العملية بنجاح']);
         } catch (\Throwable $th) {
-            return redirect()->back()->with(['error' => 'حدث خطا ما برجاء المحاوله لاحقا']);
+            // return redirect()->back()->with(['error' => 'حدث خطا ما برجاء المحاوله لاحقا']);
 
-            // return $th->getMessage();
+            return $th->getMessage();
             //throw $th;
         }
     }
@@ -97,7 +102,16 @@ class OrderController extends Controller
      */
     public function show($id)
     {
-        //
+        try {
+            $order=Order::with('user','service','address')->CheckOwner()->findOrFail($id);
+            $images = json_decode($order->images, true);
+        
+            return view('order.bill',compact('order','images'));
+        
+        } catch (\Throwable $th) {
+            //throw $th;
+            return $th->getMessage();
+        }
     }
 
 
@@ -109,9 +123,22 @@ class OrderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function orderResponse(Request $request, $id)
+    public function orderResponse(Request $request)
     {
-        //
+        // return $request;
+        try {
+            $order=Order::CheckOwner()->findOrFail($request->order);
+            $order->update([
+                'price'=>$request->price,
+                'status'=>2,
+                'date'=>$request->date
+            ]);
+            
+            return redirect()->back();
+        } catch (\Throwable $th) {
+            //throw $th;
+            return $th->getMessage();
+        }
     }
 
     /**

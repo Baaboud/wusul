@@ -31,7 +31,7 @@ class Userfilter extends Component
                 $this->stars
                 )->when($this->sortFile,function($query){
                     $query->orderBy("$this->sortFile");
-                })
+                })->latest()
                 ->paginate(10);
 
               // users type

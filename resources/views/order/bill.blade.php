@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends(Auth::user()->type==0?'layouts.app':'layouts.dashboard')
 
 @section('extra-style')
     <link rel="stylesheet" href="../../assets/vendor/libs/sweetalert2/sweetalert2.css" />
@@ -30,10 +30,10 @@
                                 <p class="mb-0">+967-770-552-517</p>
                             </div>
                             <div>
-                                <h4>فاتورة #3492</h4>
+                                <h4>فاتورة #{{$order->id}}</h4>
                                 <div class="mb-2">
                                     <span class="me-1">تاريخ الأصدار:</span>
-                                    <span class="fw-semibold">25/08/2020</span>
+                                    <span class="fw-semibold">{{\Carbon\Carbon::parse($order->created_at)->diffForHumans()}}</span>
                                 </div>
                                 <div>
                                     <span class="me-1">تاريخ الاستحقاق:</span>
@@ -50,30 +50,30 @@
                                 <h4>بيانات العميل</h4>
                                 <div class="mb-2">
                                     <span class="me-1">الأسم:</span>
-                                    <span class="fw-semibold">عبدالله الجوهي</span>
+                                    <span class="fw-semibold">{{$order->user->name}}</span>
                                 </div>
                                 <div>
                                     <span class="me-1">المحافظة:</span>
-                                    <span class="fw-semibold">حضرموت</span>
+                                    <span class="fw-semibold">{{$order->service->address->state->name}}</span>
                                 </div>
                                 <div>
                                     <span class="me-1">المدينة:</span>
-                                    <span class="fw-semibold">المكلا</span>
+                                    <span class="fw-semibold">{{$order->service->address->city->name}}</span>
                                 </div>
                             </div>
                             <div class="my-xl-0 my-md-3 my-sm-0 my-3">
                                 <h4>بيانات الخدمة</h4>
                                 <div class="mb-2">
                                     <span class="me-1">أسم مالك الخدمة:</span>
-                                    <span class="fw-semibold">أسامة هادي</span>
+                                    <span class="fw-semibold">{{$order->address->state->name}}</span>
                                 </div>
                                 <div>
                                     <span class="me-1">أسم الخدمة:</span>
-                                    <span class="fw-semibold">تصميم مواقع</span>
+                                    <span class="fw-semibold">{{$order->service->name}}</span>
                                 </div>
                                 <div>
                                     <span class="me-1">المجال:</span>
-                                    <span class="fw-semibold">برمجة</span>
+                                    <span class="fw-semibold">{{$order->service->category->name}}</span>
                                 </div>
                             </div>
                         </div>
@@ -86,9 +86,9 @@
                             <div class="card-body">
                                 <div class="row mx-2">
                                     <div class="col-12 bg-label-facebook p-3 fs-6">
-                                        <span>هل تحتاج شركتك إلى طريقة أسهل لتلقي الطلبات وتوزيعها وإدارتها؟ بفضل طلب النماذج من Jotform، ستتمكن من إدارة الطلبات بسهولة لا تصدق. لذلك سواء كنت تقوم بإنشاء نموذج طلب للموظفين أو طلب منتجات، فإن Jotform ستساعدك في ذلك.
-نقدم لك مجموعة متنوعة من قوالب نماذج الطلبات المعدة مسبقًا أو يمكنك إنشاء نموذج طلب من البداية. ثم باستخدام منشئ النماذج من Jotform، يمكنك تخصيص نموذج الطلب وتنسيقه لتلبية احتياجاتك.
-جرب أحد قوالب نماذج الطلبات المجانية عبر الإنترنت اليوم!</span>
+                                        <span>
+                                        {{$order->service->description}}
+                                        </span>
                                     </div>
                                 </div>
                             </div>
@@ -100,7 +100,9 @@
                                 <div class="card-body">
                                     <div class="row mx-2">
                                         <div class="col-12 bg-label-secondary p-3 fs-6">
-                                            <span>حضرموت - المكلا - فوه القديمة بجانب ملعب النادي</span>
+                                            <span>
+                                            {{$order->address->state->name}}-{{$order->address->city->name}}-{{$order->address->description}}
+                                            </span>
                                         </div>
                                     </div>
                                 </div>
@@ -109,11 +111,24 @@
                                 <span class="fs-4 ps-3">الملفات المرفقة</span>
 
                                 <div class="card-body">
-                                    <button class="btn btn-label-primary d-grid w-100" data-bs-toggle="offcanvas"
+                    @if(count($images))
+                    <div class="d-flex align-items-center mx-4 mb-3">
+                            @foreach ($images as $image )
+                        <a href="{{ asset("{$order->path}$image") }}" class="d-flex align-items-center">
+                                <img src='{{ asset("{$order->path}$image") }}' alt="Avatar" style='width: 100%' class="rounded-circle">
+                        </a>
+                            @endforeach
+                    </div>
+                @else
+                <div class='text-center'>
+                لم يتم رفع ملفات
+                </div>
+                @endif
+                                    {{-- <button class="btn btn-label-primary d-grid w-100" data-bs-toggle="offcanvas"
                                             data-bs-target="#addPaymentOffcanvas">
                                         <span class="d-flex justify-content-center fs-5"><i
                                                 class="bx bxs-download bx-xs me-3 fs-5 my-auto"></i>تنزيل الملفات</span>
-                                    </button>
+                                    </button> --}}
                                 </div>
                             </div>
                         </div>
@@ -131,6 +146,7 @@
                             <span class="d-flex align-items-center justify-content-center text-nowrap"><i
                                     class="bx bx-printer bx-xs me-3"></i>طباعة</span>
                         </button>
+                        @if(Auth::id()==$order->user->id)
                         <form action="decline">
                             <button class="btn btn-label-danger d-grid w-100 mb-3 confirm" data-bs-toggle="offcanvas"
                                     data-bs-target="#addPaymentOffcanvas">
@@ -142,23 +158,37 @@
                             <span class="d-flex align-items-center justify-content-center text-nowrap"><i
                                     class="bx bx-dollar bx-xs me-3"></i>دفع</span>
                         </button>
+                        @endif
                     </div>
+                    @if($order->status>1)
+                        
                     <div class="">
                         <div class="text-center px-4 py-3 d-flex justify-content-center border-top border-bottom">
                             <p class="mb-0 fs-4 me-3">اجمالي المبلغ:</p>
-                            <p class="fw-semibold mb-0 fs-4 text-danger">$204.25</p>
+                            <p class="fw-semibold mb-0 fs-4 text-danger">${{$order->price}}</p>
                         </div>
                     </div>
+                    @endif
                 </div>
+            @if(Auth::id()==$order->service->user->id && $order->status==1 ) 
                 <div class="card position-sticky" style="top: 90px">
                     <div class="">
                         <div class="text-center px-4 py-3 d-flex justify-content-center border-top border-bottom">
                             <p class="mb-0 fs-4">تسعير الطلب</p>
                         </div>
                     </div>
-                    <form action="send" class="card-body mb-0 pb-0">
+                    <form action="{{route('order.response')}}" method='post' class="card-body mb-0 pb-0">
+                    @csrf
                         <div class="mb-3">
-                            <input type="text" class="form-control col-6" id="salesperson" placeholder="أدخل السعر">
+                            <input type="text" class="form-control col-6" id="salesperson" name='price' placeholder="أدخل السعر">
+                            <input type="hidden" name='order' value="{{$order->id}}">
+
+                        </div>
+                          <div class="text-center px-4 py-3 d-flex justify-content-center border-top border-bottom">
+                            <p class="mb-0 fs-4">تاريخ التسليم</p>
+                        </div>
+                        <div class="mb-3">
+                            <input class="form-control" name='date' type="date" value="" id="html5-date-input">
                         </div>
                         <button class="btn btn-primary d-grid w-100 mb-3 confirm" data-bs-toggle="offcanvas"
                                 data-bs-target="#addPaymentOffcanvas">
@@ -174,6 +204,7 @@
                         </button>
                     </form>
                 </div>
+                @endif
             </div>
             <!-- /Invoice Actions -->
         </div>
