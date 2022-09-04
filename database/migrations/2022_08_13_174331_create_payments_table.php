@@ -17,9 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('image')->nullable();
             $table->unsignedBigInteger('order_id');
-//            $table->foreign('order_id')->references('id')->on('orders')->onUpdate('cascade')->onDelete('cascade');
-            $table->unsignedBigInteger('payment_type_id');
-            $table->foreign('payment_type_id')->references('id')->on('payment_types')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('order_id')->references('id')->on('orders')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }

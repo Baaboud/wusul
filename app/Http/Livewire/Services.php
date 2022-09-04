@@ -47,7 +47,7 @@ class Services extends Component
                 $query->orderBy("$this->sortFile");
             })->when(Auth::user()->userServiceProvider(),function($q){
                 $q->where('user_id',Auth::id());
-            }) 
+            })->latest()
             ->paginate(5);
             // dd($services);
         return view('livewire.services',compact('services','categories'));

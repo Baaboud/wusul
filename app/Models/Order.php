@@ -7,12 +7,15 @@ use App\Models\Address;
 use App\Models\Payment;
 use App\Models\Service;
 use App\Models\Location;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Order extends Model
 {
     use HasFactory;
+    public $path="assets/images/orders/";
+
     protected $fillable = [
         'description',
         'price',
@@ -22,9 +25,12 @@ class Order extends Model
         'payment_id',
         'service_id',
         'user_id',
+        'images',
         'date'
     ];
-
+    protected $casts = [
+        'date' => 'datetime',
+    ];
 
     public function user(){
         return $this->belongsTo(User::class,'user_id');
@@ -45,4 +51,35 @@ public function Address(){
     public function payment(){
         return $this->hasOne(Payment::class,'order_id');
     }
+
+    public function scopeCheckOwner($query){
+
+        return $query->whereHas('service',function ($q){
+            $q->where('user_id',Auth::id());
+        });
+    }
+    public function scopeWithFilters($query, $search,$category,$status)
+    {
+        return $query->when($search, function ($query) use ($search) {
+           $query->where(function ($query) use ($search) {
+                $query->where(function ($query) use ($search) {
+                    $query->whereHas('user', function ($query)  use ($search){
+                         $query->where('name', 'like', '%' .  $search . '%');
+                    })
+                    ->orWhere(function ($query) use ($search) {
+                        $query->whereHas('service', function ($query)  use ($search){
+                             $query->where('name', 'like', '%' .  $search . '%');});
+                    });
+                });
+
+            });
+            })->when($status, function ($query) use ($status) {
+                
+                    $query->where('status', $status );
+            })->when($category, function ($query) use ($category) {
+                        $query->whereHas('service', function ($query)  use ($category){
+                            $query->where('service_cat_id', $category);});
+            });
+
+}
 }
