@@ -43,7 +43,7 @@
                                     </span>
                                 </div>
                                 @endif
-                                @if($order->status == 3 && $order->service->type==1)
+                                @if($order->status == 3 && $order->service->type==1 && $order->user->id== Auth::id())
                                 <div>
                                     <span class="me-1"> رمز التأكيد</span>
                                     <span class="fw-semibold">
@@ -66,11 +66,11 @@
                                 </div>
                                 <div>
                                     <span class="me-1">المحافظة:</span>
-                                    <span class="fw-semibold">{{$order->service->address->state->name??''}}</span>
+                                    <span class="fw-semibold">{{$order->service->address->state->name}}</span>
                                 </div>
                                 <div>
                                     <span class="me-1">المدينة:</span>
-                                    <span class="fw-semibold">{{$order->service->address->city->name??''}}</span>
+                                    <span class="fw-semibold">{{$order->service->address->city->name}}</span>
                                 </div>
                             </div>
                             <div class="my-xl-0 my-md-3 my-sm-0 my-3">
@@ -126,8 +126,8 @@
                     @if(count($images))
                     <div class="d-flex align-items-center mx-4 mb-3">
                             @foreach ($images as $image )
-                        <a href="{{ asset("{$order->path}$image") }}" target="_blank" class="d-flex align-items-center">
-                                <img src='{{ asset("{$order->path}$image") }}' alt="Avatar" style='width: 100%' class="px-2">
+                        <a href="{{ asset("{$order->path}$image") }}" class="d-flex align-items-center">
+                                <img src='{{ asset("{$order->path}$image") }}' alt="Avatar" style='width: 100%' class="rounded-circle">
                         </a>
                             @endforeach
                     </div>
@@ -152,17 +152,14 @@
             <!-- Invoice Actions -->
             <div class="col-xl-3 col-md-4 col-12 invoice-actions position-relative">
                 <div class="card position-sticky" style="top: 90px">
-                    @if(Auth::id()==$order->user->id)
                     <div class="card-body">
                         <button class="btn btn-label-secondary d-grid w-100 mb-3" data-bs-toggle="offcanvas"
                                 data-bs-target="#addPaymentOffcanvas">
                             <span class="d-flex align-items-center justify-content-center text-nowrap"><i
                                     class="bx bx-printer bx-xs me-3"></i>طباعة</span>
                         </button>
-
                         @if(Auth::id()==$order->user->id)
                         @if($order->status == 2)
-
                         <form action="decline">
                             <button class="btn btn-label-danger d-grid w-100 mb-3 confirm" data-bs-toggle="offcanvas"
                                     data-bs-target="#addPaymentOffcanvas">
@@ -175,7 +172,6 @@
                             <span class="d-flex align-items-center justify-content-center text-nowrap"><i
                                     class="bx bx-dollar bx-xs me-3"></i>دفع</span>
                         </button>
-
                         @elseif($order->service->type==0)
                         <form action="{{route('order.orderConfirm')}}"  method="post">
                         @csrf
@@ -192,13 +188,6 @@
                     @if($order->status > 1)
                         
                     <div class="">
-                        <div class="card-body">
-                            <button class="btn btn-label-secondary d-grid w-100" data-bs-toggle="offcanvas"
-                                    data-bs-target="#addPaymentOffcanvas">
-                            <span class="d-flex align-items-center justify-content-center text-nowrap"><i
-                                    class="bx bx-printer bx-xs me-3"></i>طباعة</span>
-                            </button>
-                        </div>
                         <div class="text-center px-4 py-3 d-flex justify-content-center border-top border-bottom">
                             <p class="mb-0 fs-4 me-3">اجمالي المبلغ:</p>
                             <p class="fw-semibold mb-0 fs-4 text-danger">${{$order->price}}</p>
@@ -206,9 +195,7 @@
                     </div>
                     @endif
                 </div>
-
             @if(Auth::id() == $order->service->user->id && $order->status==1 ) 
-
                 <div class="card position-sticky" style="top: 90px">
                     <div class="">
                         <div class="text-center px-4 py-3 d-flex justify-content-center border-top border-bottom">
