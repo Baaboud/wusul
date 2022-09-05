@@ -10,7 +10,7 @@
                         <label for="selectpickerIcons" class="form-label fs-6 fw-bolder">بحث</label>
                         <div class="input-group input-group-merge">
                             <span class="input-group-text" id="basic-addon-search31"><i class="bx bx-search"></i></span>
-                            <input type="text" class="form-control form-control-lg" placeholder="ادخل اسم الخدمة او اسم موفر الخدمة" aria-label="Search" aria-describedby="basic-addon1" wire:model='search'>
+                            <input type="text" class="form-control form-control" placeholder="ادخل اسم الخدمة او اسم موفر الخدمة" aria-label="Search" aria-describedby="basic-addon1" wire:model='search'>
                             <span class="input-group-text btn btn-primary" id="basic-addon-search31"><i class="bx bx-search"></i></span>
                         </div>
                     </div>

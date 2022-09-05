@@ -103,7 +103,14 @@
                                             </td>
                                         </tr>
                                         @empty
-
+                                            <tr>
+                                                <td colspan="10" class="text-center py-3 text-danger fs-4 position-relative">
+                                                    <p class="text-center py-3 text-danger fs-4">
+                                                        لا يوجد نتائج
+                                                    </p>
+                                                    <img src="{{ asset('img/noResultFound.png') }}" class="h-px-200 w-auto mx-auto">
+                                                </td>
+                                            </tr>
                                         @endforelse
 
                                         </tbody>
@@ -164,7 +171,10 @@
                                         </div>
                                     </div>
                                     @empty
-
+                                        <p class="text-center py-3 text-danger fs-4">
+                                            لا يوجد نتائج
+                                        </p>
+                                        <img src="{{ asset('img/noResultFound.png') }}" class="h-px-200 w-auto mx-auto">
                                     @endforelse
 
                                 </div>

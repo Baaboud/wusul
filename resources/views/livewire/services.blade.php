@@ -81,18 +81,18 @@
                                         <tbody class="table-border-bottom-0">
                                         @forelse($services as $service)
                                             <tr>
-                                            <td>{{$loop->index+1 }}</td>
-                                            <td>{{$service->name}}</td>
-                                            <td><span class="badge bg-label-primary fs-6 me-1">{{$service->category->name}}</span></td>
+                                            <td onclick="window.location='{{ route('service.details',$service->id) }}';" class="cursor-pointer">{{$loop->index+1 }}</td>
+                                            <td onclick="window.location='{{ route('service.details',$service->id) }}';" class="cursor-pointer">{{$service->name}}</td>
+                                            <td onclick="window.location='{{ route('service.details',$service->id) }}';" class="cursor-pointer"><span class="badge bg-label-primary fs-6 me-1">{{$service->category->name}}</span></td>
                                             @if(Auth::user()->userServiceProvider())
-                                            <td>
+                                            <td onclick="window.location='{{ route('service.details',$service->id) }}';" class="cursor-pointer">
                                             {{$service->type?'رقمي':'عند التسليم'}}
                                             </td>
                                             @else
-                                            <td>{{$service->user->name}}</td>
+                                            <td onclick="window.location='{{ route('service.details',$service->id) }}';" class="cursor-pointer">{{$service->user->name}}</td>
                                             @endif
-                                            <td>{{\Carbon\Carbon::parse($service->created_at)->diffForHumans()}}</td>
-                                            <td>
+                                            <td onclick="window.location='{{ route('service.details',$service->id) }}';" class="cursor-pointer">{{\Carbon\Carbon::parse($service->created_at)->diffForHumans()}}</td>
+                                            <td onclick="window.location='{{ route('service.details',$service->id) }}';" class="cursor-pointer">
                                                 @if($service->is_active)
                                                     <span class="badge bg-success fs-6 pb-3 me-1">مفعل</span>
                                                 @else
@@ -121,7 +121,14 @@
                                             </td>
                                         </tr>
                                         @empty
-
+                                            <tr>
+                                                <td colspan="10" class="text-center py-3 text-danger fs-4 position-relative">
+                                                    <p class="text-center py-3 text-danger fs-4">
+                                                        لا يوجد نتائج
+                                                    </p>
+                                                    <img src="{{ asset('img/noResultFound.png') }}" class="h-px-200 w-auto mx-auto">
+                                                </td>
+                                            </tr>
                                         @endforelse
                                         </tbody>
                                     </table>
@@ -196,7 +203,10 @@
                                         </div>
                                     </div>
                                 @empty
-
+                                        <p class="text-center py-3 text-danger fs-4">
+                                            لا يوجد نتائج
+                                        </p>
+                                        <img src="{{ asset('img/noResultFound.png') }}" class="h-px-200 w-auto mx-auto">
                                 @endforelse
                                 </div>
                             </div>

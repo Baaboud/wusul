@@ -23,7 +23,6 @@
                     <div class="card-header flex-grow-0">
                         <div class="d-flex">
                             <div class="avatar flex-shrink-0 me-3">
-
                                 <img src="http://127.0.0.1:8000/assets/img/avatars/1.png" alt="User" class="rounded-circle">
                             </div>
                             <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-1">
@@ -50,9 +49,22 @@
                                 </div>
                             </div>
                         </div>
+                        @guest()
                         <div class="row justify-content-around flex-wrap my-4 mx-5">
                             <a href="{{route('order.create',$service->id)}}" class="btn btn-primary suspend-user">طلب الخدمة</a>
                         </div>
+                        @endguest
+                        @auth()
+                            @if(Auth::id() == $service->user->id)
+                            <div class="row justify-content-around flex-wrap my-4 mx-5">
+                                <a href="{{route('service.edit',$service->id)}}" class="btn btn-primary suspend-user">تعديل الخدمة</a>
+                            </div>
+                            @elseif(Auth::user()->type == 0)
+                                <div class="row justify-content-around flex-wrap my-4 mx-5">
+                                    <a href="{{route('order.create',$service->id)}}" class="btn btn-primary suspend-user">طلب الخدمة</a>
+                                </div>
+                            @endif
+                        @endauth
 
                         <div class="info-container">
                             <div class="row d-flex justify-content-around flex-wrap ms-lg-4 ms-md-0 ms-4">
