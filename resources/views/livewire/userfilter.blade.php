@@ -73,15 +73,15 @@
                                         </thead>
                                         <tbody class="table-border-bottom-0">
                                         @forelse($users as $user )
-                                                                                    <tr>
-                                            <td>{{$loop->index+1 }}</td>
-                                            <td>{{$user->name}} </td>
-                                            <td>{{$user->email}}</td>
-                                            <td><span class="badge bg-label-primary fs-6 me-1">
+                                        <tr>
+                                            <td onclick="window.location='{{ route('profile.show',$user->id) }}';" class="cursor-pointer">{{$loop->index+1 }}</td>
+                                            <td onclick="window.location='{{ route('profile.show',$user->id) }}';" class="cursor-pointer">{{$user->name}} </td>
+                                            <td onclick="window.location='{{ route('profile.show',$user->id) }}';" class="cursor-pointer">{{$user->email}}</td>
+                                            <td onclick="window.location='{{ route('profile.show',$user->id) }}';" class="cursor-pointer"><span class="badge bg-label-primary fs-6 me-1">
                                             {{$types[$user->type]}}
                                             </span></td>
-                                            <td>2022-05-12</td>
-                                            <td>
+                                            <td onclick="window.location='{{ route('profile.show',$user->id) }}';" class="cursor-pointer">2022-05-12</td>
+                                            <td onclick="window.location='{{ route('profile.show',$user->id) }}';" class="cursor-pointer">
                                                 @if($user->is_active)
                                                     <span class="badge bg-success pb-3 fs-6">مفعل</span>
                                                 @else
@@ -118,10 +118,10 @@
                                         <div class="card">
                                             <div class="card-body text-center shadow-sm">
                                                 <div class="mx-auto mb-3">
-                                                @if($user->image)
-                                                    <img src="{{ asset("{$user->path}$user->image ") }}" alt="Avatar Image" class="rounded-circle w-px-100">
+                                                @if($user->profile->image)
+                                                    <img src="{{asset('assets/images/users/'.$user->profile->image)}}" alt="Avatar Image" class="rounded-circle w-px-100 h-100">
                                                 @else
-                                                    <img src="../../assets/img/avatars/3.png" alt="Avatar Image" class="rounded-circle w-px-100">
+                                                    <img src="{{ asset('img/user1.png') }}" alt="Avatar Image" class="rounded-circle w-px-100">
                                                 @endif
                                                 </div>
 
@@ -142,7 +142,7 @@
 
                                                 <div class="d-flex align-items-center m-3 gap-2">
                                                     <span class="badge bg-label-secondary fs-6 me-1"><i class="bx bx-time"></i></span>
-                                                    <span class="text-dark">{{$user->created_at}}</span>
+                                                    <span class="text-dark">{{\Carbon\Carbon::parse($user->created_at)->diffForHumans()}}</span>
                                                 </div>
 
                                                 <div class="d-flex align-items-center justify-content-center">

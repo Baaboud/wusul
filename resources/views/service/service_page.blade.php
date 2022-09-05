@@ -27,10 +27,10 @@
                                 <img src="http://127.0.0.1:8000/assets/img/avatars/1.png" alt="User" class="rounded-circle">
                             </div>
                             <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-1">
-                                <div class="me-2">
-                                    <h5 class="mb-0">{{$service->user->name}}/h5>
+                                <a href="{{ route('profile.show',$service->user->id) }}" target="_blank" class="me-2">
+                                    <h5 class="mb-0">{{$service->user->name}}</h5>
                                     <small class="text-muted"> {{\Carbon\Carbon::parse($service->created_at)->diffForHumans()}} </small>
-                                </div>
+                                </a>
                             </div>
                         </div>
                     </div>

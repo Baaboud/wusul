@@ -17,10 +17,10 @@
                 <div class="col-md-12">
                     <ul class="nav nav-pills flex-column flex-sm-row mb-4">
                         <li class="nav-item"><a class="nav-link"
-                                @if(Auth::id() == $user->id)
-                                    href="{{ route('profile') }}"
-                                @else
-                                    href="{{ route('profile.show',$user->id) }}"
+                                                @if(Auth::id() == $user->id)
+                                                href="{{ route('profile') }}"
+                                                @else
+                                                href="{{ route('profile.show',$user->id) }}"
                                 @endif
                             ><i class='bx bx-user'></i> البيانات الشخصية</a>
                         </li>
