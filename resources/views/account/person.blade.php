@@ -47,11 +47,11 @@
                             <img src="{{asset('assets/images/users/'.Auth::user()->profile->image)}}"
                             alt="Profile" class=" uploadedImg d-block rounded h-px-150" id="">
                         @else
-                             <img src="{{ asset('assets/img/avatars/1.png') }}" alt="user-avatar" class=" uploadedImg d-block rounded"
+                             <img src="{{ asset('img/user1.png') }}" alt="user-avatar" class=" uploadedImg d-block rounded"
                                  height="100" width="100" id="uploadedImg"/>
                         @endif
 
-                    <livewire:uploud-image>
+                        <livewire:uploud-image>
 
                         </div>
                     </div>

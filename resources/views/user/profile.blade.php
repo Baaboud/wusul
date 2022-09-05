@@ -3,7 +3,6 @@
 @section('extra-style')
     <link rel="stylesheet" href="../../assets/vendor/css/pages/page-help-center.css">
     <link rel="stylesheet" href="../../assets/vendor/libs/bootstrap-select/bootstrap-select.css">
-
     <link rel="stylesheet" href="{{ asset('assets/vendor/css/pages/page-profile.css') }}" />
 @endsection
 
@@ -28,7 +27,7 @@
                                 @if(isset(Auth::user()->profile->image))
                                     <img src="{{asset('assets/images/users/'.Auth::user()->profile->image)}}" alt="" class="d-block h-auto ms-0 ms-sm-4 rounded user-profile-img">
                                 @else
-                                    <img src="{{ asset('assets/img/avatars/1.png') }}" alt="" class="d-block h-auto ms-0 ms-sm-4 rounded user-profile-img">
+                                    <img src="{{ asset('img/user1.png') }}" alt="" class="d-block h-auto ms-0 ms-sm-4 rounded user-profile-img">
                                 @endif
                             </div>
                             <div class="flex-grow-1 mt-3 mt-sm-5">
@@ -37,7 +36,14 @@
                                         <h4>{{ $user->name }}</h4>
                                         <ul class="list-inline mb-0 d-flex align-items-center flex-wrap justify-content-sm-start justify-content-center gap-2">
                                             <li class="list-inline-item fw-semibold">
-                                                <i class='bx bx-pen'></i> مستخدم
+                                                <i class='bx bx-pen'></i>
+                                                @if($user->type==1)
+                                                    مدير النظام
+                                                @elseif($user->type==2)
+                                                    موفر خدمة
+                                                @else
+                                                    مستخدم
+                                                @endif
                                             </li>
                                             <li class="list-inline-item fw-semibold">
                                                 <i class='bx bx-map'></i>{{ ($user->address->state->name ?? '') . ' - ' . ($user->address->city->name ?? '') }}

@@ -35,7 +35,7 @@ class Userfilter extends Component
                 ->paginate(10);
 
               // users type
-              $types = ['مستخدم', 'مدير', 'صاحب خدمة'];
+              $types = ['مستخدم', 'مدير', 'موفر خدمة'];
 
         return view('livewire.userfilter',compact('users', 'types'));
     }

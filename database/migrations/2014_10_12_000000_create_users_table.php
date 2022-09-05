@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->tinyInteger('type');
-            $table->boolean('is_active')->default(0);
+            $table->boolean('is_active')->default(1);
             $table->string('password');
             $table->tinyInteger('stars')->default(0);
             $table->rememberToken();

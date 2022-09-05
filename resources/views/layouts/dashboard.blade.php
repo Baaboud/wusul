@@ -51,7 +51,7 @@
     <!-- Page CSS -->
 
         <livewire:styles />
-        
+
  {{-- @vite(['resources/js/app.js']) --}}
 {{-- <script src="{{ asset('js/echo.js') }}"></script> --}}
 
@@ -87,7 +87,7 @@
         var pusher = new Pusher('360e737254380879929e', {
             cluster: 'mt1'
         }); --}}
-   
+
     <!-- Custom notification for demo -->
     <!-- beautify ignore:end -->
 
@@ -105,7 +105,7 @@
         <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
 
             <div class="app-brand demo h-px-100">
-                <a href="#" class="app-brand-link w-100 d-flex justify-content-center flex-wrap">
+                <a href="{{ route('home') }}" class="app-brand-link w-100 d-flex justify-content-center flex-wrap">
                     <img src="{{ asset('img/logo.png') }}" class="w-px-40 h-auto p-1" alt="" srcset="">
                     <span class="ms-1 fs-4 fw-bold text-white">وصول</span>
                 </a>
@@ -187,7 +187,7 @@
                 </li>
                 <!-- Orders -->
                 <li class="menu-header text-uppercase text-white fs-6"><span class="menu-header-text">أدارة الطلبات</span></li>
-                <li class="menu-item {{Request::url() === route('category.store') ? 'active' : ''}}">
+                <li class="menu-item {{Request::url() === route('serviceProvider.orders') ? 'active' : ''}}">
                     <a href="{{route('serviceProvider.orders')}}"
                        class="menu-link">
                         <i class="menu-icon tf-icons bx bxs-archive-out"></i>
@@ -393,15 +393,15 @@
                                                         <div class="avatar avatar-online">
                                                     @if(isset(Auth::user()->profile->image))
                                                             <img src="{{asset('assets/images/users/'.Auth::user()->profile->image)}}"
-                                                            alt="Profile" class="w-px-40 h-auto rounded-circle" id="">
+                                                            alt="Profile" class="w-px-40 h-100 rounded-circle" id="">
                                                         @else
-                                                    <img src="{{ asset('img/user.png') }}" alt="" class="w-px-40 h-auto rounded-circle">
+                                                    <img src="{{ asset('img/user.png') }}" alt="" class="w-px-40 h-100 rounded-circle">
 
                                                     @endif                                                        </div>
                                                     </div>
                                                     <div class="flex-grow-1">
                                                         <span class="fw-semibold d-block">{{Auth::user()->name}}</span>
-                                                        <small class="text-muted"> {{Auth::user()->type==1?'مديرالنظام':'صاحب خدمه'}}</small>
+                                                        <small class="text-muted"> {{Auth::user()->type==1?'مديرالنظام':'موفر خدمه'}}</small>
 
                                                     </div>
                                                 </div>
@@ -556,7 +556,7 @@ window.Echo = new Echo({
     cluster: 'mt1',
     forceTLS: true
 
-    
+
 });
 Echo.channel("orders{{Auth::id()}}")
         .listen('Message', (e) => {

@@ -40,10 +40,18 @@
                                         <h4>{{ $user->name }}</h4>
                                         <ul class="list-inline mb-0 d-flex align-items-center flex-wrap justify-content-sm-start justify-content-center gap-2">
                                             <li class="list-inline-item fw-semibold">
-                                                <i class='bx bx-pen'></i> مستخدم
+                                                <i class='bx bx-pen'></i>
+                                                @if($user->type==1)
+                                                    مدير النظام
+                                                @elseif(Auth::user()->type==2)
+                                                    صاحب خدمة
+                                                @else
+                                                    مستخدم
+
+                                                @endif
                                             </li>
                                             <li class="list-inline-item fw-semibold">
-                                                <i class='bx bx-map'></i>{{ $user->address->state->name . ' - ' . $user->address->city->name }}
+                                                <i class='bx bx-map'></i>{{ ($user->address->state->name??'') . ' - ' . ($user->address->city->name??'') }}
                                             </li>
                                             <li class="list-inline-item fw-semibold">
                                                 <i class='bx bx-calendar-alt'></i>
@@ -110,7 +118,7 @@
 
                                         @else
 
-                                            <img src="{{ asset('assets/img/avatars/1.png') }}" alt="User"
+                                            <img src="{{ asset('img/user1.png') }}" alt="User"
                                                  class="rounded-circle">
                                         @endif
                                     </div>
@@ -118,7 +126,7 @@
                                         class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-1">
                                         <div class="me-2">
                                             <h5 class="mb-0">{{$service->user->name}}</h5>
-                                            <small class="text-muted">{{$service->user->created_at}}</small>
+                                            <small class="text-muted">{{\Carbon\Carbon::parse($service->user->created_at)->diffForHumans()}}</small>
                                         </div>
                                     </div>
                                 </div>
@@ -167,8 +175,8 @@
                                             class="bx bx-star me-1 fs-4"></i> {{count($service->rating)}}</a>
                                     <a href="#" class="text-muted" data-bs-toggle="tooltip" data-bs-offset="0,4"
                                        data-bs-placement="bottom" data-bs-html="true" title=""
-                                       data-bs-original-title="وقت التسليم التقريبي"><i
-                                            class="bx bx-time me-1 fs-4"></i> {{$service->interval}}</a>
+                                       data-bs-original-title="{{$service->interval}}"><i
+                                            class="bx bx-time me-1 fs-4"></i>وقت التسليم</a>
                                 </div>
                             </div>
                         </div>
