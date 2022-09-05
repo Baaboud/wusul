@@ -73,7 +73,12 @@ return [
             'url' => env('APP_URL') . '/services',
             'visibility' => 'public',
         ],
-
+        'payments' => [
+            'driver' => 'local',
+            'root' => public_path('assets/images/payments'),
+            'url' => env('APP_URL') . '/services',
+            'visibility' => 'public',
+        ],
         's3' => [
             'driver' => 's3',
             'key' => env('AWS_ACCESS_KEY_ID'),

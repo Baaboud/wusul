@@ -67,6 +67,11 @@ Route::middleware(['auth'])->group(function () {
             Route::post('/send', [OrderController::class, 'send'])->name('order.send');
             Route::get('/show/{id?}', [OrderController::class, 'show'])->name('order.show');
             Route::post('/response', [OrderController::class, 'orderResponse'])->name('order.response');
+            Route::post('/payment', [OrderController::class, 'payment'])->name('order.payment');
+            Route::post('/orderConfirm', [OrderController::class, 'orderConfirm'])->name('order.orderConfirm');
+            Route::post('/paymentCheck', [OrderController::class, 'paymentCheck'])->name('order.paymentCheck');
+            Route::get('/', [OrderController::class, 'orders'])->name('orders');
+
         });
 
 });
@@ -156,12 +161,11 @@ Route::group(['prefix' => 'serviceProvider',
     });
 
 
-    Route::group(['prefix' => 'orders'], function () {
-        Route::get('/', [ServiceProviderController::class, 'orders'])->name('serviceProvider.orders');
-    });
-    // orders
-
+    
 });
+// // orders
+// Route::group(['prefix' => 'orders'], function () {
+// });
 
 // start routes of user that provide service
 Route::group(['prefix' => 'admin', 'middleware' => 'checkType:admin'], function () {

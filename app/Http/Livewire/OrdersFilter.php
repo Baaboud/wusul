@@ -25,25 +25,26 @@ class OrdersFilter extends Component
     public function render()
     {
         try {
-            $type = [['جديد',' في انتظار الدفع','مكتمل' ,' نم الغاءه','مرفوض'],
-                 ['primary', 'warning' , 'success'  , 'danger' , 'orange']];
+            $type = [['جديد',' في انتظار الدفع','مكتمل' ,' نم الغاءه','مرفوض','جاري التأكد من الدفع'],
+                 ['primary', 'warning' , 'success'  , 'danger' , 'orange','warning']];
         
             //code...
             $categories=ServiceCat::all();
-            $orders=Order::with('user','service','address')->CheckOwner()
-            ->withFilters(
+            
+            $orders = Order::with('user','service','address')->CheckOwner()
+                ->withFilters(
                 $this->search,
                 $this->category,
                 $this->status,
                 )->when($this->sortFile,function($query){
                     $query->orderBy("$this->sortFile");
-                })->latest()
-            ->paginate(10);
+                })->latest()->paginate(10);
+                // dd($orders);
     
             return view('livewire.orders-filter',compact('orders','categories','type'));
         } catch (\Throwable $th) {
             //throw $th;
-            return $th->getMessage();
+            return $th;
         }
     }
 }

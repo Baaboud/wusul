@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\admin;
 
-use App\Http\Controllers\Controller;
-use App\Models\Service;
 use App\Models\User;
+use App\Models\Order;
+use App\Models\Service;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
 class ProfileController extends Controller
@@ -37,8 +38,8 @@ class ProfileController extends Controller
 
     public function orders(){
         try {
-            $user = User::with('profile','address')->findOrFail(Auth::id());
-            return view('user.orders', compact('user'));
+    
+            return view('user.orders');
 
         } catch (\Throwable $th) {
             // return $th->getMessage();

@@ -153,6 +153,14 @@
                         <div>أدارة البلاغات</div>
                     </a>
                 </li>
+                <li class="menu-header text-uppercase text-white fs-6"><span class="menu-header-text">أدارة الطلبات</span></li>
+                <li class="menu-item {{Request::url() === route('category.store') ? 'active' : ''}}">
+                    <a href="{{route('orders')}}"
+                       class="menu-link">
+                        <i class="menu-icon tf-icons bx bxs-archive-out"></i>
+                        <div>الطلبات</div>
+                    </a>
+                </li>
 
                 <li class="menu-header text-uppercase text-white fs-6"><span class="menu-header-text">أعدادات المنصة</span></li>
                 <li class="menu-item {{Request::url() === route('categories') ? 'active' : ''}}">
@@ -187,8 +195,10 @@
                 </li>
                 <!-- Orders -->
                 <li class="menu-header text-uppercase text-white fs-6"><span class="menu-header-text">أدارة الطلبات</span></li>
-                <li class="menu-item {{Request::url() === route('serviceProvider.orders') ? 'active' : ''}}">
-                    <a href="{{route('serviceProvider.orders')}}"
+
+                <li class="menu-item {{Request::url() === route('orders') ? 'active' : ''}}">
+                    <a href="{{route('orders')}}"
+
                        class="menu-link">
                         <i class="menu-icon tf-icons bx bxs-archive-out"></i>
                         <div>الطلبات</div>

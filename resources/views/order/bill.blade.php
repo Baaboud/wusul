@@ -35,10 +35,22 @@
                                     <span class="me-1">تاريخ الأصدار:</span>
                                     <span class="fw-semibold">{{\Carbon\Carbon::parse($order->created_at)->diffForHumans()}}</span>
                                 </div>
+                                @if($order->status > 1)
                                 <div>
                                     <span class="me-1">تاريخ الاستحقاق:</span>
-                                    <span class="fw-semibold">29/08/2020</span>
+                                    <span class="fw-semibold">
+                                        {{\Carbon\Carbon::parse($order->date)->diffForHumans()}}
+                                    </span>
                                 </div>
+                                @endif
+                                @if($order->status == 3 && $order->service->type==1)
+                                <div>
+                                    <span class="me-1"> رمز التأكيد</span>
+                                    <span class="fw-semibold">
+                                    {{$order->payment->code}}
+                                    </span>
+                                </div>
+                                @endif
                             </div>
                         </div>
                     </div>
@@ -147,6 +159,10 @@
                             <span class="d-flex align-items-center justify-content-center text-nowrap"><i
                                     class="bx bx-printer bx-xs me-3"></i>طباعة</span>
                         </button>
+
+                        @if(Auth::id()==$order->user->id)
+                        @if($order->status == 2)
+
                         <form action="decline">
                             <button class="btn btn-label-danger d-grid w-100 mb-3 confirm" data-bs-toggle="offcanvas"
                                     data-bs-target="#addPaymentOffcanvas">
@@ -154,14 +170,27 @@
                                     class="bx bx-block bx-xs me-3"></i>رفض</span>
                             </button>
                         </form>
+                        @if( $order->service->type==1)
                         <button class="btn btn-primary d-grid w-100" data-bs-toggle="modal" data-bs-target="#pay">
                             <span class="d-flex align-items-center justify-content-center text-nowrap"><i
                                     class="bx bx-dollar bx-xs me-3"></i>دفع</span>
                         </button>
-                    </div>
-                    @endif
-                    @if($order->status>1)
 
+                        @elseif($order->service->type==0)
+                        <form action="{{route('order.orderConfirm')}}"  method="post">
+                        @csrf
+                        <input type="hidden" name='order' value="{{$order->id}}">
+                        <button class="btn btn-primary d-grid w-100">
+                            <span class="d-flex align-items-center justify-content-center text-nowrap"><i
+                                    class="bx bx-dollar bx-xs me-3"></i>تاكيد الطلب</span>
+                        </button>
+                        </form>
+                        @endif
+                        @endif
+                        @endif
+                    </div>
+                    @if($order->status > 1)
+                        
                     <div class="">
                         <div class="card-body">
                             <button class="btn btn-label-secondary d-grid w-100" data-bs-toggle="offcanvas"
@@ -177,7 +206,9 @@
                     </div>
                     @endif
                 </div>
-                @if(Auth::id()==$order->service->user->id && $order->status==1 )
+
+            @if(Auth::id() == $order->service->user->id && $order->status==1 ) 
+
                 <div class="card position-sticky" style="top: 90px">
                     <div class="">
                         <div class="text-center px-4 py-3 d-flex justify-content-center border-top border-bottom">
@@ -216,11 +247,13 @@
             <!-- /Invoice Actions -->
         </div>
     </div>
-
+    @if($order->status==2 && $order->service->type==1)
+        
     <div class="modal fade" id="pay" tabindex="-1" aria-hidden="true" style="display: none;">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
-                <form id="formAccountSettings" action="#"
+
+                <form id="formAccountSettings" action="{{route('order.payment')}}" enctype="multipart/form-data" method="post"
                       class="fv-plugins-bootstrap5 fv-plugins-framework" novalidate="novalidate">
                     <hr class="my-0">
                     @csrf
@@ -236,7 +269,7 @@
                                  style="object-fit: contain" id="uploadedImg">
                             <div class="button-wrapper my-auto">
                                 <label for="upload" class="btn btn-primary px-5 me-2" tabindex="0">
-{{--                                    <span class="d-none d-sm-block">أضافة صورة</span>--}}
+                                   <span class="d-none d-sm-block">أضافة صورة</span>
                                     <i class="bx bx-upload"></i>
                                     <input type="file" id="upload" class="account-file-input" name='image'
                                            hidden="" accept="image/png, image/jpeg">
@@ -251,13 +284,14 @@
                             </button>
                         </div>
                         <div></div>
-                        <input type="hidden">
+                        <input type="hidden" name='order' value="{{$order->id}}">
                     </div>
 
                 </form>
             </div>
         </div>
     </div>
+        @endif
 @endsection
 
 @section('scripts')

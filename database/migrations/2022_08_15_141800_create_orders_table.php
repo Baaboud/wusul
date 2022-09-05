@@ -17,8 +17,6 @@ return new class extends Migration
             $table->id();
             $table->string('description')->nullable();
             $table->integer('price')->nullable();
-            $table->integer('code')->nullable();
-            $table->string('hash_code')->nullable();
             $table->integer('status')->default(0);
             $table->string('images')->nullable();
             $table->unsignedBigInteger('service_id');

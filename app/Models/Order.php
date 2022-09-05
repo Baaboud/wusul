@@ -53,24 +53,39 @@ public function Address(){
     }
 
     public function scopeCheckOwner($query){
+        if(Auth::user()->userServiceProvider()){
 
-        return $query->whereHas('service',function ($q){
-            $q->where('user_id',Auth::id());
-        });
+            return $query->whereHas('service',function ($q){
+                $q->where('user_id',Auth::id());
+            });
+        }elseif (Auth::user()->type==0) {
+            return $query->where('user_id',Auth::id());
+        }else {
+        }
     }
     public function scopeWithFilters($query, $search,$category,$status)
     {
         return $query->when($search, function ($query) use ($search) {
+
            $query->where(function ($query) use ($search) {
-                $query->where(function ($query) use ($search) {
-                    $query->whereHas('user', function ($query)  use ($search){
-                         $query->where('name', 'like', '%' .  $search . '%');
-                    })
-                    ->orWhere(function ($query) use ($search) {
-                        $query->whereHas('service', function ($query)  use ($search){
-                             $query->where('name', 'like', '%' .  $search . '%');});
-                    });
-                });
+                    $query->where(function ($query) use ($search) {
+                            $query->whereHas('user', function ($query)  use ($search){
+                                if(Auth::user()->type==1 || Auth::user()->type==2){
+                                    $query->where('name', 'like', '%' .  $search . '%');
+                                }else{
+                                    $query->where('id', '=',  '' );
+                                }
+                            })->orWhereHas('service', function ($query)  use ($search){
+                                if(Auth::user()->type == 1 || Auth::user()->type == 0){
+                                $query->whereHas('user',function ($query)  use ($search){
+                                    return $query->where('name', 'like', '%' .  $search . '%');
+                                });
+                            }else{
+                                    $query->where('name', 'like', '%' .  $search . '%');
+                            }
+                            });
+                        
+                        });
 
             });
             })->when($status, function ($query) use ($status) {

@@ -9,7 +9,7 @@
 
 @section('content')
 
-    <div class="container-xxl flex-grow-1">
+    {{-- <div class="container-xxl flex-grow-1">
         <div class="container-xxl flex-grow-1 container-p-y px-sm-2 px-0">
             <h4 class="fw-bold py-3 mb-4">
                 <span class="text-muted fw-light">الملف الشخصي /</span> الطلبات
@@ -243,7 +243,8 @@
             </div>
             <!--/ User Profile Content -->
         </div>
-    </div>
+    </div> --}}
+    <livewire:orders-filter/>
 @endsection
 
 @section('scripts')

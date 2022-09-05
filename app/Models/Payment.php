@@ -12,9 +12,10 @@ class Payment extends Model
     protected $fillable = [
         'image',
         'payment_type_id',
+        'code'
     ];
 
-    public function paymentType(){
-        return $this->belongsTo(PaymentType::class,'payment_type_id');
-    }
+    // public function paymentType(){
+    //     return $this->belongsTo(PaymentType::class,'payment_type_id');
+    // }
 }
