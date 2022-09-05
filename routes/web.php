@@ -133,7 +133,7 @@ Route::get('/l/l', function () {
 
 // start routes of user that provide service
 Route::group(['prefix' => 'serviceProvider',
-'middleware' => ['checkType:serviceProvider','auth']
+'middleware' => ['checkType:serviceProvider','auth','verified']
         ],
         function () {
 
@@ -161,7 +161,7 @@ Route::group(['prefix' => 'serviceProvider',
     });
 
 
-    
+
 });
 // // orders
 // Route::group(['prefix' => 'orders'], function () {
