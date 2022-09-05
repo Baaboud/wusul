@@ -57,100 +57,45 @@
                 </div>
                 <div class="col-12">
                     <div class="nav-align-top">
-                        <ul class="nav nav-tabs border-bottom border-light mx-3 mb-3" role="tablist">
-                            <li class="nav-item">
-                                <button type="button" class="nav-link active fas fa-th-list fs-4 bg-white" role="tab"
-                                        data-bs-toggle="tab" data-bs-target="#navs-list" aria-controls="navs-top-home"
-                                        aria-selected="true"></button>
-                            </li>
-                            <li class="nav-item">
-                                <button type="button" class="nav-link fas fa-th-large fs-4 bg-white" role="tab"
-                                        data-bs-toggle="tab" data-bs-target="#navs-card"
-                                        aria-controls="navs-top-profile" aria-selected="false"></button>
-                            </li>
-                        </ul>
-                        {{-- Tabs --}}
-                        <div class="tab-content shadow-none pt-0">
-                            {{-- List View --}}
-                            <div class="tab-pane fade active show" id="navs-list" role="tabpanel">
-                                <div class="table-responsive text-nowrap">
-                                    <table class="table table-hover mb-5">
-                                        <thead>
-                                        <tr>
-                                            <th>#</th>
-                                            <th>أسم المجال</th>
-                                            <th>تاريخ التسجيل</th>
-                                            <th>عمليات</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody class="table-border-bottom-0">
-                                        @forelse($categories as $category)
-                                        <tr>
-                                            <td>{{$loop->index+1 }}</td>
-
-                                            <td>{{$category->name}}</td>
-                                            <td>{{\Carbon\Carbon::parse($category->created_at)->diffForHumans()}}</td>
-                                            <td>
-                                                <button type="button" class="btn btn-label-primary me-3"
-                                                 data-bs-toggle="modal" data-bs-target="#editeCategory1"
-                                                  onclick="edit({{ $category }})" >
-                                                    <span class="tf-icons bx bx-edit"></span>&nbsp; تعديل
-                                                </button>
-
-                                                <form class="d-inline-block" method="get" action="{{ route('category.del',$category->id) }}">
-                                                    <button type="button" class="btn btn-label-danger confirm">
-                                                        <span class="tf-icons bx bx-trash"></span>&nbsp; خذف
-                                                    </button>
-                                                </form>
-                                            </td>
-                                        </tr>
-                                        @empty
-                                            <tr style='text-align: center;'>
-                                            لا يوجد اصناف
-                                            </tr>
-                                        @endforelse
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                            {{-- Card View --}}
-                            <div class="tab-pane fade" id="navs-card" role="tabpanel">
-                                <div class="row g-4">
+                        <div class="table-responsive text-nowrap">
+                            <table class="table table-hover mb-5">
+                                <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>أسم المجال</th>
+                                    <th>تاريخ التسجيل</th>
+                                    <th>عمليات</th>
+                                </tr>
+                                </thead>
+                                <tbody class="table-border-bottom-0">
                                 @forelse($categories as $category)
-                                    <div class="col-xl-3 col-lg-4 col-md-6">
-                                        <div class="card border shadow-none">
-                                            <div class="card-body text-center">
-                                                @if($category->image)
-                                                    <img class="mb-3" src="{{ asset("{$category->path}$category->image ") }}" height="60" alt="Help center articles">
-                                                @else
-                                                    <img class="mb-3" src="{{ asset("img/img.png") }}" height="60" alt="Help center articles">
-                                                @endif
-                                                <h5>{{$category->name}}</h5>
-                                                <p class="text-dark"> {{$category->description}} </p>
-                                                <div class="d-flex align-items-center justify-content-around">
-                                                    <button type="button" class="btn btn-label-primary" onclick="edit({{$category}})">
-                                                        <span class="tf-icons bx bx-edit"></span>&nbsp; تعديل
-                                                    </button>
+                                    <tr>
+                                        <td>{{$loop->index+1 }}</td>
 
-                                                    <form class="d-inline-block" method="get" action="{{ route('index') }}">
-                                                        <button type="button" class="btn btn-label-danger confirm">
-                                                            <span class="tf-icons bx bx-trash"></span>&nbsp; خذف
-                                                        </button>
-                                                    </form>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                        <td>{{$category->name}}</td>
+                                        <td>{{\Carbon\Carbon::parse($category->created_at)->diffForHumans()}}</td>
+                                        <td>
+                                            <button type="button" class="btn btn-label-primary me-3"
+                                                    data-bs-toggle="modal" data-bs-target="#editeCategory1"
+                                                    onclick="edit({{ $category }})" >
+                                                <span class="tf-icons bx bx-edit"></span>&nbsp; تعديل
+                                            </button>
+
+                                            <form class="d-inline-block" method="get" action="{{ route('category.del',$category->id) }}">
+                                                <button type="button" class="btn btn-label-danger confirm">
+                                                    <span class="tf-icons bx bx-trash"></span>&nbsp; خذف
+                                                </button>
+                                            </form>
+                                        </td>
+                                    </tr>
                                 @empty
-                                <div style='text-align: center;'>
-                                    لا يوجد اصنااف
-                                </div>
+                                    <tr style='text-align: center;'>
+                                        لا يوجد اصناف
+                                    </tr>
                                 @endforelse
-
-                                </div>
-                            </div>
+                                </tbody>
+                            </table>
                         </div>
-                        {{-- Modals --}}
                         <div>
                             <div class="modal fade" id="editeCategory1" tabindex="-1" aria-hidden="true" style="display: none;">
                                 <div class="modal-dialog" role="document">

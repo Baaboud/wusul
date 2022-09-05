@@ -34,13 +34,17 @@ use App\Http\Controllers\userServiceProvider\ServiceProviderController;
 
 Auth::routes(['verify' => true]);
 
-Route::middleware(['auth','verified'])->group(function () {
+Route::middleware(['auth'])->group(function () {
 
     Route::group(['prefix' => 'profile'], function () {
         Route::get('/', [ProfileController::class, 'index'])->name('profile');
-        Route::get('/services', [ProfileController::class, 'services'])->name('profile.service');
-        Route::get('/orders', [ProfileController::class, 'orders'])->name('profile.orders');
-        Route::get('/wallet', [ProfileController::class, 'wallet'])->name('profile.wallet');
+        Route::middleware(['checkType:serviceProvider'])->group(function () {
+            Route::get('/services', [ProfileController::class, 'services'])->name('profile.service');
+        });
+        Route::middleware(['checkType:user'])->group(function () {
+            Route::get('/orders', [ProfileController::class, 'orders'])->name('profile.orders');
+            Route::get('/wallet', [ProfileController::class, 'wallet'])->name('profile.wallet');
+        });
         Route::get('/{id}', [ProfileController::class, 'show'])->name('profile.show');
         Route::get('/{id}/services', [ProfileController::class, 'showService'])->name('profile.service.show');
     });
@@ -107,6 +111,9 @@ Route::get('/contact', function () {
 Route::get('/about', function () {
     return view('about');
 })->name('about');
+Route::get('/activation', function () {
+    return view('auth.activation');
+})->name('activation');
 
 
 Auth::routes();
@@ -121,10 +128,7 @@ Route::get('/services', [SiteController::class, 'services'])->name('services');
 Route::get('/service/{id}', [SiteController::class, 'service'])->name('service.details');
 
 Route::get('/l/l', function () {
-    $order=Order::find(10);
-    $images = json_decode($order->images, true);
-
-    return view('order.bill',compact('order','images'));
+    return view('admin.payment');
 })->name('test');
 
 // start routes of user that provide service

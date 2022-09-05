@@ -28,7 +28,7 @@ class HomeController extends Controller
     {
         if(Auth::user()->is_active==0){
 
-            return redirect('login')->with(Auth::logout());
+            return redirect('activation')->with(Auth::logout());
         }
                 // this check if user is admin
                 if(Auth::user()->admin()){
@@ -41,14 +41,14 @@ class HomeController extends Controller
                     //  this rout for serviceProvider/
                     return redirect(RouteServiceProvider::USER_SERVICE_PROVIDER);
 
-                }else{  
+                }else{
 
-         
+
                     //  this rout for user
                     return redirect()->route('index');
 
                 }
                 // php artisan make:controller userServiceProvider --resource
     }
-    
+
 }

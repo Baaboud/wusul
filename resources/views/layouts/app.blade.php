@@ -75,13 +75,13 @@
         gtag('config', 'GA_MEASUREMENT_ID');
 
     </script>
-{{-- 
+{{--
              Pusher.logToConsole = true;
 
         var pusher = new Pusher('e4b4e21e1f468b8bddf2', {
             cluster: 'mt1'
         }); --}}
-   
+
 
     <!-- Custom notification for demo -->
     <!-- beautify ignore:end -->
@@ -428,7 +428,7 @@
                                                 <div class="avatar avatar-online">
                                                   @if(isset(Auth::user()->profile->image))
                                                     <img src="{{asset('assets/images/users/'.Auth::user()->profile->image)}}"
-                                                        alt="Profile" class="w-px-40 h-auto rounded-circle" id="">
+                                                        alt="Profile" class="w-px-40 h-100 rounded-circle" id="">
                                                 @else
                                                     <img src="{{ asset('img/user.png') }}" alt="" class="w-px-40 h-auto rounded-circle">
                                                 @endif
@@ -467,8 +467,9 @@
                                         <span class="align-middle">الاعدادت</span>
                                     </a>
                                 </li>
+                                @if(Auth::user()->type == 0)
                                 <li>
-                                    <a class="dropdown-item" href="#">
+                                    <a class="dropdown-item" href="{{ route('profile.wallet') }}">
                                     <span class="d-flex align-items-center align-middle">
                                       <i class="flex-shrink-0 bx bx-credit-card me-2"></i>
                                       <span class="flex-grow-1 align-middle">المحفظة</span>
@@ -476,6 +477,7 @@
                                     </span>
                                     </a>
                                 </li>
+                                @endif
                                 <li>
                                     <div class="dropdown-divider"></div>
                                 </li>

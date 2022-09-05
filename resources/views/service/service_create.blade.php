@@ -11,7 +11,7 @@
             <!-- User Sidebar -->
             <div class="col-md-8">
                 <!-- User Card -->
-                <form   novalidate="novalidate" action="{{route('service.store')}}" 
+                <form   novalidate="novalidate" action="{{route('service.store')}}"
                 enctype="multipart/form-data" method='post'>
                 @csrf
                     <div class="card mb-4">
@@ -20,7 +20,7 @@
                                 <div class=" d-flex align-items-center flex-column">
                                     <div class="user-avatar-section col-sm-6 col-10">
                                         <div class=" d-flex align-items-center flex-column">
-                                            <img id="uploadedImg" class="img-fluid rounded mx-4 w-75" src="" alt="">
+                                            <img id="uploadedImg" class="img-fluid rounded mx-4 w-75" src="{{ asset('img/upload_img.jpg') }}" alt="">
                                         </div>
                                     </div>
                                     <label for="upload" class="btn btn-primary my-4" tabindex="0">
@@ -43,10 +43,10 @@
                                         <label for="timeZones" class="form-label">المجال</label>
                                         <select id="selectpickerBasic" class=" category form-select selectpicker w-100" data-style="btn-default" name='category'>
                                             <option value="" data-select2-id="2">أختر</option>
-                                            @forelse($categories as $category)   
+                                            @forelse($categories as $category)
                                                 <option data-icon="bx bx-list-check" value="{{$category->id}}" > {{$category->name}}</option>
                                             @empty
-                                
+
                                             @endforelse
                                         </select>
                                     </div>
@@ -141,8 +141,8 @@
           //  if (file) {
             //    imgView2.src = URL.createObjectURL(file)
             //}
-        //} 
+        //}
 
-   
+
     </script>
 @endsection

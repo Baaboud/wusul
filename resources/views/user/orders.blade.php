@@ -37,13 +37,22 @@
                                         <h4>{{ Auth::user()->name }}</h4>
                                         <ul class="list-inline mb-0 d-flex align-items-center flex-wrap justify-content-sm-start justify-content-center gap-2">
                                             <li class="list-inline-item fw-semibold">
-                                                <i class='bx bx-pen'></i> مستخدم
+                                                <i class='bx bx-pen'></i>
+                                                @if($user->type==1)
+                                                    مدير النظام
+                                                @elseif(Auth::user()->type==2)
+                                                    صاحب خدمة
+                                                @else
+                                                    مستخدم
+
+                                                @endif
                                             </li>
                                             <li class="list-inline-item fw-semibold">
-                                                <i class='bx bx-map'></i> حضرموت - المكلا
+                                                <i class='bx bx-map'></i>{{ ($user->address->state->name??'') . ' - ' . ($user->address->city->name??'') }}
                                             </li>
                                             <li class="list-inline-item fw-semibold">
-                                                <i class='bx bx-calendar-alt'></i> أنظم في أبريل 2021
+                                                <i class='bx bx-calendar-alt'></i>
+                                                أنظم {{ \Carbon\Carbon::parse($user->created_at)->diffForHumans() }}
                                             </li>
                                         </ul>
                                     </div>
