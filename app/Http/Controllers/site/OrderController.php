@@ -19,11 +19,14 @@ class OrderController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+     // get all orders for user auth
+    public function orders()
     {
-        //
+        
+        return view('service_provider.orders');
+    
+            
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -83,7 +86,7 @@ class OrderController extends Controller
             
             $user=$order->service->user;
 
-            event(new Messages($order, $user->id,'  طلب جديد من'));
+            // event(new Messages($order, $user->id,'  طلب جديد من'));
 
             return redirect()->back()->with(['success' => 'تمت  العملية بنجاح']);
         } catch (\Throwable $th) {
@@ -103,7 +106,7 @@ class OrderController extends Controller
     public function show($id)
     {
         try {
-            $order=Order::with('user','service','address')->CheckOwner()->findOrFail($id);
+            $order=Order::with('user','service','address','payment')->CheckOwner()->findOrFail($id);
             $images = json_decode($order->images, true);
         
             return view('order.bill',compact('order','images'));
@@ -134,7 +137,7 @@ class OrderController extends Controller
                 'date'=>$request->date
             ]);
             
-            return redirect()->back();
+            return redirect()->back()->with(['success' => 'تمت  العملية بنجاح']);
         } catch (\Throwable $th) {
             //throw $th;
             return $th->getMessage();
@@ -150,5 +153,60 @@ class OrderController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function orderConfirm(Request $request){
+        try {
+            // return $request;
+            $order=Order::with('user','service','payment')->CheckOwner()->findOrFail($request->order);
+            if($order->service->type==0){
+                $order->update([
+                    'status'=>3,
+                ]);
+            }else{
+                return redirect()->back()->with(['error' => 'برجئ رسال السند لتأكيد الطلب']);
+
+            }
+    
+            return redirect()->back()->with(['success' => 'تمت نأكيد الطلب   بنجاح']);
+        } catch (\Throwable $th) {
+            return redirect()->back()->with(['error' => 'هناك خطاء يرجى المحاوله لاحقا']);
+            // return $th->getMessage();
+        }
+    }
+    public function payment(Request $request){
+
+        try {
+            $order=Order::with('user','service','payment')->CheckOwner()->findOrFail($request->order);
+
+            $photo = "";
+    
+    
+            if ($request->hasFile('image')) {
+    
+    
+                $photo = $this->uploadImage('payments', $request->image);
+    
+            }
+            $code =  random_int(100000, 999999);
+    
+            $order->update([
+                'status'=>6,
+            ]);
+    
+            $order->payment()->create([
+                'image'=>$photo,
+                'code'=>$code
+            ]);        
+            return redirect()->back()->with(['success' => 'تمت  العملية بنجاح   بنجاح']);
+        } catch (\Throwable $th) {
+            return redirect()->back()->with(['error' => 'هناك خطاء يرجى المحاوله لاحقا']);
+        }
+        
+
+    }
+    public function paymentCheck(){
+        $order=Order::with('user','service','payment')->CheckOwner()->findOrFail($request->order);
+        
     }
 }

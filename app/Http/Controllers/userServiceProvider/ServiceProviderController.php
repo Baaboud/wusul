@@ -13,11 +13,4 @@ class ServiceProviderController extends Controller
         return view('service_provider.home');
     }
 
-    // get all orders for user auth
-    public function orders()
-    {
-        
-            return view('service_provider.orders');
-            
-    }
 }
