@@ -21,8 +21,7 @@
                     </div>
                     <div class="input-wrapper row d-sm-inline-flex d-none">
                         <div class="col-lg-3 col-sm-6 mb-4">
-                            <label for="selectpickerIcons" class="form-label fs-5 fw-bolder">الخدمة</label>
-                               <label for="selectpickerIcons" class="form-label fs-6 fw-bolder">نوع الخدمة</label>
+                            <label for="selectpickerIcons" class="form-label fw-bolder">المجال</label>
                         <select class="form-select w-100 "
                                  wire:model='category'>
                             <option data-icon="bx bx-list-check" value='0' >الكل</option>
@@ -35,7 +34,7 @@
                         </select>
                         </div>
                         <div class="col-lg-3 col-sm-6 mb-4">
-                            <label for="selectpickerIcons" class="form-label fs-5 fw-bolder">ترتيب حسب</label>
+                            <label for="selectpickerIcons" class="form-label fw-bolder">ترتيب حسب</label>
                             <select class="form-select w-100 show-tick" id="selectpickerIcons" data-icon-base="bx"
                                     data-tick-icon="bx-check" data-style="btn-default" wire:model='sortFile'>
                                 <option data-icon="bx bx-rename" value='name'>الاسم</option>
@@ -136,23 +135,23 @@
 
                                                     @else
 
-                                                        <img src="{{ asset('assets/img/avatars/1.png') }}" alt="User" class="rounded-circle">
+                                                        <img src="{{ asset('img/user1.png') }}" alt="User" class="rounded-circle">
                                                     @endif
                                         </div>
                                         <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-1">
-                                            <div class="me-2">
+                                            <a href="{{ route('profile.show',$service->user->id) }}" target="_blank" class="me-2">
                                                 <h5 class="mb-0">{{$service->user->name}}</h5>
-                                                <small class="text-muted">{{$service->user->created_at}}</small>
-                                            </div>
+                                                <small class="text-muted"> {{\Carbon\Carbon::parse($service->created_at)->diffForHumans()}} </small>
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
                                             @if($service->image)
 
-                                                <img class="img-fluid" src="{{ asset("{$service->path}$service->image ") }}" alt="Card image cap">
+                                                <img class="img-fluid h-px-200" src="{{ asset("{$service->path}$service->image ") }}" alt="Card image cap">
                                             @else
 
-                                            <img class="img-fluid" src="../../assets/img/backgrounds/event.jpg" alt="Card image cap">
+                                            <img class="img-fluid h-px-200" src="../../assets/img/backgrounds/event.jpg" alt="Card image cap">
                                             @endif
                                 <div class="featured-date mt-n4 ms-4 bg-white rounded w-px-50 shadow text-center">
                                     <h5 class="mb-0 text-dark"><span class="badge bg-label-primary pb-3 px-3 fs-6">{{$service->category->name}}</span></h5>

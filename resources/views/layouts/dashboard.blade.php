@@ -104,7 +104,7 @@
 
         <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
 
-            <div class="app-brand demo h-px-100">
+            <div class="app-brand demo h-px-100 zindex-5">
                 <a href="{{ route('home') }}" class="app-brand-link w-100 d-flex justify-content-center flex-wrap">
                     <img src="{{ asset('img/logo.png') }}" class="w-px-40 h-auto p-1" alt="" srcset="">
                     <span class="ms-1 fs-4 fw-bold text-white">وصول</span>
@@ -154,7 +154,7 @@
                     </a>
                 </li>
                 <li class="menu-header text-uppercase text-white fs-6"><span class="menu-header-text">أدارة الطلبات</span></li>
-                <li class="menu-item {{Request::url() === route('category.store') ? 'active' : ''}}">
+                <li class="menu-item {{Request::url() === route('orders') ? 'active' : ''}}">
                     <a href="{{route('orders')}}"
                        class="menu-link">
                         <i class="menu-icon tf-icons bx bxs-archive-out"></i>
@@ -226,13 +226,6 @@
                        class="menu-link">
                         <i class="menu-icon tf-icons bx bx-money"></i>
                         <div>المحفظة</div>
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a href="#"
-                       class="menu-link">
-                        <i class="menu-icon tf-icons bx bxs-report"></i>
-                        <div>البلاغات</div>
                     </a>
                 </li>
                 @endif
@@ -343,7 +336,7 @@
                                 <li class="nav-item dropdown-notifications navbar-dropdown dropdown me-3 me-xl-1">
                                     <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
                                         <i class="bx bx-bell bx-sm"></i>
-                                        <span class="badge bg-danger rounded-pill badge-notifications">5</span>
+{{--                                        <span class="badge bg-danger rounded-pill badge-notifications">5</span>--}}
                                     </a>
                                     <ul class="dropdown-menu py-0">
                                         <li class="dropdown-menu-header border-bottom">

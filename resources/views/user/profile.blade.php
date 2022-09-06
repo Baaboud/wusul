@@ -24,8 +24,8 @@
                         </div>
                         <div class="user-profile-header d-flex flex-column flex-sm-row text-sm-start text-center mb-4">
                             <div class="flex-shrink-0 mt-n2 mx-sm-0 mx-auto">
-                                @if(isset(Auth::user()->profile->image))
-                                    <img src="{{asset('assets/images/users/'.Auth::user()->profile->image)}}" alt="" class="d-block h-auto ms-0 ms-sm-4 rounded user-profile-img">
+                                @if($user->profile->image))
+                                    <img src="{{asset('assets/images/users/'.$user->profile->image)}}" alt="" class="d-block h-auto ms-0 ms-sm-4 rounded user-profile-img">
                                 @else
                                     <img src="{{ asset('img/user1.png') }}" alt="" class="d-block h-auto ms-0 ms-sm-4 rounded user-profile-img">
                                 @endif

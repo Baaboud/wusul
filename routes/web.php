@@ -128,12 +128,12 @@ Route::get('/services', [SiteController::class, 'services'])->name('services');
 Route::get('/service/{id}', [SiteController::class, 'service'])->name('service.details');
 
 Route::get('/l/l', function () {
-    return view('admin.payment');
+    return view('admin.complaints');
 })->name('test');
 
 // start routes of user that provide service
 Route::group(['prefix' => 'serviceProvider',
-'middleware' => ['checkType:serviceProvider','auth']
+'middleware' => ['checkType:serviceProvider','auth','verified']
         ],
         function () {
 
@@ -161,7 +161,7 @@ Route::group(['prefix' => 'serviceProvider',
     });
 
 
-    
+
 });
 // // orders
 // Route::group(['prefix' => 'orders'], function () {

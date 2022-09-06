@@ -99,7 +99,7 @@ class ServicesController extends Controller
 
 
 
-            return redirect()->back()->with(['success' => 'تمت الاضافة   بنجاح']);
+            return redirect()->route('service')->with(['success' => 'تمت الاضافة   بنجاح']);
         } catch (\Exception $ex) {
             // return $ex->getMessage();
 
@@ -119,7 +119,7 @@ class ServicesController extends Controller
         try {
             $service = Service::where('user_id', Auth::id())->findOrFail($id);
             $categories = ServiceCat::all();
-            
+
                 if(!$service){
                     return redirect()->back()->with(['error' => 'حدث خطا ما برجاء المحاوله لاحقا']);
                 }
@@ -188,10 +188,10 @@ class ServicesController extends Controller
     {
         try {
             $service = Service::with('works')->findOrFail($id);
-            
-            //check if has works 
+
+            //check if has works
             if(count($service->works))
-            foreach ($service->works as $work) { 
+            foreach ($service->works as $work) {
                 if ($work->image != '') { // check if  has image
 
                     // remove image
