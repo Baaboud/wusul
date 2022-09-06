@@ -11,7 +11,7 @@
             <!-- User Sidebar -->
             <div class="col-md-6">
                 <!-- User Card -->
-            <form   novalidate="novalidate" action="{{route('service.update',$service->id)}}" 
+            <form   novalidate="novalidate" action="{{route('service.update',$service->id)}}"
                     enctype="multipart/form-data" method='post'>
                     @csrf
                     <div class="card mb-4">
@@ -21,10 +21,10 @@
                                     <div class="user-avatar-section">
                                         <div class=" d-flex align-items-center flex-column">
                                           @if($service->image)
-                                                
+
                                                 <img class="img-fluid" src="{{ asset("{$service->path}$service->image ") }}" id='uploadedImg' alt="Card image cap">
                                             @else
-                                                
+
                                                 <img class="img-fluid" src="../../assets/img/backgrounds/event.jpg" id='uploadedImg' alt="Card image cap">
                                             @endif
                                         </div>
@@ -49,11 +49,11 @@
                                         <label for="timeZones" class="form-label">المجال</label>
                                         <select id="selectpickerBasic" class=" category form-select  w-100" data-style="btn-default" name='category'>
                                             <option value="" data-select2-id="2">أختر</option>
-                                            @forelse($categories as $category)   
-                                                <option data-icon="bx bx-list-check" value="{{$category->id}}" {{$category->id==$service->service_cat_id?'selected':''}}> 
+                                            @forelse($categories as $category)
+                                                <option data-icon="bx bx-list-check" value="{{$category->id}}" {{$category->id==$service->service_cat_id?'selected':''}}>
                                                 {{$category->name}}</option>
                                             @empty
-                                
+
                                             @endforelse
                                         </select>
                                     </div>
@@ -108,9 +108,9 @@
                         <div class="modal-dialog modal-lg modal-dialog-centered">
 
                             <div class="modal-content">
-                                 <form   novalidate="novalidate" action="{{route('work.store')}}" 
+                                 <form   novalidate="novalidate" action="{{route('work.store')}}"
                                         enctype="multipart/form-data" method='post'>
-                                    @csrf                                    
+                                    @csrf
                                     <div class="user-avatar-section mt-5">
                                         <div class=" d-flex align-items-center flex-column">
                                             <div class="user-avatar-section">
@@ -142,12 +142,12 @@
                 @foreach ($service->works as $work )
                     <div class="col-lg-6 col-md-12 col-sm-6 col-12">
                         <div class="card mb-3 shadow">
-                        
+
                             <img class="card-img-top" src='{{ asset("{$work->path}$work->image ") }}' alt="Card image cap">
                             <div class="card-body d-flex justify-content-between">
                                 <h5 class="card-title">{{$work->title}}</h5>
                             </div>
-                            <form action="{{ route('work.delete',$work->id) }}" method='get'>
+                            <form action="{{ route('work.delete',$work->id) }}" method='get' class="mb-3">
                                 <button type="submit" class="btn btn-label-danger  mx-2">
                                     <span class="tf-icons bx bx-block"></span>&nbsp; حذف
                                 </button>
@@ -155,10 +155,10 @@
                         </div>
                     </div>
                 @endforeach
-                    
+
                 @else
                         <div class='text-center'>
-                                لم يتم رفع اعمال 
+                                لم يتم رفع اعمال
                 </div>
                 @endif
 

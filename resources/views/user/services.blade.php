@@ -41,8 +41,8 @@
                                                 <i class='bx bx-pen'></i>
                                                 @if($user->type==1)
                                                     مدير النظام
-                                                @elseif(Auth::user()->type==2)
-                                                    صاحب خدمة
+                                                @elseif($user->type==2)
+                                                    موفر خدمة
                                                 @else
                                                     مستخدم
 

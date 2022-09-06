@@ -156,7 +156,7 @@
                                             </div>
                                             @if($service->image)
 
-                                                <img class="img-fluid" src="{{ asset("{$service->path}$service->image ") }}" alt="Card image cap">
+                                                <img class="img-fluid h-px-200" src="{{ asset("{$service->path}$service->image ") }}" alt="Card image cap">
                                             @else
 
                                             <img class="img-fluid" src="../../assets/img/backgrounds/event.jpg" alt="Card image cap">
@@ -213,7 +213,7 @@
                         </div>
                     </div>
                 </div>
-                <nav aria-label="Page navigation my-5 mx-2 justify-content-center text-center">
+                <nav aria-label="Page navigation my-5 px-2 justify-content-center text-center">
 
                         {{ $services->links('pagination::bootstrap-5')   }}
 

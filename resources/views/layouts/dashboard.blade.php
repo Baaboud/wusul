@@ -106,7 +106,7 @@
 
             <div class="app-brand demo h-px-100 zindex-5">
                 <a href="{{ route('home') }}" class="app-brand-link w-100 d-flex justify-content-center flex-wrap">
-                    <img src="{{ asset('img/logo.png') }}" class="w-px-40 h-auto p-1" alt="" srcset="">
+                    <img src="{{ asset('img/herooo-img.png') }}" class="w-px-40 h-auto p-1" alt="" srcset="">
                     <span class="ms-1 fs-4 fw-bold text-white">وصول</span>
                 </a>
             </div>
@@ -139,7 +139,7 @@
                 </li>
 
                 <li class="menu-header text-uppercase text-white fs-6"><span class="menu-header-text">أدارة العمليات</span></li>
-                <li class="menu-item">
+                <li class="menu-item active">
                     <a href="#"
                        class="menu-link">
                         <i class="menu-icon tf-icons bx bx-money"></i>

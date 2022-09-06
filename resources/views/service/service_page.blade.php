@@ -157,7 +157,7 @@
                         <div class="swiper-container gallery-top">
                             <div class="swiper-wrapper">
                             @foreach ($service->works as $work )
-                                <div class="swiper-slide" style='background-image:url({{ asset("{$work->path}$work->image ") }});'></div>
+                                <div class="swiper-slide" style='background-image:url({{ asset("{$work->path}$work->image ") }});'><span class="bg-primary text-white py-1 px-3">{{ $work->title }}</span></div>
                             @endforeach
                             </div>
                             <!-- Add Arrows -->
@@ -167,7 +167,7 @@
                         <div class="swiper-container gallery-thumbs">
                             <div class="swiper-wrapper">
                                @foreach ($service->works as $work )
-                                <div class="swiper-slide" style='background-image:url({{ asset("{$service->works[0]->path}$service->image") }});background-size: cover !important;'></div>
+                                <div class="swiper-slide" style='background-image:url({{ asset("{$work->path}$work->image") }});background-size: cover !important;'></div>
                             @endforeach
                             </div>
                         </div>
