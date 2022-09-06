@@ -139,7 +139,7 @@
                 </li>
 
                 <li class="menu-header text-uppercase text-white fs-6"><span class="menu-header-text">أدارة العمليات</span></li>
-                <li class="menu-item active">
+                <li class="menu-item">
                     <a href="#"
                        class="menu-link">
                         <i class="menu-icon tf-icons bx bx-money"></i>
