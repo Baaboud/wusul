@@ -140,7 +140,7 @@
 
                 <li class="menu-header text-uppercase text-white fs-6"><span class="menu-header-text">أدارة العمليات</span></li>
                 <li class="menu-item">
-                    <a href="#"
+                    <a href="{{route('payments')}}"
                        class="menu-link">
                         <i class="menu-icon tf-icons bx bx-money"></i>
                         <div>أدارة الفواتير</div>
@@ -163,6 +163,13 @@
                 </li>
 
                 <li class="menu-header text-uppercase text-white fs-6"><span class="menu-header-text">أعدادات المنصة</span></li>
+                <li class="menu-item">
+                    <a href="{{route('wallet')}}"
+                       class="menu-link">
+                        <i class="menu-icon tf-icons bx bx-money"></i>
+                        <div>المحفظة</div>
+                    </a>
+                </li>
                 <li class="menu-item {{Request::url() === route('categories') ? 'active' : ''}}">
                     <a href="{{route('categories')}}"
                        class="menu-link">
@@ -222,7 +229,7 @@
                 <!-- Money -->
                 <li class="menu-header text-uppercase text-white fs-6"><span class="menu-header-text">أدارة العمليات</span></li>
                 <li class="menu-item">
-                    <a href="#"
+                    <a href="{{route('wallet')}}"
                        class="menu-link">
                         <i class="menu-icon tf-icons bx bx-money"></i>
                         <div>المحفظة</div>

@@ -18,8 +18,9 @@ return new class extends Migration
             $table->string('image')->nullable();
             $table->unsignedBigInteger('order_id');       
             $table->integer('code')->nullable();    
-            $table->boolean('checkPayment')->default(0);    
-            // $table->unsignedBigInteger('payment_type_id');
+            $table->boolean('checkPayment')->default(0)->nullable();   
+            $table->boolean('receipt')->default(0);    
+            $table->unsignedBigInteger('payment_type_id')->nullable();
             // $table->foreign('payment_type_id')->references('id')->on('payment_types')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });

@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\admin\ProfileController;
 use App\Models\User;
 use App\Models\Work;
 use App\Models\Order;
@@ -10,6 +9,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\site\SiteController;
 use App\Http\Controllers\site\OrderController;
 use App\Http\Controllers\admin\UsersController;
+use App\Http\Controllers\admin\PaymentController;
+use App\Http\Controllers\admin\ProfileController;
 use App\Http\Controllers\userServiceProvider\WorkController;
 use App\Http\Controllers\userServiceProvider\ServicesController;
 use App\Http\Controllers\userServiceProvider\ServiceProviderController;
@@ -41,10 +42,12 @@ Route::middleware(['auth'])->group(function () {
         Route::middleware(['checkType:serviceProvider'])->group(function () {
             Route::get('/services', [ProfileController::class, 'services'])->name('profile.service');
         });
-        Route::middleware(['checkType:user'])->group(function () {
+
             Route::get('/orders', [ProfileController::class, 'orders'])->name('profile.orders');
-            Route::get('/wallet', [ProfileController::class, 'wallet'])->name('profile.wallet');
-        });
+            
+            //wallet
+            Route::get('/wallet', [ProfileController::class, 'wallet'])->name('wallet');
+
         Route::get('/{id}', [ProfileController::class, 'show'])->name('profile.show');
         Route::get('/{id}/services', [ProfileController::class, 'showService'])->name('profile.service.show');
     });
@@ -71,6 +74,7 @@ Route::middleware(['auth'])->group(function () {
             Route::post('/orderConfirm', [OrderController::class, 'orderConfirm'])->name('order.orderConfirm');
             Route::post('/paymentCheck', [OrderController::class, 'paymentCheck'])->name('order.paymentCheck');
             Route::get('/', [OrderController::class, 'orders'])->name('orders');
+
 
         });
 
@@ -160,7 +164,10 @@ Route::group(['prefix' => 'serviceProvider',
         Route::get('/delete/{id}', [WorkController::class, 'destroy'])->name('work.delete');
     });
 
-
+    Route::group(['prefix' => 'order'], function () {
+        Route::post('/receiveOrder', [PaymentController::class, 'receiveOrder'])->name('order.receiveOrder');
+    });
+    
 
 });
 // // orders
