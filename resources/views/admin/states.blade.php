@@ -38,7 +38,7 @@
                                         </div>
                                     </div>
                                     <div class="mt-2 text-center">
-                                        <button type="submit" class="btn btn-primary me-2"> حفظ التعديل</button>
+                                        <button type="submit" class="btn btn-primary me-2"> حفظ</button>
                                         <button type="button" class="btn btn-label-secondary"
                                                 data-bs-dismiss="modal">إلغاء
                                         </button>
@@ -106,8 +106,11 @@
                         </tr>
                         @empty
                             <tr>
-                                <td colspan="6" class="text-center py-5 fs-5 text-danger">
-                                    لا يوجد نتائج
+                                <td colspan="10" class="text-center py-3 text-danger fs-4 position-relative">
+                                    <p class="text-center py-3 text-danger fs-4">
+                                        لا يوجد نتائج
+                                    </p>
+                                    <img src="{{ asset('img/noResultFound.png') }}" class="h-px-200 w-auto mx-auto">
                                 </td>
                             </tr>
                         @endforelse
@@ -137,7 +140,7 @@
                                         </div>
                                     </div>
                                     <div class="mt-2 text-center">
-                                        <button type="submit" class="btn btn-primary me-2"> حفظ التعديل</button>
+                                        <button type="submit" class="btn btn-primary me-2"> حفظ</button>
                                         <button type="button" class="btn btn-label-secondary"
                                                 data-bs-dismiss="modal">إلغاء
                                         </button>

@@ -10,7 +10,7 @@
                         <label for="selectpickerIcons" class="form-label fs-6 fw-bolder">بحث</label>
                         <div class="input-group input-group-merge">
                             <span class="input-group-text" id="basic-addon-search31"><i class="bx bx-search"></i></span>
-                            <input type="text" class="form-control form-control-lg" placeholder="ادخل اسم الخدمة او اسم موفر الخدمة" aria-label="Search" aria-describedby="basic-addon1" wire:model='search'>
+                            <input type="text" class="form-control form-control" placeholder="ادخل اسم الخدمة او اسم موفر الخدمة" aria-label="Search" aria-describedby="basic-addon1" wire:model='search'>
                             <span class="input-group-text btn btn-primary" id="basic-addon-search31"><i class="bx bx-search"></i></span>
                         </div>
                     </div>
@@ -79,29 +79,29 @@
                                     <tr>
 
                                         @if(Auth::user()->userServiceProvider())
-                                        <td>
+                                        <td onclick="window.location='{{ route('order.show',$order->id) }}';" class="cursor-pointer">
                                             <a href="{{route('order.show',$order->id)}}">
                                                 {{$loop->index+1 }}
                                             </a>
                                         </td>
-                                        <td>{{$order->user->name}}</td>
-                                        <td>{{$order->service->name}}</td>
-                                        <td><span class="badge bg-label-primary fs-6 me-1">{{$order->service->category->name}}</span></td>
+                                        <td onclick="window.location='{{ route('order.show',$order->id) }}';" class="cursor-pointer">{{$order->user->name}}</td>
+                                        <td onclick="window.location='{{ route('order.show',$order->id) }}';" class="cursor-pointer">{{$order->service->name}}</td>
+                                        <td onclick="window.location='{{ route('order.show',$order->id) }}';" class="cursor-pointer"><span class="badge bg-label-primary fs-6 me-1">{{$order->service->category->name}}</span></td>
                                         @else
-                                        <td>
+                                        <td onclick="window.location='{{ route('order.show',$order->id) }}';" class="cursor-pointer">
                                                 {{$loop->index+1 }}
                                         </td>
-                                        <td>{{$order->service->name}}</td>
-                                        <td><span class="badge bg-label-primary fs-6 me-1">{{$order->service->category->name}}</span></td>
-                                        <td>{{$order->service->user->name}}</td>
+                                        <td onclick="window.location='{{ route('order.show',$order->id) }}';" class="cursor-pointer">{{$order->service->name}}</td>
+                                        <td onclick="window.location='{{ route('order.show',$order->id) }}';" class="cursor-pointer"><span class="badge bg-label-primary fs-6 me-1">{{$order->service->category->name}}</span></td>
+                                        <td onclick="window.location='{{ route('order.show',$order->id) }}';" class="cursor-pointer">{{$order->service->user->name}}</td>
                                         @if(Auth::user()->admin())
-                                        <td>{{$order->user->name}}</td>
+                                        <td onclick="window.location='{{ route('order.show',$order->id) }}';" class="cursor-pointer">{{$order->user->name}}</td>
                                         @endif
                                         @endif
 
-                                        <td>{{\Carbon\Carbon::parse($order->created_at)->diffForHumans()}}</td>
-                                        <td>{{\Carbon\Carbon::parse($order->date)->diffForHumans()}}</td>
-                                        <td>
+                                        <td onclick="window.location='{{ route('order.show',$order->id) }}';" class="cursor-pointer">{{\Carbon\Carbon::parse($order->created_at)->diffForHumans()}}</td>
+                                        <td onclick="window.location='{{ route('order.show',$order->id) }}';" class="cursor-pointer">{{\Carbon\Carbon::parse($order->date)->diffForHumans()}}</td>
+                                        <td onclick="window.location='{{ route('order.show',$order->id) }}';" class="cursor-pointer">
                                             <span class="badge bg-{{ $type[1][(int)$order->status-1] }} fs-6">{{ $type[0][(int)$order->status -1] }}</span>
                                         </td>
                                         <td>

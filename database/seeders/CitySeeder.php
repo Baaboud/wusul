@@ -36,6 +36,27 @@ class CitySeeder extends Seeder
                 'state_id' => 3
                 ,'is_active'=>1
             ],
+            [
+                'name' => 'سيئون',
+                'state_id' => 1
+                ,'is_active'=>1
+            ],[
+                'name' => ' غيل باوزير ',
+                'state_id' => 1
+                ,'is_active'=>1
+            ],[
+                'name' => ' كريتر ',
+                'state_id' => 3
+                ,'is_active'=>1
+            ],[
+                'name' => ' تريم ',
+                'state_id' => 1
+                ,'is_active'=>1
+            ],[
+                'name' => ' حوف ',
+                'state_id' => 2
+                ,'is_active'=>1
+            ],
         ];
         City::insert($cities);
     }

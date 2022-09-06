@@ -15,6 +15,7 @@
         <div class="card position-relative">
             <h5 class="card-header fs-4 fw-bolder">التحويلات المالية</h5>
 
+
             <div class="table-responsive text-nowrap">
                 <table class="table table-hover mb-5">
                     <thead>

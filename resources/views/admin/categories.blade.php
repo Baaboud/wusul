@@ -42,7 +42,7 @@
 
                                     </div>
                                     <div class="mt-2">
-                                        <button type="submit" class="btn btn-primary me-2"> حفظ التعديل</button>
+                                        <button type="submit" class="btn btn-primary me-2"> حفظ</button>
                                         <button type="button" class="btn btn-label-secondary"
                                                 data-bs-dismiss="modal">إلغاء
                                         </button>
@@ -89,8 +89,13 @@
                                         </td>
                                     </tr>
                                 @empty
-                                    <tr style='text-align: center;'>
-                                        لا يوجد اصناف
+                                    <tr>
+                                        <td colspan="10" class="text-center py-3 text-danger fs-4 position-relative">
+                                            <p class="text-center py-3 text-danger fs-4">
+                                                لا يوجد مجالات
+                                            </p>
+                                            <img src="{{ asset('img/noResultFound.png') }}" class="h-px-200 w-auto mx-auto">
+                                        </td>
                                     </tr>
                                 @endforelse
                                 </tbody>
@@ -126,7 +131,7 @@
 
                                                 </div>
                                                 <div class="mt-2">
-                                                    <button type="submit" class="btn btn-primary me-2"> حفظ التعديل</button>
+                                                    <button type="submit" class="btn btn-primary me-2"> حفظ</button>
                                                     <button type="button" class="btn btn-label-secondary"
                                                             data-bs-dismiss="modal">إلغاء
                                                     </button>

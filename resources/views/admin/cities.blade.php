@@ -44,7 +44,6 @@
                                             <select class="selectpicker w-100 show-tick" id="selectpickerBasic"
                                                     data-icon-base="bx"
                                                     data-tick-icon="bx-check" name='state' data-style="btn-default">
-                                                <option value=0>الكل</option>
                                                 @forelse($states as $state )
                                                     <option value="{{$state->id}}">{{$state->name}}</option>
                                                 @empty
@@ -57,7 +56,7 @@
 
                                     </div>
                                     <div class="mt-2 text-center">
-                                        <button type="submit" class="btn btn-primary me-2"> حفظ التعديل</button>
+                                        <button type="submit" class="btn btn-primary me-2"> حفظ</button>
                                         <button type="button" class="btn btn-label-secondary"
                                                 data-bs-dismiss="modal">إلغاء
                                         </button>
@@ -127,8 +126,11 @@
                             </tr>
                         @empty
                             <tr>
-                                <td colspan="6" class="text-center py-5 fs-5 text-danger">
-                                    لا يوجد نتائج
+                                <td colspan="10" class="text-center py-3 text-danger fs-4 position-relative">
+                                    <p class="text-center py-3 text-danger fs-4">
+                                        لا يوجد نتائج
+                                    </p>
+                                    <img src="{{ asset('img/noResultFound.png') }}" class="h-px-200 w-auto mx-auto">
                                 </td>
                             </tr>
                         @endforelse
@@ -156,10 +158,9 @@
                                             </div>
                                             <div class="mb-3 col">
                                                 <label for="selectpickerBasic" class="form-label fs-5 fw-bolder">المحافظة</label>
-                                                <select class=" w-100 show-tick" id="selectpickerBasic"
+                                                <select class="selectpicker w-100 show-tick" id="selectpickerBasic"
                                                         data-icon-base="bx"
                                                         data-tick-icon="bx-check" name='state' data-style="btn-default">
-                                                    <option value=0>الكل</option>
                                                     @forelse($states as $state )
                                                         <option value="{{$state->id}}">{{$state->name}}</option>
                                                     @empty

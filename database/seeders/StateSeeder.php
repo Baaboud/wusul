@@ -19,6 +19,18 @@ class StateSeeder extends Seeder
             ['name' => ' حضرموت','is_active'=>1],
             ['name' => ' المهره','is_active'=>1],
             ['name' => ' عدن','is_active'=>1],
+            ['name' => ' ذمار','is_active'=>1],
+            ['name' => ' مأرب','is_active'=>1],
+            ['name' => ' إب ','is_active'=>1],
+            ['name' => ' صنعاء','is_active'=>1],
+            ['name' => ' تعز','is_active'=>1],
+            ['name' => ' شبوة','is_active'=>1],
+            ['name' => ' صعدة','is_active'=>1],
+            ['name' => ' الحديدة','is_active'=>1],
+            ['name' => ' أمانة العاصمة','is_active'=>1],
+            ['name' => ' البيضاء','is_active'=>1],
+            
+            
         ];
         State::insert($governorates);
     }

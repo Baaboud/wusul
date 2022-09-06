@@ -112,7 +112,7 @@
                     <div class="navbar-nav align-items-center text-nowrap">
                         <a href="{{ route('index') }}">
                             <span class="ms-1 fs-4 fw-bold text-dark">وصول</span>
-                            <img src="{{ asset('img/logo.png') }}" class="w-px-40 h-auto p-1" alt="" srcset="">
+                            <img src="{{ asset('img/herooo-img.png') }}" class="w-px-40 h-auto p-1" alt="" srcset="">
                         </a>
                     </div>
                     <!-- /Logo -->
@@ -456,6 +456,14 @@
                                     <div class="dropdown-divider"></div>
                                 </li>
                                 <li>
+                                    @if(Auth::user()->type != 0)
+                                    <a class="dropdown-item" href="{{ route('home') }}">
+                                        <i class="bx bx-home-circle me-2"></i>
+                                        <span class="align-middle">لوحة التحكم</span>
+                                    </a>
+                                    @endif
+                                </li>
+                                <li>
                                     <a class="dropdown-item" href="{{ route('profile') }}">
                                         <i class="bx bx-user me-2"></i>
                                         <span class="align-middle">ملفي الشخصي</span>
@@ -569,7 +577,7 @@
                             <div class="col-12 col-sm-12 col-md-6 mb-4 mb-sm-5">
                                 <h4 class="fw-bolder mb-3 ps-5 ms-5"><a href="" target="_blank" class="footer-text">منصة وصول للخدمات</a></h4>
                                 <div class=" px-5 mx-5">
-                                    <img src="{{ asset('assets/img/logo.png') }}" class="mx-3" alt="">
+                                    <img src="{{ asset('img/herooo-img.png') }}" class="mx-3 h-px-100" alt="">
                                 </div>
 
                                 <p class="text-light mt-4 px-5 mx-5">
@@ -603,7 +611,6 @@
                                 </ul>
                                 <h5 class="footer-text px-sm-0 ps-md-0 ms-md-0 ps-5 ms-5">متابعتنا</h5>
                                 <div class="social-icon my-3 ps-md-0 ms-md-0 ps-5 ms-5">
-                                    <a href="#"><i class="fa fa-facebook"></i></a>
                                     <a href="javascript:void(0)" class="btn btn-icon btn-sm text-white me-2"><i class="bx bxl-facebook"></i></a>
                                     <a href="javascript:void(0)" class="btn btn-icon btn-sm text-white me-2"><i class="bx bxl-twitter"></i></a>
                                     <a href="javascript:void(0)" class="btn btn-icon btn-sm text-white me-2"><i class="bx bxl-linkedin"></i></a>

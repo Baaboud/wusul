@@ -16,7 +16,8 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Bavix\Wallet\Traits\HasWallet;
 use Bavix\Wallet\Interfaces\Wallet;
 
-class User extends Authenticatable implements Wallet , MustVerifyEmail
+class User extends Authenticatable implements Wallet
+//    , MustVerifyEmail
 {
     use HasApiTokens, HasFactory, Notifiable , HasWallet;
 

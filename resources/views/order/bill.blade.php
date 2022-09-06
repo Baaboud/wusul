@@ -32,6 +32,7 @@
                             <div class="mb-2">
                                 <span class="me-1">تاريخ الأصدار:</span>
                                 <span class="fw-semibold">{{\Carbon\Carbon::parse($order->created_at)->diffForHumans()}}</span>
+
                             </div>
                             @if($order->status > 1)
                             <div>
@@ -51,6 +52,7 @@
                             @endif
                         </div>
                     </div>
+
                 </div>
                 <hr class="my-0">
                 <div class="card-body my-0 py-0">
@@ -134,6 +136,7 @@
                                 </div>
                                 @endif
                                 {{-- <button class="btn btn-label-primary d-grid w-100" data-bs-toggle="offcanvas"
+
                                             data-bs-target="#addPaymentOffcanvas">
                                         <span class="d-flex justify-content-center fs-5"><i
                                                 class="bx bxs-download bx-xs me-3 fs-5 my-auto"></i>تنزيل الملفات</span>
@@ -229,8 +232,8 @@
         </div>
         <!-- /Invoice Actions -->
     </div>
-</div>
 @if($order->status==2 && $order->service->type==1)
+
 
 <div class="modal fade" id="pay" tabindex="-1" aria-hidden="true" style="display: none;">
     <div class="modal-dialog modal-dialog-centered" role="document">

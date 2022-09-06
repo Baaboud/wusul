@@ -78,6 +78,7 @@
                                         <tbody class="table-border-bottom-0">
                                             @forelse($services as $service)
                                             <tr>
+
                                                 <td>{{$loop->index+1 }}</td>
                                                 <td>{{$service->name}}</td>
                                                 <td><span class="badge bg-label-primary fs-6 me-1">{{$service->category->name}}</span></td>
@@ -85,9 +86,11 @@
                                                 <td>
                                                     {{$service->type?'رقمي':'عند التسليم'}}
                                                 </td>
+
                                                 @else
                                                 <td>{{$service->user->name}}</td>
                                                 @endif
+
                                                 <td>{{\Carbon\Carbon::parse($service->created_at)->diffForHumans()}}</td>
                                                 <td>
                                                     @if($service->is_active)
@@ -192,9 +195,12 @@
                                             </div>
                                         </div>
                                     </div>
-                                    @empty
-
-                                    @endforelse
+                                @empty
+                                        <p class="text-center py-3 text-danger fs-4">
+                                            لا يوجد نتائج
+                                        </p>
+                                        <img src="{{ asset('img/noResultFound.png') }}" class="h-px-200 w-auto mx-auto">
+                                @endforelse
                                 </div>
                             </div>
                         </div>
