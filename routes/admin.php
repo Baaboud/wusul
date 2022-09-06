@@ -6,6 +6,7 @@ use App\Http\Controllers\admin\adminController;
 use App\Http\Controllers\admin\ServiceCategory;
 use App\Http\Controllers\admin\stateController;
 use App\Http\Controllers\admin\UsersController;
+use App\Http\Controllers\admin\PaymentController;
 use App\Http\Controllers\userServiceProvider\ServicesController;
 
 // admin
@@ -63,6 +64,13 @@ use App\Http\Controllers\userServiceProvider\ServicesController;
         });
 
 
+
+
+        Route::group(['prefix' => 'payments'], function () {
+            Route::get('/', [PaymentController::class, 'index'])->name('payments');
+            Route::post('/paymentCheck', [PaymentController::class, 'paymentCheck'])->name('payments.paymentCheck');
+        
+        });
 
 
         // //crud advertisement

@@ -49,11 +49,41 @@ class ProfileController extends Controller
 
     public function wallet(){
         try {
-            $user = User::with('profile','address')->findOrFail(Auth::id());
-            return view('user.wallet', compact('user'));
+        
+                $user   = User::find(Auth::id());
+        
+                $wallet = $user->wallet;
+        
+                $transactions = $wallet->transactions;
+        
+                $pull = 0;
+        
+                $deposition = 0;
+        
+                //clc recipient and sender
+                foreach ($transactions as $transaction) {
+        
+                    if ($transaction->type == 'deposit'){
+
+                        $deposition += $transaction->amount;
+                    }
+                    else{
+
+                        $pull += $transaction->amount;
+                    }
+                }
+                // return $transactions[2]->meta['payment'];
+                // return [
+                //     'wallet'=>$wallet,
+                //     'recipient'=>$pull,
+                //     'sender'=>$deposition
+                // ];
+                // return view('wallat.index', compact('wallet', 'recipient', 'sender', 'transactions'));
+            // $user = User::with('profile','address')->findOrFail(Auth::id());
+            return view('user.wallet', compact('user','wallet', 'pull', 'deposition', 'transactions'));
 
         } catch (\Throwable $th) {
-            // return $th->getMessage();
+            return $th->getMessage();
             return redirect()->back()->with(['error' => 'حدث خطا ما برجاء المحاوله لاحقا']);
         }
     }
