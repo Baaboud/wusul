@@ -36,7 +36,7 @@ public function user()
 // user services rating
 public function rating()
 {
-    return $this->belongsToMany(User::class, 'service_rating');
+    return $this->belongsToMany(User::class, 'service_rating')->withPivot('stars');
 }
 
 

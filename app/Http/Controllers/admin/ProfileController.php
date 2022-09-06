@@ -72,14 +72,7 @@ class ProfileController extends Controller
                         $pull += $transaction->amount;
                     }
                 }
-                // return $transactions[2]->meta['payment'];
-                // return [
-                //     'wallet'=>$wallet,
-                //     'recipient'=>$pull,
-                //     'sender'=>$deposition
-                // ];
-                // return view('wallat.index', compact('wallet', 'recipient', 'sender', 'transactions'));
-            // $user = User::with('profile','address')->findOrFail(Auth::id());
+
             return view('user.wallet', compact('user','wallet', 'pull', 'deposition', 'transactions'));
 
         } catch (\Throwable $th) {
