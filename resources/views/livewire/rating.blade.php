@@ -1,5 +1,6 @@
 <div>
-    <button type="button" class="btn btn-primary d-grid w-100" data-bs-toggle="modal" data-bs-target="#editeCategory1" onclick="edit({{$order}})">
+    <button type="button" class="btn btn-primary d-grid w-100" data-bs-toggle="modal" 
+    data-bs-target="#editeCategory1" >
         <span class="d-flex align-items-center justify-content-center text-nowrap"></span>&nbsp; تقييم الخدمة
     </button>
     <div class="modal fade" id="editeCategory1" tabindex="-1" aria-hidden="true" style="display: none;">
