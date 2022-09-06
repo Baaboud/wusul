@@ -106,7 +106,7 @@
 
             <div class="app-brand demo h-px-100 zindex-5">
                 <a href="{{ route('home') }}" class="app-brand-link w-100 d-flex justify-content-center flex-wrap">
-                    <img src="{{ asset('img/logo.png') }}" class="w-px-40 h-auto p-1" alt="" srcset="">
+                    <img src="{{ asset('img/herooo-img.png') }}" class="w-px-40 h-auto p-1" alt="" srcset="">
                     <span class="ms-1 fs-4 fw-bold text-white">وصول</span>
                 </a>
             </div>

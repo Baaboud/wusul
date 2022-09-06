@@ -3,10 +3,25 @@
         <div class="container-xxl flex-grow-1 container-p-y pt-0 px-sm-2 px-0">
             <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">لوحة التحكم / </span>الخدمات
             </h4>
+            <!-- Navbar pills -->
+            <div class="row">
+                <div class="col-md-12">
+                    <ul class="nav nav-pills flex-column flex-sm-row mb-4">
+                        @if(Auth::user()->type == 0 && Auth::id() == Auth::user()->id)
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('profile') }}"><i class='bx bx-user'></i> البيانات الشخصية</a>
+                            </li>
+                            <li class="nav-item"><a class="nav-link active" href="#"><i class='bx bx-grid-alt'></i> الطلبات</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{{ route('profile.wallet') }}"><i class='bx bx-wallet'></i> المحفظة</a></li>
+                        @endif
+                    </ul>
+                </div>
+            </div>
+            <!--/ Navbar pills -->
             <div class="card">
                 <h5 class="card-header fs-4 fw-bolder">الطلبات</h5>
                 <div class="row d-sm-inline-flex mx-2">
-                    <div class="col-lg-3 col-sm-6 mb-4">
+                    <div class="col-lg-4 col-sm-6 mb-4">
                         <label for="selectpickerIcons" class="form-label fs-6 fw-bolder">بحث</label>
                         <div class="input-group input-group-merge">
                             <span class="input-group-text" id="basic-addon-search31"><i class="bx bx-search"></i></span>
@@ -14,7 +29,7 @@
                             <span class="input-group-text btn btn-primary" id="basic-addon-search31"><i class="bx bx-search"></i></span>
                         </div>
                     </div>
-                    <div class="col-lg-3 col-sm-6 mb-3">
+                    <div class="col-lg-2 col-sm-6 mb-3">
                         <label for="selectpickerIcons" class="form-label fs-6 fw-bolder">نوع الخدمة</label>
                         <select class="form-select w-100 " wire:model='category'>
                             <option data-icon="bx bx-list-check" value='0'>الكل</option>

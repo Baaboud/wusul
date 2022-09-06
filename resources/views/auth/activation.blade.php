@@ -10,9 +10,10 @@
                     <span class="app-brand-text demo text-body fw-bolder">منصة وصول</span>
                 </a>
             </div>
-            <h3 class="mb-5 text-center">حساب غير نشط ✉️</h3>
-            <p class="text-start">
-                تم ايقاف تفعيل حسابك<br> يرجى التواصل مع ادارة المنصة لتفعيل حسابك
+            <h3 class="mb-3 text-center">حساب محظور
+                <span class="bx bx-block fs-1 text-danger"></span></h3>
+            <p class="text-center fs-6">
+                تم حظر حسابك<br> يرجى التواصل مع ادارة المنصة لتفعيل حسابك
             </p>
         </div>
     </div>

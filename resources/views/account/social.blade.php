@@ -49,35 +49,35 @@
                     <div class="col-md-8 card-body demo-vertical-spacing demo-only-element">
                         <form method="POST" action="{{route('account_updateSocial')}}">
                             @csrf
-                            <div class="input-group">
+                            <div class="input-group mt-3">
                                 <label class="form-label fs-6" for="facebook">فيس بوك</label>
                                 <div class="input-group">
                                     <span class="input-group-text"><i class="bx bxl-facebook me-1"></i></span>
-                                    <input type="text" name="facebook" id="facebook" class="form-control" placeholder="www.facebook.com" value="{{ $social->facebook ?? '' }}">
+                                    <input type="text" name="facebook" id="facebook" class="form-control" placeholder="www.facebook.com/example" value="{{ $social->facebook ?? '' }}">
                                 </div>
                             </div>
 
-                            <div class="input-group">
-                                <label class="form-label fs-6" for="facebook">فيس بوك</label>
+                            <div class="input-group mt-3">
+                                <label class="form-label fs-6" for="facebook">تويتر</label>
                                 <div class="input-group">
                                     <span class="input-group-text"><i class="bx bxl-twitter me-1"></i></span>
-                                    <input type="text" name="twitter" id="facebook" class="form-control" placeholder="www.facebook.com" value="{{ $social->twitter ?? '' }}">
+                                    <input type="text" name="twitter" id="facebook" class="form-control" placeholder="www.twitter.com/example" value="{{ $social->twitter ?? '' }}">
                                 </div>
                             </div>
 
-                            <div class="input-group">
-                                <label class="form-label fs-6" for="facebook">فيس بوك</label>
+                            <div class="input-group mt-3">
+                                <label class="form-label fs-6" for="facebook">انستاقرام</label>
                                 <div class="input-group">
                                     <span class="input-group-text"><i class="bx bxl-instagram me-1"></i></span>
-                                    <input type="text" name="instagram" id="facebook" class="form-control" placeholder="www.facebook.com" value="{{ $social->instagram ?? '' }}">
+                                    <input type="text" name="instagram" id="facebook" class="form-control" placeholder="www.instagram.com/example" value="{{ $social->instagram ?? '' }}">
                                 </div>
                             </div>
 
-                            <div class="input-group">
-                                <label class="form-label fs-6" for="facebook">فيس بوك</label>
+                            <div class="input-group mt-3">
+                                <label class="form-label fs-6" for="facebook">لينكيد ان</label>
                                 <div class="input-group">
                                     <span class="input-group-text"><i class="bx bxl-linkedin me-1"></i></span>
-                                    <input type="text" name="linkedin" id="facebook" class="form-control" placeholder="www.facebook.com" value="{{ $social->linkedin ?? '' }}">
+                                    <input type="text" name="linkedin" id="facebook" class="form-control" placeholder="www.linkedin.com/example" value="{{ $social->linkedin ?? '' }}">
                                 </div>
                             </div>
 

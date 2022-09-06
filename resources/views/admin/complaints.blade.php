@@ -79,6 +79,8 @@
                             <th>أسم المستخدم</th>
                             <th>نوع المستخدم</th>
                             <th>تاريخ التسجيل</th>
+                            <th>الحالة</th>
+                            <th>عمليات</th>
                         </tr>
                         </thead>
                         <tbody class="table-border-bottom-0">
@@ -87,6 +89,14 @@
                             <td>عبدالهادي ديان</td>
                             <td><span class="badge bg-label-primary fs-6 pb-3">موفر خدمة</span></td>
                             <td>2022-05-12</td>
+                            <td><span class="badge bg-success fs-6 pb-3 me-1">جديد</span></td>
+                            <td class="d-flex">
+                                <a href="http://127.0.0.1:8000">
+                                    <button type="button" class="btn btn-label-primary confirm">
+                                        <span class=""></span>&nbsp; عرض
+                                    </button>
+                                </a>
+                            </td>
                         </tr>
                         </tbody>
                     </table>
