@@ -29,54 +29,54 @@
             <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">لوحة التحكم / </span>الشكاوي
             </h4>
 
-            <div class="row">
-                <div class="col-lg-3 col-sm-6 mb-4">
-                    <label for="selectpickerIcons" class="form-label fs-6 fw-bolder">بحث</label>
-                    <div class="input-group input-group-merge">
-                        <span class="input-group-text" id="basic-addon-search31"><i class="bx bx-search"></i></span>
-                        <input type="text" class="form-control" placeholder="بحث..." aria-label="Search..." aria-describedby="basic-addon-search31">
-                        <span class="input-group-text btn btn-primary" id="basic-addon-search31"><i class="bx bx-search"></i></span>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-sm-6 mb-3">
-                    <label for="selectpickerIcons" class="form-label fs-6 fw-bolder">ترتيب حسب</label>
-                    <select class="selectpicker w-100 show-tick" id="selectpickerIcons" data-icon-base="bx"
-                            data-tick-icon="bx-check" data-style="btn-default">
-                        <option data-icon="bx bx-rename">الاسم</option>
-                        <option data-icon="bx bxs-watch">تاريخ التسجيل</option>
-                        <option data-icon="bx bx-cart">عدد الطلبات</option>
-                        <option data-icon="bx bx-star">اجمالي التقييمات</option>
-                    </select>
-                </div>
-                <div class="col-lg-3 col-sm-6 mb-3">
-                    <label for="selectpickerIcons" class="form-label fs-6 fw-bolder">المجال</label>
-                    <select class="selectpicker w-100 show-tick" id="selectpickerIcons" data-icon-base="bx"
-                            data-tick-icon="bx-check" data-style="btn-default">
-                        <option data-icon="bx bx-list-check">الكل</option>
-                        <option data-icon="bx bx-user">كهرباء</option>
-                        <option data-icon="bx bx-user-pin">تقنية</option>
-                        <option data-icon="bx bxs-user-account">صحة</option>
-                    </select>
-                </div>
-                <div class="col-lg-3 col-sm-6 mb-3">
-                    <label for="selectpickerIcons" class="form-label fs-6 fw-bolder">الحالة</label>
-                    <select class="selectpicker w-100 show-tick" id="selectpickerIcons" data-icon-base="bx"
-                            data-tick-icon="bx-check" data-style="btn-default">
-                        <option data-icon="bx bx-list-check">الكل</option>
-                        <option data-icon="bx bx-check">مقبول</option>
-                        <option data-icon="bx bx-block">مرفوض</option>
-                    </select>
-                </div>
-            </div>
             <div class="card position-relative">
                 <h5 class="card-header fs-4 fw-bolder">الشكاوي</h5>
 
+                <div class="row mx-2">
+                    <div class="col-lg-3 col-sm-6 mb-4">
+                        <label for="selectpickerIcons" class="form-label fs-6 fw-bolder">بحث</label>
+                        <div class="input-group input-group-merge">
+                            <span class="input-group-text" id="basic-addon-search31"><i class="bx bx-search"></i></span>
+                            <input type="text" class="form-control" placeholder="بحث..." aria-label="Search..." aria-describedby="basic-addon-search31">
+                            <span class="input-group-text btn btn-primary" id="basic-addon-search31"><i class="bx bx-search"></i></span>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6 mb-3">
+                        <label for="selectpickerIcons" class="form-label fs-6 fw-bolder">ترتيب حسب</label>
+                        <select class="selectpicker w-100 show-tick" id="selectpickerIcons" data-icon-base="bx"
+                                data-tick-icon="bx-check" data-style="btn-default">
+                            <option data-icon="bx bx-rename">الاسم</option>
+                            <option data-icon="bx bxs-watch">تاريخ التسجيل</option>
+                            <option data-icon="bx bx-cart">عدد الطلبات</option>
+                            <option data-icon="bx bx-star">اجمالي التقييمات</option>
+                        </select>
+                    </div>
+                    <div class="col-lg-3 col-sm-6 mb-3">
+                        <label for="selectpickerIcons" class="form-label fs-6 fw-bolder">المجال</label>
+                        <select class="selectpicker w-100 show-tick" id="selectpickerIcons" data-icon-base="bx"
+                                data-tick-icon="bx-check" data-style="btn-default">
+                            <option data-icon="bx bx-list-check">الكل</option>
+                            <option data-icon="bx bx-user">كهرباء</option>
+                            <option data-icon="bx bx-user-pin">تقنية</option>
+                            <option data-icon="bx bxs-user-account">صحة</option>
+                        </select>
+                    </div>
+                    <div class="col-lg-3 col-sm-6 mb-3">
+                        <label for="selectpickerIcons" class="form-label fs-6 fw-bolder">الحالة</label>
+                        <select class="selectpicker w-100 show-tick" id="selectpickerIcons" data-icon-base="bx"
+                                data-tick-icon="bx-check" data-style="btn-default">
+                            <option data-icon="bx bx-list-check">الكل</option>
+                            <option data-icon="bx bx-check">مقبول</option>
+                            <option data-icon="bx bx-block">مرفوض</option>
+                        </select>
+                    </div>
+                </div>
                 <div class="table-responsive text-nowrap">
                     <table class="table table-hover mb-5">
                         <thead>
                         <tr>
                             <th>#</th>
-                            <th>أسم المبلغ</th>
+                            <th>أسم المستخدم</th>
                             <th>نوع المستخدم</th>
                             <th>تاريخ التسجيل</th>
                         </tr>

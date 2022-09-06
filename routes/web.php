@@ -128,7 +128,7 @@ Route::get('/services', [SiteController::class, 'services'])->name('services');
 Route::get('/service/{id}', [SiteController::class, 'service'])->name('service.details');
 
 Route::get('/l/l', function () {
-    return view('admin.payment');
+    return view('admin.complaints');
 })->name('test');
 
 // start routes of user that provide service

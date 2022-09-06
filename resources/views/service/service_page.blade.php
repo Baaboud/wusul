@@ -23,7 +23,13 @@
                     <div class="card-header flex-grow-0">
                         <div class="d-flex">
                             <div class="avatar flex-shrink-0 me-3">
-                                <img src="http://127.0.0.1:8000/assets/img/avatars/1.png" alt="User" class="rounded-circle">
+                                @if($service->user->profile->image)
+                                    <img src="{{asset('assets/images/users/'.$service->user->profile->image)}}" alt="" class="w-px-40 h-100 rounded-circle">
+
+                                @else
+
+                                    <img src="{{ asset('img/user1.png') }}" alt="User" class="rounded-circle">
+                                @endif
                             </div>
                             <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-1">
                                 <a href="{{ route('profile.show',$service->user->id) }}" target="_blank" class="me-2">

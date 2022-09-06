@@ -456,6 +456,14 @@
                                     <div class="dropdown-divider"></div>
                                 </li>
                                 <li>
+                                    @if(Auth::user()->type != 0)
+                                    <a class="dropdown-item" href="{{ route('home') }}">
+                                        <i class="bx bx-home-circle me-2"></i>
+                                        <span class="align-middle">لوحة التحكم</span>
+                                    </a>
+                                    @endif
+                                </li>
+                                <li>
                                     <a class="dropdown-item" href="{{ route('profile') }}">
                                         <i class="bx bx-user me-2"></i>
                                         <span class="align-middle">ملفي الشخصي</span>

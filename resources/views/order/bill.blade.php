@@ -20,7 +20,7 @@
                             <div class="mb-xl-0 mb-4">
                                 <div class="d-flex svg-illustration mb-3 gap-2">
                                   <span class="app-brand-logo demo">
-                                      <img src="{{ asset('img/logo.png') }}" class="w-px-40 h-auto p-1" alt=""
+                                      <img src="{{ asset('img/herooo-img.png') }}" class="w-px-40 h-auto p-1" alt=""
                                            srcset="">
                                   </span>
                                     <span class="app-brand-text demo text-body fw-bolder">منصة وصول</span>
@@ -66,11 +66,11 @@
                                 </div>
                                 <div>
                                     <span class="me-1">المحافظة:</span>
-                                    <span class="fw-semibold">{{$order->service->address->state->name}}</span>
+                                    <span class="fw-semibold">{{$order->service->address->state->name??''}}</span>
                                 </div>
                                 <div>
                                     <span class="me-1">المدينة:</span>
-                                    <span class="fw-semibold">{{$order->service->address->city->name}}</span>
+                                    <span class="fw-semibold">{{$order->service->address->city->name??''}}</span>
                                 </div>
                             </div>
                             <div class="my-xl-0 my-md-3 my-sm-0 my-3">
@@ -126,8 +126,8 @@
                     @if(count($images))
                     <div class="d-flex align-items-center mx-4 mb-3">
                             @foreach ($images as $image )
-                        <a href="{{ asset("{$order->path}$image") }}" class="d-flex align-items-center">
-                                <img src='{{ asset("{$order->path}$image") }}' alt="Avatar" style='width: 100%' class="rounded-circle">
+                        <a href="{{ asset("{$order->path}$image") }}" target="_blank" class="d-flex align-items-center">
+                                <img src='{{ asset("{$order->path}$image") }}' alt="Avatar" style='width: 100%' class="">
                         </a>
                             @endforeach
                     </div>
@@ -186,7 +186,7 @@
                         @endif
                     </div>
                     @if($order->status > 1)
-                        
+
                     <div class="">
                         <div class="text-center px-4 py-3 d-flex justify-content-center border-top border-bottom">
                             <p class="mb-0 fs-4 me-3">اجمالي المبلغ:</p>
@@ -195,7 +195,7 @@
                     </div>
                     @endif
                 </div>
-            @if(Auth::id() == $order->service->user->id && $order->status==1 ) 
+            @if(Auth::id() == $order->service->user->id && $order->status==1 )
                 <div class="card position-sticky" style="top: 90px">
                     <div class="">
                         <div class="text-center px-4 py-3 d-flex justify-content-center border-top border-bottom">
@@ -235,7 +235,7 @@
         </div>
     </div>
     @if($order->status==2 && $order->service->type==1)
-        
+
     <div class="modal fade" id="pay" tabindex="-1" aria-hidden="true" style="display: none;">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">

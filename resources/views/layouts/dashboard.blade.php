@@ -228,13 +228,6 @@
                         <div>المحفظة</div>
                     </a>
                 </li>
-                <li class="menu-item">
-                    <a href="#"
-                       class="menu-link">
-                        <i class="menu-icon tf-icons bx bxs-report"></i>
-                        <div>البلاغات</div>
-                    </a>
-                </li>
                 @endif
             </ul>
         </aside>
@@ -343,7 +336,7 @@
                                 <li class="nav-item dropdown-notifications navbar-dropdown dropdown me-3 me-xl-1">
                                     <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
                                         <i class="bx bx-bell bx-sm"></i>
-                                        <span class="badge bg-danger rounded-pill badge-notifications">5</span>
+{{--                                        <span class="badge bg-danger rounded-pill badge-notifications">5</span>--}}
                                     </a>
                                     <ul class="dropdown-menu py-0">
                                         <li class="dropdown-menu-header border-bottom">
