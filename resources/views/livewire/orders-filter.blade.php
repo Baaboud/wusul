@@ -28,8 +28,9 @@
                     <div class="col-lg-3 col-sm-6 mb-3">
                         <label for="selectpickerIcons" class="form-label fs-6 fw-bolder">ترتيب حسب</label>
                         <select class="form-select w-100 show-tick" id="selectpickerIcons" data-icon-base="bx" data-tick-icon="bx-check" data-style="btn-default" wire:model='sortFile'>
-                            <option data-icon="bx bx-rename" value='name'>الاسم</option>
+                            <option data-icon="bx bx-rename" value='id'>رقم الطلب</option>
                             <option data-icon="bx bxs-watch" value='created_at'>تاريخ التسجيل</option>
+                            <option data-icon="bx bxs-watch" value='date'>تاريخ التسليم</option>
                         </select>
                     </div>
                     <div class="col-lg-3 col-sm-6 mb-3">
@@ -41,8 +42,8 @@
                             <option value='3' data-icon="bx bx-check">مكتمل</option>
                             <option value='4' data-icon="bx bx-stop">تم الغاءه</option>
                             <option value='5' data-icon="bx bx-block">مرفوض</option>
-                            <option value='6' data-icon="bx bx-block">انتظار التأكيد</option>
-
+                            <option value='6' data-icon="bx bx-block">انتظار تاكيد الدفع</option>
+                            <option value='7' data-icon="bx bx-block">انتظار تاكيد الاستلام</option>
                         </select>
                     </div>
                 </div>
@@ -70,6 +71,7 @@
                                         <th>تاريخ الطلب</th>
                                         <th>تاريخ التسليم المتوقع</th>
                                         <th>الحالة</th>
+                                        <th>عمليات</th>
                                     </tr>
                                 </thead>
                                 <tbody class="table-border-bottom-0">
@@ -87,9 +89,7 @@
                                         <td><span class="badge bg-label-primary fs-6 me-1">{{$order->service->category->name}}</span></td>
                                         @else
                                         <td>
-                                            <a href="{{route('order.show',$order->id)}}">
                                                 {{$loop->index+1 }}
-                                            </a>
                                         </td>
                                         <td>{{$order->service->name}}</td>
                                         <td><span class="badge bg-label-primary fs-6 me-1">{{$order->service->category->name}}</span></td>
@@ -103,6 +103,11 @@
                                         <td>{{\Carbon\Carbon::parse($order->date)->diffForHumans()}}</td>
                                         <td>
                                             <span class="badge bg-{{ $type[1][(int)$order->status-1] }} fs-6">{{ $type[0][(int)$order->status -1] }}</span>
+                                        </td>
+                                        <td>
+                                            <a href="{{route('order.show',$order->id)}}">
+                                            عرض
+                                            </a>
                                         </td>
                                     </tr>
                                     @empty
