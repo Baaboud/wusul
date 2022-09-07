@@ -158,7 +158,7 @@
                                                     <form method="get" action="{{ route('admin.user.active',  $user->id ) }}">
                                                         @if($user->is_active)
                                                         <button type="button" class="btn btn-label-danger confirm">
-                                                            <span class="tf-icons bx bx-block">ايقاف</span>&nbsp;
+                                                            <span class="tf-icons bx bx-block fs-6">ايقاف</span>&nbsp;
                                                         </button>
                                                         @else
                                                         <button type="button" class="btn btn-label-primary confirm">

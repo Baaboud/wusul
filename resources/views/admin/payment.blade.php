@@ -67,10 +67,14 @@
 
                         </tr>
                         @empty
-                        <p class="text-center py-3 text-danger fs-4">
-                            لا يوجد نتائج
-                        </p>
-                        <img src="{{ asset('img/noResultFound.png') }}" class="h-px-200 w-auto mx-auto">
+                            <tr>
+                                <td colspan="12" class="text-center">
+                                    <p class="text-center py-3 text-danger fs-4">
+                                        لا يوجد نتائج
+                                    </p>
+                                    <img src="{{ asset('img/noResultFound.png') }}" class="h-px-200 w-auto mx-auto">
+                                </td>
+                            </tr>
                         @endforelse
                     </tbody>
                 </table>

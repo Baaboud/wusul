@@ -12,7 +12,7 @@
                                 <a class="nav-link" href="{{ route('profile') }}"><i class='bx bx-user'></i> البيانات الشخصية</a>
                             </li>
                             <li class="nav-item"><a class="nav-link active" href="#"><i class='bx bx-grid-alt'></i> الطلبات</a></li>
-                            <li class="nav-item"><a class="nav-link" href="{{ route('profile.wallet') }}"><i class='bx bx-wallet'></i> المحفظة</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{{ route('wallet') }}"><i class='bx bx-wallet'></i> المحفظة</a></li>
                         @endif
                     </ul>
                 </div>

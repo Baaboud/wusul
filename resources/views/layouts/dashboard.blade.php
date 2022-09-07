@@ -139,7 +139,7 @@
                 </li>
 
                 <li class="menu-header text-uppercase text-white fs-6"><span class="menu-header-text">أدارة العمليات</span></li>
-                <li class="menu-item">
+                <li class="menu-item {{Request::url() === route('payments') ? 'active' : ''}}">
                     <a href="{{route('payments')}}"
                        class="menu-link">
                         <i class="menu-icon tf-icons bx bx-money"></i>

@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\ServiceCat;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -29,8 +30,6 @@ class ServerCatSeeder extends Seeder
             ['name' => ' الزينة و الديكور','description'=>"هي مجال التي تهتم بالتزيين"],
             ['name' => ' الزراعة','description'=>"هي مجال  التي تهتم بالحدائق و البساتين "],
             ['name' => ' التصميم','description'=>"هي مجال تهتم بالتصاميم فيديوهات و صور وخياطة"],
-            
-            
         ];
         ServiceCat::insert($servercategury);
     }
