@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers\admin;
 
+use App\Models\User;
+use App\Models\Order;
 use App\Models\Report;
+use App\Models\Service;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class adminController extends Controller
 {
@@ -15,7 +19,25 @@ class adminController extends Controller
      */
     public function index()
     {
-        return view('admin.home');
+        $allUsers=count(User::all());
+        $userServiceProvider=count(User::where('type',2)->get());
+        $users=count(User::where('type',0)->get());
+        $orders=count(Order::all());
+        $orders_done=count(Order::where('status',3)->get());
+        $orders_fail=count(Order::whereIn('status',[4,5])->get());
+        $services=count(Service::all());
+        $transactions=Auth::user()->wallet->transactions;
+        $total=0;
+        // return $transactions;
+        foreach ($transactions as $transaction ) {
+            if($transaction->type=='deposit'){
+                $rate= ($transaction->amount) * (5 / 100);
+                $total+=$rate;
+            }
+        };
+        // return $total;
+        // نسبة الموقع 
+        return view('admin.home',compact('allUsers','userServiceProvider','users','orders','orders_done','orders_fail','total','services'));
     }
 
     public function reports(){
