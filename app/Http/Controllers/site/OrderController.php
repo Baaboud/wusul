@@ -108,14 +108,34 @@ class OrderController extends Controller
         try {
             $order=Order::with('user','service','address','payment')->CheckOwner()->findOrFail($id);
             $images = json_decode($order->images, true);
-        
-            return view('order.bill',compact('order','images'));
+            $type = [['جديد',' في انتظار الدفع','مكتمل' ,'نم الغاءه','مرفوض','انتظار تأكيد الدفع','انتظار تاكيد الاستلام'],
+            ['primary', 'warning' , 'success'  , 'danger' , 'danger','warning' ,'primary']];
+            
+            $status=$type[0][$order->status+1];
+
+            return view('order.bill',compact('order','images','status'));
         
         } catch (\Throwable $th) {
             //throw $th;
             return $th->getMessage();
         }
     }
+
+           // change order status to cancel
+           public function cancel($id){
+            try {
+                $order=Order::CheckOwner()->findOrFail($id);
+                Auth::user()->type==0?$order->status=4:$order->status=5;
+    
+                $order->save();
+    
+                return redirect()->back()->with(['success' => 'تمت  العملية بنجاح']);
+    
+            } catch (\Throwable $th) {
+                // return
+                return redirect()->back()->with(['error' => 'حدث خطا ما برجاء المحاوله لاحقا']);
+            }
+        }
 
 
 

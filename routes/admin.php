@@ -73,6 +73,14 @@ use App\Http\Controllers\userServiceProvider\ServicesController;
         });
 
 
+
+        Route::group(['prefix' => 'reports'], function () {
+            Route::get('/', [adminController::class, 'reports'])->name('reports');
+            Route::get('/show/{id}', [adminController::class, 'reportShow'])->name('report.show');
+
+            
+            });
+
         // //crud advertisement
         // Route::group(['prefix' => 'advertisement'], function () {
         //     Route::get('/index', [AdvertisementController::class, 'index'])->name('show.adv');

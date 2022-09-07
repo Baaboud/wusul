@@ -35,7 +35,6 @@
                             <select class="form-select w-100 show-tick" id="selectpickerIcons" data-icon-base="bx" data-tick-icon="bx-check" data-style="btn-default" wire:model='sortFile'>
                                 <option data-icon="bx bx-rename" value='name'>الاسم</option>
                                 <option data-icon="bx bx-current-location" value='location'>الاقرب</option>
-                                <option data-icon="bx bx-cart" value='orders'>عدد الطلبات</option>
                                 <option data-icon="bx bx-star" value='stars'>اجمالي التقييمات</option>
                             </select>
                         </div>

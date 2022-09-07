@@ -16,11 +16,9 @@ return new class extends Migration
         Schema::create('reports', function (Blueprint $table) {
             $table->id();
             $table->string('message');
+            $table->boolean('show')->default(0);
             $table->unsignedBigInteger('sender_id');
             $table->foreign('sender_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
-            $table->unsignedBigInteger('receiver_id');
-            $table->foreign('receiver_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
-            $table->integer('marker');
             $table->timestamps();
         });
     }

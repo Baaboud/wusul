@@ -30,7 +30,6 @@
                                 data-tick-icon="bx-check" data-style="btn-default"  wire:model='sortFile'>
                             <option data-icon="bx bx-rename" value='name'>الاسم</option>
                             <option data-icon="bx bxs-watch" value ='created_at'>تاريخ التسجيل</option>
-                            <option data-icon="bx bx-cart" value='orers'>عدد الطلبات</option>
                             <option data-icon="bx bx-star" value='stars'>اجمالي التقييمات</option>
                         </select>
                     </div>
@@ -125,7 +124,7 @@
                                         <div class="card">
                                             <div class="card-body text-center shadow-sm">
                                                 <div class="mx-auto mb-3">
-                                                @if($user->profile->image)
+                                                @if($user->profile->image??'')
                                                     <img src="{{asset('assets/images/users/'.$user->profile->image)}}" alt="Avatar Image" class="rounded-circle w-px-100 h-100">
                                                 @else
                                                     <img src="{{ asset('img/user1.png') }}" alt="Avatar Image" class="rounded-circle w-px-100">

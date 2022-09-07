@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\site;
 
+use App\Models\Report;
 use App\Models\Service;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class SiteController extends Controller
 {
@@ -30,6 +32,18 @@ class SiteController extends Controller
         } catch (\Throwable $th) {
             // return $th->getMessage();
             return redirect()->back()->with(['error' => 'حدث خطا ما برجاء المحاوله لاحقا']);
+        }
+    }
+
+    public function addReport(Request $request){
+        try {
+            $report= Report::create([
+                'sender_id'=>Auth::id(),
+                'message'=>$request->message
+            ]);
+            return redirect()->back();
+        } catch (\Throwable $th) {
+            return $th->getMessage();
         }
     }
 }
