@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends(Auth::user()->type==0?'layouts.app':'layouts.dashboard')
 
 @section('extra-style')
     <link rel="stylesheet" href="../../assets/vendor/css/pages/page-help-center.css">

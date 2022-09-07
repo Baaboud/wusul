@@ -147,7 +147,7 @@
                     </a>
                 </li>
                 <li class="menu-item">
-                    <a href="#"
+                    <a href="{{route('reports')}}"
                        class="menu-link">
                         <i class="menu-icon tf-icons bx bxs-report"></i>
                         <div>أدارة البلاغات</div>

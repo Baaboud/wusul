@@ -74,9 +74,14 @@ Route::middleware(['auth'])->group(function () {
             Route::post('/orderConfirm', [OrderController::class, 'orderConfirm'])->name('order.orderConfirm');
             Route::post('/paymentCheck', [OrderController::class, 'paymentCheck'])->name('order.paymentCheck');
             Route::get('/', [OrderController::class, 'orders'])->name('orders');
-
+            Route::get('/cancel/{id}', [OrderController::class, 'cancel'])->name('order.cancel');
 
         });
+
+
+        Route::group(['prefix' => 'reports'], function () {
+            Route::post('/add', [SiteController::class, 'addReport'])->name('reports.add');
+            });
 
 });
 Route::get('/services', [SiteController::class, 'services'])->name('home.services');

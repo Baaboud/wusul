@@ -91,7 +91,9 @@
                 </div>
                 <hr class="my-0">
                 <div class="">
+
                     <div class="m-0 pt-3">
+                <h6 class="text-center">هذا الطلب {{$status}}</h6>
                         <span class="fs-4 pt-3 fw-bolder px-5">وصف الطلب</span>
 
                         <div class="card-body">
@@ -168,9 +170,9 @@
                     @endif
                     @if(Auth::id()==$order->user->id)
                     @if($order->status == 2)
-                    <form action="decline">
+                    <form action="{{route('order.cancel',$order->id)}}">
                         <button class="btn btn-label-danger d-grid w-100 mb-3 confirm" data-bs-toggle="offcanvas" data-bs-target="#addPaymentOffcanvas">
-                            <span class="d-flex align-items-center justify-content-center text-nowrap"><i class="bx bx-block bx-xs me-3"></i>رفض</span>
+                            <span class="d-flex align-items-center justify-content-center text-nowrap"><i class="bx bx-block bx-xs me-3"></i>الغاء</span>
                         </button>
                     </form>
                     @if( $order->service->type==1)
@@ -194,7 +196,7 @@
                 <div class="">
                     <div class="text-center px-4 py-3 d-flex justify-content-center border-top border-bottom">
                         <p class="mb-0 fs-4 me-3">اجمالي المبلغ:</p>
-                        <p class="fw-semibold mb-0 fs-4 text-danger">${{$order->price}}</p>
+                        <p class="fw-semibold mb-0 fs-4 text-danger">${{$order->price?:'0'}}</p>
                     </div>
                 </div>
                 @endif
@@ -223,7 +225,8 @@
                         <span class="d-flex align-items-center justify-content-center text-nowrap"><i class="bx bx-check bx-xs me-3"></i>أرسال</span>
                     </button>
                 </form>
-                <form action="dismiss" class="card-body mt-0 pt-0">
+                    <form action="{{route('order.cancel',$order->id)}}"
+                class="card-body mt-0 pt-0">
                     <button class="btn btn-label-danger d-grid w-100 confirm" data-bs-toggle="offcanvas" data-bs-target="#addPaymentOffcanvas">
                         <span class="d-flex align-items-center justify-content-center text-nowrap"><i class="bx bx-block bx-xs me-3"></i>رفض</span>
                     </button>

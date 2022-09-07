@@ -25,8 +25,8 @@ class OrdersFilter extends Component
     public function render()
     {
         try {
-            $type = [['جديد',' في انتظار الدفع','مكتمل' ,' نم الغاءه','مرفوض','انتظار تأكيد الدفع','انتظار تاكيد الاستلام'],
-                    ['primary', 'warning' , 'success'  , 'danger' , 'orange','warning' ,'primary']];
+            $type = [['جديد',' في انتظار الدفع','مكتمل' ,'نم الغاءه','مرفوض','انتظار تأكيد الدفع','انتظار تاكيد الاستلام'],
+                    ['primary', 'warning' , 'success'  , 'danger' , 'danger','warning' ,'primary']];
         
             //code...
             $categories=ServiceCat::all();
