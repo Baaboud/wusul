@@ -31,12 +31,19 @@ class Rating extends Component
         $order->user->rating()->sync([$service_id =>['stars'=> $this->stars ?? '0']],false);
 
         $ratings=$service->rating()->get();
-        $sum=0;
+        $services=$service->user->services;
+        $sumR=0;
+        $sumS=0;
         foreach ($ratings as $rating) {
-            $sum+=(int)$rating->pivot->stars;
+            $sumR+=(int)$rating->pivot->stars;
         }
-        $service->stars=($sum/count($ratings)); 
+        foreach ($services as $service) {
+            $sumS+=(int)$service->stars;
+        }
+        $service->stars=($sumR/count($ratings)); 
         $service->save();
+        $service->user->stars=($sumS/count($services)); 
+        $service->user->save();
         return view('livewire.rating');
     }
 }

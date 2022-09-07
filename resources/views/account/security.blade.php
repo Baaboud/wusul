@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends(Auth::user()->type==0?'layouts.app':'layouts.dashboard')
 
 @section('content')
     <div class="container-xxl flex-grow-1 container-p-y mt-3">

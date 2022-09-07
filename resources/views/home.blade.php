@@ -44,7 +44,6 @@
                                     data-tick-icon="bx-check" data-style="btn-default">
                                 <option data-icon="bx bx-rename">الاسم</option>
                                 <option data-icon="bx bx-current-location">الاقرب</option>
-                                <option data-icon="bx bx-cart">عدد الطلبات</option>
                                 <option data-icon="bx bx-star">اجمالي التقييمات</option>
                             </select>
                         </div>
@@ -109,7 +108,6 @@
                                                 data-icon-base="bx" data-tick-icon="bx-check" data-style="btn-default">
                                             <option data-icon="bx bx-rename">الاسم</option>
                                             <option data-icon="bx bx-current-location">الاقرب</option>
-                                            <option data-icon="bx bx-cart">عدد الطلبات</option>
                                             <option data-icon="bx bx-star">اجمالي التقييمات</option>
                                         </select>
                                     </div>

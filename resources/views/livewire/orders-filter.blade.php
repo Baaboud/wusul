@@ -12,7 +12,7 @@
                                 <a class="nav-link" href="{{ route('profile') }}"><i class='bx bx-user'></i> البيانات الشخصية</a>
                             </li>
                             <li class="nav-item"><a class="nav-link active" href="#"><i class='bx bx-grid-alt'></i> الطلبات</a></li>
-                            <li class="nav-item"><a class="nav-link" href="{{ route('profile.wallet') }}"><i class='bx bx-wallet'></i> المحفظة</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{{ route('wallet') }}"><i class='bx bx-wallet'></i> المحفظة</a></li>
                         @endif
                     </ul>
                 </div>
@@ -86,7 +86,6 @@
                                         <th>تاريخ الطلب</th>
                                         <th>تاريخ التسليم المتوقع</th>
                                         <th>الحالة</th>
-                                        <th>عمليات</th>
                                     </tr>
                                 </thead>
                                 <tbody class="table-border-bottom-0">
@@ -118,11 +117,6 @@
                                         <td onclick="window.location='{{ route('order.show',$order->id) }}';" class="cursor-pointer">{{\Carbon\Carbon::parse($order->date)->diffForHumans()}}</td>
                                         <td onclick="window.location='{{ route('order.show',$order->id) }}';" class="cursor-pointer">
                                             <span class="badge bg-{{ $type[1][(int)$order->status-1] }} fs-6">{{ $type[0][(int)$order->status -1] }}</span>
-                                        </td>
-                                        <td>
-                                            <a href="{{route('order.show',$order->id)}}">
-                                            عرض
-                                            </a>
                                         </td>
                                     </tr>
                                     @empty

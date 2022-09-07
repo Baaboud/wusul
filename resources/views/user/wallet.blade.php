@@ -101,7 +101,9 @@
         </div>
         <div class="card">
             <h5 class="card-header fs-4 fw-bolder">العمليات</h5>
-        <livewire:search-transaction ,[]/>
+        <livewire:search-transaction :wallet="$wallet"/>
+        {{-- <livewire:category-posts :category="$category"> --}}
+
         </div>
     </div>
 </div>
