@@ -162,8 +162,9 @@
                     </button>
                     @endif
                     @if($order->status== 3 && Auth::user()->type == 0 )
-                    @livewire('rating',['service'=>$order->service])
-
+                    <button type="button" class="btn btn-primary d-grid w-100" data-bs-toggle="modal" data-bs-target="#editeCategory1" onclick="edit({{$order}})">
+                        <span class="d-flex align-items-center justify-content-center text-nowrap"></span>&nbsp; تقييم الخدمة
+                    </button>
                     @endif
                     @if(Auth::id()==$order->user->id)
                     @if($order->status == 2)
@@ -307,7 +308,16 @@
     </div>
 </div>
 @endif
+@if($order->status== 3 && Auth::user()->type==0 )
 
+<div class="modal fade" id="editeCategory1" tabindex="-1" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            @livewire('rating')
+        </div>
+    </div>
+</div>
+@endif
 
 @endsection
 
@@ -334,12 +344,20 @@
     }
 
     function edit(order) {
-        console.log('hello');
         const id = document.querySelector('input[name=id]');
         id.value = order.id;
 
     }
 
+    function rating() {
+        const starsClose = document.querySelector('#starts-close');
+         setTimeout(()=>{
+        starsClose.click();
+        },1000);
+    }
+
 </script>
+        {{-- const inputs = document.querySelectorAll('.div-stars-container input');
+        const stars = document.querySelectorAll('.div-stars-container i'); --}}
 <script src="{{ asset('js/confirm.js') }}"></script>
 @endsection
