@@ -23,7 +23,7 @@ return new class extends Migration
             $table->foreign('service_id')->references('id')->on('services')->onUpdate('cascade')->onDelete('cascade');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
-            $table->timestamp('date');
+            $table->timestamp('date')->nullable();
             $table->timestamps();
         });
     }

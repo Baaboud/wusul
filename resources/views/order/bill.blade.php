@@ -65,18 +65,18 @@
                             </div>
                             <div>
                                 <span class="me-1">المحافظة:</span>
-                                <span class="fw-semibold">{{$order->service->address->state->name}}</span>
+                                <span class="fw-semibold">{{$order->user->address->state->name??'...'}}</span>
                             </div>
                             <div>
                                 <span class="me-1">المدينة:</span>
-                                <span class="fw-semibold">{{$order->service->address->city->name}}</span>
+                                <span class="fw-semibold">{{$order->user->address->city->name??'...'}}</span>
                             </div>
                         </div>
                         <div class="my-xl-0 my-md-3 my-sm-0 my-3">
                             <h4>بيانات الخدمة</h4>
                             <div class="mb-2">
                                 <span class="me-1">أسم مالك الخدمة:</span>
-                                <span class="fw-semibold">{{$order->address->state->name}}</span>
+                                <span class="fw-semibold">{{$order->service->user->name}}</span>
                             </div>
                             <div>
                                 <span class="me-1">أسم الخدمة:</span>
@@ -114,7 +114,7 @@
                                 <div class="row mx-2">
                                     <div class="col-12 bg-label-secondary p-3 fs-6">
                                         <span>
-                                            {{$order->address->state->name}}-{{$order->address->city->name}}-{{$order->address->description}}
+                                            {{$order->address?->state?->name}}-{{$order->address?->city?->name}}-{{$order?->address?->description}}
                                         </span>
                                     </div>
                                 </div>
@@ -159,7 +159,7 @@
                         <span class="d-flex align-items-center justify-content-center text-nowrap"><i class="bx bx-printer bx-xs me-3"></i>طباعة</span>
                     </button>
                     @if($order->status== 7 && Auth::user()->userServiceProvider() )
-                    <button type="button" class="btn btn-label-primary mx-2" data-bs-toggle="modal" data-bs-target="#editeCategory1" onclick="edit({{$order}})">
+                    <button type="button" class="btn btn-label-danger d-grid w-100 mb-3" data-bs-toggle="modal" data-bs-target="#editeCategory1" onclick="edit({{$order}})">
                         <span class="tf-icons bx bx-edit"></span>&nbsp; تأكيد
                     </button>
                     @endif
@@ -356,7 +356,7 @@
         const starsClose = document.querySelector('#starts-close');
          setTimeout(()=>{
         starsClose.click();
-        },1000);
+        },2000);
     }
 
 </script>

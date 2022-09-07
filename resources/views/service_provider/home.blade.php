@@ -18,7 +18,7 @@
                                 <div class="card-info">
                                     <p class="card-text">المبيعات</p>
                                     <div class="d-flex align-items-end mb-2">
-                                        <h4 class="card-title mb-0 me-2">100,550</h4>
+                                        <h4 class="card-title mb-0 me-2">{{$total}}</h4>
                                     </div>
                                 </div>
                                 <div class="card-icon">
@@ -37,7 +37,7 @@
                                 <div class="card-info">
                                     <p class="card-text">اجمالي الطلبات</p>
                                     <div class="d-flex align-items-end mb-2">
-                                        <h4 class="card-title mb-0 me-2">63 طلب</h4>
+                                        <h4 class="card-title mb-0 me-2">{{$orders}} طلب</h4>
                                     </div>
                                 </div>
                                 <div class="card-icon">
@@ -56,7 +56,7 @@
                                 <div class="card-info">
                                     <p class="card-text">الطلبات المكتملة</p>
                                     <div class="d-flex align-items-end mb-2">
-                                        <h4 class="card-title mb-0 me-2">33 طلب</h4>
+                                        <h4 class="card-title mb-0 me-2">{{$orders_done}} طلب</h4>
                                     </div>
                                 </div>
                                 <div class="card-icon">
@@ -75,7 +75,7 @@
                                 <div class="card-info">
                                     <p class="card-text">الطلبات المرفوضة</p>
                                     <div class="d-flex align-items-end mb-2">
-                                        <h4 class="card-title mb-0 me-2">23 طلب</h4>
+                                        <h4 class="card-title mb-0 me-2">{{$orders_fail}} طلب</h4>
                                     </div>
                                 </div>
                                 <div class="card-icon">
@@ -94,7 +94,7 @@
                                 <div class="card-info">
                                     <p class="card-text">الخدمات</p>
                                     <div class="d-flex align-items-end mb-2">
-                                        <h4 class="card-title mb-0 me-2">32 خدمة</h4>
+                                        <h4 class="card-title mb-0 me-2">{{$services}} خدمة</h4>
                                     </div>
                                 </div>
                                 <div class="card-icon">

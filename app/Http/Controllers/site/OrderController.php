@@ -111,7 +111,7 @@ class OrderController extends Controller
             $type = [['جديد',' في انتظار الدفع','مكتمل' ,'نم الغاءه','مرفوض','انتظار تأكيد الدفع','انتظار تاكيد الاستلام'],
             ['primary', 'warning' , 'success'  , 'danger' , 'danger','warning' ,'primary']];
             
-            $status=$type[0][$order->status+1];
+            $status=$type[0][$order->status-1];
 
             return view('order.bill',compact('order','images','status'));
         
