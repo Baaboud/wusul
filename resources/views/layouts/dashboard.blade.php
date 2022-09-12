@@ -146,7 +146,7 @@
                         <div>أدارة الفواتير</div>
                     </a>
                 </li>
-                <li class="menu-item">
+                <li class="menu-item {{Request::url() === route('reports') ? 'active' : ''}}">
                     <a href="{{route('reports')}}"
                        class="menu-link">
                         <i class="menu-icon tf-icons bx bxs-report"></i>
@@ -163,7 +163,7 @@
                 </li>
 
                 <li class="menu-header text-uppercase text-white fs-6"><span class="menu-header-text">أعدادات المنصة</span></li>
-                <li class="menu-item">
+                <li class="menu-item {{Request::url() === route('wallet') ? 'active' : ''}}">
                     <a href="{{route('wallet')}}"
                        class="menu-link">
                         <i class="menu-icon tf-icons bx bx-money"></i>
@@ -420,6 +420,13 @@
                                         <li>
                                             <div class="dropdown-divider"></div>
                                         </li>
+
+                                        <li>
+                                            <a class="dropdown-item" href="{{ route('home') }}">
+                                                <i class="bx bx-home-circle me-2"></i>
+                                                <span class="align-middle">لوحة التحكم</span>
+                                            </a>
+                                        </li>
                                         <li>
                                             <a class="dropdown-item" href="{{ route('profile') }}">
                                                 <i class="bx bx-user me-2"></i>
@@ -433,35 +440,25 @@
                                             </a>
                                         </li>
                                         <li>
-                                            <a class="dropdown-item" href="#">
-                                    <span class="d-flex align-items-center align-middle">
-                                      <i class="flex-shrink-0 bx bx-credit-card me-2"></i>
-                                      <span class="flex-grow-1 align-middle">الدفع</span>
-                                      <span class="flex-shrink-0 badge badge-center rounded-pill bg-danger w-px-20 h-px-20">4</span>
-                                    </span>
-                                            </a>
-                                        </li>
-                                        <li>
                                             <div class="dropdown-divider"></div>
                                         </li>
                                         <li>
-                                            <a class="dropdown-item" href="#">
+                                            <a class="dropdown-item" href="{{ route('contact') }}">
                                                 <i class="bx bx-support me-2"></i>
                                                 <span class="align-middle">المساعدة</span>
                                             </a>
                                         </li>
                                         <li>
-                                            <a class="dropdown-item" href="#">
+                                            <a class="dropdown-item" href="{{ route('about') }}">
                                                 <i class="bx bx-help-circle me-2"></i>
                                                 <span class="align-middle">الاسئلة الشائعة</span>
                                             </a>
                                         </li>
+                                        <button type="button" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#addreport">
+                                            <i class="bx bx-support me-2"></i>
+                                            <span class=>الابلاغ عن مشكله</span>
+                                        </button>
                                         <li>
-                                            <a class="dropdown-item" href="#">
-                                                <i class="bx bx-dollar me-2"></i>
-                                                <span class="align-middle">الاسعار</span>
-                                            </a>
-                                        </li>
                                         <li>
                                             <div class="dropdown-divider"></div>
                                         </li>
@@ -512,6 +509,38 @@
             <div class="container-xxl flex-grow-1 container-p-y">
 
                 <!-- Content -->
+
+                <div class="modal fade" id="addreport" tabindex="-1" aria-hidden="true" style="display: none;">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <form id="formAccountSettings" method="POST" action="{{route('reports.add')}}" class="fv-plugins-bootstrap5 fv-plugins-framework" novalidate="novalidate">
+                                <hr class="my-0">
+                                @csrf
+                                <div class="modal-header">
+                                    <h5 class="modal-title fs-5 fw-bolder" id="modalToggleLabel">الابلاغ عن مشكلة </h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div>
+                                            <label for="exampleFormControlTextarea1" class="form-label">وصف
+                                                المشكله</label>
+                                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="الوصف" name='message'></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="mt-2 text-center">
+                                        <button type="submit" class="btn btn-primary me-2"> حفظ</button>
+                                        <button type="button" class="btn btn-label-secondary" data-bs-dismiss="modal">إلغاء
+                                        </button>
+                                    </div>
+                                    <div></div>
+                                    <input type="hidden">
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
                     @yield('content')
                 <!-- / Content -->
 

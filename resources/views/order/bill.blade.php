@@ -128,7 +128,7 @@
                                 <div class="d-flex align-items-center mx-4 mb-3">
                                     @foreach ($images as $image )
                                     <a href="{{ asset("{$order->path}$image") }}" class="d-flex align-items-center">
-                                        <img src='{{ asset("{$order->path}$image") }}' alt="Avatar" style='width: 100%' class="rounded-circle">
+                                        <img src='{{ asset("{$order->path}$image") }}' alt="Avatar" style='width: 100%' class="rounded">
                                     </a>
                                     @endforeach
                                 </div>

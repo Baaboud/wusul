@@ -44,7 +44,7 @@ Route::middleware(['auth'])->group(function () {
         });
 
             Route::get('/orders', [ProfileController::class, 'orders'])->name('profile.orders');
-            
+
             //wallet
             Route::get('/wallet', [ProfileController::class, 'wallet'])->name('wallet');
 
@@ -127,7 +127,7 @@ Route::get('/activation', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('verified');
 
 //Route::get('/profile', function () {
 //    return view('user.profile');
@@ -172,7 +172,7 @@ Route::group(['prefix' => 'serviceProvider',
     Route::group(['prefix' => 'order'], function () {
         Route::post('/receiveOrder', [PaymentController::class, 'receiveOrder'])->name('order.receiveOrder');
     });
-    
+
 
 });
 // // orders
